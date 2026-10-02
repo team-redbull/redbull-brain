@@ -1,0 +1,5 @@
+repo: metal3-io/metal3-docs
+ref: main
+commit: 62fef539c702b89625a6ea768a23b1863d6c67b8
+paths: docs, design
+synced: 2026-10-02T23:00:22Z

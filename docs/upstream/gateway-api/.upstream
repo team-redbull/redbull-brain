@@ -1,0 +1,5 @@
+repo: kubernetes-sigs/gateway-api
+ref: main
+commit: 037437abdfaa236b2648ee31f82e3961560b3246
+paths: site/content, geps
+synced: 2026-10-02T23:00:28Z

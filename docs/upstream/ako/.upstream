@@ -1,0 +1,5 @@
+repo: vmware/load-balancer-and-ingress-services-for-kubernetes
+ref: master
+commit: fcae6a1cdf8d26753380c8ca84674aa127f267bf
+paths: docs, README.md
+synced: 2026-10-02T22:59:51Z

@@ -1,0 +1,5 @@
+repo: metal3-io/baremetal-operator
+ref: main
+commit: 5ab5cffb09f0a8a39a082dc87889c72dbfdcf54e
+paths: docs
+synced: 2026-10-02T23:00:24Z

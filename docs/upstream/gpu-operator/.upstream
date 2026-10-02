@@ -1,0 +1,5 @@
+repo: NVIDIA/gpu-operator
+ref: main
+commit: 3e1873a25ef46219f9b2db6f19a0b90818729586
+paths: README.md, docs
+synced: 2026-10-02T23:00:30Z

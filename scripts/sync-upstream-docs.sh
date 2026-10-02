@@ -29,7 +29,6 @@ sparse_copy() {  # <repo> <ref> <subdir-in-repo> <dest-under-docs/upstream>
 }
 
 sparse_copy kubernetes/website "$K8S_REF" content/en/docs kubernetes
-# Add more as needed, e.g. Gateway API:
-# sparse_copy kubernetes-sigs/gateway-api main site-src gateway-api
+# Ecosystem projects (AKO, vLLM, KServe…): scripts/sync-ecosystem-docs.py; Portworx: scripts/sync-portworx-docs.py
 
 echo "Done. Review 'git status docs/upstream', then commit."

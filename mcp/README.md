@@ -12,10 +12,9 @@ One MCP server that gives Claude offline, version-aware search over everything t
 | `hypershift` | git mirror of openshift/hypershift | docs + API types + controller code **at any branch/tag** |
 | `cluster-api` | git mirror of kubernetes-sigs/cluster-api | the CAPI book, proposals + code at any tag |
 | `kubernetes-docs` | `docs/upstream/kubernetes` (pinned 1.35, newest fleet version) | upstream Kubernetes docs |
-| `ako`, `envoy`, `envoy-gateway`, `gateway-api`, `kserve`, `kserve-website`, `vllm`, `lws`, `kueue` | git mirrors | load balancing, proxy, model serving, inference workloads |
-| `prometheus-docs`, `prometheus-operator`, `grafana-docs`, `openshift-runbooks`, `etcd-docs` | git mirrors | monitoring docs, alert runbooks |
-| `portworx-docs`, `metal3-docs`, `ironic`, `gpu-operator`, `node-feature-discovery`, `ovn-kubernetes`, `multus-cni`, `assisted-service` | git mirrors | storage, bare metal, GPU, networking, Agent installs |
-| `cluster-api-provider-agent`, `cluster-api-provider-metal3`, `baremetal-operator` | git mirrors | now enabled |
+| `hypershift`, `ironic` | **full git mirrors** | code + docs at any ref |
+| `ako`, `envoy`, `envoy-gateway`, `gateway-api`, `kserve`, `kserve-website`, `vllm`, `lws`, `kueue`, `prometheus-docs`, `prometheus-operator`, `grafana-docs`, `mcp-grafana`, `openshift-runbooks`, `etcd-docs`, `portworx-docs`, `metal3-docs`, `baremetal-operator`, `cluster-api-provider-metal3`, `gpu-operator`, `node-feature-discovery`, `ovn-kubernetes`, `multus-cni`, `assisted-service` | **docs-only snapshots** in `docs/upstream/<name>` | documentation only, no code, no git history |
+| `cluster-api-provider-agent` | git mirror | enabled |
 | *(disabled)* `argo-cd` | git mirror | flip `"enabled": true` |
 
 Tools: `list_sources`, `search`, `read`, `search_code`, `read_code`, `find_definition`, `list_refs`.
@@ -100,34 +99,25 @@ matching the hub: HyperShift `release-4.NN` for the OCP/MCE stream; Cluster API 
 (check the CAPI version vendored in that HyperShift branch with
 `search_code repo=hypershift path="go.mod" pattern="sigs.k8s.io/cluster-api "`).
 
-## Mirrors to create before `--sync`
+## Full mirrors vs docs-only snapshots
 
-Every `git_repo` source needs a mirror under `$GIT_MIRROR_BASE` with the same `org/repo` path as
-upstream. Sources whose mirror is missing just report "clone failed" — they don't break the others.
-Disk is the main cost: `grafana/grafana`, `envoyproxy/envoy`, `vllm-project/vllm` and `openstack/ironic`
-are large (full `--mirror` clones); drop their `docs`-only value if space matters.
+- **Full git mirrors** (`git clone --mirror`: every branch, tag and all history; code *and* docs searchable at any `ref`):
+  `hypershift`, `ironic`, plus `cluster-api`, `cluster-api-provider-agent` and (optional) `argo-cd`.
+  Create these under `$GIT_MIRROR_BASE` with the same `org/repo` path as upstream
+  (`openshift/hypershift`, `openstack/ironic`, `kubernetes-sigs/cluster-api`, `openshift/cluster-api-provider-agent`,
+  `argoproj/argo-cd`), then `server.py --sync`.
+- **Docs-only snapshots** (everything else): `python3 scripts/sync-ecosystem-docs.py [name…]` fetches just the
+  documentation folders (shallow, sparse) into `docs/upstream/<name>`; Kubernetes and Portworx have their own
+  scripts. Commit the result. In the air gap set `UPSTREAM_GIT_BASE` to an internal mirror. Snapshots follow the
+  default branch; pin one to the installed version with `REF_<name>=<tag>` (e.g. `REF_vllm=v0.11.0`).
+  Snapshots cannot be queried "at ref" — treat them as latest-docs and verify against the installed version.
 
-```
-openshift/hypershift  openshift/cluster-api-provider-agent  openshift/runbooks  openshift/assisted-service
-kubernetes-sigs/cluster-api  kubernetes-sigs/lws  kubernetes-sigs/kueue  kubernetes-sigs/gateway-api
-kubernetes-sigs/node-feature-discovery  vmware/load-balancer-and-ingress-services-for-kubernetes
-envoyproxy/envoy  envoyproxy/gateway  kserve/kserve  kserve/website  vllm-project/vllm
-prometheus/docs  prometheus-operator/prometheus-operator  grafana/grafana  grafana/mcp-grafana
-metal3-io/metal3-docs  metal3-io/baremetal-operator  metal3-io/cluster-api-provider-metal3
-openstack/ironic  NVIDIA/gpu-operator  ovn-org/ovn-kubernetes  k8snetworkplumbingwg/multus-cni  etcd-io/website
-argoproj/argo-cd (optional)
-```
+Repo names, default branches and doc paths were checked against GitHub on 2026-10-03. Upstream layouts drift
+(Gateway API moved `site-src` → `site/content`): rerun the script and fix paths that yield zero files.
 
-Repo names, default branches and doc globs were checked against GitHub on 2026-10-03 (all match files). Upstream
-layouts drift (Gateway API moved `site-src` → `site/content`), so after a bump run `server.py --sync --check`
-and fix any `docs` glob that matches nothing.
-
-**Portworx has no public docs repo** (`portworx/px-docs` is an archived 2018 snapshot). `portworx-docs` is a pinned
-mirror of the latest docs.portworx.com release in `docs/upstream/portworx` (3.7 at last sync), refreshed with
-`python3 scripts/sync-portworx-docs.py` on a connected host (on macOS Python: `SSL_CERT_FILE=/etc/ssl/cert.pem`).
-It is latest-only: for older installed versions verify against the support matrix / RHOKP.
-
-Pick the ref per cluster from `knowledge/meta/fleet-versions.md`; never rely on `main` for a cluster.
+**Portworx has no public docs repo** (`portworx/px-docs` is an archived 2018 snapshot); `portworx-docs` is a crawl of
+docs.portworx.com (latest release, 3.7 at last sync) via `python3 scripts/sync-portworx-docs.py`
+(on macOS Python: `SSL_CERT_FILE=/etc/ssl/cert.pem`).
 
 ## Grafana MCP (metrics)
 

@@ -39,6 +39,11 @@ upstream source disagree, RHOKP/KCS wins for what we run**; upstream tells you h
 | `gitops-day1-platform-config`, `gitops-day2-prod`, `cluster-navigator` | gitops | our own repos: day1 values/versions, day2 ARCHITECTURE.md and charts, Navigator. **Disabled until the real GitLab remotes are set** (`GITOPS_DAY1_REMOTE`, `GITOPS_DAY2_REMOTE`, `NAVIGATOR_REMOTE`) | `main`; version of a cluster = day1 `mastertag` |
 | `brain` | all | **our** quirks, runbooks, incidents — read first | — |
 
+**Full git mirrors (code + docs at any ref):** `hypershift`, `ironic`, `cluster-api`, `cluster-api-provider-agent`,
+`argo-cd` (optional). **Every other source is a docs-only snapshot** in `docs/upstream/<name>` (default branch unless
+pinned with `REF_<name>`), so the "Ref to use" column above applies only to the full mirrors; for snapshots, check the
+doc against the version actually installed (and prefer RHOKP for Red Hat's builds).
+
 ## Gotchas when mixing sources
 
 - Upstream default branches are ahead of what we run. Say which ref your claim comes from.

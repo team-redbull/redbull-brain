@@ -1,0 +1,5 @@
+repo: prometheus/docs
+ref: main
+commit: 605cf81fefc2e8e91f8ba89bb1555ae52a43a318
+paths: docs
+synced: 2026-10-02T23:00:07Z

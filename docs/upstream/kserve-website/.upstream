@@ -1,0 +1,5 @@
+repo: kserve/website
+ref: main
+commit: 71c8b22a05d6be72560b2cc326865930063cd0e8
+paths: docs
+synced: 2026-10-02T23:00:05Z

@@ -1,0 +1,5 @@
+repo: kubernetes-sigs/node-feature-discovery
+ref: master
+commit: c8ea0b62ae265f3cd7881efd55a5adfe0bb13cd0
+paths: docs
+synced: 2026-10-02T23:00:31Z

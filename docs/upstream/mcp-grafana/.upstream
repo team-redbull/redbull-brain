@@ -1,0 +1,5 @@
+repo: grafana/mcp-grafana
+ref: main
+commit: 9dbfe137a5d3c3bc930ab7d9565e7917dac1cc0f
+paths: README.md, docs
+synced: 2026-10-02T23:00:15Z

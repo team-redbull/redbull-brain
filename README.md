@@ -31,7 +31,7 @@ The plugin ships one zero-dependency MCP server that searches, in a single call:
 - **Argo CD docs** from your internal mirror
 - **HyperShift** and **Cluster API** — docs *and source code*, at the exact branch/tag a cluster runs
 - **Kubernetes docs** pinned to 1.35 (newest OCP in the fleet) in `docs/upstream/`; version map in `knowledge/meta/fleet-versions.md`
-- **Ecosystem docs** (AKO, Envoy, KServe, vLLM, LWS, Prometheus, Grafana, Metal3, GPU operator…) as git mirrors; Portworx as a pinned crawl in `docs/upstream/portworx` — catalog in `knowledge/meta/doc-sources-catalog.md`
+- **Ecosystem docs** (AKO, Envoy, KServe, vLLM, LWS, Prometheus, Grafana, Metal3, GPU operator…) as docs-only snapshots in `docs/upstream/` (HyperShift and Ironic are full code+docs mirrors); Portworx as a crawl — catalog in `knowledge/meta/doc-sources-catalog.md`
 - **Grafana MCP** — metrics from our single Grafana (one Prometheus datasource per cluster)
 
 Details, RHOKP setup and the shared-deployment option: [`mcp/README.md`](mcp/README.md).

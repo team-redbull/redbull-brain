@@ -1,0 +1,5 @@
+repo: etcd-io/website
+ref: main
+commit: d20f8ae346da60ab6eb6f24f200753b328aa9fcc
+paths: content/en/docs
+synced: 2026-10-02T23:00:45Z

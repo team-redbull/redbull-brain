@@ -1,0 +1,5 @@
+repo: ovn-org/ovn-kubernetes
+ref: master
+commit: 849e38fb510c2680da6064e2bb1ed1565d6ea7da
+paths: docs
+synced: 2026-10-02T23:00:36Z

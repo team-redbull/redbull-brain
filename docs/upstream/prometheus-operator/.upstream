@@ -1,0 +1,5 @@
+repo: prometheus-operator/prometheus-operator
+ref: main
+commit: 5ffb4adcc382ada7e09c4c46b3618ed0b93bfe88
+paths: Documentation, README.md
+synced: 2026-10-02T23:00:10Z

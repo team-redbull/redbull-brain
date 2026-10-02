@@ -1,0 +1,5 @@
+repo: envoyproxy/gateway
+ref: main
+commit: 7a3fbc5235301eab15bc9fb0417ad323163f38bb
+paths: site/content/en/latest
+synced: 2026-10-02T22:59:57Z

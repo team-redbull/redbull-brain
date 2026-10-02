@@ -1,0 +1,5 @@
+repo: kubernetes-sigs/kueue
+ref: main
+commit: 9f2d1e4356cd625c37af8a72db27d76b3af16501
+paths: site/content/en/docs
+synced: 2026-10-02T23:00:33Z

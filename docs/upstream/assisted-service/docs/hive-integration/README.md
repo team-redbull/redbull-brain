@@ -1,0 +1,618 @@
+# Hive Integration
+
+The goal of the Hive integration is to enable Assisted Installer capabilities on-premise in users' "Hub" clusters by installing clusters via Multi-cluster management, such as through [Hive](https://github.com/openshift/hive/) and [RHACM](https://github.com/open-cluster-management) (Red Hat Advanced Cluster Management).
+
+A full description of the enhancement is available [here](https://github.com/openshift/enhancements/blob/master/enhancements/installer/agent-based-installation-in-hive.md).
+
+For this integration, the Assisted Installer APIs are available via [CRDs](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/)
+
+## CRD Types
+
+![kubeAPI4.9](kubeAPI4.9_controllers.jpg)
+
+### [ClusterDeployment](https://github.com/openshift/hive/blob/master/apis/hive/v1/clusterdeployment_types.go)
+The ClusterDeployment CRD is an API provided by Hive.
+
+See Hive documentation [here](https://github.com/openshift/hive/blob/master/docs/using-hive.md#cluster-provisioning).
+
+The ClusterDeployment must have a reference to an AgentClusterInstall (`Spec.ClusterInstallRef`) that defines the required parameters of the Cluster.
+
+Deletion of ClusterDeployment will trigger the `clusterdeployments.agent-install.openshift.io/ai-deprovision` finalizer pre-deletion logic, which will delete the referenced AgentClusterInstall.
+
+The CluterDeployment's `spec.platform` should be ignored except for `spec.platform.agentBareMetal`. With the Assisted Installer, the actual platform will be set in the AgentClusterInstall CR.
+
+### [AgentClusterInstall](../../api/hiveextension/v1beta1/agentclusterinstall_types.go)
+In the AgentClusterInstall, the user can specify requirements like networking, platform, number of Control Plane and Worker nodes and more.
+
+The installation will start automatically if the required number of hosts is available, the hosts are ready to be installed and the Agents are approved.
+
+Once the installation started, changes to the AgentClusterInstall Spec will be revoked.
+
+Selecting a specific OCP release version is done using a ClusterImageSet, see documentation [here](kube-api-select-ocp-versions.md).
+
+The AgentClusterInstall reflects the Cluster/Installation status through Conditions.
+
+Deletion of AgentClusterInstall will trigger the `agentclusterinstall
+.agent-install.openshift.io/ai-deprovision` finalizer pre-deletion logic, which will deregister the backend cluster and delete all the related Agent CRs.
+
+Here an example how to print AgentClusterInstall conditions:
+
+```sh
+$ kubectl get agentclusterinstalls.extensions.hive.openshift.io -n mynamespace -o=jsonpath='{range .items[*]}{"\n"}{.metadata.name}{"\n"}{range .status.conditions[*]}{.type}{"\t"}{.message}{"\n"}{end}'
+```
+```sh
+test-infra-agent-cluster-install
+SpecSynced	The Spec has been successfully applied
+Validated	The cluster's validations are passing
+RequirementsMet	The cluster installation stopped
+Completed	The installation has completed: Cluster is installed
+Failed	The installation has not failed
+Stopped	The installation has stopped because it completed successfully
+```
+
+More details on conditions is available [here](kube-api-conditions.md)
+
+#### Debug Information
+
+The `DebugInfo` field under `Status` provides additional information for debugging installation process:
+- `EventsURL` specifies an HTTP/S URL that contains events occurred during cluster installation process
+
+
+
+### [InfraEnv](../../api/v1beta1/infraenv_types.go)
+The InfraEnv CRD represents the configuration needed to create the discovery ISO.
+The user can specify proxy settings, ignition overrides and specify NMState labels.
+
+When the ISO is ready, an URL will be available in the CR.
+
+If booting hosts using [iPXE](https://github.com/openshift/assisted-service/blob/5d4d836747862f43fa2ec882e5871648bd12c780/docs/enhancements/ipxe-host-boot.md#ipxe-host-boot), the download URLs will be available in the CR.
+
+The InfraEnv reflects the image creation status through Conditions.
+
+More details on conditions is available [here](kube-api-conditions.md)
+
+The InfraEnv can be created without a Cluster Deployment reference for late binding flow. More information is available [here](./late-binding.md).
+
+
+### [NMStateConfig](../../api/v1beta1/nmstate_config_types.go)
+The NMStateConfig contains network configuration that will applied on the hosts. See NMState repository [here](https://github.com/nmstate/nmstate).
+
+To link between an InfraEnv to NMState (either one or more):
+
+- InfraEnv CR: add a label to nmStateConfigLabelSelector with a user defined name and value.
+- NMState CR: Specify the same label + value in Object metadata.
+
+Upon InfraEnv creation, the InfraEnv controller will search by label+value for matching NMState resources and construct a config to be sent as StaticNetworkConfig as a part of ImageCreateParams. The backend does all validations, and currently, there is no handling of configuration conflicts (e.g., two nmstate resources using the same MAC address).
+
+The InfraEnv controller will watch for NMState config creation/changes and search for corresponding InfraEnv resources to reconcile since we need to regenerate the image for those.
+
+:stop_sign: Note that due to the ignition content length limit (`256Ki`), there is a limit to the amount of NMStateConfigs that can be included with a single InfraEnv. With a config sample such as [this one](./crds/nmstate.yaml), the limit per each InfraEnv is 3960 configurations.
+
+:warning: **It is advised to create all NMStateConfigs resources before their corresponding InfraEnv.
+The reason is that InfraEnv doesn't have a way to know how many NMStateConfigs to expect; therefore, it re-creates its ISO when new NMStateConfigs are found.
+The new ISO automatically propagates to any agents that haven't yet started installing.**
+
+### [Agent](../../api/v1beta1/agent_types.go)
+The Agent CRD represents a Host that boot from an ISO and registered to a cluster.
+It will be created by Assisted Service when a host registers.
+In the Agent, the user can specify the hostname, role, installation disk and more.
+Also, the host hardware inventory and statuses are available.
+
+Note that if the Agent is not Approved, it will not be part of the installation.
+
+Here how to approve an Agent:
+
+```sh
+$ kubectl -n mynamespace patch agents.agent-install.openshift.io 120af504-d88e-46bd-bec2-b8b261db3b01 -p '{"spec":{"approved":true}}' --type merge
+```
+
+The Agent reflects the Host status through Conditions.
+
+More details on conditions is available [here](kube-api-conditions.md)
+
+Here an example how to print Agent conditions:
+
+```sh
+$ kubectl get agents.agent-install.openshift.io -n mynamespace  -o=jsonpath='{range .items[*]}{"\n"}{.spec.clusterDeploymentName.name}{"\n"}{.status.inventory.hostname}{"\n"}{range .status.conditions[*]}{.type}{"\t"}{.message}{"\n"}{end}'
+```
+
+```sh
+test-infra-cluster-assisted-installer
+test-infra-cluster-assisted-installer-master-2
+SpecSynced	The Spec has been successfully applied
+Connected	The agent's connection to the installation service is unimpaired
+RequirementsMet	Installation already started and is in progress
+Validated	The agent's validations are passing
+Installed	The installation is in progress: Configuring
+
+test-infra-cluster-assisted-installer
+test-infra-cluster-assisted-installer-master-0
+SpecSynced	The Spec has been successfully applied
+Connected	The agent's connection to the installation service is unimpaired
+RequirementsMet	Installation already started and is in progress
+Validated	The agent's validations are passing
+Installed	The installation is in progress: Configuring
+
+test-infra-cluster-assisted-installer
+test-infra-cluster-assisted-installer-master-1
+SpecSynced	The Spec has been successfully applied
+Connected	The agent's connection to the installation service is unimpaired
+RequirementsMet	Installation already started and is in progress
+Validated	The agent's validations are passing
+Installed	The installation is in progress: Waiting for control plane
+```
+
+Once the cluster is installed, the ClusterDeployment is set to Installed and secrets for kubeconfig and credentials are created and referenced in the AgentClusterInstall.
+
+## Day 2 worker
+
+In case of none SNO deployment, after that the cluster is installed, the original cluster is transformed into a Day 2 cluster in the Assisted Service database.
+
+Additional nodes can be added by booting from the same generated ISO. Each additional host will start installation once the Agent is Approved and the Host is in known state.
+
+Note that the user needs to approved the additional nodes in the installed cluster.
+
+It is possible to import an existing installed OpenShift in order to be able to add more workers to it. See instructions [here](./import-installed-cluster.md).
+
+## Bare Metal Operator Integration
+
+In case that the Bare Metal Operator is installed, the Baremetal Agent Controller will sync between the Agent CR and the matching BareMetalHost CR:
+
+- Find the right pairs of BMH/Agent using their MAC addresses
+- Set the Image.URL in the BMH copying it from the InfraEnv's status.
+- Reconcile the Agent's spec by copying the following fields from the BMH's annotations:
+    - Role: master/worker
+      - `bmac.agent-install.openshift.io/role`
+    - Hostname (optional for user to set)
+      - `bmac.agent-install.openshift.io/hostname`
+    - MachineConfigPool (optional for user to set)
+      - `bmac.agent-install.openshift.io/machine-config-pool`
+    - InstallerArgs (optional for user to set)
+      - `bmac.agent-install.openshift.io/installer-args`
+    - IgnitionConfigOverrides (optional for user to set)
+      - `bmac.agent-install.openshift.io/ignition-config-overrides`
+    - ClusterReference (optional for user to set)
+      - `bmac.agent-install.openshift.io/cluster-reference`
+      - Format: `namespace/name` (e.g., `my-namespace/my-cluster`)
+      - Associates the agent with a specific ClusterDeployment
+      - Can only be used when the InfraEnv doesn't already have a cluster reference
+      - Setting an empty string ("") will clear the cluster reference
+    - AgentLabels (optional for user to set)
+      -  `bmac.agent-install.openshift.io.agent-label.` (prefix)
+- Reconcile the BareMetalHost hardware details by copying the Agent's inventory data to the BMH's `hardwaredetails` annotation.
+- Disable ironic inspection
+
+
+See BMAC documentation [here](./baremetal-agent-controller.md).
+
+[ZTP flow](ZTP_flow.png)
+
+## Bare Metal Operator Integration using the converged flow
+See reference [here](https://github.com/openshift/enhancements/blob/master/enhancements/baremetal/ztp-metal3.md)
+
+In case the Bare Metal Operator on the HUB cluster version is 4.12 or higher, the integration between the BMO and the assisted-service is slightly different.
+The assisted-service will run a Preprovisioning Image Controller that reconciles PreprovisioningImages and:
+- Annotates the InfraEnv for the BareMetalHost with `infraenv.agent-install.openshift.io/enable-ironic-agent="true"`
+- Adds the ironic agent config to the discovery ignition embedded in the InfraEnv ISO
+- Copies the InfraEnv ISODownloadURL to the PreprovisioningImage ImageUrl, which allows the host to register with metal3 and let metal3 reconcile the BareMetalHost hardware details.
+**NOTE**
+In case the InfraEnv is annotated with `infraenv.agent-install.openshift.io/enable-ironic-agent="true"`
+The ISO generated for this InfraEnv requires metal3 for registration and will not work for boot-it-yourself flow!
+
+The Baremetal Agent Controller will stop explicitly disabling *inspection* on `BareMetalHost`s it manages
+and will no longer update the BareMetalHost with detached annotation.
+It will continue to:
+- Find the right pairs of BMH/Agent using their MAC addresses
+- Reconcile the Agent's spec by copying the following attributes from the BMH's annotations:
+  - Role: master/worker
+  - Hostname (optional for user to set)
+  - MachineConfigPool (optional for user to set)
+- Set the  BareMetalHost CustomDeploy Method to `start_assisted_install` - this custom deploy method will be added to start
+  the assisted agent when BMO requests deployment.
+
+The assisted agent will not reboot the machine at the end of the installation, instead it will stop
+the assisted agent service and let the ironic agent to manage the machine power state
+
+The converged flow is enabled by default, you can disable the converged flow by setting the `ALLOW_CONVERGED_FLOW` env to false [here](../operator.md##specifying-environmental-variables-via-configmap)
+
+### Ironic Agent Image
+
+The ironic agent image will be determined based on the hub release image set in the ClusterVersion resource.
+For cases where the hub and spoke architectures are different (e.g., hub is x86_64 and spoke is arm64), the system can automatically detect the appropriate ironic agent image if:
+- The hub is using a multi-architecture release image that contains the spoke's architecture, OR
+- Two ClusterImageSets exist:
+    - one for the hub's architecture and the spoke's version
+    - one for the spoke's architecture and the spoke's version
+
+If none of the above conditions are met, and no ironic-agent-image-override annotation has been provided, a default ironic agent image will be used.
+The defaults are:
+- x86_64: `quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:d3f1d4d3cd5fbcf1b9249dd71d01be4b901d337fdc5f8f66569eb71df4d9d446`
+- arm64: `quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:cb0edf19fffc17f542a7efae76939b1e9757dc75782d4727fb0aa77ed5809b43`
+
+To set a different default ironicAgent image you can override the following env vars:
+The environment var for the ironicAgent image to be used on X86_64 CPU architecture:
+`IRONIC_AGENT_IMAGE`
+The environment var for the ironicAgent image to be used on arm64 CPU architecture:
+`IRONIC_AGENT_IMAGE_ARM`
+
+The ironic agent image can also be overridden using the InfraEnv annotation `infraenv.agent-install.openshift.io/ironic-agent-image-override`
+If this field is set this image will be used instead of the hub or default image.
+
+**NOTE**
+Ensure the correct images are mirrored if installing in a disconnected environment.
+Specifically the ironic agent image from the hub cluster release needs to be accessible in the spoke installation environment.
+This can be found using the following command:
+```
+oc adm release info --image-for=ironic-agent <hub-release-image>
+```
+
+### Ironic Agent callback IP family
+
+If the hub cluster is a dual stack cluster the preprovisioning image controller needs to pick which IP family to provide to the ironic agent for callback purposes.
+
+This is done using the following priority system:
+
+1. Use the IP family from the `infraenv.agent-install.openshift.io/ip-family` annotation
+  - This can be `v4`, `v6`, or `v4,v6` depending on what the hosts in this infraenv support
+  - Use this option when using late binding or when the following behavior doesn't work for your use case
+2. IP family of the cluster associated with the InfraEnv
+  - If the InfraEnv has a cluster associated with it that cluster's networking will be checked to determine the correct IP family to use
+3. Default to the primary IP family of the hub cluster
+
+[ZTP converged flow](ZTP_converged_flow.png)
+
+## Working with mirror registry
+In case all of your images are in mirror registries, the service, discovery ISO, and installed nodes must be configured with the proper registries.conf and authentication certificate.  To do so, see the Mirror Registry Configuration section [here](../operator.md#mirror-registry-configuration).
+
+## Assisted Installer Kube API CR examples
+
+[docs/hive-integration/crds](crds) stores working examples of various resources we spawn via kube-api in assisted-installer, for Hive integration.
+Those examples are here for reference.
+
+You will likely need to adapt those for your own needs.
+
+* [Agent](crds/agent.yaml)
+* [InfraEnv](crds/infraEnv.yaml)
+* [InfraEnv Late Binding](crds/infraEnvLateBinding.yaml)
+* [NMState Config](crds/nmstate.yaml)
+* [Hive PullSecret Secret](crds/pullsecret.yaml)
+* [Hive ClusterDeployment](crds/clusterDeployment.yaml)
+* [AgentClusterInstall](crds/agentClusterInstall.yaml)
+* [AgentClusterInstall SNO](crds/agentClusterInstall-SNO.yaml)
+* [ClusterImageSet](crds/clusterImageSet.yaml)
+
+
+### Selecting a Network Type (CNI)
+
+The `spec.networking.networkType` field on `AgentClusterInstall` controls which CNI plugin is installed.
+Supported values: `OpenShiftSDN`, `OVNKubernetes`, `CiscoACI`, `Cilium`, `Calico`, `None`.
+
+If omitted, the default is auto-selected (OVN-Kubernetes for OCP 4.12+, IPv6, or SNO clusters).
+
+Third-party CNIs (`CiscoACI`, `Cilium`, `Calico`, `None`) require custom manifests — see
+[Third-Party CNI Support](../user-guide/third-party-cni.md) for full details and examples.
+
+```yaml
+spec:
+  networking:
+    networkType: Cilium  # or OVNKubernetes, OpenShiftSDN, CiscoACI, Calico, None
+  manifestsConfigMapRefs:
+  - name: cilium-cni-manifests  # required for third-party CNIs
+```
+
+### Creating InstallConfig overrides
+
+In order to alter the default install config yaml used when running `openshift-install create` commands.
+More information about install-config overrides is available [here](../user-guide/install-customization.md#install-config)
+In case of failure to apply the overrides the agentclusterinstall conditions will reflect the error and show the relevant error message.
+
+Add an annotation with the desired options, the clusterdeployment controller will update the install config yaml with the annotation value.
+Note that this configuration must be applied prior to starting the installation
+```sh
+$ kubectl annotate agentclusterinstalls.extensions.hive.openshift.io test-cluster -n mynamespace agent-install.openshift.io/install-config-overrides="{\"networking\":{\"networkType\": \"OVNKubernetes\"},\"fips\":true}"
+agentclusterinstalls.extensions.hive.openshift.io/test-cluster annotated
+```
+
+```sh
+$ kubectl get agentclusterinstalls.extensions.hive.openshift.io test-cluster -n mynamespace -o yaml
+```
+```yaml
+apiVersion: extensions.hive.openshift.io/v1beta1
+kind: AgentClusterInstall
+metadata:
+  annotations:
+    agent-install.openshift.io/install-config-overrides: '{"networking":{"networkType": "OVNKubernetes"},"fips":true}'
+  creationTimestamp: "2021-04-01T07:04:49Z"
+  generation: 1
+  name: test-cluster
+  namespace: mynamespace
+  resourceVersion: "183201"
+...
+```
+
+### Ignoring cluster and host validations
+
+The Assisted Service runs a set of validations on clusters and hosts before allowing installation to proceed.
+In some cases, specific validations may need to be bypassed. There are two mechanisms for this:
+**disabling** validations at the service level, and **ignoring** validations on a per-cluster basis.
+
+> [!WARNING]
+> Using either of the mechanisms below is unsupported and voids support for the affected cluster.
+> Assisted Service validations exist to ensure that cluster provisioning can succeed safely and predictably.
+> If validations are disabled or ignored, we cannot support customers using that configuration, because the installation may proceed despite known issues that would normally block provisioning.
+
+#### Semantics: disabled vs. ignored
+
+These two mechanisms have different effects:
+
+| | Disabled (service-level) | Ignored (per-cluster) |
+|---|---|---|
+| **Scope** | All clusters managed by the service instance | A single cluster |
+| **Behaviour** | Validation is **not executed**; reported as `disabled` | Validation **runs** and reports its actual result, but does not block installation |
+| **Configuration** | Environment variable on the Assisted Service deployment | Annotation on `AgentClusterInstall` (Kube API) or REST API call |
+
+In both cases, the state machine treats the affected validation as passing, allowing the cluster to proceed to installation even if the underlying condition is not met.
+
+**Per-cluster overrides service-level**: when per-cluster ignored validations are set for a cluster (even if the list is empty), the service-level disabled validations do not apply to that cluster. For example, if `DISABLED_CLUSTER_VALIDATIONS=A,B,C` is set globally and a cluster has `ignored-cluster-validations: B`, only validation B is ignored for that cluster — A and C run normally. Setting the annotation to an empty value explicitly overrides the service-level configuration with zero ignored validations.
+
+Validation IDs are checked for validity: unknown or misspelled IDs are rejected with an error in both the REST API and Kube API paths.
+
+#### Service-level: disabling validations via environment variables
+
+Validations can be disabled globally (for all clusters) by setting environment variables on the Assisted Service deployment.
+Disabled validations are skipped entirely and reported with a `disabled` status.
+
+| Environment Variable | Description |
+|---|---|
+| `DISABLED_HOST_VALIDATIONS` | Comma-separated list of host validation IDs to disable |
+| `DISABLED_CLUSTER_VALIDATIONS` | Comma-separated list of cluster validation IDs to disable |
+
+Example:
+```
+DISABLED_HOST_VALIDATIONS=valid-platform,container-images-available
+DISABLED_CLUSTER_VALIDATIONS=ntp-server-configured,dns-domain-defined
+```
+
+See [Specifying environmental variables via ConfigMap](../operator.md#specifying-environmental-variables-via-configmap) for how to set these in an operator-based deployment.
+
+#### Per-cluster: ignoring validations via annotations
+
+Validations can be ignored on a per-cluster basis by setting annotations on the AgentClusterInstall CR.
+Ignored validations still run and report their actual result, but they do not block installation.
+This leverages the same mechanism available in the REST API (`PUT /v2/clusters/{cluster_id}/ignored-validations`).
+
+> [!NOTE]
+> In the REST API, ignoring validations requires the organization to have the `IgnoreValidations` capability enabled.
+> In the Kube API, no such capability check is performed — any user with permission to annotate the `AgentClusterInstall` CR can ignore validations.
+
+| Annotation | Description |
+|---|---|
+| `agent-install.openshift.io/ignored-cluster-validations` | Comma-separated list of cluster validation IDs to ignore |
+| `agent-install.openshift.io/ignored-host-validations` | Comma-separated list of host validation IDs to ignore |
+
+Example:
+```sh
+$ kubectl annotate agentclusterinstalls.extensions.hive.openshift.io my-cluster -n mynamespace \
+    agent-install.openshift.io/ignored-cluster-validations="dns-domain-defined,ntp-server-configured" \
+    agent-install.openshift.io/ignored-host-validations="has-cpu-cores-for-role,has-memory-for-role"
+```
+
+```sh
+$ kubectl get agentclusterinstalls.extensions.hive.openshift.io my-cluster -n mynamespace -o yaml
+```
+```yaml
+apiVersion: extensions.hive.openshift.io/v1beta1
+kind: AgentClusterInstall
+metadata:
+  annotations:
+    agent-install.openshift.io/ignored-cluster-validations: dns-domain-defined,ntp-server-configured
+    agent-install.openshift.io/ignored-host-validations: has-cpu-cores-for-role,has-memory-for-role
+  name: my-cluster
+  namespace: mynamespace
+...
+```
+
+To remove ignored validations, delete the annotations:
+```sh
+$ kubectl annotate agentclusterinstalls.extensions.hive.openshift.io my-cluster -n mynamespace \
+    agent-install.openshift.io/ignored-cluster-validations- \
+    agent-install.openshift.io/ignored-host-validations-
+```
+
+Note that certain mandatory validations cannot be ignored. For cluster validations these are:
+`api-vips-defined`, `ingress-vips-defined`, `all-hosts-are-ready-to-install`, `sufficient-masters-count`, `pull-secret-set`.
+For host validations: `connected`, `has-inventory`, `inventory-not-fully-truncated`, `machine-cidr-defined`, `hostname-unique`, `hostname-valid`.
+
+#### Annotation format and database representation
+
+The annotation value is a **comma-separated list** of validation IDs. The controller converts it to a **JSON array** before persisting it to the database. The table below shows how different annotation states map to what is stored in the `clusters` table:
+
+| Scenario | Annotation on AgentClusterInstall | Value stored in DB (`ignored_cluster_validations`) |
+|---|---|---|
+| Ignore specific validations | `"dns-domain-defined,ntp-server-configured"` | `["dns-domain-defined","ntp-server-configured"]` |
+| Ignore a single validation | `"ntp-server-configured"` | `["ntp-server-configured"]` |
+| Annotation present but empty (explicit override with zero ignores) | `""` | `[]` |
+| Annotation absent (no override; service-level disabled validations still apply) | *(annotation not set)* | *(empty string — no value stored)* |
+
+The same format applies to `ignored-host-validations` / `ignored_host_validations`.
+
+> [!NOTE]
+> There is an important distinction between an **absent annotation** and an **empty annotation**.
+> When the annotation is absent, the service-level disabled validations (set via `DISABLED_CLUSTER_VALIDATIONS` / `DISABLED_HOST_VALIDATIONS`) still apply to the cluster.
+> When the annotation is explicitly set to an empty value (`""`), it overrides the service-level configuration: no validations are ignored or disabled for that cluster, even if the environment variables list some.
+
+**Example: setting an explicit empty override**
+```sh
+$ kubectl annotate agentclusterinstalls.extensions.hive.openshift.io my-cluster -n mynamespace \
+    agent-install.openshift.io/ignored-cluster-validations=""
+```
+
+**Example: removing the override (reverting to service-level defaults)**
+```sh
+$ kubectl annotate agentclusterinstalls.extensions.hive.openshift.io my-cluster -n mynamespace \
+    agent-install.openshift.io/ignored-cluster-validations-
+```
+
+For more background on the ignored validations feature, see the [enhancement proposal](../enhancements/api-for-ignoring-validations.md).
+
+### Creating host installer args overrides
+
+In order to alter the default coreos-installer arguments used when running `coreos-installer`openshift-install create command.
+List of supported args can be found [here](https://github.com/openshift/assisted-service/blob/38a9d0398b96e81ef494029277e362a7256df44e/internal/host/hostutil/host_utils.go#L150)
+In case of failure to apply the overrides the agent conditions will reflect the error and show the relevant error message.
+
+Add an annotation with the desired options, the bmac controller will update the agent spec with the annotation value.
+Then agent controller will forward it to host configuration.
+Note that this configuration must be applied prior to starting the installation
+```sh
+$ kubectl annotate bmh openshift-worker-0 -n mynamespace bmac.agent-install.openshift.io/installer-args="[\"--append-karg\", \"ip=192.0.2.2::192.0.2.254:255.255.255.0:core0.example.com:enp1s0:none\", \"--save-partindex\", \"1\", \"-n\"]"
+baremetalhost.metal3.io/openshift-worker-0 annotated
+```
+
+```sh
+$ oc get bmh openshift-worker-0 -n mynamespace -o yaml
+```
+```yaml
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  annotations:
+    bmac.agent-install.openshift.io/installer-args: '["--append-karg", "ip=192.0.2.2::192.0.2.254:255.255.255.0:core0.example.com:enp1s0:none", "--save-partindex", "1", "-n"]'
+  creationTimestamp: "2021-04-13T10:46:57Z"
+  generation: 1
+  name: openshift-worker-0
+  namespace: mynamespace
+spec:
+```
+
+### Creating host ignition config overrides
+
+In case of failure to apply the overrides, the agent conditions will reflect the error and show the relevant error message.
+
+Add an annotation with the desired options, the bmac controller will update the agent spec with the annotation value.
+Then agent controller will forward it to host configuration.
+Note that this configuration must be applied prior to starting the installation
+```sh
+$ kubectl annotate bmh openshift-worker-0 -n mynamespace bmac.agent-install.openshift.io/ignition-config-overrides="{\"ignition\": {\"version\": \"3.1.0\"}, \"storage\": {\"files\": [{\"path\": \"/tmp/example\", \"contents\": {\"source\": \"data:text/plain;base64,aGVscGltdHJhcHBlZGluYXN3YWdnZXJzcGVj\"}}]}}"
+baremetalhost.metal3.io/openshift-worker-0 annotated
+```
+
+```sh
+$ oc get bmh openshift-worker-0 -n mynamespace -o yaml
+```
+```yaml
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  annotations:
+    bmac.agent-install.openshift.io/ignition-config-overrides: '{"ignition": {"version": "3.1.0"}, "storage": {"files": [{"path": "/tmp/example", "contents": {"source": "data:text/plain;base64,aGVscGltdHJhcHBlZGluYXN3YWdnZXJzcGVj"}}]}}'
+  creationTimestamp: "2021-04-14T10:46:57Z"
+  generation: 1
+  name: openshift-worker-0
+  namespace: mynamespace
+spec:
+```
+### Creating agent labels from BMH
+
+There is an option to add agent labels from BMH.  In order to add agent label, a BMH annotation is added.  The annotation key
+has a prefix __bmac.agent-install.openshift.io.agent-label.__. The suffix of the annotation is regarded as the agent label key.
+The annotation value is the agent label value.
+
+Note: Agent labels are just added from BMH annotations. They are not removed if there is no corresponding BMH annotation.
+
+Here is an example of such BMH annotation representing an agent label:
+
+```yaml
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  annotations:
+    bmac.agent-install.openshift.io.agent-label.agent-label: 'label-value'
+  creationTimestamp: "2021-04-14T10:46:57Z"
+  generation: 1
+  name: openshift-worker-0
+  namespace: mynamespace
+spec:
+```
+
+### Creating Additional manifests
+
+In order to add custom manifests that will be added to the installation manifests generated by `openshift-install create` command,
+user will need to create configmap with valid manifests:
+```yaml
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: my-baremetal-cluster-install-manifests
+  namespace: mynamespace
+data:
+  99_master_kernel_arg.yaml: |
+    apiVersion: machineconfiguration.openshift.io/v1
+    kind: MachineConfig
+    metadata:
+      labels:
+        machineconfiguration.openshift.io/role: master
+      name: 99-openshift-machineconfig-master-kargs
+    spec:
+      kernelArguments:
+        - 'loglevel=7'`
+```
+
+Create/update AgentClusterInstall with field manifestsConfigMapRefs:
+```yaml
+apiVersion: extensions.hive.openshift.io/v1beta1
+kind: AgentClusterInstall
+metadata:
+  name: my-baremetal-cluster
+  namespace: mynamespace
+spec:
+    manifestsConfigMapRefs:
+    - name: manifests-config-map-1
+    - name: manifests-config-map-2
+```
+manifestsConfigMapRefs is an array of references to user-provided manifests ConfigMaps.
+This field should be used instead of the deprecated manifestsConfigMapRef.
+
+[Deprecated] Create/update AgentClusterInstall with field manifestsConfigMapRef:
+```yaml
+apiVersion: extensions.hive.openshift.io/v1beta1
+kind: AgentClusterInstall
+metadata:
+  name: my-baremetal-cluster
+  namespace: mynamespace
+spec:
+    manifestsConfigMapRef:
+      name: my-baremetal-cluster-install-manifests
+```
+If manifests provided in configmap data section will be in bad format or configmap will not exists but will be referenced
+we will set error in Sync condition only if cluster will be ready for installation. Changing configmap should fix the issue.
+Note: this field is ignored when ManifestsConfigMapRefs is set.
+
+## Teardown procedure
+
+Deleting the ClusterDeployment will automatically trigger the deletion of its referenced AgentClusterInstall and the deletion of all the Agents connected to it (Unless late binding was used, see [here](./late-binding.md)).
+
+Note that the installed OCP cluster, if exists, will not be affected by the deletion of the ClusterDeployment.
+
+Deleting only the AgentClusterInstall will delete the Agents connected to it (Unless late binding was used), but the ClusterDeployment will remain.
+
+BareMetalHost, InfraEnv, ClusterImageSet and NMStateConfig deletion will not trigger deletion of other resources.
+
+
+In case that the assisted-service is not available, the deletion of ClusterDeployment, AgentClusterInstall and Agents resources will be blocked due to finalizers that are set on them.
+
+Here an example on how to remove finalizers on a resource:
+
+```bash
+kubectl -n mynamespace patch agentclusterinstalls.extensions.hive.openshift.io my-aci -p '{"metadata":{"finalizers":null}}' --type=merge
+```
+
+## Development
+
+### CRD update
+
+Changes in CRDs should be made in the CRDs Go files located [here](../../api).
+After the changes are done, the YAML files need to be generated by running:
+```bash
+skipper make generate
+```

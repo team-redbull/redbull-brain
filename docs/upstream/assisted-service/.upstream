@@ -1,0 +1,5 @@
+repo: openshift/assisted-service
+ref: master
+commit: a3ac089e4dc593f36849640b7f0266386fdc67ea
+paths: docs
+synced: 2026-10-02T23:00:43Z

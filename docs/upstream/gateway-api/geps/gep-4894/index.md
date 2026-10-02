@@ -1,0 +1,844 @@
+---
+title: "GEP-4894: Backend Resource"
+---
+
+* Issue: [#4894](https://github.com/kubernetes-sigs/gateway-api/issues/4894)
+  * Incubated by the [AI Gateway Working Group](https://github.com/kubernetes-sigs/wg-ai-gateway/pull/20)
+* Status: Experimental
+
+## Sponsors
+
+* [Agentgateway](https://agentgateway.dev/)
+* [Istio](https://istio.io/)
+* [Airlock](https://github.com/airlock/microgateway)
+
+## TLDR
+
+This GEP proposes a new `Backend` resource that fills the [backend role](/geps/gep-2907/) — a **general-purpose decorator for backend destinations** within Gateway API. The Kubernetes `Service` resource is mature and stable, but it is effectively frozen and SIG-Network leadership is very careful about any potential features that would further bloat `Service`'s responsibilities. Previous approaches to extend Service behavior (like `BackendTLSPolicy`) have significant limitations around discoverability, implementation complexity, and the conflation of producer and consumer concerns. `BackendTLSPolicy` in particular was the right solution at the time, but feedback has shown that for the common case, inline configuration on the backend is simpler to author and often preferable.
+
+The `Backend` resource provides a namespace-scoped, consumer-focused resource that can:
+
+1. **Decorate internal endpoints** via `EndpointSelector`, adding Gateway-specific configuration (TLS, protocol, etc.) directly to a workload's pods, without a user-authored `Service` or its frontend baggage.
+2. **Represent external destinations** via `ExternalHostname`, replacing the need for insecure synthetic `ExternalName` Services.
+3. **Serve as a foundation for future Gateway-level backend configuration** such as retries, session persistence, load balancing algorithms, and other features that are tightly bound to the destination rather than the route.
+
+While egress and AI use cases provided the initial urgent motivation, the `Backend` resource is designed to be useful for **all backend types**. At its core, a `Backend` of type `EndpointSelector` does what `Service` already does — but in a Gateway-native way that allows configuration to grow over time. Egress support via `ExternalHostname` is the first Extended feature built on this foundation.
+
+### Clarifying the Semantics of "Backend"
+
+It is critically important that we emphasize that the `Backend` resource describes what a specific gateway client connection **MUST** do on the wire when connecting to a destination.
+
+In the common ingress persona, Ana often owns both the `HTTPRoute` and the Service behind it. In this scenario, Ana is being delegated the ability to control how the Gateway consumes her service. In many egress, mesh, and AI-oriented deployments, that ownership model changes: Ana does NOT own the destination behind the route, but she still needs a way to express "how should the gateway connect to this destination" without needing to coordinate with the producer or cluster admin. In other words, the `Backend` resource is a consumer-side resource that describes connection requirements for a particular client path, regardless of who owns the destination.
+
+This distinction is foundational to this GEP:
+
+- `Backend` captures consumer-side connection requirements for a particular client path (for example, SNI, TLS validation, client cert presentation, or higher-level protocol expectations).
+- Producer/server guidance is still valuable, out of scope for this resource: producer hints describe what servers generally **SHOULD** accept, while this resource describes what this client/gateway connection **MUST** attempt.
+- In practice, server hints were always actuated as client configuration anyway. This proposal makes that behavior explicit and auditable.
+
+Said differently: `Backend` is intentionally scoped to "how this client should connect" rather than "what all clients of this server must do."
+
+## Motivation
+
+The Kubernetes `Service` resource conflates two distinct concerns that have become increasingly problematic as Gateway API adoption grows:
+
+1. **Frontend concerns**: How services are discovered and called (DNS names, ClusterIPs, service discovery)
+2. **Backend concerns**: Where traffic should be routed and how to connect to destinations (endpoints, TLS configuration, protocol settings)
+
+This conflation creates friction in a few notable areas:
+
+### External Destination Limitations
+
+Currently, representing external destinations in Gateway API requires synthetic `Service` objects with `type: ExternalName`. There are several drawbacks to this approach:
+
+- **Security vulnerabilities**: ExternalName Services are subject to DNS rebinding attacks ([CVE-2021-25740](https://github.com/kubernetes/kubernetes/issues/103675))
+- **Policy limitations**: Cannot apply backend-specific policies (TLS, authentication, rate limiting) without affecting all consumers
+- **Synthetic resource overhead**: Creates artificial Kubernetes resources for external dependencies
+
+### Limitations of Policy-Based Decoration of Service
+
+The current approach to adding Gateway-specific behavior to Services is through policy attachment (e.g., `BackendTLSPolicy`). While this works, it has significant limitations:
+
+- **Discoverability**: When looking at a route, it is not clear what policies affect a given backend. Users must search for policy resources targeting the same Service, which scales poorly.
+- **Producer vs Consumer ambiguity**: `BackendTLSPolicy` targets a Service, but it is unclear whether it represents the producer's TLS configuration or a consumer's desired TLS settings. Previous attempts to add consumer overrides (e.g., [GEP 3875](https://github.com/kubernetes-sigs/gateway-api/pull/3876)) introduced significant complexity and were ultimately abandoned.
+- **Implementation complexity**: Implementations must reconcile potentially conflicting policies from multiple sources. Inline configuration on a dedicated Backend resource makes conflict resolution simpler, as the tightest scope wins by default.
+- **CRD proliferation**: Each new backend-level concern (retries, session persistence, load balancing, timeouts) requires either a new policy CRD or extension of an existing one. The Backend resource provides a single, natural home for all configuration that describes "how to connect to a destination."
+
+## Goals
+
+- **Introduce Backend resource** as a namespace-scoped, consumer-focused resource for representing destinations and their Gateway-specific connection metadata
+- **Decorate internal endpoints**: Allow `Backend` of type `EndpointSelector` to add TLS, protocol, and other connection configuration to a selected set of pods, without a user-authored `Service`
+- **Support external destinations**: Provide first-class `ExternalHostname` support as an Extended feature, replacing the need for synthetic `ExternalName` Services
+- **Provide a home for backend-level configuration**: Inline TLS, protocol metadata, session persistence, and future features such as retries, load balancing, and other destination-bound settings
+- **Maintain Service compatibility**: Existing Service-based `backendRef`s continue to work indefinitely; Backend is additive, not a replacement
+- **Enable incremental adoption**: At Core, a `Backend` of type `EndpointSelector` does what `Service` already does for Gateway API. Extended features (ExternalHostname, TLS, MCP protocol, etc.) can be adopted independently by implementations.
+
+## Non-Goals
+
+- **Deprecate Service**: `Backend` replaces the need for users to author a `Service` for internal destinations, but it does not deprecate `Service` or replace its role in the cluster (ClusterIP, DNS, in-cluster service discovery).
+- **Standardize producer-owned backend policy in this GEP**: Producer guidance and hints may inform client behavior, but defining producer-authoritative policy semantics remains out of scope for this proposal.
+- **Provide cluster-scoped backends**: Backend resource is namespace-scoped for security boundaries
+- **Solve all backend configuration at once**: This GEP establishes the Backend resource and its first features (EndpointSelector, ExternalHostname, inline TLS). Additional features (retries, session persistence, load balancing, etc.) will be proposed in follow-on GEPs.
+
+## Relationship to Service
+
+The `Backend` resource does not replace `Service`'s role in the cluster: ClusterIP, DNS, and in-cluster service discovery remain with `Service`.
+
+For internal destinations, it replaces the need for a user-authored `Service`: users select their workload's pods directly and avoid all the frontend baggage that comes with a `Service`. `Backend` adds a Gateway-specific configuration layer on top of the endpoints it routes to:
+
+```
+┌─────────────────────────────────────────────┐
+│  HTTPRoute                                  │
+│  backendRefs:                               │
+│    - name: my-backend                       │
+│      kind: Backend  ◄── Gateway-native ref  │
+└──────────────┬──────────────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────────────┐
+│  Backend (my-backend)                       │
+│  type: EndpointSelector                     │
+│  tls: { ... }         ◄── Gateway config    │
+│  protocol: MCP        ◄── Gateway config    │
+│  endpointSelector:                          │
+│    matchLabels: app=my  ◄── selects pods    │
+└──────────────┬──────────────────────────────┘
+               │
+               ▼
+┌┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┐
+┆  EndpointSelector                           ┆
+┆  created by the implementation              ┆
+┆  (Service today, as a stop-gap)             ┆
+└┄┄┄┄┄┄┄┄┄┄┄┄┄┄┬┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┘
+               │
+               ▼
+┌─────────────────────────────────────────────┐
+│  EndpointSlice                              │
+│  (generated by Kubernetes)                  │
+└─────────────────────────────────────────────┘
+```
+
+For external destinations, the `Backend` resource replaces the need for synthetic Services entirely:
+
+```
+┌─────────────────────────────────────────────┐
+│  HTTPRoute                                  │
+│  backendRefs:                               │
+│    - name: openai-api                       │
+│      kind: Backend                          │
+└──────────────┬──────────────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────────────┐
+│  Backend (openai-api)                       │
+│  type: ExternalHostname                     │
+│  externalHostname:                          │
+│    hostname: api.openai.com                 │
+│  tls: { ... }                               │
+│  (no Service needed)                        │
+└─────────────────────────────────────────────┘
+```
+
+Existing `Service`-based `backendRef`s in HTTPRoutes continue to work indefinitely. The `Backend` resource is an opt-in addition for users who need Gateway-specific backend configuration.
+
+### Conformance Tiers
+
+The Backend resource is designed with a clear separation between Core and Extended features:
+
+| Feature | Conformance Level | Description |
+| --- | --- | --- |
+| `EndpointSelector` type | Core | Routes to a selected set of in-cluster endpoints; behaves equivalently to a Service `backendRef` |
+| `ExternalHostname` type | Extended | First-class external FQDN support, replacing `ExternalName` Services |
+| Inline TLS | Extended | TLS configuration inlined on the Backend resource |
+| `MCP` protocol | Extended | Higher-level protocol metadata for AI/agentic use cases |
+| [Session persistence](../gep-1619/index.md) | Extended | Session persistence across endpoints selected by an `EndpointSelector` Backend |
+
+This layering allows the Backend resource itself to move to Standard quickly (Core tests just validate "does Backend do what Service does"), while Extended features mature independently.
+
+## User Stories
+
+### As an Application Developer (Service Alternative)
+
+> "I want to add TLS configuration to my backend without authoring a separate `Service` just for the Gateway. Today, I have to create a `Service` plus a separate `BackendTLSPolicy`, but it's not obvious from my HTTPRoute that TLS is configured, and I can't easily have different TLS settings for different consumers of the same workload."
+
+### As an Application Developer (Egress)
+
+> "I want to configure my application to call external APIs (like OpenAI) with specific TLS settings and authentication without creating synthetic Services that expose security risks or affect other applications."
+
+### As a Platform Engineer
+
+> "I want to enforce that all external API calls go through specific gateways with proper logging and policy enforcement, without having to manage complex Service configurations for every external dependency."
+
+### As a Security Administrator
+
+> "I want to avoid ExternalName Services due to DNS rebinding vulnerabilities while still allowing applications to declare their external dependencies in a structured, auditable way."
+
+### As an Application Developer (Ingress)
+
+> "I want to tell the Gateway how to connect to my internal workload — what TLS mode to use, what timeouts are appropriate, and what higher-level protocol my app speaks — without requiring a cluster admin to set up separate policy resources for each of these concerns. A single Backend resource that selects my workload's pods lets me express all of this in one place."
+
+## Proposal
+
+The `Backend` resource is a general-purpose, Gateway-native backend abstraction. It serves two complementary roles:
+
+1. **Internal Destination (Core)**: A `Backend` of type `EndpointSelector` selects a workload's pods directly and layers on Gateway-specific configuration — TLS, protocol metadata, and future features like retries or session persistence — without a user-authored `Service`. At Core conformance, this type does what `Service` already does as a `backendRef`, but provides a dedicated resource where backend-level configuration can live and grow. This avoids the need for a separate policy CRD for each new backend-level concern.
+
+2. **External Destination (Extended)**: A `Backend` of type `ExternalHostname` provides first-class support for external FQDNs, replacing the need for synthetic `ExternalName` Services. This is an Extended feature that addresses the urgent egress and AI use cases.
+
+The Backend resource is explicitly designed as a **consumer resource** — it describes how a gateway should connect to a destination from the client perspective, regardless of whether that destination is internal or external to the cluster.
+
+## API Specification
+
+### Backend Resource Schema
+
+```go
+type Backend struct {
+  metav1.TypeMeta   `json:",inline"`
+  metav1.ObjectMeta `json:"metadata,omitempty"`
+  Spec   BackendSpec   `json:"spec"`
+  Status BackendStatus `json:"status,omitempty"`
+}
+
+// +kubebuilder:validation:Enum=ExternalHostname;EndpointSelector
+type BackendType string
+
+const (
+  BackendTypeExternalHostname             BackendType = "ExternalHostname"
+  BackendTypeEndpointSelector             BackendType = "EndpointSelector"
+)
+
+// +kubebuilder:validation:XValidation:rule="self.type == 'ExternalHostname' ? has(self.externalHostname) : !has(self.externalHostname)",message="externalHostname must be set when type is ExternalHostname and must be unset otherwise"
+// +kubebuilder:validation:XValidation:rule="self.type == 'EndpointSelector' ? has(self.endpointSelector) : !has(self.endpointSelector)",message="endpointSelector must be set when type is EndpointSelector and must be unset otherwise"
+// TODO: Add these CEL rules when spec.port.name and selectorRef are introduced:
+// +kubebuilder:validation:XValidation:rule="self.type == 'ExternalHostname' ? !has(self.port.name) : true",message="port.name must not be set when type is ExternalHostname"
+// +kubebuilder:validation:XValidation:rule="(self.type == 'EndpointSelector' && !has(self.endpointSelector.selectorRef)) ? !has(self.port.name) : true",message="port.name must not be set for inline EndpointSelector"
+type BackendSpec struct {
+  // Type defines the backend type
+  // +unionDiscriminator
+  // +required
+  Type BackendType `json:"type"`
+
+  // Port defines the port to connect to on this backend.
+  // For ExternalHostname, this is the port on the external host.
+  // For EndpointSelector, this specifies which endpoint port to connect to.
+  //
+  // +required
+  Port BackendPort `json:"port"`
+
+  // ExternalHostname specifies the configuration for an ExternalHostname backend. Only used if type is ExternalHostname.
+  // Support: Extended
+  // +optional
+  ExternalHostname *ExternalHostnameBackend `json:"externalHostname,omitempty"`
+
+  // EndpointSelector specifies the configuration for an EndpointSelector backend. Only used if type is EndpointSelector.
+  // +optional
+  EndpointSelector *EndpointSelectorBackend `json:"endpointSelector,omitempty"`
+
+  // Protocol defines the protocol for backend communication.
+  // In the common case, the underlying transport protocol for the
+  // proxied traffic will already have been determined and processed
+  // by the dataplane at the routing step. Where this field is useful
+  // is either for higher level protocols or asymmetrical protocol
+  // configurations (e.g. version upgrades or h2c). In cases where the
+  // protocol is negotiated on the wire (e.g. HTTP/1.1 Upgrade or ALPN),
+  // implementations MUST include the protocol set here in the negotiation
+  // options presented to the backend. It is currently undefined whether this
+  // means required, optional, or most preferred (e.g. first in the set).
+  // TODO: Define full semantics in protocol negotation.
+  //
+  // These protocols are also used for validation of future protocol-specific
+  // fields that may be added to the Backend resource (e.g. retries).
+  //
+  // Support: Extended for MCP, Core for TCP, HTTP, HTTP2, and H2C
+  // TODO: Not sure if the above is allowed or viable.
+  // +optional
+  Protocol BackendProtocol `json:"protocol"`
+
+  // TLS defines the TLS configuration that a client should use when talking to the backend.
+  // N.B: ExternalHostname backends SHOULD have TLS configured; the lack of TLS for external hostnames
+  // should be considered insecure and a security risk.
+  // +optional
+  TLS *BackendTLS `json:"tls,omitempty"`
+}
+
+// BackendTLSMode defines the TLS mode for backend connections.
+// +kubebuilder:validation:Enum=None;ServerOnly;ClientAndServer
+type BackendTLSMode string
+
+const (
+  // Disable TLS when connecting to the backend.
+  BackendTLSModeNone BackendTLSMode = "None"
+  // Enable TLS with simple server certificate verification.
+  BackendTLSModeServerOnly BackendTLSMode = "ServerOnly"
+  // Enable mutual TLS.
+  BackendTLSModeClientAndServer BackendTLSMode = "ClientAndServer"
+)
+
+// BackendPort describes the port the implementation should use when connecting
+// to a Backend.
+//
+// No Protocol or AppProtocol is necessary since that's directly on the Backend resource.
+//
+// +kubebuilder:validation:MinProperties=1
+type BackendPort struct {
+  // Name represents the name of this port. Only valid for an EndpointSelector
+  // referenced via selectorRef.
+  //
+  // Name must either be an empty string or pass DNS_LABEL
+  // validation (lowercase alphanumeric or '-', starting and ending with an
+  // alphanumeric character, at most 63 characters).
+  //
+  // TODO: Add Name to the API when selectorRef is introduced.
+  //       For ExternalHostname and inline EndpointSelector (single
+  //       auto-created port), Name has no value.
+  // +optional
+  // +kubebuilder:validation:MaxLength=63
+  // +kubebuilder:validation:XValidation:rule="size(self) == 0 || !format.dns1123Label().validate(self).hasValue()",message="Name must be a valid DNS label"
+  Name *string `json:"name,omitempty"`
+
+  // Number represents the port number of the destination.
+  //
+  // +optional
+  Number PortNumber `json:"number,omitempty"`
+}
+
+// LabelSelector defines a query for resources based on their labels.
+// This simplified version uses only the matchLabels field.
+type LabelSelector struct {
+  // MatchLabels contains a set of required {key,value} pairs.
+  // An object must match every label in this map to be selected.
+  // The matching logic is an AND operation on all entries.
+  //
+  // +required
+  // +kubebuilder:validation:MinProperties=1
+  // +kubebuilder:validation:MaxProperties=64
+  MatchLabels map[LabelKey]LabelValue `json:"matchLabels"`
+}
+
+type EndpointSelectorBackend struct {
+  // Selector defines the label selector used to identify the set of pods whose IP addresses
+  // will make up the endpoints that this Backend should route traffic to.
+  //
+  // If this field is set, the endpoints are resolved automatically and stay up to date as pods matching the
+  // selector are added or removed; the user does not create or manage any separate endpoint resource.
+  //
+  // <gateway:util:excludeFromCRD>
+  // Notes for implementors:
+  //
+  // Implementations MAY create a Service from the label selector for endpoint resolution until the
+  // upstream EndpointSelector resource (KEP-6116) is available. Implementations SHOULD set ownerReferences
+  // so the created resource's lifecycle is tied to this Backend. This Service only exists to produce EndpointSlices;
+  // Service-level behaviors (including but not limited to internalTrafficPolicy, externalTrafficPolicy,
+  // sessionAffinity, and trafficDistribution) play no role. The Service port (ClusterIP frontend) is unused;
+  // the targetPort SHOULD be set to Backend.spec.port.number. Implementations SHOULD create the
+  // Service as headless (clusterIP: None), since no ClusterIP or kube-proxy load balancing is needed.
+  // Implementations MUST name the Service with generateName rather than a predictable name, so that a
+  // name like <backend-name>-backend.svc.cluster.local does not become a relied-upon DNS entry.
+  //
+  // This is an embedded struct to avoid stuttering in the API (i.e. `endpointSelector.selector`).
+  // </gateway:util:excludeFromCRD>
+  //
+  // +required
+  LabelSelector
+}
+
+// +kubebuilder:validation:XValidation:rule="self.mode == 'ClientAndServer' ? has(self.clientCertificateRef) : !has(self.clientCertificateRef)",message="clientCertificateRef must be set if and only if mode is ClientAndServer"
+type BackendTLS struct {
+  // Mode defines the TLS mode for the backend.
+  // +required
+  Mode BackendTLSMode `json:"mode"`
+
+  // ClientCertificateRef defines the reference to the client certificate for mutual
+  // TLS. Only used if mode is ClientAndServer.
+  // +optional
+  ClientCertificateRef *SecretObjectReference `json:"clientCertificateRef,omitempty"`
+
+  // Re-use BackendTLS policy validation fields. This is currently missing InsecureSKipVerify
+  // but that will be added in GEP-4152.
+  Validation BackendTLSPolicyValidation `json:"validation,omitempty"`
+}
+
+type BackendStatus struct {
+  // Parents is a list of parent resources, typically Gateways, that are associated with
+  // the Backend, and the status of the Backend with respect to each parent.
+  //
+  // A controller that manages the Backend, must add an entry for each parent it manages
+  // and remove the parent entry when the controller no longer considers the Backend to
+  // be associated with that parent.
+  //
+  // A maximum of 32 parents will be represented in this list. When the list is empty,
+  // it indicates that the Backend is not associated with any parents.
+  //
+  // +kubebuilder:validation:MaxItems=32
+  // +optional
+  // +listType=atomic
+  Ancestors []BackendAncestorStatus `json:"parents,omitempty"`
+}
+
+type BackendAncestorStatus struct {
+  // ControllerName is a domain/path string that indicates the name of the controller that manages the
+  // Backend. Name corresponds to the GatewayClass controllerName field when the
+  // controller will manage parents of type "Gateway". Otherwise, the name is implementation-specific.
+  //
+  // Example: "example.net/import-controller".
+  //
+  // The format of this field is DOMAIN "/" PATH, where DOMAIN and PATH are valid Kubernetes
+  // names (https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names).
+  //
+  // A controller MUST populate this field when writing status and ensure that entries to status
+  // populated with their controller name are removed when they are no longer necessary.
+  //
+  // +required
+  ControllerName GatewayController `json:"controllerName"`
+
+  // AncestorRef identifies the ancestor resource that this status is associated
+  // with, such as a Gateway.
+  //
+  // +required
+  AncestorRef ParentReference `json:"ancestorRef"`
+
+  // For Kubernetes API conventions, see:
+  // https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties
+  // conditions represent the current state of the Backend resource.
+  // Each condition has a unique type and reflects the status of a specific aspect of the resource.
+  //
+  // The status of each condition is one of True, False, or Unknown.
+  // +listType=map
+  // +listMapKey=type
+  // +optional
+  Conditions []metav1.Condition `json:"conditions,omitempty"`
+}
+
+// BackendConditionType is a type of condition for a Backend.
+type BackendConditionType string
+
+// BackendConditionReason is a reason for a Backend condition.
+type BackendConditionReason string
+
+const (
+  // This condition indicates whether the Backend has been accepted by a controller.
+  BackendConditionAccepted BackendConditionType = "Accepted"
+
+  // This reason is used with the "Accepted" condition when the Backend has been accepted.
+  BackendReasonAccepted BackendConditionReason = "Accepted"
+)
+```
+
+### Route BackendRef Port CEL
+
+The Backend resource owns its port, so `backendRef.port` should not be set when
+referencing a Backend. Unlike Service, which exposes multiple ports and requires
+the backendRef to select one, Backend defines a single port directly, so there
+is nothing for the backendRef to select. The `BackendObjectReference` type (used
+by xRoutes for `backendRefs`) already has a CEL rule requiring port for Service
+references. This adds the inverse for Backend:
+
+```go
+// On BackendObjectReference (apis/v1/object_reference_types.go):
+// +kubebuilder:validation:XValidation:message="Must not have port for Backend reference",rule="(self.group == 'gateway.networking.k8s.io' && self.kind == 'Backend') ? !has(self.port) : true"
+```
+
+### ExternalHostname Backend Configuration
+
+```go
+type ExternalHostnameBackend struct {
+  // Hostname specifies the destination address used to reach this hostname.
+  // IP addresses are not allowed in this field (enforced by validation on the type).
+  // If implementations are aware of custom trust domains being used for `Service` FQDNs,
+  // the MUST also enforce that hostnames ending with those trust domains (e.g. `.cluster.local`) are not allowed.
+  // +kubebuiler:validation:XValidation:rule="!endsWith(self.hostname, '.cluster.local')))",message="hostname must not be an IP address or end with .cluster.local"
+  Hostname PreciseHostname `json:"hostname"`
+}
+```
+
+### Protocol and Extension Support
+
+```go
+// +kubebuilder:validation:Enum=TCP,HTTP,HTTP2,HTTP11,H2C,MCP
+type BackendProtocol string
+
+const (
+  BackendProtocolMCP   BackendProtocol = "MCP"
+  BackendProtocolTCP   BackendProtocol = "TCP"
+  BackendProtocolHTTP  BackendProtocol = "HTTP"
+  BackendProtocolHTTP2 BackendProtocol = "HTTP2"
+  BackendProtocolH2C   BackendProtocol = "H2C"
+  BackendProtocolHTTP11 BackendProtocol = "HTTP11"
+)
+```
+
+## TLS Policy Consolidation Analysis
+
+One of the most significant design decisions for the Backend resource concerns TLS configuration: should it be inline within the Backend resource or provided through separate policy resources like `BackendTLSPolicy`?
+
+### Tradeoffs: Inline TLS vs. Policy-Based TLS
+
+#### Arguments for Inline TLS Configuration
+
+1. **Simplified UX for External Destinations**
+   - External FQDNs often require TLS configuration that is specific to that destination
+   - Better discoverability for users who want to understand what TLS settings apply for backends within a route
+   - Much simpler for implementations to integrate due to TLS settings being colocated with destination
+
+2. **BackendTLSPolicy Limitations**
+   - Current `BackendTLSPolicy` is designed around Service-based backends only
+   - `BackendTLSPolicy` currently does not support per-consumer overrides
+   - It is unclear whether `BackendTLSPolicy` is a producer or consumer oriented resource
+     - [GEP 3875](https://github.com/kubernetes-sigs/gateway-api/pull/3876) proposed, among other things, adding consumer overrides to `BackendTLSPolicy`; however, that proposal introduced several new fields to the resource, including a `from` selector on `targetRef` that would have added significant complexity to both the API and implementations. Furthermore, the GEP has a [limitation](https://github.com/kubernetes-sigs/gateway-api/pull/3876/changes#diff-67a0076fb272af6273ce353d4687732735e03ddec8ae2bbc35b0a905281f9057R88) that it would not be possible to enforce consumer-side policies originating from the same namespace as the producer. This proposal was ultimately abandoned.
+
+3. **Per-Backend Client Certificates**
+   - Each external destination may require a different client certificate
+   - Current Gateway API patterns only support one client certificate per Gateway
+   - Backend-specific client certificates are essential for many external integrations
+
+#### Arguments for Policy-Based Configuration
+
+1. **API Consistency**
+   *Note: the following points, while true, are only true because `Service` is effectively immutable.*
+   - Gateway API uses policy attachment for most configuration beyond basic routing
+   - Inline configuration creates another place to define TLS settings
+   - Multiple places for TLS configuration could lead to misalignment of features
+
+2. **Reusability and Standardization**
+   - Policies can be shared across multiple Backends
+   - Consistent TLS configuration patterns across resource types (e.g. `Service`, `Backend`, `InferencePool`, etc.)
+
+#### Proposed Approach
+
+Based on community feedback and practical considerations, this proposal recommends:
+
+1. **Inline TLS for Backend Resources**: Provide inline TLS configuration within the Backend resource for simplicity and external destination requirements
+
+2. **Explicit BackendTLSPolicy Exclusion**: Backend resources are explicitly disallowed as targets for `BackendTLSPolicy` to avoid confusion and conflicts
+
+3. **Type Definition Alignment**: Align the inline TLS types with `BackendTLSPolicy` types as closely as possible for consistency
+
+### Implementation Example
+
+```yaml
+# Gateway-level TLS remains authoritative for incoming connections
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+spec:
+  listeners:
+  - name: https
+    protocol: HTTPS
+    tls:
+      certificateRefs:
+      - name: gateway-cert
+---
+# Backend resource with inline TLS for external destination
+apiVersion: gateway.networking.k8s.io/v1alpha1
+kind: Backend
+metadata:
+  name: openai-api
+  namespace: ai-apps
+spec:
+  type: ExternalHostname
+  externalHostname:
+    hostname: api.openai.com
+  tls:
+    mode: ClientAndServer
+    clientCertificateRef:
+      name: openai-client-cert
+  port:
+    number: 443
+
+---
+# HTTPRoute referencing Backend
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+spec:
+  rules:
+  - backendRefs:
+    - name: openai-api
+      kind: Backend
+      group: gateway.networking.k8s.io
+```
+
+## Security Model and RBAC Considerations
+
+### FQDN Security Analysis
+
+Allowing namespace-scoped Backend resources to reference external FQDNs raises legitimate security concerns that must be carefully considered:
+
+#### Identified Security Risks
+
+1. **DNS Spoofing Attacks**
+      - Malicious DNS responses could redirect traffic to attacker-controlled servers
+      - Particularly concerning for internal proxy endpoints or localhost addresses (i.e. the [Confused Deputy Problem](https://en.wikipedia.org/wiki/Confused_deputy_problem))
+      - Risk: `api.external.com` resolves to `127.0.0.1`, `169.254.169.254` or other privileged, trusted addresses
+
+2. **Cross-Namespace Service Access**
+      - FQDNs could target internal cluster services via `svc.namespace.svc.cluster.local`
+      - Potential bypass of namespace isolation and authorization controls
+      - Risk: Accessing services in other namespaces without proper authorization
+
+#### Risk Assessment and Mitigations
+
+##### DNS Trust Model Decision
+
+After extensive community discussion, this proposal adopts a **DNS trust model** for the following reasons:
+
+1. **Egress Inherently Requires DNS Trust**
+   - Any meaningful egress functionality must trust DNS resolution
+   - Malicious DNS responses can redirect any external call regardless of validation
+   - We will still provide some common sense validations (e.g., disallow all IPs, things ending in .cluster.local) but cannot fully mitigate DNS-based attacks
+
+2. **RBAC and Admission Control as Primary Security Control**
+   - Application developers are the persona target by the `Backend` resource
+     - Implementations SHOULD provide control-plane guardrails (for example, an allow-list of permitted egress domains)
+   - Admission control (e.g. VAP, Gatekeeper, Kyverno) can enforce organizational policies on FQDN usage
+   - Network policies can restrict egress traffic regardless of Backend configuration (forcing DNS resolution to happen at the gateway only)
+
+3. **Practical Effectiveness**
+   - Trivial for attackers to register DNS records that resolve to internal addresses
+     - Because of this, implementations implementing `Backend` MUST add either TLS or JWT validation on sensitive localhost endpoints to prevent confused deputy attacks
+   - Restrictive validation would break legitimate external integrations
+   - Security focus should be on network-level controls, not resource-level validation
+   - No initial support for wildcard hostnames to limit attack surface and the need for Dynamic Forward Proxy support from implementations
+     - Future proposals to add this functionality should include a comprehensive DNS trust specification and threat model.
+   - Implementations may also be able to implement data-plane/proxy-level protections for common attack vectors
+   - NOTE: This may be a decision we revisit in the future based on user feedback
+
+#### Example of a Recommended Network Policy
+
+```yaml
+# Block traffic outside of the cluster
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-internal-egress-only
+spec:
+  podSelector: {} # Apply to all pods in namespace
+  policyTypes:
+  - Egress
+  egress:
+  # Allow traffic to all pods in all namespaces
+  - to:
+    - namespaceSelector: {}
+  # Allow DNS resolution (Required)
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: kube-system
+      podSelector:
+        matchLabels:
+          k8s-app: kube-dns
+    ports:
+    - protocol: UDP
+      port: 53
+    - protocol: TCP
+      port: 53
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-gateway-external
+spec:
+  podSelector:
+    matchLabels:
+      app: egress-gateway # Match your gateway's label
+  policyTypes:
+  - Egress
+  egress:
+  - {} # Allows everything, including external internet
+```
+
+#### Security Boundaries and Personas
+
+##### Namespace-Scoped App Developer Persona
+
+- Can create Backend resources within their namespace
+- Limited to secrets within their namespace for TLS configuration
+- Subject to network policies enforcing egress through gateways
+- RBAC controls prevent cross-namespace resource access
+
+##### Cluster-Admin Risk Acceptance
+
+- Cluster administrators who grant Backend creation permissions accept DNS trust model
+- Network-level controls (firewalls, proxy configuration) provide defense in depth
+- Backend resources provide audit trail for external dependencies
+
+### EndpointSelector Security Analysis
+
+#### Identified Security Risks
+
+A namespace admin should not be able to use the gateway to reach or expose anything outside the boundaries of their
+namespace. For example, [CVE-2021-25740](https://github.com/kubernetes/kubernetes/issues/103675) is a pre-existing
+confused-deputy issue where a user who can write `Endpoints`/`EndpointSlices` supplies arbitrary backend IPs that a
+trusted gateway forwards to, reaching other namespaces or internal addresses. This is not specific to `Backend`: the
+same confused deputy exists wherever a tenant can write endpoints and a gateway routes to that Service, including
+`HTTPRoute` -> `Service` today. Its mitigation is cluster-admin RBAC that removes endpoint write from tenants.
+
+#### Risk Assessment and Mitigations
+
+`EndpointSelector` does not reintroduce this: it selects pods by label, resolved by the control plane, so there is
+no user-supplied IP, and a `Selector` is namespace-scoped. A user only authors a `Backend` and never writes
+endpoints, so this holds without granting tenants endpoint access.
+
+TODO: Revisit this risk assessment when `selectorRef` is added, since cross-namespace selection crosses the
+namespace boundary.
+
+### Route Attachment and Consumer Overrides
+
+Backends MUST live in the same namespace as any route (or other parent resource) that references them. For `EndpointSelector` type Backends, consumer override scenarios are supported using the pre-existing GAMMA pattern of creating a route (and therefore a `Backend`) in the consumer namespace and the `Backend` will reference an `EndpointSelector` in a different, producer namespace. This cross-namespace referencing will be provided by the `selectorRef` field, added once the upstream EndpointSelector resource is available (see [EndpointSelector Type](#endpointselector-type)).
+
+## EndpointSelector Type
+
+The EndpointSelector resource is being pursued upstream via
+[KEP-6116](https://github.com/kubernetes/enhancements/issues/6116). It decomposes the endpoint selection role of
+Service into a standalone resource, giving Gateway API a clean abstraction for endpoint resolution without the
+overhead of Service's frontend concerns (ClusterIP, DNS, kube-proxy NAT/filtering rules, CoreDNS reconciliation,
+etc.). Once available, implementations are expected to create an EndpointSelector from the `Selector` on the user's
+behalf, replacing the Service they create today (see [Stop-Gap: Service Backing](#stop-gap-service-backing)). Because the
+`Selector` field stays the same, this transition requires no user-facing API change.
+
+In addition to `Selector`, we expect to add a `selectorRef` field for referencing an existing EndpointSelector
+directly (for example, one owned by a producer in another namespace). `Selector` selects pods and has the
+implementation create the EndpointSelector; `selectorRef` points at one that already exists.
+
+### Stop-Gap: Service Backing
+
+Since EndpointSelector does not exist today, implementations MAY create a Kubernetes Service from the `Selector` on
+the user's behalf instead. This is a stop-gap: the upstream EndpointSelector resource (KEP-6116) targets Kubernetes
+1.38 at the earliest, and Gateway API's policy of depending only on GA+5 resources would otherwise leave the
+`EndpointSelector` Backend type unusable for internal workloads for years, stalling backend-level features like
+session persistence, retries, and load balancing. A Service reuses endpoint-resolution machinery every
+implementation already has: it resolves EndpointSlices exactly as a `kind: Service` backendRef does today, with no
+new endpoint-management logic.
+
+## Extension Framework
+
+The Backend resource provides two levels for applying extensions and policies:
+
+### 1. Route-Level Extensions (HTTPRoute Filters)
+
+Applied to individual requests as they are routed to a Backend.
+
+```yaml
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+spec:
+  rules:
+  - matches:
+    - path: { value: "/api/models" }
+    filters:
+    - type: ExtensionRef
+      extensionRef:
+        name: rate-limiter
+        kind: RateLimitPolicy
+    backendRefs:
+    - name: openai-api
+      kind: Backend
+```
+
+### 2. Inline Backend Configuration (Future GEPs)
+
+The Backend resource is designed to be the home for backend-level connection concerns that have historically required separate policy CRDs. Future GEPs will propose adding inline configuration for common concerns such as:
+
+- **Retries**: Max retries, backoff strategy, retryable status codes
+- **Timeouts**: Connection timeout, request timeout, idle timeout
+- **Load balancing**: Algorithm selection (round-robin, least-connections, consistent hashing)
+- **Health checks**: Active health checking configuration for the destination from the consumer dataplane perspective
+
+By inlining these into the Backend resource rather than requiring separate policy attachments, users get a single resource that fully describes "how to connect to this destination," improving discoverability and reducing the number of resources to manage.
+
+```yaml
+# Example of what future inline configuration might look like
+apiVersion: gateway.networking.k8s.io/v1alpha1
+kind: Backend
+metadata:
+  name: my-api
+spec:
+  type: EndpointSelector
+  endpointSelector:
+    matchLabels:
+      app: my-service
+  port:
+    number: 8080
+  tls:
+    mode: ServerOnly
+  # Future inline fields (illustrative, not proposed in this GEP):
+  # retries:
+  #   attempts: 3
+  #   backoff: exponential
+  # timeouts:
+  #   connect: 5s
+  #   request: 30s
+```
+
+Note: Policy attachment to Backend remains available for vendor-specific or niche configuration that doesn't warrant standardization in the upstream API.
+
+## Graduation Criteria
+
+This GEP follows the standard [Gateway API graduation criteria](/docs/concepts/versioning/#graduation-criteria). The following are additional criteria specific to this GEP:
+
+### Implementable
+
+- [x] Backend resource CRD with full schema validation
+
+### Experimental
+
+- [ ] Documentation and examples for common use cases
+- [ ] Basic conformance tests for FQDN and Service destination types
+- [ ] Security review and RBAC documentation
+
+### Standard
+
+- [ ] At least 3 implementations
+- [ ] Comprehensive conformance test suite
+- [ ] Compatibility testing with existing BackendTLSPolicy patterns
+- [ ] Migration guide from synthetic Services to Backend resources
+- [ ] Integration with policy attachment framework
+
+## Alternatives Considered
+
+### Enhanced Service Resource
+
+Extending the existing Service resource to support external destinations was considered but rejected due to:
+- **Backward compatibility concerns**: Changes would affect all existing Service users
+- **Security model conflicts**: External destination support conflicts with internal service patterns
+- **API surface complexity**: Adding external destination fields to Service creates confusion
+
+### Cluster-Scoped Backend Resource
+
+Cluster-scoped Backend resources were considered but rejected due to:
+- **Management complexity**: Requires coordination between cluster admins and app developers
+- **Incorrect Persona Alignment**: Application developers are the primary consumers of backend resources, and they typically operate within namespace boundaries
+
+### Policy-Only Approach
+
+Using only policy attachment without a dedicated Backend resource was considered but rejected due to:
+
+- **Destination representation gap**: No clear way to represent external FQDNs without synthetic Services
+- **Policy target ambiguity**: Policies would still need to target synthetic Services
+- **Extension limitations**: Protocol and connection options don't fit policy patterns well
+- **CRD proliferation**: Each new backend-level concern would require its own policy CRD, leading to poor discoverability and implementation complexity. The Backend resource provides a single home for configuration that describes "how to connect to a destination"
+
+### Gateway API EndpointSelector CRD
+
+A [provisional GEP](https://github.com/kubernetes-sigs/gateway-api/pull/4731) proposed defining an EndpointSelector CRD
+within Gateway API as the sole endpoint selection reference for Backend, never promoting it past experimental and
+replacing it with the upstream EndpointSelector ([KEP-6116](https://github.com/kubernetes/enhancements/issues/6116))
+once available. This was rejected because:
+
+- **No stable EndpointSlice controller library**: The proposal was to provide a common library rather than each
+  implementation building its own. However, the upstream EndpointSlice controller in `k/k` is tightly coupled to its
+  Kubernetes version and SIG Network maintainers were reluctant to commit to it as a stable, importable library.
+- **Throwaway work**: Implementations would build against a CRD that would eventually be replaced by the upstream
+  resource.
+
+Instead, the Backend exposes a `Selector` field that implementations back with a Kubernetes Service today, and will
+back with an upstream EndpointSelector once KEP-6116 is available, with no user-facing API change either way.
+
+## Open Questions
+
+- When we add `selectorRef`, will `ReferenceGrant` be required for cross-namespace references?
+- Should cross-namespace Route -> Backend references be supported (via ReferenceGrant)?
+- Should the `Backend` surface a status condition reporting whether the `Selector` resolved to any endpoints (for
+  example, to flag a selector that matches no pods)?
+- What is the long-term relationship between the `Backend` resource and `BackendTLSPolicy`? Inline TLS on `Backend`
+  serves the common, backend-owner-authored case, but `BackendTLSPolicy` may still be the better fit where the
+  configuring persona differs from the backend owner (for example, a Gateway or cluster operator enforcing trust
+  settings for a backend they do not own).

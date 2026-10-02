@@ -39,7 +39,7 @@
     {
       "name": "hypershift",
       "kind": "git_repo",
-      "description": "openshift/hypershift: HostedCluster/NodePool APIs, operators, docs (docs/content)",
+      "description": "openshift/hypershift: HostedCluster/NodePool APIs, operators, docs (docs/content) (full mirror)",
       "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/hypershift.git",
       "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/openshift/hypershift.git",
       "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/openshift/hypershift",
@@ -143,194 +143,123 @@
     },
     {
       "name": "cluster-api-provider-metal3",
-      "kind": "git_repo",
-      "description": "metal3-io/cluster-api-provider-metal3 — Metal3Machine/Metal3Cluster, BMH association",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/cluster-api-provider-metal3.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/metal3-io/cluster-api-provider-metal3.git",
-      "default_ref": "main",
-      "docs": [
-        "docs/**/*.md"
-      ],
-      "code_include": [
-        "api/**",
-        "baremetal/**",
-        "controllers/**"
+      "kind": "markdown_dir",
+      "description": "cluster-api-provider-metal3 docs (Metal3Machine/Metal3Cluster). Docs-only snapshot of the default branch in docs/upstream/cluster-api-provider-metal3 (refresh: scripts/sync-ecosystem-docs.py; pin with REF_cluster_api_provider_metal3=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/cluster-api-provider-metal3",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
       ]
     },
     {
       "name": "baremetal-operator",
-      "kind": "git_repo",
-      "description": "metal3-io/baremetal-operator — BareMetalHost state machine, Ironic provisioner, BMC drivers",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/baremetal-operator.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/metal3-io/baremetal-operator.git",
-      "default_ref": "main",
-      "docs": [
-        "docs/**/*.md"
-      ],
-      "code_include": [
-        "apis/**",
-        "pkg/**",
-        "internal/**",
-        "cmd/**"
+      "kind": "markdown_dir",
+      "description": "metal3-io/baremetal-operator docs (BareMetalHost states, BMC addressing). Docs-only snapshot of the default branch in docs/upstream/baremetal-operator (refresh: scripts/sync-ecosystem-docs.py; pin with REF_baremetal_operator=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/baremetal-operator",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
       ]
     },
     {
       "name": "ako",
-      "kind": "git_repo",
-      "description": "AKO (Avi Kubernetes Operator): our load balancer/ingress. Docs + CRDs/code. Use the tag matching the AKO version installed on the cluster",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/ako.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/vmware/load-balancer-and-ingress-services-for-kubernetes.git",
-      "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/vmware/load-balancer-and-ingress-services-for-kubernetes",
-      "default_ref": "master",
-      "docs": [
-        "docs/**/*.md",
-        "README.md"
-      ],
-      "code_include": [
-        "pkg/**",
-        "internal/**",
-        "cmd/**",
-        "helm/**"
-      ],
-      "code_exclude": [
-        "vendor/**",
-        "**/*_test.go",
-        "**/zz_generated*"
+      "kind": "markdown_dir",
+      "description": "AKO (Avi Kubernetes Operator): our load balancer/ingress — install, CRDs, ingress/service behaviour. Docs-only snapshot of the default branch in docs/upstream/ako (refresh: scripts/sync-ecosystem-docs.py; pin with REF_ako=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/ako",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
       ]
     },
     {
       "name": "envoy",
-      "kind": "git_repo",
-      "description": "Envoy proxy docs (docs/root, reST). Docs only; use the release-1.NN branch matching the Envoy version in use (OSSM/Gateway/KServe)",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/envoy.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/envoyproxy/envoy.git",
-      "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/envoyproxy/envoy",
-      "default_ref": "main",
-      "docs": [
-        "docs/root/**/*.rst",
-        "docs/root/**/*.md"
+      "kind": "markdown_dir",
+      "description": "Envoy proxy documentation (config, filters, operations). Docs-only snapshot of the default branch in docs/upstream/envoy (refresh: scripts/sync-ecosystem-docs.py; pin with REF_envoy=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/envoy",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
       ]
     },
     {
       "name": "envoy-gateway",
-      "kind": "git_repo",
-      "description": "Envoy Gateway docs and API types (Gateway API implementation)",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/envoy-gateway.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/envoyproxy/gateway.git",
-      "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/envoyproxy/gateway",
-      "default_ref": "main",
-      "docs": [
-        "site/content/en/latest/**/*.md",
-        "docs/**/*.md"
-      ],
-      "code_include": [
-        "api/**",
-        "internal/**"
-      ],
-      "code_exclude": [
-        "**/*_test.go",
-        "**/zz_generated*"
+      "kind": "markdown_dir",
+      "description": "Envoy Gateway documentation (Gateway API implementation). Docs-only snapshot of the default branch in docs/upstream/envoy-gateway (refresh: scripts/sync-ecosystem-docs.py; pin with REF_envoy_gateway=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/envoy-gateway",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
       ]
     },
     {
       "name": "kserve",
-      "kind": "git_repo",
-      "description": "KServe source: InferenceService/ServingRuntime APIs and controllers. Use the tag matching KServe in RHOAI/ODH on the cluster",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/kserve.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/kserve/kserve.git",
-      "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/kserve/kserve",
-      "default_ref": "master",
-      "docs": [
-        "docs/**/*.md",
-        "README.md"
-      ],
-      "code_include": [
-        "pkg/apis/**",
-        "pkg/controller/**",
-        "pkg/webhook/**",
-        "cmd/**",
-        "config/**"
-      ],
-      "code_exclude": [
-        "**/*_test.go",
-        "**/zz_generated*"
+      "kind": "markdown_dir",
+      "description": "KServe repo docs: InferenceService/ServingRuntime concepts and samples. Docs-only snapshot of the default branch in docs/upstream/kserve (refresh: scripts/sync-ecosystem-docs.py; pin with REF_kserve=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/kserve",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
       ]
     },
     {
       "name": "kserve-website",
-      "kind": "git_repo",
-      "description": "KServe documentation website content",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/kserve-website.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/kserve/website.git",
-      "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/kserve/website",
-      "default_ref": "main",
-      "docs": [
-        "docs/**/*.md"
+      "kind": "markdown_dir",
+      "description": "KServe documentation website content. Docs-only snapshot of the default branch in docs/upstream/kserve-website (refresh: scripts/sync-ecosystem-docs.py; pin with REF_kserve_website=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/kserve-website",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
       ]
     },
     {
       "name": "prometheus-docs",
-      "kind": "git_repo",
-      "description": "Prometheus documentation: PromQL, configuration, alerting, storage",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/prometheus-docs.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/prometheus/docs.git",
-      "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/prometheus/docs",
-      "default_ref": "main",
-      "docs": [
-        "docs/**/*.md"
+      "kind": "markdown_dir",
+      "description": "Prometheus documentation: PromQL, configuration, alerting, storage. Docs-only snapshot of the default branch in docs/upstream/prometheus-docs (refresh: scripts/sync-ecosystem-docs.py; pin with REF_prometheus_docs=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/prometheus-docs",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
       ]
     },
     {
       "name": "prometheus-operator",
-      "kind": "git_repo",
-      "description": "prometheus-operator docs and CRD types (ServiceMonitor, PrometheusRule, Alertmanager). OCP ships its own build; use the tag matching the cluster",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/prometheus-operator.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/prometheus-operator/prometheus-operator.git",
-      "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/prometheus-operator/prometheus-operator",
-      "default_ref": "main",
-      "docs": [
-        "Documentation/**/*.md",
-        "README.md"
-      ],
-      "code_include": [
-        "pkg/apis/**"
-      ],
-      "code_exclude": [
-        "**/*_test.go",
-        "**/zz_generated*"
+      "kind": "markdown_dir",
+      "description": "prometheus-operator documentation (ServiceMonitor, PrometheusRule, Alertmanager). OCP ships its own build. Docs-only snapshot of the default branch in docs/upstream/prometheus-operator (refresh: scripts/sync-ecosystem-docs.py; pin with REF_prometheus_operator=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/prometheus-operator",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
       ]
     },
     {
       "name": "grafana-docs",
-      "kind": "git_repo",
-      "description": "Grafana documentation (docs/sources): datasources, dashboards, alerting, provisioning. Docs only (large repo)",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/grafana-docs.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/grafana/grafana.git",
-      "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/grafana/grafana",
-      "default_ref": "main",
-      "docs": [
-        "docs/sources/**/*.md"
+      "kind": "markdown_dir",
+      "description": "Grafana documentation: datasources, dashboards, alerting, provisioning. Docs-only snapshot of the default branch in docs/upstream/grafana-docs (refresh: scripts/sync-ecosystem-docs.py; pin with REF_grafana_docs=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/grafana-docs",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
       ]
     },
     {
       "name": "mcp-grafana",
-      "kind": "git_repo",
-      "description": "Grafana MCP server source: tools (list_datasources, query_prometheus…), flags, env vars",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/mcp-grafana.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/grafana/mcp-grafana.git",
-      "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/grafana/mcp-grafana",
-      "default_ref": "main",
-      "docs": [
-        "README.md",
-        "docs/**/*.md"
-      ],
-      "code_include": [
-        "*.go",
-        "tools/**",
-        "cmd/**"
-      ],
-      "code_exclude": [
-        "**/*_test.go"
+      "kind": "markdown_dir",
+      "description": "Grafana MCP server README and docs: tools, flags, env vars. Docs-only snapshot of the default branch in docs/upstream/mcp-grafana (refresh: scripts/sync-ecosystem-docs.py; pin with REF_mcp_grafana=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/mcp-grafana",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
       ]
     },
     {
@@ -344,17 +273,50 @@
     },
     {
       "name": "vllm",
+      "kind": "markdown_dir",
+      "description": "vLLM documentation: serving, flags, quantization, distributed inference. Docs-only snapshot of the default branch in docs/upstream/vllm (refresh: scripts/sync-ecosystem-docs.py; pin with REF_vllm=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/vllm",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
+      ]
+    },
+    {
+      "name": "lws",
+      "kind": "markdown_dir",
+      "description": "LeaderWorkerSet (LWS) documentation: multi-node inference workloads. Docs-only snapshot of the default branch in docs/upstream/lws (refresh: scripts/sync-ecosystem-docs.py; pin with REF_lws=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/lws",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
+      ]
+    },
+    {
+      "name": "metal3-docs",
+      "kind": "markdown_dir",
+      "description": "Metal3 user guide and design docs (BareMetalHost, provisioning, Ironic). Docs-only snapshot of the default branch in docs/upstream/metal3-docs (refresh: scripts/sync-ecosystem-docs.py; pin with REF_metal3_docs=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/metal3-docs",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
+      ]
+    },
+    {
+      "name": "ironic",
       "kind": "git_repo",
-      "description": "vLLM docs and engine source (flags, serving, quantization, distributed). Use the tag of the vLLM image in use",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/vllm.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/vllm-project/vllm.git",
-      "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/vllm-project/vllm",
-      "default_ref": "main",
+      "description": "OpenStack Ironic (full mirror): docs, API and conductor/driver code at any ref — BMC drivers, provisioning states, deploy steps. Use the stable/<release> branch matching the Ironic in the OCP baremetal stack",
+      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/ironic.git",
+      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/openstack/ironic.git",
+      "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/openstack/ironic",
+      "default_ref": "master",
       "docs": [
-        "docs/**/*.md"
+        "doc/source/**/*.rst"
       ],
       "code_include": [
-        "vllm/**"
+        "ironic/**"
       ],
       "code_exclude": [
         "**/tests/**",
@@ -363,206 +325,102 @@
       ]
     },
     {
-      "name": "lws",
-      "kind": "git_repo",
-      "description": "LeaderWorkerSet (LWS): multi-node inference workloads. Docs + API + controllers",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/lws.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/kubernetes-sigs/lws.git",
-      "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/kubernetes-sigs/lws",
-      "default_ref": "main",
-      "docs": [
-        "site/content/en/docs/**/*.md",
-        "docs/**/*.md",
-        "README.md"
-      ],
-      "code_include": [
-        "api/**",
-        "pkg/**",
-        "cmd/**"
-      ],
-      "code_exclude": [
-        "**/*_test.go",
-        "**/zz_generated*"
-      ]
-    },
-    {
-      "name": "metal3-docs",
-      "kind": "git_repo",
-      "description": "Metal3 user guide and design docs (BareMetalHost, provisioning, Ironic)",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/metal3-docs.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/metal3-io/metal3-docs.git",
-      "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/metal3-io/metal3-docs",
-      "default_ref": "main",
-      "docs": [
-        "docs/**/*.md",
-        "design/**/*.md"
-      ]
-    },
-    {
-      "name": "ironic",
-      "kind": "git_repo",
-      "description": "OpenStack Ironic docs (BMC drivers, provisioning states, deploy steps). Docs only",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/ironic.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/openstack/ironic.git",
-      "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/openstack/ironic",
-      "default_ref": "master",
-      "docs": [
-        "doc/source/**/*.rst"
-      ]
-    },
-    {
       "name": "gateway-api",
-      "kind": "git_repo",
-      "description": "Gateway API docs + types (Gateway, HTTPRoute…). Use the v1.x tag matching the installed CRDs",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/gateway-api.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/kubernetes-sigs/gateway-api.git",
-      "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/kubernetes-sigs/gateway-api",
-      "default_ref": "main",
-      "docs": [
-        "site/content/**/*.md",
-        "geps/**/*.md"
-      ],
-      "code_include": [
-        "apis/**"
-      ],
-      "code_exclude": [
-        "**/*_test.go",
-        "**/zz_generated*"
+      "kind": "markdown_dir",
+      "description": "Gateway API docs and GEPs (Gateway, HTTPRoute…). Docs-only snapshot of the default branch in docs/upstream/gateway-api (refresh: scripts/sync-ecosystem-docs.py; pin with REF_gateway_api=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/gateway-api",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
       ]
     },
     {
       "name": "gpu-operator",
-      "kind": "git_repo",
-      "description": "NVIDIA GPU Operator: ClusterPolicy, driver/toolkit/DCGM/MIG handling. Use the tag matching the installed operator",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/gpu-operator.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/NVIDIA/gpu-operator.git",
-      "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/NVIDIA/gpu-operator",
-      "default_ref": "main",
-      "docs": [
-        "README.md",
-        "docs/**/*.md"
-      ],
-      "code_include": [
-        "api/**",
-        "controllers/**",
-        "internal/**",
-        "assets/**"
-      ],
-      "code_exclude": [
-        "vendor/**",
-        "**/*_test.go",
-        "**/zz_generated*"
+      "kind": "markdown_dir",
+      "description": "NVIDIA GPU Operator README/docs (full docs live on NVIDIA's site; this repo has little). Docs-only snapshot of the default branch in docs/upstream/gpu-operator (refresh: scripts/sync-ecosystem-docs.py; pin with REF_gpu_operator=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/gpu-operator",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
       ]
     },
     {
       "name": "node-feature-discovery",
-      "kind": "git_repo",
-      "description": "Node Feature Discovery docs and API (NodeFeatureRule, labels used for GPU scheduling)",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/node-feature-discovery.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/kubernetes-sigs/node-feature-discovery.git",
-      "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/kubernetes-sigs/node-feature-discovery",
-      "default_ref": "master",
-      "docs": [
-        "docs/**/*.md"
-      ],
-      "code_include": [
-        "api/**",
-        "pkg/**"
-      ],
-      "code_exclude": [
-        "vendor/**",
-        "**/*_test.go",
-        "**/zz_generated*"
+      "kind": "markdown_dir",
+      "description": "Node Feature Discovery documentation (NodeFeatureRule, labels used for GPU scheduling). Docs-only snapshot of the default branch in docs/upstream/node-feature-discovery (refresh: scripts/sync-ecosystem-docs.py; pin with REF_node_feature_discovery=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/node-feature-discovery",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
       ]
     },
     {
       "name": "kueue",
-      "kind": "git_repo",
-      "description": "Kueue docs and API (job queueing, quotas; pairs with LWS/GPU workloads)",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/kueue.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/kubernetes-sigs/kueue.git",
-      "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/kubernetes-sigs/kueue",
-      "default_ref": "main",
-      "docs": [
-        "site/content/en/docs/**/*.md"
-      ],
-      "code_include": [
-        "apis/**",
-        "pkg/**"
-      ],
-      "code_exclude": [
-        "**/*_test.go",
-        "**/zz_generated*"
+      "kind": "markdown_dir",
+      "description": "Kueue documentation (job queueing, quotas; pairs with LWS/GPU workloads). Docs-only snapshot of the default branch in docs/upstream/kueue (refresh: scripts/sync-ecosystem-docs.py; pin with REF_kueue=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/kueue",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
       ]
     },
     {
       "name": "ovn-kubernetes",
-      "kind": "git_repo",
-      "description": "OVN-Kubernetes docs (OCP default CNI): features, UDN, egress, troubleshooting",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/ovn-kubernetes.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/ovn-org/ovn-kubernetes.git",
-      "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/ovn-org/ovn-kubernetes",
-      "default_ref": "master",
-      "docs": [
-        "docs/**/*.md"
+      "kind": "markdown_dir",
+      "description": "OVN-Kubernetes docs (OCP default CNI): features, UDN, egress, troubleshooting. Docs-only snapshot of the default branch in docs/upstream/ovn-kubernetes (refresh: scripts/sync-ecosystem-docs.py; pin with REF_ovn_kubernetes=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/ovn-kubernetes",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
       ]
     },
     {
       "name": "multus-cni",
-      "kind": "git_repo",
-      "description": "Multus CNI docs (secondary networks, NetworkAttachmentDefinition)",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/multus-cni.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/k8snetworkplumbingwg/multus-cni.git",
-      "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/k8snetworkplumbingwg/multus-cni",
-      "default_ref": "master",
-      "docs": [
-        "docs/**/*.md",
-        "README.md"
+      "kind": "markdown_dir",
+      "description": "Multus CNI docs (secondary networks, NetworkAttachmentDefinition). Docs-only snapshot of the default branch in docs/upstream/multus-cni (refresh: scripts/sync-ecosystem-docs.py; pin with REF_multus_cni=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/multus-cni",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
       ]
     },
     {
       "name": "openshift-runbooks",
-      "kind": "git_repo",
-      "description": "OpenShift alert runbooks (alerts/**): what to do when an alert named in a runbook_url fires. Check the alert's own runbook first",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/openshift-runbooks.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/openshift/runbooks.git",
-      "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/openshift/runbooks",
-      "default_ref": "master",
-      "docs": [
-        "alerts/**/*.md"
+      "kind": "markdown_dir",
+      "description": "OpenShift alert runbooks: what to do when an alert with a runbook_url fires — check first. Docs-only snapshot of the default branch in docs/upstream/openshift-runbooks (refresh: scripts/sync-ecosystem-docs.py; pin with REF_openshift_runbooks=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/openshift-runbooks",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
       ]
     },
     {
       "name": "assisted-service",
-      "kind": "git_repo",
-      "description": "Assisted Installer / Agent service docs and API (Agent-based installs, InfraEnv, Agent CRs)",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/assisted-service.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/openshift/assisted-service.git",
-      "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/openshift/assisted-service",
-      "default_ref": "master",
-      "docs": [
-        "docs/**/*.md"
-      ],
-      "code_include": [
-        "api/**",
-        "internal/**"
-      ],
-      "code_exclude": [
-        "vendor/**",
-        "**/*_test.go",
-        "**/zz_generated*"
+      "kind": "markdown_dir",
+      "description": "Assisted Installer / Agent service docs (Agent-based installs, InfraEnv, Agent CRs). Docs-only snapshot of the default branch in docs/upstream/assisted-service (refresh: scripts/sync-ecosystem-docs.py; pin with REF_assisted_service=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/assisted-service",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
       ]
     },
     {
       "name": "etcd-docs",
-      "kind": "git_repo",
-      "description": "etcd documentation: operations, defrag, backup/restore, tuning",
-      "path": "${TEAM_KNOWLEDGE_SOURCES:-~/.cache/team-brain/sources}/etcd-docs.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal/mirrors}/etcd-io/website.git",
-      "web_url": "${GIT_MIRROR_WEB:-https://gitlab.internal/mirrors}/etcd-io/website",
-      "default_ref": "main",
-      "docs": [
-        "content/en/docs/**/*.md"
+      "kind": "markdown_dir",
+      "description": "etcd documentation: operations, defrag, backup/restore, tuning. Docs-only snapshot of the default branch in docs/upstream/etcd-docs (refresh: scripts/sync-ecosystem-docs.py; pin with REF_etcd_docs=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/etcd-docs",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
       ]
     },
     {
