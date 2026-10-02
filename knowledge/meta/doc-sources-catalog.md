@@ -36,6 +36,7 @@ upstream source disagree, RHOKP/KCS wins for what we run**; upstream tells you h
 | `etcd-docs` | openshift | etcd defrag, backup/restore, tuning (OCP wraps etcd with its own operator) | general |
 | `kubernetes-docs` | kubernetes | Kubernetes concepts and APIs | pinned 1.35 only (see fleet-versions) |
 | `argocd-docs`, `argo-cd` | gitops | Argo CD docs / source | `stable` docs; tag of installed Argo CD for source |
+| `gitops-day1-platform-config`, `gitops-day2-prod`, `cluster-navigator` | gitops | our own repos: day1 values/versions, day2 ARCHITECTURE.md and charts, Navigator. **Disabled until the real GitLab remotes are set** (`GITOPS_DAY1_REMOTE`, `GITOPS_DAY2_REMOTE`, `NAVIGATOR_REMOTE`) | `main`; version of a cluster = day1 `mastertag` |
 | `brain` | all | **our** quirks, runbooks, incidents — read first | — |
 
 ## Gotchas when mixing sources

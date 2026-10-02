@@ -552,6 +552,80 @@
       "docs": [
         "content/en/docs/**/*.md"
       ]
+    },
+    {
+      "name": "gitops-day1-platform-config",
+      "kind": "git_repo",
+      "enabled": false,
+      "description": "Team repo: day1 platform-config (hosted-cluster values, mastertag versions, DHCP values). Internal GitLab project — set the real remote; searchable with search_code (e.g. pattern mastertag)",
+      "path": "${TEAM_KNOWLEDGE_SOURCES}/gitops-day1-platform-config.git",
+      "remote": "${GITOPS_DAY1_REMOTE:-https://gitlab.internal/gitops-day1/platform-config.git}",
+      "default_ref": "main",
+      "docs": [
+        "README.md"
+      ],
+      "code_include": [
+        "sites/**",
+        "scripts/**"
+      ],
+      "code_exclude": [
+        "**/*_test.go",
+        "**/tests/**",
+        "**/*.jpeg",
+        "**/zz_generated*"
+      ]
+    },
+    {
+      "name": "gitops-day2-prod",
+      "kind": "git_repo",
+      "enabled": false,
+      "description": "Team repo: day2 GitOps — ARCHITECTURE.md, platform charts (argocd-day2-platform), sigs/<team> trees, render-verify tool. Internal GitLab project — set the real remote",
+      "path": "${TEAM_KNOWLEDGE_SOURCES}/gitops-day2-prod.git",
+      "remote": "${GITOPS_DAY2_REMOTE:-https://gitlab.internal/gitops-day2-prod.git}",
+      "default_ref": "main",
+      "docs": [
+        "ARCHITECTURE.md",
+        "CHANGES.md",
+        "APPLY-*.md",
+        "argocd-day2-platform/README.md",
+        "sigs/*/README.md",
+        "sigs/*/*/README.md",
+        "tools/**/README.md"
+      ],
+      "code_include": [
+        "argocd-day2-platform/**",
+        "tools/**"
+      ],
+      "code_exclude": [
+        "**/*_test.go",
+        "**/tests/**",
+        "**/*.jpeg",
+        "**/zz_generated*"
+      ]
+    },
+    {
+      "name": "cluster-navigator",
+      "kind": "git_repo",
+      "enabled": false,
+      "description": "Team repo: Cluster Navigator (FastAPI; Segments Manager sync, DNS LB resolution). Internal GitLab project — set the real remote",
+      "path": "${TEAM_KNOWLEDGE_SOURCES}/cluster-navigator.git",
+      "remote": "${NAVIGATOR_REMOTE:-https://gitlab.internal/platform/clustercluster-navigator.git}",
+      "default_ref": "main",
+      "docs": [
+        "README.md",
+        "CLAUDE.md",
+        "docs/**/*.md"
+      ],
+      "code_include": [
+        "src/**",
+        "helm/**"
+      ],
+      "code_exclude": [
+        "**/*_test.go",
+        "**/tests/**",
+        "**/*.jpeg",
+        "**/zz_generated*"
+      ]
     }
   ]
 }
