@@ -28,7 +28,7 @@ team-brain fixes both:
 ## How it fits together
 
 ```
- engineer + Claude Code ──► plugin team-brain ──┬─ skills  brain-lookup / brain-learn / brain-curate / incident-report
+ engineer + Claude Code ──► plugin team-brain ──┬─ skills  brain-lookup / brain-learn / brain-curate / incident-report / hypershift-debug  (+ agent hcp-architect)
    (laptop, air-gapped)                          ├─ hooks   SessionStart (load brain), Stop (nudge capture)
                                                  ├─ MCP     team-knowledge  ──► searches the sources below
                                                  └─ MCP     grafana         ──► metrics via our single Grafana

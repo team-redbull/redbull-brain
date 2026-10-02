@@ -1,0 +1,11 @@
+team-brain — third-party material
+
+plugins/team-brain/skills/hypershift-debug/SKILL.md and plugins/team-brain/agents/hcp-architect.md are adapted from
+https://github.com/openshift/hypershift (.claude/skills/debug-cluster, .claude/agents/hcp-architect-sme) at commit
+d1eba2a7a57c5b6c0a061495543a03ee0d5650f7, licensed under the Apache License 2.0 (copy at
+plugins/team-brain/third_party/openshift-hypershift/LICENSE). Modified as described in each file's header.
+
+docs/upstream/ holds unmodified snapshots of documentation from other projects; each folder's .upstream file names its
+source, and the content remains under that project's own licence (e.g. Kubernetes documentation: CC BY 4.0;
+many CNCF/OpenShift projects: Apache-2.0 — check each project). docs/upstream/portworx is a crawl of docs.portworx.com;
+check Portworx's terms before sharing it outside the organisation.
