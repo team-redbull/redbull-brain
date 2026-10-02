@@ -1,0 +1,25 @@
+# Shared deployment: RHOKP + team-knowledge MCP server for the whole team.
+#   1. Mirror images: registry.redhat.io/offline-knowledge-portal/rhokp-rhel9 and build team-knowledge (see Containerfile)
+#   2. Create the secrets (not committed — see README in mcp/):
+#        oc -n team-knowledge create secret generic rhokp-access-key --from-literal=ACCESS_KEY=...
+#        oc -n team-knowledge create secret generic team-knowledge-token --from-literal=MCP_BEARER_TOKEN=$(openssl rand -hex 32)
+#        oc -n team-knowledge create secret generic team-knowledge-git --from-file=gitconfig --from-file=git-credentials
+#   3. oc apply -k deploy/openshift
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: team-knowledge
+resources:
+  - namespace.yaml
+  - rhokp.yaml
+  - team-knowledge.yaml
+configMapGenerator:
+  - name: team-knowledge-sources
+    files:
+      - sources.json=shared-sources.json
+images:
+  - name: RHOKP_IMAGE
+    newName: registry.internal/offline-knowledge-portal/rhokp-rhel9
+    newTag: latest
+  - name: TEAM_KNOWLEDGE_IMAGE
+    newName: registry.internal/platform/team-knowledge
+    newTag: 0.1.0

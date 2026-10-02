@@ -1,0 +1,80 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: team-knowledge-data
+spec:
+  accessModes: [ReadWriteOnce]
+  resources: {requests: {storage: 30Gi}}     # git mirrors (hypershift ~1-2Gi with history) + indexes
+---
+# Cluster-wide trusted CA bundle (internal GitLab / docs mirror certificates) injected by OpenShift.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: trusted-ca
+  labels: {config.openshift.io/inject-trusted-cabundle: "true"}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: team-knowledge
+  labels: {app: team-knowledge}
+spec:
+  replicas: 1                                 # RWO volume + background sync: keep a single replica
+  strategy: {type: Recreate}
+  selector: {matchLabels: {app: team-knowledge}}
+  template:
+    metadata:
+      labels: {app: team-knowledge}
+    spec:
+      containers:
+        - name: server
+          image: TEAM_KNOWLEDGE_IMAGE
+          args: ["--http", "0.0.0.0:8000", "--sync-interval", "6"]
+          env:
+            - name: MCP_BEARER_TOKEN
+              valueFrom: {secretKeyRef: {name: team-knowledge-token, key: MCP_BEARER_TOKEN}}
+            - name: GIT_CONFIG_GLOBAL                # credential.helper=store + url rewrites for the mirror
+              value: /git-config/gitconfig
+            - name: GIT_SSL_CAINFO
+              value: /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+            - name: INTERNAL_CA_FILE
+              value: /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+          ports: [{name: http, containerPort: 8000}]
+          readinessProbe: {httpGet: {path: /healthz, port: http}, periodSeconds: 10}
+          livenessProbe: {httpGet: {path: /healthz, port: http}, periodSeconds: 30}
+          resources:
+            requests: {cpu: 250m, memory: 1Gi}
+            limits: {memory: 4Gi}
+          volumeMounts:
+            - {name: data, mountPath: /data}
+            - {name: config, mountPath: /config, readOnly: true}
+            - {name: git-config, mountPath: /git-config, readOnly: true}
+            - {name: trusted-ca, mountPath: /etc/pki/ca-trust/extracted/pem, readOnly: true}
+      volumes:
+        - {name: data, persistentVolumeClaim: {claimName: team-knowledge-data}}
+        - {name: config, configMap: {name: team-knowledge-sources}}
+        - {name: git-config, secret: {secretName: team-knowledge-git}}
+        - name: trusted-ca
+          configMap:
+            name: trusted-ca
+            items: [{key: ca-bundle.crt, path: tls-ca-bundle.pem}]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: team-knowledge
+spec:
+  selector: {app: team-knowledge}
+  ports: [{name: http, port: 8000, targetPort: http}]
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: team-knowledge
+  annotations:
+    haproxy.router.openshift.io/timeout: 120s   # first query on a new ref builds an index
+spec:
+  to: {kind: Service, name: team-knowledge}
+  port: {targetPort: http}
+  path: /
+  tls: {termination: edge, insecureEdgeTerminationPolicy: Redirect}

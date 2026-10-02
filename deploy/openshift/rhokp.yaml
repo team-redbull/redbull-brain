@@ -1,0 +1,67 @@
+# Red Hat Offline Knowledge Portal. Web UI on 8080 (Route), Solr on 8983 (cluster-internal only).
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rhokp
+  labels: {app: rhokp}
+spec:
+  replicas: 1
+  selector: {matchLabels: {app: rhokp}}
+  template:
+    metadata:
+      labels: {app: rhokp}
+    spec:
+      containers:
+        - name: rhokp
+          image: RHOKP_IMAGE
+          env:
+            - name: ACCESS_KEY
+              valueFrom: {secretKeyRef: {name: rhokp-access-key, key: ACCESS_KEY}}
+            - name: SOLR_JETTY_HOST          # let Solr listen beyond localhost so the MCP pod can query it
+              value: "0.0.0.0"
+          ports:
+            - {name: http, containerPort: 8080}
+            - {name: solr, containerPort: 8983}
+          readinessProbe:
+            httpGet: {path: /solr/portal/select?q=*:*&rows=0, port: solr}
+            initialDelaySeconds: 30
+            periodSeconds: 20
+            timeoutSeconds: 10
+          resources:
+            requests: {cpu: 500m, memory: 4Gi}
+            limits: {memory: 8Gi}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rhokp
+spec:
+  selector: {app: rhokp}
+  ports:
+    - {name: http, port: 8080, targetPort: http}
+    - {name: solr, port: 8983, targetPort: solr}
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: rhokp
+spec:
+  to: {kind: Service, name: rhokp}
+  port: {targetPort: http}
+  tls: {termination: edge, insecureEdgeTerminationPolicy: Redirect}
+---
+# Only the MCP server (and the router, for the UI) may reach RHOKP; Solr stays private.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: rhokp-ingress
+spec:
+  podSelector: {matchLabels: {app: rhokp}}
+  policyTypes: [Ingress]
+  ingress:
+    - from:
+        - podSelector: {matchLabels: {app: team-knowledge}}
+      ports: [{port: 8983}, {port: 8080}]
+    - from:
+        - namespaceSelector: {matchLabels: {network.openshift.io/policy-group: ingress}}
+      ports: [{port: 8080}]

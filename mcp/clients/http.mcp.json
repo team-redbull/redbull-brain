@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "team-knowledge-shared": {
+      "type": "http",
+      "url": "https://team-knowledge-team-knowledge.apps.mgmt.internal/mcp",
+      "headers": { "Authorization": "Bearer ${TEAM_KNOWLEDGE_TOKEN}" }
+    }
+  }
+}

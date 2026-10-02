@@ -1,0 +1,21 @@
+# Shared team-knowledge MCP server. Build inside the air gap from your mirrored UBI image:
+#   podman build -t registry.internal/platform/team-knowledge:0.1.0 \
+#     --build-arg BASE=registry.internal/ubi9/python-311:latest \
+#     -f plugins/team-brain/mcp-servers/team-knowledge/Containerfile plugins/team-brain/mcp-servers/team-knowledge
+ARG BASE=registry.access.redhat.com/ubi9/python-311:latest
+FROM ${BASE}
+USER 0
+RUN dnf -y install git-core && dnf clean all
+COPY server.py /opt/team-knowledge/server.py
+COPY tk/ /opt/team-knowledge/tk/
+# OpenShift runs with an arbitrary UID in group 0
+RUN mkdir -p /data && chgrp -R 0 /data /opt/team-knowledge && chmod -R g=u /data /opt/team-knowledge
+USER 1001
+ENV TEAM_KNOWLEDGE_CONFIG=/config/sources.json \
+    TEAM_KNOWLEDGE_CACHE=/data/cache \
+    TEAM_KNOWLEDGE_SOURCES=/data/sources \
+    HOME=/data \
+    PYTHONUNBUFFERED=1
+EXPOSE 8000
+ENTRYPOINT ["python3", "/opt/team-knowledge/server.py"]
+CMD ["--http", "0.0.0.0:8000", "--sync-interval", "6"]
