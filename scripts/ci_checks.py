@@ -12,6 +12,7 @@ Exit code 1 if any check fails.
 from __future__ import annotations
 
 import argparse
+import datetime as dt
 import json
 import os
 import re
@@ -174,8 +175,10 @@ def check_frontmatter():
                 errs.append(f"{rel}: applies_to token {t!r} (use ocp-4.NN, k8s-1.NN, mce-2.NN, vsphere-N, sno, hosted-cp…)")
         if fm.get("area") not in brain.AREAS:
             errs.append(f"{rel}: unknown area {fm.get('area')!r} (add to AREAS in scripts/brain.py and CLAUDE.md)")
-        if fm.get("last_verified", "") > __import__("datetime").date.today().isoformat():
-            errs.append(f"{rel}: last_verified {fm['last_verified']} is in the future")
+        # runners use UTC while authors are up to +14h ahead: allow a 2-day margin before calling a date "future"
+        limit = (dt.datetime.now(dt.timezone.utc).date() + dt.timedelta(days=2)).isoformat()
+        if fm.get("last_verified", "") > limit:
+            errs.append(f"{rel}: last_verified {fm['last_verified']} is in the future (limit {limit})")
     record("frontmatter", errs)
 
 
