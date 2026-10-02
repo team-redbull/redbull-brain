@@ -1,0 +1,5 @@
+repo: llm-d/llm-d
+ref: main
+commit: e5bc61dda30553371d6a80b89f62f909c8cad81d
+paths: docs, guides, README.md
+synced: 2026-10-02T23:36:03Z

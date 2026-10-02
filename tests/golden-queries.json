@@ -2,12 +2,37 @@
   "comment": "Golden queries for the CI smoke test: each query, run against the `brain` source through the real team-knowledge server, must return the expected page in the top N hits. Add a query whenever a page must stay findable.",
   "top": 3,
   "queries": [
-    {"query": "LoadBalancer service MetalLB AKO", "expect": "knowledge/networking/ingress-load-balancing-is-ako-not-metallb.md"},
-    {"query": "Moby datasource per cluster Prometheus Grafana", "expect": "knowledge/observability/grafana-one-datasource-per-cluster-prometheus.md"},
-    {"query": "dhcp_values copy_to_sigs allocate segment hostedClusters", "expect": "knowledge/gitops/day1-platform-config-values.md"},
-    {"query": "phantom Application stray folder gitkeep ocp-versions mastertag", "expect": "knowledge/gitops/day2-sites-tree-discovery-and-version-layers.md"},
-    {"query": "fleet version map OCP minor Kubernetes HyperShift ref", "expect": "knowledge/meta/fleet-versions.md"},
-    {"query": "oc-mirror shared registry catalog overwrite", "expect": "knowledge/registry-mirroring/oc-mirror-shared-registry-catalog-overwrite.md"},
-    {"query": "hub cluster MCE hosted cluster UPI topology Navigator Temporal", "expect": "knowledge/openshift/fleet-topology-hub-mce-hosted.md"}
+    {
+      "query": "LoadBalancer service MetalLB AKO",
+      "expect": "knowledge/networking/ingress-load-balancing-is-ako-not-metallb.md"
+    },
+    {
+      "query": "Moby datasource per cluster Prometheus Grafana",
+      "expect": "knowledge/observability/grafana-one-datasource-per-cluster-prometheus.md"
+    },
+    {
+      "query": "dhcp_values copy_to_sigs allocate segment hostedClusters",
+      "expect": "knowledge/gitops/day1-platform-config-values.md"
+    },
+    {
+      "query": "phantom Application stray folder gitkeep ocp-versions mastertag",
+      "expect": "knowledge/gitops/day2-sites-tree-discovery-and-version-layers.md"
+    },
+    {
+      "query": "fleet version map OCP minor Kubernetes HyperShift ref",
+      "expect": "knowledge/meta/fleet-versions.md"
+    },
+    {
+      "query": "oc-mirror shared registry catalog overwrite",
+      "expect": "knowledge/registry-mirroring/oc-mirror-shared-registry-catalog-overwrite.md"
+    },
+    {
+      "query": "hub cluster MCE hosted cluster UPI topology Navigator Temporal",
+      "expect": "knowledge/openshift/fleet-topology-hub-mce-hosted.md"
+    },
+    {
+      "query": "NCCL hang InfiniBand RDMA multi-node vLLM LWS kernel tuning hugepages",
+      "expect": "knowledge/gpu/inference-hpc-doc-map.md"
+    }
   ]
 }

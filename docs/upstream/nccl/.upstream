@@ -1,0 +1,5 @@
+repo: NVIDIA/nccl
+ref: master
+commit: 12df1a11afad322be5a204a2db890161cbf8131d
+paths: docs
+synced: 2026-10-02T23:36:30Z

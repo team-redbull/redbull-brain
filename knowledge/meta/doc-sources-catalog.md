@@ -32,6 +32,10 @@ upstream source disagree, RHOKP/KCS wins for what we run**; upstream tells you h
 | `prometheus-docs`, `prometheus-operator` | observability | PromQL, alerting, ServiceMonitor/PrometheusRule | OCP bundles its own build; docs are general |
 | `openshift-runbooks` | observability | per-alert runbooks (check first when an alert fires) | `master` (runbooks are not versioned per minor) |
 | `grafana-docs`, `mcp-grafana` | observability | dashboards, datasources, provisioning; MCP tool names and flags | tag = Grafana / mcp-grafana version we run |
+| `llm-d`, `sglang`, `tensorrt-llm`, `dynamo`, `ray-docs` | gpu / ai | distributed inference stacks beyond vLLM: prefill/decode disaggregation, wide-EP, routing, KubeRay | snapshot; match the image version we deploy |
+| `nccl`, `ucx`, `rdma-core` | gpu / networking | collectives env vars and tuning, RDMA/UCX transports, InfiniBand/RoCE userspace | snapshot |
+| `nvidia-cloud-native-docs`, `nvidia-network-operator-docs`, `sriov-network-operator` | gpu / networking | GPU Operator (OpenShift), MIG, DCGM; NicClusterPolicy/MOFED/RDMA device plugin; SR-IOV policies | snapshot; operator versions come from the cluster |
+| `tuned`, `linux-kernel-docs` | gpu / openshift | kernel and OS tuning: hugepages, NUMA, CPU topology, IRQ affinity, sysctl — **kernel docs are upstream master, not the RHCOS kernel**; OCP applies tuning via the Node Tuning Operator (RHOKP) | snapshot |
 | `portworx-docs` | storage | Portworx install, upgrades, storage classes, DR. Pinned mirror of the **latest** docs (3.7 at last sync) in `docs/upstream/portworx`, no public repo — refresh with `scripts/sync-portworx-docs.py` | latest only; check older installs against the support matrix |
 | `etcd-docs` | openshift | etcd defrag, backup/restore, tuning (OCP wraps etcd with its own operator) | general |
 | `kubernetes-docs` | kubernetes | Kubernetes concepts and APIs | pinned 1.35 only (see fleet-versions) |

@@ -1,0 +1,89 @@
+:_module-type: PROCEDURE
+[id="modifying-existing-tuned-profiles_{context}"]
+= Modifying existing TuneD profiles
+
+[role="_abstract"]
+This procedure creates a modified child profile based on an existing *TuneD* profile.
+
+.Prerequisites
+
+ifndef::pantheonenv[]
+* The `tuned` service is running. See xref:installing-and-enabling-tuned_getting-started-with-tuned[Installing and Enabling Tuned] for details.
+endif::[]
+
+ifdef::pantheonenv[]
+* The `tuned` service is running. See xref:modules/performance/proc_installing-and-enabling-tuned.adoc[Installing and Enabling Tuned] for details.
+endif::[]
+
+.Procedure
+
+. In the [filename]`{user-profile-dir}` directory, create a new directory named the same as the profile that you want to create:
++
+[subs="attributes, quotes"]
+----
+# mkdir {user-profile-dir}/[replaceable]_modified-profile_
+----
+
+. In the new directory, create a file named [filename]`tuned.conf`, and set the `[main]` section as follows:
++
+[subs="quotes"]
+----
+[main]
+include=[replaceable]_parent-profile_
+----
++
+Replace [replaceable]_parent-profile_ with the name of the profile you are modifying.
+
+. Include your profile modifications.
++
+--
+.Lowering swappiness in the throughput-performance profile
+====
+To use the settings from the `throughput-performance` profile and change the value of `vm.swappiness` to 5, instead of the default 10, use:
+
+----
+[main]
+include=throughput-performance
+
+[sysctl]
+vm.swappiness=5
+----
+====
+--
+
+. To activate the profile, use:
++
+[subs="quotes"]
+----
+# tuned-adm profile [replaceable]_modified-profile_
+----
+
+. Verify that the *TuneD* profile is active and the system settings are applied:
++
+[subs="quotes"]
+----
+$ tuned-adm active
+
+Current active profile: [replaceable]_my-profile_
+----
++
+----
+$ tuned-adm verify
+
+Verification succeeded, current system settings match the preset profile.
+See TuneD log file ('/var/log/tuned/tuned.log') for details.
+----
+
+// .An alternative approach
+// . Alternatively, copy the directory with a system profile from `{system-profile-dir}` to `{user-profile-dir}`. For example:
+// +
+// [subs="attributes"]
+// ----
+// # cp -r {system-profile-dir}/throughput-performance {user-profile-dir}/
+// ----
+//
+// . Then, edit the profile in `{user-profile-dir}` according to your needs. Note that if there are two profiles of the same name, the profile located in `{user-profile-dir}` is loaded. The disadvantage of this approach is that if a system profile is updated after a TuneD upgrade, the changes will not be reflected in the now-outdated modified version.
+
+[role="_additional-resources"]
+.Additional resources
+* `tuned.conf(5)` man page

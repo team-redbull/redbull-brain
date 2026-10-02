@@ -1,0 +1,37 @@
+:revnumber: 0.0.0
+:revdate: 2000-01-01
+:keywords: documentation, tuned, performance, power, linux
+:toc:
+
+// The revnumber and revdate attributes are automatically updated during build
+
+[id="{tuned-documentation}"]
+= TuneD documentation: Optimizing system throughput, latency, and power consumption
+
+// Load externally defined attributes
+include::meta/attributes.adoc[]
+
+include::meta/variables.adoc[]
+
+// Set context for all included assemblies
+:context: tuned-documentation
+
+// This flag turns on internal, debug information in all included assemblies
+// :internal:
+
+// Abstract (Preamble):
+
+This documentation explains how to use the *TuneD* application to monitor and optimize the throughput, latency, and power consumption of your system in different scenarios.
+
+// The following is copied from the standard Red Hat legal notice
+// as used in all Red Hat documentation.
+// TODO: Figure out what the proper legal usage is.
+////
+.Legal notice
+The text of and illustrations in this document are licensed under a Creative Commons Attribution–Share Alike 3.0 Unported license ("CC-BY-SA"). An explanation of CC-BY-SA is available at link:http://creativecommons.org/licenses/by-sa/3.0/[]. In accordance with CC-BY-SA, if you distribute this document or an adaptation of it, you must provide the URL for the original version.
+////
+
+include::assemblies/assembly_getting-started-with-tuned.adoc[leveloffset=+1]
+
+include::assemblies/assembly_customizing-tuned-profiles.adoc[leveloffset=+1]
+

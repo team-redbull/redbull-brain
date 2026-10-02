@@ -1,0 +1,309 @@
+.. Date: Apr192023
+.. Author: stesmith
+
+.. headings are # * - =
+
+.. _gpu-operator-with-precompiled-drivers:
+
+###############################################################
+Precompiled Drivers for the NVIDIA GPU Operator for RHCOS
+###############################################################
+
+***********************************
+About Precompiled Driver Containers
+***********************************
+
+By default, NVIDIA GPU drivers are built on the cluster nodes when you deploy the GPU Operator.
+Driver compilation and packaging is done on every Kubernetes node, leading to bursts of compute demand, waste of resources, and long provisioning times.
+In contrast, using container images with precompiled drivers makes the drivers immediately available on all nodes, resulting in faster provisioning and cost savings in public cloud deployments.
+
+*******************************************
+Red Hat-Provided Precompiled Driver Images
+*******************************************
+
+Red Hat publishes official precompiled NVIDIA GPU driver images for Red Hat OpenShift at ``registry.redhat.io/nvidia`` under the ``gpu-driver-rhel9`` image name. You can use these images to avoid building and hosting your own custom precompiled driver image for common deployments.
+
+The registry hosts multiple tags for the driver image, including fixed tags for specific driver releases, such as ``580.65.06``, and a floating major-version tag, such as ``580``.  The floating major-version tag always refers to the latest driver release within that major branch. Pinning to the major-version tag enables your cluster to use new driver releases automatically within the same major version as they are published. Pinning to a fixed version tag keeps the driver version constant until you change it.
+
+To use a Red Hat-provided precompiled driver image, set the ``driver`` fields of the ``ClusterPolicy`` resource as shown in the following example:
+
+.. code-block:: json
+
+   "driver": {
+     "usePrecompiled": true,
+     "repository": "registry.redhat.io/nvidia",
+     "image": "gpu-driver-rhel9",
+     "version": "580",
+     "imagePullSecrets": ["redhat-registry-secret"]
+   }
+
+Because ``registry.redhat.io`` requires authentication, ``driver.imagePullSecrets`` must reference a pull secret in the ``nvidia-gpu-operator`` namespace that contains valid ``registry.redhat.io`` credentials. Refer to `Red Hat Container Registry Authentication <https://access.redhat.com/articles/RegistryAuthentication>`_ for the supported authentication mechanisms:
+
+.. note::
+
+   The cluster-wide pull secret, ``openshift-config/pull-secret``, usually already has access to ``registry.redhat.io``.
+   However, the pull secret is not automatically scoped to the ``nvidia-gpu-operator`` namespace.
+   You still must create a namespace-scoped secret and reference it in ``driver.imagePullSecrets``.
+
+* **Customer Portal credentials**: Your individual Red Hat login. Simplest to use, but ties image pulls to a personal account.
+
+* **Registry Service Account token**: A dedicated username and token generated from the `Registry Service Account Management Application <https://access.redhat.com/terms-based-registry/>`_, decoupled from any individual account. Recommended for shared systems such as an OpenShift cluster.
+
+Create the pull secret using either credential type:
+
+.. code-block:: console
+
+   $ oc create secret docker-registry redhat-registry-secret \
+       --docker-server=registry.redhat.io \
+       --docker-username=<username> \
+       --docker-password=<password> \
+       -n nvidia-gpu-operator
+
+***********************************
+Limitations and Restrictions
+***********************************
+
+* Red Hat provides official precompiled driver images for Red Hat OpenShift at ``registry.redhat.io/nvidia``. Custom precompiled driver images built from other sources, such as the NVIDIA community driver container repository, must be custom built and hosted in a public or private image registry.
+
+* NVIDIA provides limited support for custom driver container images.
+
+* Precompiled driver containers do not support NVIDIA vGPU or GPUDirect Storage (GDS).
+
+
+***********************************
+Building a Precompiled Driver Image
+***********************************
+
+Perform the following steps to build a custom driver image for use with Red Hat OpenShift Container Platform.
+
+.. rubric:: Prerequisites
+
+* You have access to a container registry such as NVIDIA NGC Private Registry, Red Hat Quay, or the OpenShift internal container registry and can push container images to the registry.
+
+* You have a valid Red Hat subscription with an activation key.
+
+* You have a Red Hat OpenShift pull secret.
+
+* Your build machine has access to the internet to download operating system packages.
+
+* You know a CUDA version such as ``12.1.0`` that you want to use.
+
+  One way to find a supported CUDA version for your operating system is to access the NVIDIA GPU Cloud registry at `CUDA | NVIDIA NGC <https://catalog.ngc.nvidia.com/orgs/nvidia/containers/cuda/tags>`_ and view the tags. Use the search field to filter the tags such as ``base-ubi8`` for RHEL 8 and ``base-ubi9`` for RHEL 9. The filtered results show the CUDA versions such as ``12.1.0``, ``12.0.1``, and ``12.0.0``.
+
+* You know the GPU driver version such as ``525.105.17`` that you want to use.
+
+.. rubric:: Procedure
+
+#. Clone the driver container repository:
+
+   .. code-block:: console
+
+      $ git clone https://github.com/NVIDIA/gpu-driver-container.git
+
+#. Change to the ``rhel8/precompiled`` directory under the cloned repository. You can build precompiled driver images for versions 8 and 9 of RHEL from this directory:
+
+   .. code-block:: console
+
+      $ cd gpu-driver-container/rhel8/precompiled
+
+#. Create a Red Hat Customer Portal Activation Key and note your Red Hat Subscription Management (RHSM) organization ID. These are to install packages during a build. Save the values to files such as ``$HOME/rhsm_org`` and ``$HOME/rhsm_activationkey``:
+
+   .. code-block:: console
+
+      export RHSM_ORG_FILE=$HOME/rhsm_org
+      export RHSM_ACTIVATIONKEY_FILE=$HOME/rhsm_activationkey
+
+#. Download your Red Hat OpenShift pull secret and store it in a file such as ``${HOME}/pull-secret``:
+
+   .. code-block:: console
+
+      export PULL_SECRET_FILE=$HOME/pull-secret.txt
+
+#. Set the Red Hat OpenShift version and target architecture of your cluster such as ``x86_64``:
+
+   .. code-block:: console
+
+      export OPENSHIFT_VERSION="4.22.0"
+      export TARGET_ARCH="x86_64"
+
+#. Determine the Driver Toolkit (DTK) image for your target Red Hat OpenShift version and architecture:
+
+   .. code-block:: console
+
+      export DRIVER_TOOLKIT_IMAGE=$(oc adm release info -a $HOME/pull-secret.txt --image-for=driver-toolkit quay.io/openshift-release-dev/ocp-release:${OPENSHIFT_VERSION}-${TARGET_ARCH})
+
+#. Determine the RHEL and kernel versions of your target OpenShift cluster:
+
+   .. code-block:: console
+
+      export RHEL_VERSION=$(podman run --authfile $HOME/pull-secret.txt --rm -ti ${DRIVER_TOOLKIT_IMAGE} cat /etc/driver-toolkit-release.json | jq -r '.RHEL_VERSION')
+
+   .. code-block:: console
+
+      export RHEL_MAJOR=$(echo "${RHEL_VERSION}" | cut -d '.' -f 1)
+
+   .. code-block:: console
+
+      export KERNEL_VERSION=$(podman run --authfile $HOME/pull-secret.txt --rm -ti ${DRIVER_TOOLKIT_IMAGE} cat /etc/driver-toolkit-release.json | jq -r '.KERNEL_VERSION')
+
+#. Set environment variables for the driver and CUDA versions, as well as the image:
+
+   .. code-block:: console
+
+      export CUDA_VERSION=12.1.0
+      export CUDA_DIST=ubi${RHEL_MAJOR}
+      export DRIVER_EPOCH=1
+      export DRIVER_VERSION=525.105.17
+      export OS_TAG=rhcos4.22
+
+#. Build and push the image:
+
+   .. code-block:: console
+
+      make image image-push
+
+Optionally, override the ``IMAGE_REGISTRY``, ``IMAGE_NAME``, and ``CONTAINER_TOOL``. You can also override ``BUILDER_USER`` and ``BUILDER_EMAIL`` if you want. Otherwise, your Git username and email are used. Refer to the Makefile for all available variables.
+
+.. note:: Do not set the ``DRIVER_TYPE``. The only supported value is currently ``passthrough``, and this is set by default.
+
+*********************************************
+Enabling Precompiled Driver Container Support
+*********************************************
+
+.. rubric:: Prerequisites
+
+* You installed the NVIDIA GPU Operator. Refer to :doc:`install-gpu-ocp`.
+
+---------------------
+Using the Web Console
+---------------------
+
+#. In the OpenShift Container Platform web console, from the side menu, select **Ecosystem** > **Installed Operators** (for versions before 4.20, look for **Operators** > **Installed Operators**), and click **NVIDIA GPU Operator**.
+
+#. Select the **ClusterPolicy** tab, then click **Create ClusterPolicy**. The platform assigns the default name *gpu-cluster-policy*.
+
+#. Open the **Driver** section.
+
+#. Check the **usePrecompiled** checkbox.
+
+#. Specify values for **repository**, **version**, and **image**.
+
+   .. image:: graphics/precompiled_driver_config_repository.png
+      :width: 600
+
+   .. image:: graphics/precompiled_driver_config_version_and_image.png
+      :width: 600
+
+#. Select **Create**.
+
+-------------------
+Using the YAML File
+-------------------
+
+#. Use the procedure :ref:`create-cluster-policy-web-console` to create a cluster policy. Switch to the YAML view while creating the ``ClusterPolicy`` resource.
+
+#. Add precompiled driver image properties:
+
+   .. code-block:: yaml
+
+      spec:
+        driver:
+          usePrecompiled: true
+          image: <image_name>
+          repository: <image_registry>
+          version: <driver_version>
+
+#. Provide values for ``image``, ``repository``, and ``version``. For example:
+
+   .. code-block:: yaml
+
+      spec:
+        driver:
+          usePrecompiled: true
+          image: nvidia-gpu-driver
+          repository: quay.io/nvidia-gpu-driver-example
+          version: 525.105.17
+
+
+-------------
+Using the CLI
+-------------
+
+#. Create a template for the ``ClusterPolicy`` resource. Replace the NVIDIA GPU operator version with your value:
+
+   .. code-block:: console
+
+      $ oc get csv -n nvidia-gpu-operator gpu-operator-certified.v23.6.1 -ojsonpath={.metadata.annotations.alm-examples} | jq '.[0]' > clusterpolicy.json
+
+
+#. Modify the ``clusterpolicy.json`` file to specify values for ``driver.usePrecompiled``, ``driver.repository``, ``driver.image`` and ``driver.version``. For example:
+
+   .. code-block:: json
+
+      "driver": {
+        "usePrecompiled": true,
+        "repository": "quay.io/nvidia-gpu-driver-example",
+        "image": "nvidia-gpu-driver",
+        "version": "525.105.17"
+      }
+
+#. Create a ``ClusterPolicy`` resource from the modified ``clusterpolicy.json`` file:
+
+   .. code-block:: console
+
+      $ oc apply -f clusterpolicy.json
+
+   *Example Output*
+
+   .. code-block:: console
+
+      clusterpolicy.nvidia.com/gpu-cluster-policy created
+
+#. Confirm that the driver container pods are running:
+
+   .. code-block:: console
+
+      $ oc get pods -l app=nvidia-driver-daemonset -n nvidia-gpu-operator
+
+   *Example Output*
+
+   .. code-block:: console
+
+      NAME                                                            READY   STATUS    RESTARTS   AGE
+      nvidia-driver-daemonset-<kernel-version>-rhcos4.22-mlpd4   1/1     Running   0          44s
+
+   Ensure that the pod names include the Linux kernel version number in place of ``<kernel-version>``.
+
+***************************************************
+Disabling Support for Precompiled Driver Containers
+***************************************************
+
+Perform the following steps to disable support for precompiled driver containers.
+
+#. Disable precompiled driver support by modifying the cluster policy:
+
+   .. code-block:: console
+
+      $ oc patch clusterpolicy/gpu-cluster-policy --type='json' \
+      -p='[{"op": "replace", "path": "/spec/driver/usePrecompiled", "value":false},{"op": "remove", "path": "/spec/driver/version"},{"op": "remove", "path": "/spec/driver/image"},{"op": "remove", "path": "/spec/driver/repository"}]'
+
+   *Example Output*
+
+   .. code-block:: console
+
+      clusterpolicy.nvidia.com/gpu-cluster-policy patched
+
+#. Confirm that the conventional driver container pods are running:
+
+   .. code-block:: console
+
+      $ oc get pods -l openshift.driver-toolkit=true -n nvidia-gpu-operator
+
+   *Example Output*
+
+   .. code-block:: console
+
+      NAME                                                  READY   STATUS    RESTARTS   AGE
+      nvidia-driver-daemonset-412.86.202303241612-0-f7v4t   2/2     Running   0          4m20s
+
+   Ensure that the pod names do not include a Linux kernel semantic version number.

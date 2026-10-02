@@ -1,0 +1,5 @@
+repo: NVIDIA/cloud-native-docs
+ref: main
+commit: de38d7746df9ac1e6b426b87deb8ca603f5f3beb
+paths: gpu-operator, openshift, mig, gpu-telemetry
+synced: 2026-10-02T23:36:36Z

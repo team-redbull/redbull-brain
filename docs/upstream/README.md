@@ -11,5 +11,7 @@ repo, ref and commit it came from.
   metal3-docs/ baremetal-operator/ cluster-api-provider-metal3/ gpu-operator/ node-feature-discovery/ ovn-kubernetes/
   multus-cni/ openshift-runbooks/ assisted-service/ etcd-docs/` — docs-only snapshots of each project (default branch
   unless pinned with `REF_<name>`); licences are the upstream projects' own
+- `llm-d/ sglang/ tensorrt-llm/ dynamo/ ray-docs/ nccl/ ucx/ rdma-core/ nvidia-cloud-native-docs/ nvidia-network-operator-docs/
+  sriov-network-operator/ tuned/ linux-kernel-docs/` — inference, HPC, RDMA/InfiniBand and kernel-tuning docs (see `NOTICE` for licences)
 
 OpenShift / ACM / MCE product documentation is served by RHOKP (see `mcp/README.md`), not mirrored here.

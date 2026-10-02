@@ -496,6 +496,162 @@
         "**/*.jpeg",
         "**/zz_generated*"
       ]
+    },
+    {
+      "name": "llm-d",
+      "kind": "markdown_dir",
+      "description": "llm-d: Kubernetes-native distributed LLM inference (prefill/decode disaggregation, wide expert parallelism, prefix-cache-aware routing) — architecture and deployment guides. Docs-only snapshot of the default branch in docs/upstream/llm-d (refresh: scripts/sync-ecosystem-docs.py; pin with REF_llm_d=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/llm-d",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc",
+        "**/*.txt"
+      ]
+    },
+    {
+      "name": "sglang",
+      "kind": "markdown_dir",
+      "description": "SGLang serving docs and cookbook (flags, parallelism, deployment recipes). Docs-only snapshot of the default branch in docs/upstream/sglang (refresh: scripts/sync-ecosystem-docs.py; pin with REF_sglang=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/sglang",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc",
+        "**/*.txt"
+      ]
+    },
+    {
+      "name": "tensorrt-llm",
+      "kind": "markdown_dir",
+      "description": "NVIDIA TensorRT-LLM documentation (engine build, serving, performance, parallelism). Docs-only snapshot of the default branch in docs/upstream/tensorrt-llm (refresh: scripts/sync-ecosystem-docs.py; pin with REF_tensorrt_llm=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/tensorrt-llm",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc",
+        "**/*.txt"
+      ]
+    },
+    {
+      "name": "dynamo",
+      "kind": "markdown_dir",
+      "description": "NVIDIA Dynamo documentation (disaggregated, multi-node inference serving). Docs-only snapshot of the default branch in docs/upstream/dynamo (refresh: scripts/sync-ecosystem-docs.py; pin with REF_dynamo=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/dynamo",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc",
+        "**/*.txt"
+      ]
+    },
+    {
+      "name": "ray-docs",
+      "kind": "markdown_dir",
+      "description": "Ray Serve and KubeRay documentation (serving LLMs on Kubernetes, RayCluster/RayService). Docs-only snapshot of the default branch in docs/upstream/ray-docs (refresh: scripts/sync-ecosystem-docs.py; pin with REF_ray_docs=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/ray-docs",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc",
+        "**/*.txt"
+      ]
+    },
+    {
+      "name": "nccl",
+      "kind": "markdown_dir",
+      "description": "NVIDIA NCCL user guide: collectives, environment variables, topology, performance tuning, troubleshooting. Docs-only snapshot of the default branch in docs/upstream/nccl (refresh: scripts/sync-ecosystem-docs.py; pin with REF_nccl=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/nccl",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc",
+        "**/*.txt"
+      ]
+    },
+    {
+      "name": "ucx",
+      "kind": "markdown_dir",
+      "description": "UCX docs (the transport layer under MPI/NIXL-style communication: RDMA, GPUDirect). Docs-only snapshot of the default branch in docs/upstream/ucx (refresh: scripts/sync-ecosystem-docs.py; pin with REF_ucx=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/ucx",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc",
+        "**/*.txt"
+      ]
+    },
+    {
+      "name": "rdma-core",
+      "kind": "markdown_dir",
+      "description": "rdma-core Documentation: libibverbs/rdma-core usage, tools, SR-IOV/RoCE notes (InfiniBand/RoCE userspace). Docs-only snapshot of the default branch in docs/upstream/rdma-core (refresh: scripts/sync-ecosystem-docs.py; pin with REF_rdma_core=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/rdma-core",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc",
+        "**/*.txt"
+      ]
+    },
+    {
+      "name": "nvidia-cloud-native-docs",
+      "kind": "markdown_dir",
+      "description": "NVIDIA cloud-native docs: GPU Operator (incl. OpenShift), MIG, GPU telemetry/DCGM exporter. Docs-only snapshot of the default branch in docs/upstream/nvidia-cloud-native-docs (refresh: scripts/sync-ecosystem-docs.py; pin with REF_nvidia_cloud_native_docs=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/nvidia-cloud-native-docs",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc",
+        "**/*.txt"
+      ]
+    },
+    {
+      "name": "nvidia-network-operator-docs",
+      "kind": "markdown_dir",
+      "description": "NVIDIA Network Operator docs: NicClusterPolicy, MOFED driver, RDMA shared device plugin, secondary networks. Docs-only snapshot of the default branch in docs/upstream/nvidia-network-operator-docs (refresh: scripts/sync-ecosystem-docs.py; pin with REF_nvidia_network_operator_docs=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/nvidia-network-operator-docs",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc",
+        "**/*.txt"
+      ]
+    },
+    {
+      "name": "sriov-network-operator",
+      "kind": "markdown_dir",
+      "description": "SR-IOV Network Operator docs (SriovNetworkNodePolicy, VF/RDMA configuration). Docs-only snapshot of the default branch in docs/upstream/sriov-network-operator (refresh: scripts/sync-ecosystem-docs.py; pin with REF_sriov_network_operator=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/sriov-network-operator",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc",
+        "**/*.txt"
+      ]
+    },
+    {
+      "name": "tuned",
+      "kind": "markdown_dir",
+      "description": "tuned docs (profiles for latency/throughput/network performance; basis of OpenShift's Node Tuning Operator). GPL-2.0 docs, internal reference only. Docs-only snapshot of the default branch in docs/upstream/tuned (refresh: scripts/sync-ecosystem-docs.py; pin with REF_tuned=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/tuned",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc",
+        "**/*.txt"
+      ]
+    },
+    {
+      "name": "linux-kernel-docs",
+      "kind": "markdown_dir",
+      "description": "Linux kernel docs subset: hugepages/NUMA (admin-guide/mm), kernel-parameters, CPU topology, scheduler, IRQ affinity, InfiniBand, networking sysctl/scaling (GPL-2.0, internal reference only). Kernel version of the docs is the master snapshot, not the RHEL/RHCOS kernel — verify against the node's kernel. Docs-only snapshot of the default branch in docs/upstream/linux-kernel-docs (refresh: scripts/sync-ecosystem-docs.py; pin with REF_linux_kernel_docs=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/linux-kernel-docs",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc",
+        "**/*.txt"
+      ]
     }
   ]
 }

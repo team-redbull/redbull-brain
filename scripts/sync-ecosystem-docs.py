@@ -17,7 +17,7 @@ from pathlib import Path
 
 BASE = os.environ.get("UPSTREAM_GIT_BASE", "https://github.com")
 ROOT = Path(__file__).resolve().parent.parent
-EXT = (".md", ".markdown", ".rst", ".adoc")
+EXT = (".md", ".markdown", ".rst", ".adoc", ".txt", ".mdx")  # .mdx is stored as .md (the indexer reads .md)
 
 # name: (repo, [paths in repo])  — default branch unless REF_<name> (dashes -> underscores) is set
 SOURCES = {
@@ -44,6 +44,27 @@ SOURCES = {
     "openshift-runbooks": ("openshift/runbooks", ["alerts"]),
     "assisted-service": ("openshift/assisted-service", ["docs"]),
     "etcd-docs": ("etcd-io/website", ["content/en/docs"]),
+    # inference / HPC / fabrics / kernel tuning
+    "llm-d": ("llm-d/llm-d", ["docs", "guides", "README.md"]),
+    "sglang": ("sgl-project/sglang", ["docs/docs", "docs/cookbook"]),
+    "tensorrt-llm": ("NVIDIA/TensorRT-LLM", ["docs/source"]),
+    "dynamo": ("ai-dynamo/dynamo", ["docs"]),
+    "ray-docs": ("ray-project/ray", ["doc/source/serve", "doc/source/cluster/kubernetes"]),
+    "nccl": ("NVIDIA/nccl", ["docs"]),
+    "ucx": ("openucx/ucx", ["docs"]),
+    "rdma-core": ("linux-rdma/rdma-core", ["Documentation", "README.md"]),
+    "nvidia-cloud-native-docs": ("NVIDIA/cloud-native-docs", ["gpu-operator", "openshift", "mig", "gpu-telemetry"]),
+    "nvidia-network-operator-docs": ("Mellanox/network-operator-docs", ["docs"]),
+    "sriov-network-operator": ("k8snetworkplumbingwg/sriov-network-operator", ["doc"]),
+    "tuned": ("redhat-performance/tuned", ["doc"]),
+    "linux-kernel-docs": ("torvalds/linux", [
+        "Documentation/admin-guide/mm", "Documentation/admin-guide/kernel-parameters.txt",
+        "Documentation/admin-guide/cputopology.rst", "Documentation/admin-guide/numastat.rst",
+        "Documentation/admin-guide/pm", "Documentation/scheduler", "Documentation/infiniband",
+        "Documentation/core-api/irq", "Documentation/networking/ip-sysctl.rst",
+        "Documentation/networking/scaling.rst", "Documentation/networking/rds.rst",
+        "Documentation/networking/tcp-thin.rst", "Documentation/admin-guide/perf",
+        "Documentation/admin-guide/sysctl"]),
 }
 
 
@@ -74,6 +95,8 @@ def sync(name, work):
         for f in files:
             if f.suffix.lower() in EXT:
                 out = dest / f.relative_to(clone)
+                if out.suffix.lower() == ".mdx":
+                    out = out.with_suffix(".md")
                 out.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(f, out)
                 n += 1
