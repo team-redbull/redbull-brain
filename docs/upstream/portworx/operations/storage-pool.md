@@ -1,12 +1,8 @@
 # Provision and Manage your Storage Pool
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/storage-pool (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/storage-pool (Portworx Enterprise latest)
 
 Provision and Manage your Storage Pool | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Storage pools in Portworx Enterprise are logical groupings of storage devices that provide a unified storage solution for your applications.
 

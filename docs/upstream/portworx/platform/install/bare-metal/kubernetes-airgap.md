@@ -1,12 +1,8 @@
 # Installation on Air-Gapped Bare Metal Kubernetes Cluster
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/bare-metal/kubernetes-airgap (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/bare-metal/kubernetes-airgap (Portworx Enterprise latest)
 
 Installation on Air-Gapped Bare Metal Kubernetes Cluster | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic provides instructions for installing Portworx on an air-gapped bare metal Kubernetes cluster. You can deploy Portworx and the required packages using a private container registry.
 

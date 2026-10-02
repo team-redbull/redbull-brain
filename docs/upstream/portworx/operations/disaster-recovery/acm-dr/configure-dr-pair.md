@@ -1,12 +1,8 @@
 # Manage a Disaster Recovery Pair
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/acm-dr/configure-dr-pair (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/acm-dr/configure-dr-pair (Portworx Enterprise latest)
 
 Manage a Disaster Recovery Pair | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic explains how to create, update, and delete a disaster recovery (DR) pair by using the OpenShift console.
 

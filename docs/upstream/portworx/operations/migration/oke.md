@@ -1,12 +1,8 @@
 # Migration with Stork on OKE
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/migration/oke (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/migration/oke (Portworx Enterprise latest)
 
 Migration with Stork on OKE | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Pairing with an OKE cluster requires the following additional steps because you also need to pass in your Oracle credentials which will be used to generate the authentication token.
 

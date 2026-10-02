@@ -1,12 +1,8 @@
 # Migration with Stork on EKS
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/migration/eks (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/migration/eks (Portworx Enterprise latest)
 
 Migration with Stork on EKS | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Pairing with an EKS cluster requires the following additional steps because you also need to pass in your AWS credentials which will be used to generate the IAM token.
 

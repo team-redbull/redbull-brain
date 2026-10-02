@@ -1,12 +1,8 @@
 # Collect diagnostics
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/troubleshooting/collecting-diagnostics (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/troubleshooting/collecting-diagnostics (Portworx Enterprise latest)
 
 Collect diagnostics | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## About diagnostics​
 

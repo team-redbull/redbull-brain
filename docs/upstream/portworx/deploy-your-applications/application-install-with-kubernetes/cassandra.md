@@ -1,12 +1,8 @@
 # Deploy Cassandra with Portworx Enterprise
 
-Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/cassandra (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/cassandra (Portworx Enterprise latest)
 
 Deploy Cassandra with Portworx Enterprise | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This document shows how you can deploy Cassandra, a distributed NoSQL database management system, with Portworx on Kubernetes. The following diagram shows the main components of a Cassandra with Portworx deployment running on top of Kubernetes:
 

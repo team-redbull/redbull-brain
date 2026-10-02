@@ -1,12 +1,8 @@
 # Internal KVDB for Portworx on Kubernetes
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/kvdb-for-portworx/internal-kvdb (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/kvdb-for-portworx/internal-kvdb (Portworx Enterprise latest)
 
 Internal KVDB for Portworx on Kubernetes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx includes a built-in internal key-value database (KVDB) that eliminates the need for an external KVDB such as etcd. When you install Portworx through Portworx Central, the internal KVDB is enabled by default. Portworx automatically deploys, configures, and manages the internal KVDB cluster.
 

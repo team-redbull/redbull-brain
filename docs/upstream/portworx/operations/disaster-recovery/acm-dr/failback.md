@@ -1,12 +1,8 @@
 # Failback
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/acm-dr/failback (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/acm-dr/failback (Portworx Enterprise latest)
 
 Failback | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Failback is the process of returning your resources and their data to the original source cluster after that cluster is restored and operational again. You perform a failback after you have failed over protected resources to a destination workload cluster and the source workload cluster becomes available. With ACM-based disaster recovery, failback occurs at the Protection Group level, meaning that all namespaces and resources included in a protection group return together to the source cluster.
 

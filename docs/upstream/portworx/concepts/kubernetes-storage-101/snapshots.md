@@ -1,12 +1,8 @@
 # Kubernetes Snapshots and Backups
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/kubernetes-storage-101/snapshots (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/kubernetes-storage-101/snapshots (Portworx Enterprise latest)
 
 Kubernetes Snapshots and Backups | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## Snapshots​
 

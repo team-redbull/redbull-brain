@@ -1,12 +1,8 @@
 # Role-Based Access Control
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/authorization (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/authorization (Portworx Enterprise latest)
 
 Role-Based Access Control | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 PX-Security is an important set of features of the Portworx platform that provide:
 

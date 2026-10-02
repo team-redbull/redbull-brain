@@ -1,12 +1,8 @@
 # Prepare your Portworx cluster
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/px-metro/install-px (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/px-metro/install-px (Portworx Enterprise latest)
 
 Prepare your Portworx cluster | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 In a Synchronous DR deployment setup, install a single Portworx cluster that spans across your source and destination clusters using the instructions on this page.
 

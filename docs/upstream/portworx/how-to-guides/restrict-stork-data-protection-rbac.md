@@ -1,12 +1,8 @@
 # Run Portworx with Restricted RBAC
 
-Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/restrict-stork-data-protection-rbac (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/restrict-stork-data-protection-rbac (Portworx Enterprise latest)
 
 Run Portworx with Restricted RBAC | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx supports restricted RBAC mode for storage-only deployments that do not require data protection capabilities such as application backups, restores, migrations, and disaster recovery. With this feature, you can run Portworx with minimal cluster-wide permissions to meet security compliance and least-privilege requirements.
 

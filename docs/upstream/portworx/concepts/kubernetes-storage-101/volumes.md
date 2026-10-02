@@ -1,12 +1,8 @@
 # Kubernetes Persistent volumes
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/kubernetes-storage-101/volumes (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/kubernetes-storage-101/volumes (Portworx Enterprise latest)
 
 Kubernetes Persistent volumes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 When dealing with persistent storage in Kubernetes, 3 key objects are important:
 

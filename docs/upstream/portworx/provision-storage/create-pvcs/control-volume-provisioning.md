@@ -1,12 +1,8 @@
 # Manage Provisioning of PVCs
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/control-volume-provisioning (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/control-volume-provisioning (Portworx Enterprise latest)
 
 Manage Provisioning of PVCs | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx provisions volumes with little configuration from you. By default, Portworx thin provisions volumes and balances them according to current usage and load within the cluster.
 

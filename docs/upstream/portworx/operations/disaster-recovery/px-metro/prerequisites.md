@@ -1,12 +1,8 @@
 # Prerequisites for Synchronous Disaster Recovery
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/px-metro/prerequisites (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/px-metro/prerequisites (Portworx Enterprise latest)
 
 Prerequisites for Synchronous Disaster Recovery | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The prerequisites provided in this section ensure a stable foundation for data replication and failover when you enable synchronous disaster recovery between the source and destination clusters. Review them carefully to prevent configuration issues during deployment.
 

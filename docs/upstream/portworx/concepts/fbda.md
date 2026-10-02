@@ -1,12 +1,8 @@
 # FlashBlade Direct Access
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/fbda (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/fbda (Portworx Enterprise latest)
 
 FlashBlade Direct Access | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx supports FlashBlade as a Direct Access volume provider. When a PVC is created, Portworx provisions an NFS filesystem on FlashBlade, maps it to the PVC, and mounts it to the pod. Once mounted, Portworx writes data directly to FlashBlade.
 

@@ -1,12 +1,8 @@
 # Create PX-Fast PVCs
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/px-fastpath-pvc (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/px-fastpath-pvc (Portworx Enterprise latest)
 
 Create PX-Fast PVCs | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 PX-Fast is a Portworx feature that enables an accelerated IO path for the volumes that meet certain prerequisites. It is optimized for workloads requiring consistent low latencies. PX-Fast is built on top of a Portworx PX-StoreV2 datastore.
 

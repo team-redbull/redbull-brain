@@ -1,12 +1,8 @@
 # Install Portworx on Bare Metal Server
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/bare-metal (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/bare-metal (Portworx Enterprise latest)
 
 Install Portworx on Bare Metal Server | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 You can install Portworx Enterprise on a bare metal server using either a custom Kubernetes manifest or Helm chart, based on your infrastructure requirement. Portworx Enterprise supports clusters running on major cloud service providers and on-premises data centers in both air-gapped and connected environments. The installation process includes preparing the server, configuring the Kubernetes cluster, and deploying Portworx with a generated specification.
 

@@ -1,12 +1,8 @@
 # Installation of Portworx to use FlashArray Direct Access volumes with ActiveCluster setup
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/pure-storage/flasharray/install-flasharray-active-cluster-fada (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/pure-storage/flasharray/install-flasharray-active-cluster-fada (Portworx Enterprise latest)
 
 Installation of Portworx to use FlashArray Direct Access volumes with ActiveCluster setup | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx supports ActiveCluster with FlashArray direct access (FADA) volumes using either the iSCSI or FC protocol. Portworx doesn't support FlashArray cloud drives (FACD) with an ActiveCluster setup, and you must pre-provision drives before installing Portworx.
 

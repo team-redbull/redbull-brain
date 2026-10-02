@@ -1,12 +1,8 @@
 # Configure migrations to use service accounts
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/migration/configure-migrations-to-use-service-accounts (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/migration/configure-migrations-to-use-service-accounts (Portworx Enterprise latest)
 
 Configure migrations to use service accounts | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 If you set up migrations and migration schedules using user accounts, you will encounter token expiration-related errors. To avoid these errors, Portworx, Inc. recommends setting up migration and migration schedules using service accounts. ​ In contrast to user accounts, which expire after a specified interval of time has passed, service account tokens do not expire. Using service accounts ensures that you will not encounter token expiration-related errors. See the User accounts versus service accounts section of the Kubernetes documentation for more details about the differences between service accounts and user accounts. ​ Perform the following steps on the destination cluster to configure migrations to use service accounts. ​
 

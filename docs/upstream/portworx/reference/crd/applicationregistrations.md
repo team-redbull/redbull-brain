@@ -1,12 +1,8 @@
 # ApplicationRegistration CRD reference
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/crd/applicationregistrations (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/crd/applicationregistrations (Portworx Enterprise latest)
 
 ApplicationRegistration CRD reference | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ApplicationRegistration to collect crd resources.
 

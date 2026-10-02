@@ -1,12 +1,8 @@
 # Useful references
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/px-metro/useful-references (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/px-metro/useful-references (Portworx Enterprise latest)
 
 Useful references | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## Set up multi-cluster application failover with CockroachDB​
 

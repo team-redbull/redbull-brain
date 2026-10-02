@@ -1,12 +1,8 @@
 # ReverseProtectionGroup CRD reference
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/acm-dr/crd-reference/reverse-protection-group (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/acm-dr/crd-reference/reverse-protection-group (Portworx Enterprise latest)
 
 ReverseProtectionGroup CRD reference | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The `ReverseProtectionGroup` CRD represents the reverse direction configuration for a ProtectionGroup, allowing users to override settings for the reverse DR direction (secondary to primary). This CRD has a 1:1 mapping with ProtectionGroup and is managed by the ProtectionGroup controller.
 

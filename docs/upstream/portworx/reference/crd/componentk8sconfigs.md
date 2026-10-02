@@ -1,12 +1,8 @@
 # ComponentK8sConfig CRD reference
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/crd/componentk8sconfigs (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/crd/componentk8sconfigs (Portworx Enterprise latest)
 
 ComponentK8sConfig CRD reference | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Schema and configuration details for the ComponentK8sConfig custom resource definition (CRD), which is used by the Portworx Operator to manage Kubernetes-based component configurations.
 

@@ -1,12 +1,8 @@
 # Advanced configuration and automation
 
-Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/postgresql/advanced-configuration (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/postgresql/advanced-configuration (Portworx Enterprise latest)
 
 Advanced configuration and automation | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 As your PostgreSQL environment grows more sophisticated, so do the strategies needed to keep performance high and administration overhead low. Portworx’s advanced features such as hyperconvergence with Stork, topology-aware volume placement, and Autopilot-driven capacity management enable you to fine-tune how data is accessed, replicated, and scaled within your cluster. By aligning storage and compute resources more closely, you can reduce latency, achieve hands-off scaling, and maintain resilience across fault domains, all while minimizing manual interventions.
 

@@ -1,12 +1,8 @@
 # storkctl suspend
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/storkctl-reference/suspend (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/storkctl-reference/suspend (Portworx Enterprise latest)
 
 storkctl suspend | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Suspend schedules
 

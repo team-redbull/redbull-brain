@@ -1,12 +1,8 @@
 # Enable or Upgrade Portworx OpenShift Dynamic Plugin
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/configure-portworx-components/enable-ocp-plugin (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/configure-portworx-components/enable-ocp-plugin (Portworx Enterprise latest)
 
 Enable or Upgrade Portworx OpenShift Dynamic Plugin | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The Portworx OpenShift Dynamic plugin is an OpenShift console plugin that provides integrated storage observability and management directly within the OpenShift console. It simplifies observability, monitoring, and troubleshooting for Portworx storage clusters, Kubernetes applications, and OpenShift integrations such as KubeVirt.
 

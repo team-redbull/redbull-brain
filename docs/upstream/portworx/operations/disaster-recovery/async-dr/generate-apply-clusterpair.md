@@ -1,12 +1,8 @@
 # Create a ClusterPair
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/async-dr/generate-apply-clusterpair (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/async-dr/generate-apply-clusterpair (Portworx Enterprise latest)
 
 Create a ClusterPair | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 In an asynchronous DR setup, it is essential to pair two clusters to enable the migration of data and resources. To facilitate this process, you need to establish trust objects, known as ClusterPair objects, between the two clusters. Portworx requires these objects to establish a communication channel between the two clusters.
 

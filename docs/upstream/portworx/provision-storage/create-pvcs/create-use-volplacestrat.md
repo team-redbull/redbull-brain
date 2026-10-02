@@ -1,12 +1,8 @@
 # Create and use VolumePlacementStrategies
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/create-use-volplacestrat (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/create-use-volplacestrat (Portworx Enterprise latest)
 
 Create and use VolumePlacementStrategies | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic explains how to create and apply a VolumePlacementStrategy custom resource (CR) in your cluster. You can use this strategy to influence the placement of volumes created by Portworx for specific workloads.
 For more information on Volume Placement Strategies, see Volume Placement Strategies.

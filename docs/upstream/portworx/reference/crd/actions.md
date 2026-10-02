@@ -1,12 +1,8 @@
 # Action CRD reference
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/crd/actions (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/crd/actions (Portworx Enterprise latest)
 
 Action CRD reference | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Action represents a task that will be performed once It is similar to a Kubernetes Job.
 

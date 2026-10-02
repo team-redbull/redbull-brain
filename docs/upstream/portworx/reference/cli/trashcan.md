@@ -1,12 +1,8 @@
 # Volume trash can
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/trashcan (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/trashcan (Portworx Enterprise latest)
 
 Volume trash can | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The trash can feature provides protection against accidental or inadvertent volume deletions which could result in loss of data. In a clustered environment such as Kubernetes, unintended deletion of a PV or a namespace will cause volumes to be lost. This feature is recommended in any environment which is prone to such inadvertent deletions, as it can help to prevent data loss.
 

@@ -1,12 +1,8 @@
 # Volume Placement Strategies
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/volume-placement-strategies (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/volume-placement-strategies (Portworx Enterprise latest)
 
 Volume Placement Strategies | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 When you provision volumes, Portworx places them throughout the cluster and across configured failure domains to provide fault tolerance. While this default manner of operation works well in many scenarios, you may wish to control how Portworx handles volume and replica provisioning more explicitly. You can do this by creating VolumePlacementStrategy CRDs.
 

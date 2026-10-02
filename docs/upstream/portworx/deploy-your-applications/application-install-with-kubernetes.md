@@ -1,12 +1,8 @@
 # Deploying Stateful Applications on Portworx
 
-Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes (Portworx Enterprise latest)
 
 Deploying Stateful Applications on Portworx | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx provides a highly available, scalable, and a robust storage platform for deploying and managing stateful applications. Portworx integrates seamlessly with Kubernetes or OpenShift to provide dynamic provisioning, autopilot-driven capacity management, data replication, integrated backups and volume management. The following prerequisites are needed to deploy stateful applications:
 

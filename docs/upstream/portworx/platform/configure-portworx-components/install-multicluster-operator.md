@@ -1,12 +1,8 @@
 # Install Portworx MultiCluster Operator
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/configure-portworx-components/install-multicluster-operator (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/configure-portworx-components/install-multicluster-operator (Portworx Enterprise latest)
 
 Install Portworx MultiCluster Operator | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The Portworx MultiCluster Operator provides enterprise-grade disaster recovery and multi-cluster management capabilities for Portworx Enterprise storage clusters.
 

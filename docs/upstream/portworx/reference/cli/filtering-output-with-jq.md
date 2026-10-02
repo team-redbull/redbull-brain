@@ -1,12 +1,8 @@
 # Filtering pxctl output with jq
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/filtering-output-with-jq (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/filtering-output-with-jq (Portworx Enterprise latest)
 
 Filtering pxctl output with jq | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The `pxctl` command line output displays a limited amount of information based on the context of the subcommand.
 

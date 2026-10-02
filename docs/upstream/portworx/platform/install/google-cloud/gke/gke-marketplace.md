@@ -1,12 +1,8 @@
 # Installation from Google Cloud Marketplace
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/google-cloud/gke/gke-marketplace (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/google-cloud/gke/gke-marketplace (Portworx Enterprise latest)
 
 Installation from Google Cloud Marketplace | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic provides instructions for installing Portworx on Google Kubernetes Engine (GKE) cluster via the Google Cloud Marketplace. Ensure that your cluster meets all the prerequisites before installing Portworx Enterprise.
 

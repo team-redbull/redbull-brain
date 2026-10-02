@@ -1,12 +1,8 @@
 # Storage vMotion
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/storage-vmotion (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/storage-vmotion (Portworx Enterprise latest)
 
 Storage vMotion | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx supports VMware's Storage vMotion feature, allowing for the live migration of virtual disk files (.vmdk) between datastores without any downtime. This capability is particularly useful for rebalancing storage consumption across new and existing datastores managed by Portworx. It is important to note that Portworx only supports vSphere-based cloud drives that were created directly by the Portworx itself.
 

@@ -32,7 +32,7 @@ upstream source disagree, RHOKP/KCS wins for what we run**; upstream tells you h
 | `prometheus-docs`, `prometheus-operator` | observability | PromQL, alerting, ServiceMonitor/PrometheusRule | OCP bundles its own build; docs are general |
 | `openshift-runbooks` | observability | per-alert runbooks (check first when an alert fires) | `master` (runbooks are not versioned per minor) |
 | `grafana-docs`, `mcp-grafana` | observability | dashboards, datasources, provisioning; MCP tool names and flags | tag = Grafana / mcp-grafana version we run |
-| `portworx-docs` | storage | Portworx install, upgrades, storage classes, DR. **Disabled — no public repo**; needs an internal docs export (`PORTWORX_DOCS_DIR`) | export of the docs for the installed Portworx version |
+| `portworx-docs` | storage | Portworx install, upgrades, storage classes, DR. Pinned mirror of the **latest** docs (3.7 at last sync) in `docs/upstream/portworx`, no public repo — refresh with `scripts/sync-portworx-docs.py` | latest only; check older installs against the support matrix |
 | `etcd-docs` | openshift | etcd defrag, backup/restore, tuning (OCP wraps etcd with its own operator) | general |
 | `kubernetes-docs` | kubernetes | Kubernetes concepts and APIs | pinned 1.35 only (see fleet-versions) |
 | `argocd-docs`, `argo-cd` | gitops | Argo CD docs / source | `stable` docs; tag of installed Argo CD for source |

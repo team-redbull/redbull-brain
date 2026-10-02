@@ -1,12 +1,8 @@
 # SchedulePolicy CRD reference
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/crd/schedulepolicies (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/crd/schedulepolicies (Portworx Enterprise latest)
 
 SchedulePolicy CRD reference | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 SchedulePolicy represents a policy for executing actions on a schedule.
 

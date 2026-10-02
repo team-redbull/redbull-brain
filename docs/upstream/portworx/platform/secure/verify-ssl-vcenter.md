@@ -1,12 +1,8 @@
 # Enable TLS Certificate Verification for vCenter
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/secure/verify-ssl-vcenter (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/secure/verify-ssl-vcenter (Portworx Enterprise latest)
 
 Enable TLS Certificate Verification for vCenter | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx Enterprise connects to the vCenter API over HTTPS to create and manage cloud drives on vSphere. If vCenter uses a certificate signed by a private certificate authority (CA), provide the CA certificate to Portworx Enterprise to enable certificate verification.
 

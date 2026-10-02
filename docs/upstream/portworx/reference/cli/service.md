@@ -1,12 +1,8 @@
 # Service operations using pxctl
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/service (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/service (Portworx Enterprise latest)
 
 Service operations using pxctl | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The Portworx `pxctl` CLI tool allows you to run the following service operations:
 

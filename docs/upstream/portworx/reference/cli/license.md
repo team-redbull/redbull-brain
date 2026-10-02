@@ -1,12 +1,8 @@
 # License operations using pxctl
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/license (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/license (Portworx Enterprise latest)
 
 License operations using pxctl | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This document explains how to manage your Portworx licenses with `pxctl license`. The CLI lets you add, activate, and transfer licenses. It also gives details about the installed licenses, and it shows what features are available within a given license.
 

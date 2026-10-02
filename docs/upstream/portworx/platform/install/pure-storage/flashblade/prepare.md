@@ -1,12 +1,8 @@
 # Prepare FlashBlade Environment for Direct Access Storage Provisioning with Portworx
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/pure-storage/flashblade/prepare (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/pure-storage/flashblade/prepare (Portworx Enterprise latest)
 
 Prepare FlashBlade Environment for Direct Access Storage Provisioning with Portworx | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This page includes detailed system requirements that are specific to FlashBlade to ensure a seamless deployment and optimal performance of Portworx Enterprise in your Kubernetes environment.
 

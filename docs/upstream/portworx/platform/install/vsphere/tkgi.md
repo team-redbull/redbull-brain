@@ -1,12 +1,8 @@
 # Installation on VMware Tanzu Kubernetes Grid Integrated Edition
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/vsphere/tkgi (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/vsphere/tkgi (Portworx Enterprise latest)
 
 Installation on VMware Tanzu Kubernetes Grid Integrated Edition | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic provides instructions for installing Portworx in a VMware Tanzu Kubernetes Grid Integrated Edition (TKGI) environment. TKGI allows you to provision, operate, and manage vSphere-based Kubernetes clusters. You can deploy Portworx on TKGI environment using the shared datastores.
 

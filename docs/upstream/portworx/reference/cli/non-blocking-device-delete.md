@@ -1,12 +1,8 @@
 # Non-Blocking Device Delete
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/non-blocking-device-delete (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/non-blocking-device-delete (Portworx Enterprise latest)
 
 Non-Blocking Device Delete | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The Non-Blocking Device Delete (NBDD) feature in Portworx Enterprise improves the efficiency of volume and snapshot deletions by running background discards at a configurable rate when you delete large snapshots or storage volumes from Portworx clusters. NBDD reduces I/O latency when you delete a volume or snapshot, and helps reclaim space, especially on SAN or FlashArray (FA) storage backends.
 

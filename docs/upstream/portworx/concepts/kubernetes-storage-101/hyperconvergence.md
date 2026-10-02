@@ -1,12 +1,8 @@
 # Hyperconvergence
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/kubernetes-storage-101/hyperconvergence (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/kubernetes-storage-101/hyperconvergence (Portworx Enterprise latest)
 
 Hyperconvergence | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 When a pod runs on the same host as its volume, it is known as convergence or hyperconvergence. This configuration reduces the network overhead of an application, resulting in improved performance.
 

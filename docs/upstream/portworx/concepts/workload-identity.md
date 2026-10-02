@@ -1,12 +1,8 @@
 # Workload identity for cloud operations in Portworx
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/workload-identity (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/workload-identity (Portworx Enterprise latest)
 
 Workload identity for cloud operations in Portworx | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx supports workload identity to securely access cloud resources used by CloudSnap backups and CloudDrive provisioning, without using static cloud credentials or assigning permissions at the node level.
 

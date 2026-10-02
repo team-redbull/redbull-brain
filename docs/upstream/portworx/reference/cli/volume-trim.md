@@ -1,12 +1,8 @@
 # Maintain volumes using Filesystem Trim
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/volume-trim (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/volume-trim (Portworx Enterprise latest)
 
 Maintain volumes using Filesystem Trim | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 A typical Portworx volume is formatted with ext4 and then used by a container application to store its content files and directories. Over time, your application might create and delete files and directories. On the volume, the space which was previously used by a deleted file gets freed in the filesystem metadata and the underlying block device is unaware of this fact. This can lead to the following inefficiencies:
 

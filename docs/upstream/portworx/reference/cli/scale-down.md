@@ -1,12 +1,8 @@
 # Scale down nodes
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/scale-down (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/scale-down (Portworx Enterprise latest)
 
 Scale down nodes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## Removing offline nodes​
 

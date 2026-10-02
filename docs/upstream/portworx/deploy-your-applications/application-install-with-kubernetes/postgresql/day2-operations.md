@@ -1,12 +1,8 @@
 # Day 2 operations and reliability
 
-Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/postgresql/day2-operations (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/postgresql/day2-operations (Portworx Enterprise latest)
 
 Day 2 operations and reliability | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Once your PostgreSQL environment is up and running, the real work of maintaining reliability, security, and efficiency begins. Effective Day 2 operations focus on everything from rolling upgrades to backup and restore strategies, ensuring your data remains protected and recoverable. By proactively monitoring system health and setting meaningful alerts, you can catch issues before they escalate, reducing the chance of downtime. Should problems arise, having a solid troubleshooting framework in place enables quick resolution and keeps your critical workloads running smoothly.
 

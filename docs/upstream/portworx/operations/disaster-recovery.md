@@ -1,12 +1,8 @@
 # Set up Disaster Recovery
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery (Portworx Enterprise latest)
 
 Set up Disaster Recovery | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Disaster Recovery (DR) is a process that ensures the availability and recoverability of services and resources within a cluster in the event of a disaster. When you implement a DR strategy provided by Portworx, it mitigates or minimizes data loss caused by unforeseen incidents that can disrupt business operations. The goal is to swiftly restore the operational status of a cluster, enabling access to data as soon as possible after a disaster occurs.
 

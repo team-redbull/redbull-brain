@@ -1,12 +1,8 @@
 # Install Portworx on Google Cloud
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/google-cloud (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/google-cloud (Portworx Enterprise latest)
 
 Install Portworx on Google Cloud | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 You can install Portworx Enterprise on Google Cloud to run stateful workloads across Kubernetes environments such as Google Kubernetes Engine (GKE), OpenShift on Google Cloud, Google Anthos, or a Gardener cluster on Google Cloud. The installation process typically includes preparing your Google Cloud environment, configuring the Kubernetes cluster, and deploying Portworx with a generated specification.
 

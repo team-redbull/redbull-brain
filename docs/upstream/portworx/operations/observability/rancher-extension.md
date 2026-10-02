@@ -1,12 +1,8 @@
 # Monitor Portworx Clusters on Rancher
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/observability/rancher-extension (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/observability/rancher-extension (Portworx Enterprise latest)
 
 Monitor Portworx Clusters on Rancher | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 You can use the Portworx extension in the Rancher UI to monitor your cluster directly within the Rancher platform. This extension simplifies cluster management and provides actionable insights by integrating Portworx storage monitoring directly into the Rancher dashboard.
 

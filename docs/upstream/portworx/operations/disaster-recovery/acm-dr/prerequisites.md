@@ -1,12 +1,8 @@
 # Prerequisites for ACM Disaster Recovery
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/acm-dr/prerequisites (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/acm-dr/prerequisites (Portworx Enterprise latest)
 
 Prerequisites for ACM Disaster Recovery | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Before you configure ACM-based disaster recovery, ensure your environment meets the following requirements.
 

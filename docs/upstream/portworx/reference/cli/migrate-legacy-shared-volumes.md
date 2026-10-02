@@ -1,12 +1,8 @@
 # Migrate legacy volumes to sharedv4 service volumes
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/migrate-legacy-shared-volumes (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/migrate-legacy-shared-volumes (Portworx Enterprise latest)
 
 Migrate legacy volumes to sharedv4 service volumes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Before adopting NFS to support `ReadWriteMany` volumes, Portworx utilized a `shared=true` approach to create shared volumes, which functioned even without NFS installed.
 

@@ -1,12 +1,8 @@
 # Clean up disaster recovery objects
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/async-dr/clean-up-dr-objects (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/async-dr/clean-up-dr-objects (Portworx Enterprise latest)
 
 Clean up disaster recovery objects | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 If you no longer require a disaster recovery object, you can delete it.
 

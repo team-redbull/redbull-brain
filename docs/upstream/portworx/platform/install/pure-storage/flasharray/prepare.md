@@ -1,12 +1,8 @@
 # Prepare your Environment for Portworx Installation with FlashArray
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/pure-storage/flasharray/prepare (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/pure-storage/flasharray/prepare (Portworx Enterprise latest)
 
 Prepare your Environment for Portworx Installation with FlashArray | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This page includes detailed system requirements that are specific to FlashArray to ensure a seamless deployment and optimal performance of Portworx Enterprise in your Kubernetes environment.
 

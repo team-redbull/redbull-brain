@@ -1,12 +1,8 @@
 # Rule CRD reference
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/crd/rules (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/crd/rules (Portworx Enterprise latest)
 
 Rule CRD reference | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Rule denotes an object to declare a rule that performs actions on pods.
 

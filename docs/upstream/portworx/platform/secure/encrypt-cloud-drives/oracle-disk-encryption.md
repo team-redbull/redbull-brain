@@ -1,12 +1,8 @@
 # Oracle disk encryption
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/secure/encrypt-cloud-drives/oracle-disk-encryption (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/secure/encrypt-cloud-drives/oracle-disk-encryption (Portworx Enterprise latest)
 
 Oracle disk encryption | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The Oracle Block Volume service is a cloud-based storage service provided by Oracle Cloud Infrastructure (OCI) that enables you to create and manage block volumes, which are high-performance, persistent storage devices that can be attached to an instance in OCI.
 

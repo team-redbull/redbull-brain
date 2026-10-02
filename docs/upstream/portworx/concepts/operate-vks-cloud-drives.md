@@ -1,12 +1,8 @@
 # VMware vSphere Kubernetes Service (VKS) Cloud Drives
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/operate-vks-cloud-drives (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/operate-vks-cloud-drives (Portworx Enterprise latest)
 
 VMware vSphere Kubernetes Service (VKS) Cloud Drives | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This guide explains how the Portworx Dynamic Disk Provisioning feature works within Kubernetes on VMware vSphere Kubernetes Service (VKS).
 

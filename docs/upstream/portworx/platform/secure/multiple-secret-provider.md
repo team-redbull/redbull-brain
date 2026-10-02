@@ -1,12 +1,8 @@
 # Configure Multiple Secrets Providers
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/secure/multiple-secret-provider (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/secure/multiple-secret-provider (Portworx Enterprise latest)
 
 Configure Multiple Secrets Providers | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx Enterprise supports configuring multiple secrets providers in a single deployment, allowing you to select a different secrets store for each feature. You can assign a secrets provider per feature, such as using Kubernetes Secrets for volume encryption and Vault for storing cloud provider credentials like vSphere or FlashArray access tokens. This enables finer-grained control over how and where sensitive data is stored.
 

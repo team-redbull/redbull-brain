@@ -1,12 +1,8 @@
 # CSI topology for FlashArray cloud drives
 
-Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/csi-topology-cloud-drives (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/csi-topology-cloud-drives (Portworx Enterprise latest)
 
 CSI topology for FlashArray cloud drives | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The CSI topology feature for FlashArray Cloud Drives (FACD) allows applications to provision and use cloud drives only on FlashArrays that are in the same zone as a given node. This improves fault tolerance for replicas, performance, and manageability for large clusters.
 

@@ -1,12 +1,8 @@
 # Run-flat mode
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/run-flat (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/run-flat (Portworx Enterprise latest)
 
 Run-flat mode | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx requires a key-value database such as etcd for configuring storage. A highly available clustered etcd with persistent storage is preferred. You can setup an external etcd and configure Portworx to use it, or you can let Portworx spin up its own key-value database by using the internal KVDB.
 

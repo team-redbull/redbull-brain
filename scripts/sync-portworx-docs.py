@@ -95,10 +95,8 @@ def main():
     sm = get(f"{a.base}/{a.product}/sitemap.xml")
     urls = [u for u in re.findall(r"<loc>([^<]+)</loc>", sm)
             if not re.search(rf"/{a.product}/\d+\.\d+(/|$)", u)]  # latest only
-    home = get(f"{a.base}/{a.product}/")
-    vers = sorted(set(re.findall(rf"/{a.product}/(\d+\.\d+)", home)), key=lambda v: tuple(map(int, v.split("."))))
-    latest = vers[-1] if vers else "unknown"
-    print(f"{len(urls)} pages, latest version {latest}")
+    print(f"{len(urls)} pages")
+    seen = []  # per-page "Version: X.Y" banner; unversioned URLs are the latest release
     if root.exists():
         for p in root.rglob("*.md"):
             p.unlink()
@@ -109,13 +107,18 @@ def main():
             ex = Extract()
             ex.feed(get(u))
             body = ex.text()
+            m = re.search(r"^Version:\s*(\d+\.\d+)\s*$", body, re.M)
+            if m:
+                seen.append(m.group(1))
+            body = re.sub(r"^(Skip to main content|Version:\s*\S+)\s*$\n?", "", body, flags=re.M)
+            body = re.sub(r"\n{3,}", "\n\n", body)
             if len(body) < 80:
                 return u, "empty"
             rel = u.split(f"/{a.product}/", 1)[-1].strip("/") or "index"
             f = root / (rel + ".md")
             f.parent.mkdir(parents=True, exist_ok=True)
             title = re.sub(r"\s*\|.*$", "", ex.title).strip() or rel
-            f.write_text(f"# {title}\n\nSource: {u} (Portworx Enterprise {latest})\n\n{body}", encoding="utf-8")
+            f.write_text(f"# {title}\n\nSource: {u} (Portworx Enterprise latest)\n\n{body}", encoding="utf-8")
             return u, "ok"
         except Exception as e:
             return u, f"error: {e}"
@@ -128,6 +131,8 @@ def main():
             else:
                 bad += 1
                 print(f"  skip {u}: {st}", file=sys.stderr)
+    latest = max(set(seen), key=seen.count) if seen else "unknown"
+    print(f"latest version (from page banners): {latest}")
     (root / ".upstream").write_text(
         f"site: {a.base}/{a.product}/\nversion: {latest}\npages: {ok}\nsynced: {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}\n")
     print(f"wrote {ok} pages to {root} ({bad} skipped)")

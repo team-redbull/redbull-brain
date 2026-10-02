@@ -1,12 +1,8 @@
 # Uninstall Portworx using Helm
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/uninstall/uninstall-portworx-helm (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/uninstall/uninstall-portworx-helm (Portworx Enterprise latest)
 
 Uninstall Portworx using Helm | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This page provides instructions on how to uninstall Portworx using Helm.
 

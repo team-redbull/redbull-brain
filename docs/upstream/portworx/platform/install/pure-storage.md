@@ -1,12 +1,8 @@
 # Install Portworx with Everpure Platforms
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/pure-storage (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/pure-storage (Portworx Enterprise latest)
 
 Install Portworx with Everpure Platforms | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx integrates with Everpure platforms such as FlashArray, FlashBlade, and Everpure Cloud Dedicated (formerly Cloud Block Store) to support multiple deployment models across Kubernetes environments.
 

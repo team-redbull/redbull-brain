@@ -1,12 +1,8 @@
 # Run Hyperconverged Using Stork
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/tune-performance/hyperconvergence (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/tune-performance/hyperconvergence (Portworx Enterprise latest)
 
 Run Hyperconverged Using Stork | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## Hyperconvergence​
 

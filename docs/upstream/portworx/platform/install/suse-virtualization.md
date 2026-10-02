@@ -1,12 +1,8 @@
 # Install Portworx on SUSE Virtualization
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/suse-virtualization (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/suse-virtualization (Portworx Enterprise latest)
 
 Install Portworx on SUSE Virtualization | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 You can install Portworx on a SUSE Virtualization cluster to leverage high availability, scalable storage, and automation for your Kubernetes workloads. Portworx supports standard Kubernetes deployments running on a SUSE Virtualization cluster. The process integrates Portworx with a SUSE Virtualization cluster, ensuring persistent storage for demanding applications.
 

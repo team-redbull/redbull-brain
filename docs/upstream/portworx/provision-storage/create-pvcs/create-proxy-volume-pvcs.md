@@ -1,12 +1,8 @@
 # Create Proxy Volume PVCs
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/create-proxy-volume-pvcs (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/create-proxy-volume-pvcs (Portworx Enterprise latest)
 
 Create Proxy Volume PVCs | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx proxy volumes proxy an external data source onto a Portworx volume. The actual data for these volumes resides on the external data source and does not consume any storage from the Portworx storage pools.
 

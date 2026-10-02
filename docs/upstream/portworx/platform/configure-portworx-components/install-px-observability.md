@@ -1,16 +1,12 @@
 # Portworx Observability
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/configure-portworx-components/install-px-observability (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/configure-portworx-components/install-px-observability (Portworx Enterprise latest)
 
 Portworx Observability | Portworx Enterprise Documentation
-
-Skip to main content
 
 EARLY ACCESS
 
 This feature is available as Early Access (EA) and should not be used in production.
-
-Version: 3.7
 
 Portworx Observability is an in-cluster observability dashboard for Portworx clusters, which you can deploy along with Portworx Enterprise. It uses the PX Cache agent to read cluster state and Prometheus metrics.
 

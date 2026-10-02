@@ -1,12 +1,8 @@
 # Failover
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/acm-dr/failover (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/acm-dr/failover (Portworx Enterprise latest)
 
 Failover | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 When a workload cluster becomes unavailable, you can fail over its protected resources to another operational workload cluster. Failover can serve as an emergency recovery action when the source cluster becomes inaccessible unexpectedly, or as a planned migration while the source cluster remains available. With ACM-based disaster recovery, failover occurs at the Protection Group level, meaning that all namespaces and resources included in a protection group fail over together to the destination cluster.
 

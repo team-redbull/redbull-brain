@@ -1,12 +1,8 @@
 # Supported Kubernetes Resources for DR
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/supported-kubernetes-resources (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/supported-kubernetes-resources (Portworx Enterprise latest)
 
 Supported Kubernetes Resources for DR | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Asynchronous DR and synchronous DR support the following Kubernetes resources:
 

@@ -1,12 +1,8 @@
 # Migration with Stork
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/migration/migration-with-stork (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/migration/migration-with-stork (Portworx Enterprise latest)
 
 Migration with Stork | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This guide shows you how to migrate your Portworx volumes one time between clusters using Stork. If you wish to set up disaster recovery, refer to the Disaster Recovery section.
 

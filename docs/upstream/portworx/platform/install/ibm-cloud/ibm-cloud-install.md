@@ -1,12 +1,8 @@
 # Installation on IBM Cloud using IBM Catalog
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/ibm-cloud/ibm-cloud-install (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/ibm-cloud/ibm-cloud-install (Portworx Enterprise latest)
 
 Installation on IBM Cloud using IBM Catalog | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic provides instructions for installing Portworx on an IBM Cloud Kubernetes Service (IKS) cluster and a Red Hat OpenShift on IBM Cloud cluster using IBM Catalog on a typical cluster that has the following properties:
 

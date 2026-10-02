@@ -1,12 +1,8 @@
 # Installation on Air-Gapped Amazon Elastic Kubernetes Service (EKS) Cluster
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/aws/aws-eks-airgapped (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/aws/aws-eks-airgapped (Portworx Enterprise latest)
 
 Installation on Air-Gapped Amazon Elastic Kubernetes Service (EKS) Cluster | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic provides instructions for installing Portworx on an air-gapped Amazon Elastic Kubernetes Service (Amazon EKS) cluster. You can deploy Portworx and required packages by using a private container registry. Ensure that your cluster meets all the prerequisites before installing Portworx Enterprise.
 

@@ -1,12 +1,8 @@
 # Configure Multicluster Observability for Portworx metrics on ACM
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/observability/acm-multicluster-observability (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/observability/acm-multicluster-observability (Portworx Enterprise latest)
 
 Configure Multicluster Observability for Portworx metrics on ACM | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Red Hat Advanced Cluster Management (ACM) Multicluster Observability (MCO) collects and centralizes Prometheus metrics from workload clusters into a central ACM hub cluster. MCO stores these metrics in Thanos and makes them available through the built-in ACM Grafana dashboard. When you manage multiple Portworx clusters with ACM, you can use MCO to collect Portworx metrics from each workload cluster through OpenShift User Workload Monitoring and view them from a centralized interface on the hub cluster.
 

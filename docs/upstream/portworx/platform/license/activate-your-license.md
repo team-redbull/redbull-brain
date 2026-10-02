@@ -1,12 +1,8 @@
 # Activate the Enterprise License
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/license/activate-your-license (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/license/activate-your-license (Portworx Enterprise latest)
 
 Activate the Enterprise License | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 To activate the Enterprise license on your cluster, you either need an activation ID If your cluster is connected to the internet, or you need a license file if your cluster is in an air-gapped environment. Contact the Everpure support team (support@purestorage.com) to obtain this activation ID or license file. To get the license file for an air-gapped environment, you need to provide the cluster UUID to the support team.
  For more information, see:

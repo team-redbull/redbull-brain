@@ -1,12 +1,8 @@
 # Adding journal device to existing Portworx nodes
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/add-journal-dev (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/add-journal-dev (Portworx Enterprise latest)
 
 Adding journal device to existing Portworx nodes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## Adding Journal Device to an existing node.​
 

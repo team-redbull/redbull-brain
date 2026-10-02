@@ -1,12 +1,8 @@
 # Configure FlashBlade as a Direct Access filesystem
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/pure-flashblade (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/pure-flashblade (Portworx Enterprise latest)
 
 Configure FlashBlade as a Direct Access filesystem | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## Use FlashBlade as a Direct Access filesystem​
 

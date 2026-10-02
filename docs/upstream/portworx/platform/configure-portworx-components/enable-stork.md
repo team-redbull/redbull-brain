@@ -1,12 +1,8 @@
 # Portworx Stork
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/configure-portworx-components/enable-stork (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/configure-portworx-components/enable-stork (Portworx Enterprise latest)
 
 Portworx Stork | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx Stork is a storage scheduler for Kubernetes that helps achieve tighter integration of Portworx with Kubernetes. It allows users to co-locate pods with their data, provides seamless migration of pods in case of storage errors, and makes it easier to create and restore snapshots of Portworx volumes.
 

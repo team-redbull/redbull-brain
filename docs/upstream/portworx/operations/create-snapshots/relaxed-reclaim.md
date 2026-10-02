@@ -1,12 +1,8 @@
 # RelaxedReclaim
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/create-snapshots/relaxed-reclaim (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/create-snapshots/relaxed-reclaim (Portworx Enterprise latest)
 
 RelaxedReclaim | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 When Portworx deletes snapshots and volumes, it also deletes their replicas. In some scenarios, you may delete a large number of replicas at once. These delete requests can overwhelm the underlying filesystem, causing high filesystem latencies and reducing I/O performance. Using RelaxedReclaim, you can stage snapshot and volume replica delete operations in a queue and spread them out over time, giving the filesystem enough bandwidth to handle front-end I/O and lowering filesystem latencies.
 

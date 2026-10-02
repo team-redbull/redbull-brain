@@ -1,12 +1,8 @@
 # Portworx Object Service Reference
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/crd/object-service (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/crd/object-service (Portworx Enterprise latest)
 
 Portworx Object Service Reference | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## Environment Variables​
 

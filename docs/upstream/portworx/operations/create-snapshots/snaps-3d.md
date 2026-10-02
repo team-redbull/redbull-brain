@@ -1,12 +1,8 @@
 # 3D Snapshots
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/create-snapshots/snaps-3d (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/create-snapshots/snaps-3d (Portworx Enterprise latest)
 
 3D Snapshots | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 A 3D Snapshot (3DSnap) is an application-consistent snapshot that captures the complete state of a running application and its underlying persistent storage. Unlike standard volume snapshots that only capture storage-layer data, 3DSnaps coordinate with the application to ensure data consistency, including for in-memory and database-driven workloads. For a 3DSnap, Portworx lets you specify pre- and post-rules that run on the application pods using the volumes. These rules allow you to quiesce the application before taking the snapshot and resume I/O afterward. Portworx runs the commands in the pods that use the PVC being snapshotted.
 

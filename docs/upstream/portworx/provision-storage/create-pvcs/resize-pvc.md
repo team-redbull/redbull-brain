@@ -1,12 +1,8 @@
 # Resize a Portworx PVC
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/resize-pvc (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/resize-pvc (Portworx Enterprise latest)
 
 Resize a Portworx PVC | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This document describes how to dynamically resize a volume (PVC) using Kubernetes or OpenShift and Portworx.
 

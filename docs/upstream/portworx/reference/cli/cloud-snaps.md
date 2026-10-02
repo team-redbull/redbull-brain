@@ -1,12 +1,8 @@
 # Cloud Snapshots and Recovery using pxctl
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/cloud-snaps (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/cloud-snaps (Portworx Enterprise latest)
 
 Cloud Snapshots and Recovery using pxctl | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## Overview of cloud backups​
 

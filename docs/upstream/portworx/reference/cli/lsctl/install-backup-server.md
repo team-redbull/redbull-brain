@@ -1,12 +1,8 @@
 # Install a backup license server
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/lsctl/install-backup-server (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/lsctl/install-backup-server (Portworx Enterprise latest)
 
 Install a backup license server | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 After you've created your license server, but before you add licenses, you can create a backup license server. A backup license server synchronizes with your main license server to provide high availability (HA), which protects your Portworx clusters from interruption in the event that your primary server experiences a problem.
 

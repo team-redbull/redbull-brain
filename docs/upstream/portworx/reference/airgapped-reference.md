@@ -1,12 +1,8 @@
 # Air-gapped install bootstrap script reference
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/airgapped-reference (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/airgapped-reference (Portworx Enterprise latest)
 
 Air-gapped install bootstrap script reference | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 To download the air-gapped installation bootstrap script on an internet-connected host with the same architecture and OS version as the Kubernetes cluster nodes intended for Portworx installation, use the following command:
 

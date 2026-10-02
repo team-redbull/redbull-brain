@@ -1,12 +1,8 @@
 # storkctl perform
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/storkctl-reference/perform (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/storkctl-reference/perform (Portworx Enterprise latest)
 
 storkctl perform | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 perform actions
 

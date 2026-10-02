@@ -1,12 +1,8 @@
 # Azure Key Vault
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/secure/key-management/azure-kv (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/secure/key-management/azure-kv (Portworx Enterprise latest)
 
 Azure Key Vault | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx can integrate with Azure Key Vault Secrets to store your encryption secrets, credentials or passwords. This topic explains how to deploy a Portworx cluster that connects to an Azure Key Vault. The Azure Key Vault could be used to store secrets used for encrypting volumes.
 

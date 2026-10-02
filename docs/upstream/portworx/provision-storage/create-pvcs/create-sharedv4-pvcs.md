@@ -1,12 +1,8 @@
 # Create Sharedv4 PVCs
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/create-sharedv4-pvcs (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/create-sharedv4-pvcs (Portworx Enterprise latest)
 
 Create Sharedv4 PVCs | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This document describes how to use Portworx sharedv4 (ReadWriteMany) volumes in your cluster.
 

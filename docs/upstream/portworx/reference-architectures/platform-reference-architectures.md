@@ -1,12 +1,8 @@
 # Platform reference architectures
 
-Source: https://docs.portworx.com/portworx-enterprise/reference-architectures/platform-reference-architectures (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference-architectures/platform-reference-architectures (Portworx Enterprise latest)
 
 Platform reference architectures | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The following Portworx reference architecture documents contain a validated architecture and design model to deploy Portworx on different environments. These documents are intended for Kubernetes Administrators and Cloud Architects who are familiar with Portworx.
 

@@ -1,12 +1,8 @@
 # Dynamic Provisioning of PVCs
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/dynamic-provisioning (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/dynamic-provisioning (Portworx Enterprise latest)
 
 Dynamic Provisioning of PVCs | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This document describes how to dynamically provision a volume using Kubernetes and Portworx. With dynamic provisioning and StorageClasses, you do not need to create Portworx volumes manually; volumes are created automatically when a PersistentVolumeClaim (PVC) is created.
 

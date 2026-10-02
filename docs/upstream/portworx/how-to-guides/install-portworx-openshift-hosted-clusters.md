@@ -1,12 +1,8 @@
 # How to deploy OpenShift hosted clusters with Portworx
 
-Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/install-portworx-openshift-hosted-clusters (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/install-portworx-openshift-hosted-clusters (Portworx Enterprise latest)
 
 How to deploy OpenShift hosted clusters with Portworx | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 OpenShift supports a deployment model called Hosted Control Planes (HCP) that decouples the control plane of a cluster from its worker nodes by hosting the control plane components in a separate, centralized OpenShift cluster. This centralized cluster can act as a management plane for multiple hosted clusters, allowing resource consolidation.
 

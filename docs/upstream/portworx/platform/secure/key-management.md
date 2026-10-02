@@ -1,12 +1,8 @@
 # Set Up Key Management and Encrypt Portworx Volumes
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/secure/key-management (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/secure/key-management (Portworx Enterprise latest)
 
 Set Up Key Management and Encrypt Portworx Volumes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic provides an overview of how to configure a secret store in Portworx Enterprise and to encrypt volumes using secrets.
 Under the hood, Portworx uses the `libgcrypt` library to interface with the `dm-crypt` module for creating, accessing and managing encrypted devices. Portworx uses the `LUKS` format of `dm-crypt` and `AES-256` as the cipher with `xts-plain64` as the cipher mode.

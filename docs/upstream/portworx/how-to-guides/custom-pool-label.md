@@ -1,12 +1,8 @@
 # How to assign custom labels to device pools
 
-Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/custom-pool-label (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/custom-pool-label (Portworx Enterprise latest)
 
 How to assign custom labels to device pools | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Assign custom labels to local storage devices during Portworx installation to control the placement of volumes and replicas. Labels applied to individual devices propagate to the storage pool that contains them. These labels serve as scheduling hints, enabling intelligent placement of volumes and replicas based on pool-level characteristics.
 

@@ -1,12 +1,8 @@
 # Deploy MinIO with Portworx
 
-Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/minio (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/minio (Portworx Enterprise latest)
 
 Deploy MinIO with Portworx | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 MinIO is a high-performance distributed object store with an S3 compatible API. The following steps show how to deploy MinIO operator and tenant on Kubernetes.
 

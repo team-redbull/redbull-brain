@@ -1,12 +1,8 @@
 # ClusterPair CRD reference
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/crd/clusterpairs (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/crd/clusterpairs (Portworx Enterprise latest)
 
 ClusterPair CRD reference | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ClusterPair represents pairing with other clusters.
 

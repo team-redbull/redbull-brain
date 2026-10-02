@@ -1,12 +1,8 @@
 # Performance Tuning
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/tuning (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/tuning (Portworx Enterprise latest)
 
 Performance Tuning | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx has best practices for both global container level optimization, as well as volume granular optimization.
 

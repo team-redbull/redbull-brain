@@ -1,12 +1,8 @@
 # Prepare your Portworx cluster
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/async-dr/prepare-px-cluster (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/async-dr/prepare-px-cluster (Portworx Enterprise latest)
 
 Prepare your Portworx cluster | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 When running Portworx in the cloud, you must configure an external load balancer for the `portworx-api` service type on your source and destination clusters. The external load balancer assigns a public IP address for accessing Portworx on port 9001 from your worker nodes.
 

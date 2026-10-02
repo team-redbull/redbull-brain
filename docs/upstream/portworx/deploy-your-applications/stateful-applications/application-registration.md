@@ -1,12 +1,8 @@
 # Register Application CRDs for Stork Disaster Recovery
 
-Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/stateful-applications/application-registration (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/stateful-applications/application-registration (Portworx Enterprise latest)
 
 Register Application CRDs for Stork Disaster Recovery | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Stork uses ApplicationRegistration custom resources to register your application CRDs for cluster-to-cluster migration and disaster recovery failover and failback. When Stork knows about your custom CRDs, it can migrate, scale down, and stash them appropriately during DR operations.
 

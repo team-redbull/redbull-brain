@@ -1,12 +1,8 @@
 # Observability
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/observability (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/observability (Portworx Enterprise latest)
 
 Observability | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx Enterprise provides built-in observability features to help you monitor the health of your cluster deployment, collect metrics, and send diagnostic information to Everpure support. Observability ensures that both cluster operators and Everpure can detect issues quickly and maintain system reliability. Observability varies depending on your deployment environment.
 

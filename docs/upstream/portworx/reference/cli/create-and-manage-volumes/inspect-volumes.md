@@ -1,12 +1,8 @@
 # Inspect Volumes
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/create-and-manage-volumes/inspect-volumes (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/create-and-manage-volumes/inspect-volumes (Portworx Enterprise latest)
 
 Inspect Volumes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This document explains how you can get detailed information about the settings and the usage of your Portworx volumes. This can be used to investigate various aspects related to your Portworx cluster such as identifying bottlenecks or improving the overall performance.
 

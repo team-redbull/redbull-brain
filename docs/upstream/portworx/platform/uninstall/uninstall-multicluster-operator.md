@@ -1,12 +1,8 @@
 # Uninstall the Portworx MultiCluster Operator
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/uninstall/uninstall-multicluster-operator (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/uninstall/uninstall-multicluster-operator (Portworx Enterprise latest)
 
 Uninstall the Portworx MultiCluster Operator | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 When you no longer need ACM-based disaster recovery, uninstall the Portworx MultiCluster Operator from the ACM hub cluster. Uninstalling the operator also disables and removes the Portworx ACM Dynamic Console Plugin.
 

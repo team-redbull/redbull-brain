@@ -1,12 +1,8 @@
 # Installation on vSphere Cluster using Helm
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/vsphere/vsphere-helm (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/vsphere/vsphere-helm (Portworx Enterprise latest)
 
 Installation on vSphere Cluster using Helm | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic provides instructions for installing Portworx on a VMware vSphere cluster using the Portworx helm chart.
 

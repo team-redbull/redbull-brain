@@ -1,12 +1,8 @@
 # Storageless nodes with Portworx Enterprise
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/storageless-nodes (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/storageless-nodes (Portworx Enterprise latest)
 
 Storageless nodes with Portworx Enterprise | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx Enterprise can be run in a client-only mode such that the storage available in a Portworx can be consumed by apps that are running on nodes that have no storage. This enables deployments to leverage the powerful Portworx Enterprise features from any node without having to rely on legacy protocols and adopt containerization faster.
 

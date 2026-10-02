@@ -1,12 +1,8 @@
 # Secure Boot for Portworx Enterprise
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/secure/secure-boot (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/secure/secure-boot (Portworx Enterprise latest)
 
 Secure Boot for Portworx Enterprise | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 UEFI Secure Boot allows only signed and trusted kernel modules to load during system boot. When you enable Secure Boot, the system validates modules using enrolled certificates. Although optional, enabling Secure Boot adds an extra layer of security by verifying module authenticity before loading.
 

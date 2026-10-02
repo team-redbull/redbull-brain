@@ -1,12 +1,8 @@
 # Upgrade Portworx Marketplace Deployment
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/upgrade/upgrade-marketplace (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/upgrade/upgrade-marketplace (Portworx Enterprise latest)
 
 Upgrade Portworx Marketplace Deployment | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## Upgrade or reconfigure Portworx using AWS Marketplace​
 

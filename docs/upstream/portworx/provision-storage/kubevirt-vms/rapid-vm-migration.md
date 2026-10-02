@@ -1,12 +1,8 @@
 # Rapid Migration of VMs from VMware to OpenShift Virtualization using XCOPY
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/kubevirt-vms/rapid-vm-migration (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/kubevirt-vms/rapid-vm-migration (Portworx Enterprise latest)
 
 Rapid Migration of VMs from VMware to OpenShift Virtualization using XCOPY | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic explains how to rapidly migrate VMware virtual machines to OpenShift Virtualization by using the storage copy offload feature of Migration Toolkit for Virtualization (MTV, formerly Forklift) with Portworx as the storage platform.
 

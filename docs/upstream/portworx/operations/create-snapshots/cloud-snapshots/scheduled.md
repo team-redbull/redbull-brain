@@ -1,12 +1,8 @@
 # Scheduled Snapshots
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/create-snapshots/cloud-snapshots/scheduled (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/create-snapshots/cloud-snapshots/scheduled (Portworx Enterprise latest)
 
 Scheduled Snapshots | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 For PVCs provisioned by the Portworx CSI driver (`pxd.portworx.com`), the recommended way to schedule snapshots is with a `VolumeSnapshotClass` referenced from a `StorageClass` or `VolumeSnapshotSchedule`. See Associate a schedule policy using a CSI VolumeSnapshotClass. PVCs provisioned by the legacy in-tree Portworx driver use the VolumeSnapshotSchedule method instead.
 

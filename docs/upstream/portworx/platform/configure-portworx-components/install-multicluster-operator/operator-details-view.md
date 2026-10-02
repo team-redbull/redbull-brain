@@ -1,12 +1,8 @@
 # Portworx MultiCluster Operator Details View
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/configure-portworx-components/install-multicluster-operator/operator-details-view (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/configure-portworx-components/install-multicluster-operator/operator-details-view (Portworx Enterprise latest)
 
 Portworx MultiCluster Operator Details View | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 After you install the Portworx MultiCluster Operator, the Installed Operators page in the OpenShift console lists the Portworx Multi-Cluster Operator. Select the operator to open its details page, where you can view installation information and inspect or manage the disaster recovery custom resources that the operator provides.
 

@@ -1,12 +1,8 @@
 # Use Rancher Projects with ClusterPair
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/px-metro/rancher-projects (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/px-metro/rancher-projects (Portworx Enterprise latest)
 
 Use Rancher Projects with ClusterPair | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 note
 

@@ -336,12 +336,10 @@
     {
       "name": "portworx-docs",
       "kind": "markdown_dir",
-      "enabled": false,
-      "description": "Portworx documentation. No public source repo exists (portworx/px-docs is an archived 2018 snapshot; the docs.portworx.com source is private). Enable by pointing PORTWORX_DOCS_DIR at an internal export/mirror of the docs for the version we run",
-      "root": "${PORTWORX_DOCS_DIR:-~/.cache/team-brain/portworx-docs}",
+      "description": "Portworx Enterprise documentation, latest release (3.7 at last sync; mirrored by scripts/sync-portworx-docs.py from docs.portworx.com — no public source repo). For the installed older version, confirm behaviour in RHOKP/support matrix",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/portworx",
       "include": [
-        "**/*.md",
-        "**/*.html"
+        "**/*.md"
       ]
     },
     {

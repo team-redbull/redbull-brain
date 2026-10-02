@@ -1,12 +1,8 @@
 # Set up a Cluster Admin namespace for migration
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/migration/cluster-admin-namespace (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/migration/cluster-admin-namespace (Portworx Enterprise latest)
 
 Set up a Cluster Admin namespace for migration | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 By default, you can only migrate namespaces in which the Migration object is created. This is to prevent any user from migrating namespaces for which they do not have access.
  By default, `kube-system` is the admin namespace, but you can also designate a different namespace as the admin namespace.

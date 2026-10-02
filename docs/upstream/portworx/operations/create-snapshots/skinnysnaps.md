@@ -1,12 +1,8 @@
 # SkinnySnaps
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/create-snapshots/skinnysnaps (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/create-snapshots/skinnysnaps (Portworx Enterprise latest)
 
 SkinnySnaps | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx SkinnySnaps provide you with a mechanism for controlling how your cluster takes and stores volume snapshots. This allows you to optimize performance by configuring how many snapshot replicas your cluster stores independently from the number of volume replicas you have.
 

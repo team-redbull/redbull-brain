@@ -1,12 +1,8 @@
 # DataExport CRD reference
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/crd/dataexports (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/crd/dataexports (Portworx Enterprise latest)
 
 DataExport CRD reference | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 DataExport defines a spec for importing of application data from a non Portworx PVC (source) to a PVC backed by Portworx..
 

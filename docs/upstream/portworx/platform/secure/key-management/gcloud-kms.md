@@ -1,12 +1,8 @@
 # Google Cloud KMS
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/secure/key-management/gcloud-kms (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/secure/key-management/gcloud-kms (Portworx Enterprise latest)
 
 Google Cloud KMS | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx integrates with Google Cloud KMS to store your Portworx secrets for Volume Encryption and Cloud Credentials. This topic explains how to configure a Portworx cluster with Google Cloud KMS.
 

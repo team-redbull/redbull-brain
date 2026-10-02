@@ -1,12 +1,8 @@
 # Incremental Cloud Snapshots
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/create-snapshots/cloud-snapshots/incremental-cloudsnaps (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/create-snapshots/cloud-snapshots/incremental-cloudsnaps (Portworx Enterprise latest)
 
 Incremental Cloud Snapshots | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 When Portworx takes and uploads backups for cloud snapshots (CloudSnaps), it first takes and uploads a full backup to your cloud provider. After the initial upload, Portworx uploads a series of incremental backups punctuated by an occasional full backup. By default, Portworx uploads a full backup every 7th cloud backup it performs. You can control the frequency with which Portworx uploads a full backup by configuring cluster options.
 

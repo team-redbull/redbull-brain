@@ -1,12 +1,8 @@
 # Storage pools
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/storage-pools (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/storage-pools (Portworx Enterprise latest)
 
 Storage pools | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 A storage pool is a logical grouping of a node's physical drives. Portworx uses the space in a storage pool to dynamically create virtual volumes on containers.
 

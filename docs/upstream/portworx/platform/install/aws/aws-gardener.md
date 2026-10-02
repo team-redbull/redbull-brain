@@ -1,12 +1,8 @@
 # Installation on an AWS Gardener Cluster
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/aws/aws-gardener (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/aws/aws-gardener (Portworx Enterprise latest)
 
 Installation on an AWS Gardener Cluster | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic provides instructions for installing Portworx Enterprise on a Gardener cluster running on AWS. Ensure that your cluster meets all the prerequisites before installing Portworx Enterprise.
 

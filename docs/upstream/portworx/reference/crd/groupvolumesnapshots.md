@@ -1,12 +1,8 @@
 # GroupVolumeSnapshot CRD reference
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/crd/groupvolumesnapshots (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/crd/groupvolumesnapshots (Portworx Enterprise latest)
 
 GroupVolumeSnapshot CRD reference | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 GroupVolumeSnapshot represents a group snapshot.
 

@@ -1,12 +1,8 @@
 # System Requirements
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/prerequisites (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/prerequisites (Portworx Enterprise latest)
 
 System Requirements | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Before installing Portworx Enterprise, ensure your environment meets the minimum requirements for a stable and supported deployment. A Portworx cluster must include at least three nodes, each meeting specific hardware, software, and network requirements.
 

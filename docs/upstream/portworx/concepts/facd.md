@@ -1,12 +1,8 @@
 # FlashArray Cloud Drives
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/facd (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/facd (Portworx Enterprise latest)
 
 FlashArray Cloud Drives | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 When you deploy Portworx with FlashArray or Everpure Cloud Dedicated (formerly Cloud Block Store) as a cloud storage provider, Portworx runs on each node and creates a storage pool using volumes provisioned from FlashArray, as defined in the `StorageCluster` specification. When a user creates a Portworx volume PersistentVolumeClaim (PVC), Portworx provisions the volume from this pool.
 

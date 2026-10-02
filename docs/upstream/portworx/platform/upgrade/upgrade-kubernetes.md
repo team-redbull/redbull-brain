@@ -1,12 +1,8 @@
 # Upgrade Kubernetes using Smart Upgrade
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/upgrade/upgrade-kubernetes (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/upgrade/upgrade-kubernetes (Portworx Enterprise latest)
 
 Upgrade Kubernetes using Smart Upgrade | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This document explains how to leverage the smart upgrade feature of Portworx to upgrade multiple Kubernetes nodes in parallel without any disruption.
 

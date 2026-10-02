@@ -1,12 +1,8 @@
 # storkctl get
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/storkctl-reference/get (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/storkctl-reference/get (Portworx Enterprise latest)
 
 storkctl get | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Get stork resources
 

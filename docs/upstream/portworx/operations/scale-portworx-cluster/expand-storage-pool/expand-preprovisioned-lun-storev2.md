@@ -1,12 +1,8 @@
 # Expand a Pre-Provisioned LUN or Disk in a PX-StoreV2 Storage Pool
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/expand-storage-pool/expand-preprovisioned-lun-storev2 (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/expand-storage-pool/expand-preprovisioned-lun-storev2 (Portworx Enterprise latest)
 
 Expand a Pre-Provisioned LUN or Disk in a PX-StoreV2 Storage Pool | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 When you expand a pre-provisioned LUN or disk at the storage backend (for example, by resizing a Pure FlashArray LUN or a vSphere virtual disk), PX-StoreV2 does not detect the change automatically. You must rescan the device at the OS level and then cycle Portworx Enterprise through maintenance mode for the storage pool to reflect the new capacity.
 

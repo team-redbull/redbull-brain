@@ -1,12 +1,8 @@
 # Verify Portworx Docker image signatures with Cosign
 
-Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/verify-cosign (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/verify-cosign (Portworx Enterprise latest)
 
 Verify Portworx Docker image signatures with Cosign | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This document explains how to ensure you are using a signed and verified Portworx container image for deploying container on your Kubernetes cluster. You can verify that a Portworx container image matches a trusted signature using Cosign. Cosign is part of the Sigstore project and is commonly used for container image signing and verification.
 

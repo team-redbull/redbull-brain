@@ -1,12 +1,8 @@
 # Uninstall Portworx from a Kubernetes cluster using the Operator
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/uninstall/uninstall-operator (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/uninstall/uninstall-operator (Portworx Enterprise latest)
 
 Uninstall Portworx from a Kubernetes cluster using the Operator | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Using the Portworx Operator, you can efficiently uninstall Portworx from your clusters by updating the `StorageCluster` object. You have the option to either keep the data on your drives or wipe it completely.
 

@@ -1,12 +1,8 @@
 # storkctl resume
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/storkctl-reference/resume (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/storkctl-reference/resume (Portworx Enterprise latest)
 
 storkctl resume | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Resume schedules
 

@@ -1,12 +1,8 @@
 # Snapshots operations using pxctl
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/snapshots (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/snapshots (Portworx Enterprise latest)
 
 Snapshots operations using pxctl | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Snapshots are efficient, point-in-time, read-only copies of volumes. You can use snapshots to read data, restore a volume, or create clones.
 

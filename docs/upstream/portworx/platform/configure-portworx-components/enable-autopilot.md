@@ -1,12 +1,8 @@
 # Portworx Autopilot
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/configure-portworx-components/enable-autopilot (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/configure-portworx-components/enable-autopilot (Portworx Enterprise latest)
 
 Portworx Autopilot | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Autopilot is a rule-based engine that responds to changes based on metric conditions and then automatically takes actions such as adding capacity, rebalancing storage and so on. Autopilot allows you to specify monitoring conditions along with actions it should take when the conditions occur.
 

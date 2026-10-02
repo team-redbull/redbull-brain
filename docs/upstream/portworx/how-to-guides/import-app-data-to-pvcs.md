@@ -1,12 +1,8 @@
 # Import application data from non-Portworx PVC to Portworx PVCs
 
-Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/import-app-data-to-pvcs (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/import-app-data-to-pvcs (Portworx Enterprise latest)
 
 Import application data from non-Portworx PVC to Portworx PVCs | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 In modern Kubernetes-based infrastructure, data migration and application deployment are critical tasks. This document provides a step-by-step guide on how to import application data from a PVC backed by a non Portworx storage driver onto PVCs created by Portworx.
 

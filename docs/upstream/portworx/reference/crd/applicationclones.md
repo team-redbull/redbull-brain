@@ -1,12 +1,8 @@
 # ApplicationClone CRD reference
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/crd/applicationclones (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/crd/applicationclones (Portworx Enterprise latest)
 
 ApplicationClone CRD reference | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ApplicationClone represents the cloning of application in different namespaces.
 

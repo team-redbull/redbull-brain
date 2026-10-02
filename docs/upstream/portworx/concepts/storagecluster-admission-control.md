@@ -1,12 +1,8 @@
 # StorageCluster Admission Control
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/storagecluster-admission-control (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/storagecluster-admission-control (Portworx Enterprise latest)
 
 StorageCluster Admission Control | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Starting with Portworx Operator 26.3.2, the operator enforces cluster-admin rights for all create, update, and delete operations on StorageCluster resources by using a Kubernetes `ValidatingAdmissionPolicy` (VAP). This policy prevents unauthorized users or service accounts from creating, modifying, or deleting the StorageCluster, which controls the entire Portworx storage cluster.
 

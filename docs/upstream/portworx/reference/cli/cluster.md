@@ -1,12 +1,8 @@
 # Cluster operations using pxctl
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/cluster (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/cluster (Portworx Enterprise latest)
 
 Cluster operations using pxctl | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This document outlines how to manage your Portworx cluster operation with `pxctl cluster`. Run the `/opt/pwx/bin/pxctl cluster` with the `--help` flag to list the available subcommands and flags.
 

@@ -1,12 +1,8 @@
 # Manage Volume Lifecycle with CSI Driver
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/volume-lifecycle (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/volume-lifecycle (Portworx Enterprise latest)
 
 Manage Volume Lifecycle with CSI Driver | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The Container Storage Interface (CSI) is a standard for exposing storage to workloads on Kubernetes. Portworx implements a CSI driver that integrates with the Kubernetes storage framework, enabling dynamic provisioning, snapshotting, cloning, and volume expansion through native Kubernetes APIs.
 

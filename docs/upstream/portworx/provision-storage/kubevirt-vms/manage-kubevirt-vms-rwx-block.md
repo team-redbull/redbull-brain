@@ -1,12 +1,8 @@
 # Manage Shared Block Device (RWX Block) for KubeVirt VMs
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/kubevirt-vms/manage-kubevirt-vms-rwx-block (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/kubevirt-vms/manage-kubevirt-vms-rwx-block (Portworx Enterprise latest)
 
 Manage Shared Block Device (RWX Block) for KubeVirt VMs | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx supports volumes for KubeVirt virtual machines (VMs) as storage disks in various configurations. To enable features such as live migration, these volumes must support the ReadWriteMany (RWX) access mode. Portworx supports the RWX block volume type, which offers improved performance in certain scenarios, and also supports the RWX file system (FS) volume type.
 

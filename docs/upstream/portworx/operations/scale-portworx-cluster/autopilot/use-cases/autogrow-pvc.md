@@ -1,12 +1,8 @@
 # Automatically grow PVCs
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/autopilot/use-cases/autogrow-pvc (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/autopilot/use-cases/autogrow-pvc (Portworx Enterprise latest)
 
 Automatically grow PVCs | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## Using Autopilot to Autogrow PVCs​
 

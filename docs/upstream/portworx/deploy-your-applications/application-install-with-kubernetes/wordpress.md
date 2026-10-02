@@ -1,12 +1,8 @@
 # Deploy WordPress and MySQL with Portworx
 
-Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/wordpress (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/wordpress (Portworx Enterprise latest)
 
 Deploy WordPress and MySQL with Portworx | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 You can deploy WordPress, an open-source content management system, with Portworx on Kubernetes. Portworx enables reliable and persistent storage to ensure WordPress runs with HA and has Shared4 volumes for file uploads. You can horizontally scale the WordPress container. The cluster automatically repairs itself in the event of a node failure.
 

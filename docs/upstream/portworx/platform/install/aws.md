@@ -1,12 +1,8 @@
 # Install Portworx on Amazon Web Services
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/aws (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/aws (Portworx Enterprise latest)
 
 Install Portworx on Amazon Web Services | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx Enterprise can be installed on both Amazon Web Services (AWS) Cloud and on-premises data centers. The installation process differs depending on whether you are using Amazon Elastic Kubernetes Service (EKS), EKS with hybrid nodes in your own data center, Red Hat OpenShift Service on AWS (ROSA), or a Gardener cluster on AWS.
 

@@ -1,12 +1,8 @@
 # Operation control with systemd
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/troubleshooting/operation-control-with-systemd (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/troubleshooting/operation-control-with-systemd (Portworx Enterprise latest)
 
 Operation control with systemd | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This guide shows how you can perform systemctl operations using kubectl or oc to control the Portworx systemd service. Portworx already manages the lifecycle of the systemd service and hence these operations should not be required in a properly functioning cluster.
 

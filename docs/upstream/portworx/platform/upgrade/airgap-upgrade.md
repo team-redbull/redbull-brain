@@ -1,12 +1,8 @@
 # Upgrade an Air-Gapped Portworx Cluster
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/upgrade/airgap-upgrade (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/upgrade/airgap-upgrade (Portworx Enterprise latest)
 
 Upgrade an Air-Gapped Portworx Cluster | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 During installation on an internet-connected Kubernetes cluster, Portworx fetches the resources necessary for installation from the internet automatically. However, while installing Portworx on an air-gapped cluster, you would have to perform an extra step to pre-stage these resources within the air-gapped environment.
 

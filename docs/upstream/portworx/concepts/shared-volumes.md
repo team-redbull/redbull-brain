@@ -1,12 +1,8 @@
 # Sharedv4 Volumes
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/shared-volumes (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/shared-volumes (Portworx Enterprise latest)
 
 Sharedv4 Volumes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Through sharedv4 volumes (also known as a global namespace), a single volume’s filesystem is concurrently available to multiple containers running on multiple hosts.
 

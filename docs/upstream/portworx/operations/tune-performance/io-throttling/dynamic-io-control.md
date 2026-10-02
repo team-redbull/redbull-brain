@@ -1,12 +1,8 @@
 # Dynamic App I/O Control with Autopilot
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/tune-performance/io-throttling/dynamic-io-control (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/tune-performance/io-throttling/dynamic-io-control (Portworx Enterprise latest)
 
 Dynamic App I/O Control with Autopilot | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx with Autopilot enables dynamic updates to the I/O throttle limits, when the volume size changes. You can dynamically configure the throttling limits for IOPS and Bandwidth by providing scaling factors and a range for the throttle limits (floor and ceiling limit) in the `StorageClass`.
 

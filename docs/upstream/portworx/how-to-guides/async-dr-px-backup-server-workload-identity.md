@@ -1,12 +1,8 @@
 # Asynchronous disaster recovery of the Portworx Backup server with workload identity
 
-Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/async-dr-px-backup-server-workload-identity (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/async-dr-px-backup-server-workload-identity (Portworx Enterprise latest)
 
 Asynchronous disaster recovery of the Portworx Backup server with workload identity | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This guide describes how to set up asynchronous disaster recovery (DR) for your Portworx Backup server, using cloud provider workload identity to authenticate with the backup location instead of static credentials. Workload identity removes the need to store and rotate long-lived cloud credentials for DR, which is required in environments that enforce federated identity for cloud access.
 

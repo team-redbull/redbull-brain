@@ -1,12 +1,8 @@
 # Update Portworx file system dependencies
 
-Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/pxlibupdate (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/pxlibupdate (Portworx Enterprise latest)
 
 Update Portworx file system dependencies | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The Portworx Enterprise container ships with an archive containing precompiled modules for the kernels which were available at the time the container was released. If a kernel is released after a Portworx release, a pre-compiled version of the modules will not exist in the container. If Portworx is deployed in a setup which does not have access to `mirrors.portworx.com` to download the latest modules (for example, an air-gapped deployment), then Portworx will fail to come up.
 

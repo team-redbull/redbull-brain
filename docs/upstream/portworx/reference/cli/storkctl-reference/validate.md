@@ -1,12 +1,8 @@
 # storkctl validate
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/storkctl-reference/validate (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/storkctl-reference/validate (Portworx Enterprise latest)
 
 storkctl validate | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Validate stork resources
 

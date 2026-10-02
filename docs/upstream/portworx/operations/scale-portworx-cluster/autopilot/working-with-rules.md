@@ -1,12 +1,8 @@
 # Working with Autopilot Rules
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/autopilot/working-with-rules (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/autopilot/working-with-rules (Portworx Enterprise latest)
 
 Working with Autopilot Rules | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Users use an AutopilotRule CRD to tell Autopilot which objects to monitor, the conditions to monitor, and the corresponding actions to perform when conditions occur.
 

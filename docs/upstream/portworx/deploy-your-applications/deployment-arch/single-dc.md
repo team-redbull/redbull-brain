@@ -1,12 +1,8 @@
 # Single Data Center Deployment
 
-Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/deployment-arch/single-dc (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/deployment-arch/single-dc (Portworx Enterprise latest)
 
 Single Data Center Deployment | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 When you want to deploy applications in a Portworx cluster in a public cloud with availability zones (AZ), or in an on-premises data center with fault domains, you have the following two options:
 

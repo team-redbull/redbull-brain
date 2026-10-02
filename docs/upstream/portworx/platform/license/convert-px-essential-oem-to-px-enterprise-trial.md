@@ -1,12 +1,8 @@
 # Migrate from Portworx Essentials to Portworx Enterprise license
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/license/convert-px-essential-oem-to-px-enterprise-trial (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/license/convert-px-essential-oem-to-px-enterprise-trial (Portworx Enterprise latest)
 
 Migrate from Portworx Essentials to Portworx Enterprise license | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 With the discontinuation of Portworx Essentials, customers using the PX-Essentials license SKU will experience functionality restrictions when upgrading their Portworx release. Specifically, once the PX-Essentials license expires, users will no longer be able to:
 

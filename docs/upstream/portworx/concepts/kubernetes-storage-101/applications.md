@@ -1,12 +1,8 @@
 # Stateful applications
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/kubernetes-storage-101/applications (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/kubernetes-storage-101/applications (Portworx Enterprise latest)
 
 Stateful applications | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 When working on stateful applications on Kubernetes, users typically deal with Deployments and Statefulsets. In theory, any Kubernetes workload type that can mount a volume can use a PersistentVolumeClaim.
 

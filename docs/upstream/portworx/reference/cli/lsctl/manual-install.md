@@ -1,12 +1,8 @@
 # Manually install a Portworx license server
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/lsctl/manual-install (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/lsctl/manual-install (Portworx Enterprise latest)
 
 Manually install a Portworx license server | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Perform the steps in this topic to manually install a Portworx license server.
 

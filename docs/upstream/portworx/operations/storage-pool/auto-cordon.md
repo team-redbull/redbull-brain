@@ -1,12 +1,8 @@
 # Recover Storage Nodes with Auto Cordon
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/storage-pool/auto-cordon (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/storage-pool/auto-cordon (Portworx Enterprise latest)
 
 Recover Storage Nodes with Auto Cordon | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Auto Cordon limits the impact of a storage pool failure by returning the affected node and its healthy storage pools to service while isolating the failed pool. This allows the node's remaining healthy storage capacity to stay available until you repair the underlying disk or pool failure.
 

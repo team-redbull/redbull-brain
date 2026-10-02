@@ -1,12 +1,8 @@
 # Deploy Elasticsearch and Kibana with Portworx
 
-Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/elastic-search-and-kibana (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/elastic-search-and-kibana (Portworx Enterprise latest)
 
 Deploy Elasticsearch and Kibana with Portworx | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Elasticsearch is the distributed search and analytics engine that provides a unified data store for solutions built on the Elastic Stack.
 

@@ -1,12 +1,8 @@
 # Upgrade Portworx Cluster using the Blue-Green Method
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/upgrade/blue-green-upgrade (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/upgrade/blue-green-upgrade (Portworx Enterprise latest)
 
 Upgrade Portworx Cluster using the Blue-Green Method | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This document explains how to upgrade your Portworx cluster using the blue-green method. The blue-green upgrade method may be automatically run by your cloud provider or Kubernetes management system, or you could also use this method to upgrade your cluster manually.
 

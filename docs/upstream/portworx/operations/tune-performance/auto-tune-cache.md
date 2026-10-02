@@ -1,12 +1,8 @@
 # Optimize Cache Performance with Auto-Tune Cache Migration Threshold
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/tune-performance/auto-tune-cache (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/tune-performance/auto-tune-cache (Portworx Enterprise latest)
 
 Optimize Cache Performance with Auto-Tune Cache Migration Threshold | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Enable auto-tune and optimize your cache performance by auto-tuning cache tunables like migration threshold.
 

@@ -1,12 +1,8 @@
 # Upgrade Portworx Enterprise
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/upgrade (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/upgrade (Portworx Enterprise latest)
 
 Upgrade Portworx Enterprise | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The topics below provide comprehensive instructions for upgrading Portworx Enterprise on Kubernetes and OpenShift. Choose the appropriate upgrade method based on your installation type, platform, and specific requirements. Before proceeding with any upgrade, review the Portworx Enterprise Release Notes of your target version, and also verify the compatibility of your distros and kernel with the target version (see Supported Kernels).
 

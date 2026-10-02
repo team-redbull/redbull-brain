@@ -1,12 +1,8 @@
 # Installation on an Amazon EKS Cluster with Hybrid Nodes
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/aws/aws-eks-hybrid (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/aws/aws-eks-hybrid (Portworx Enterprise latest)
 
 Installation on an Amazon EKS Cluster with Hybrid Nodes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Amazon EKS Hybrid Nodes lets you attach on-premises hosts as worker nodes to an Amazon Elastic Kubernetes Service (EKS) cluster whose control plane runs in AWS. Portworx Enterprise runs on the on-premises nodes while AWS manages the Kubernetes control plane.
 

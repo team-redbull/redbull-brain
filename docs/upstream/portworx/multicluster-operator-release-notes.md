@@ -1,12 +1,8 @@
 # Portworx MultiCluster Operator Release Notes
 
-Source: https://docs.portworx.com/portworx-enterprise/multicluster-operator-release-notes (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/multicluster-operator-release-notes (Portworx Enterprise latest)
 
 Portworx MultiCluster Operator Release Notes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## 26.1.0​
 

@@ -1,12 +1,8 @@
 # Configure Kubernetes Cluster Autoscaler to Autoscale Storage Nodes
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/autoscale-storage-nodes (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/autoscale-storage-nodes (Portworx Enterprise latest)
 
 Configure Kubernetes Cluster Autoscaler to Autoscale Storage Nodes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 To enable automatic provisioning of storage nodes when autoscaling with Cluster Autoscaler, you need to preconfigure the node template and add the `portworx.io/provision-storage-node="true"` label.
 

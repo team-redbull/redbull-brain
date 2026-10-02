@@ -1,12 +1,8 @@
 # Configure Storage Pool Cache
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/storage-pool/configure-pool-caching (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/storage-pool/configure-pool-caching (Portworx Enterprise latest)
 
 Configure Storage Pool Cache | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Storage pool caching helps with improving IOPS and latency. For more information, see Storage pool caching.
 

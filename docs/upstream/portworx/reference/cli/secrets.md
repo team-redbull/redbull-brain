@@ -1,12 +1,8 @@
 # Manage your secrets using pxctl
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/secrets (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/secrets (Portworx Enterprise latest)
 
 Manage your secrets using pxctl | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This section provides instructions for managing your authentication credentials and endpoints with the `pxctl secrets` command. Currently, `pxctl` provides support for the following secret store providers:
 

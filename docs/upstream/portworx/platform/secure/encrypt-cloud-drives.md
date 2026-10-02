@@ -1,12 +1,8 @@
 # Encrypt Cloud Drives
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/secure/encrypt-cloud-drives (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/secure/encrypt-cloud-drives (Portworx Enterprise latest)
 
 Encrypt Cloud Drives | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This section provides instructions on how to encrypt cloud drives in Portworx. While Portworx provides volume-level encryption, you may also want to encrypt the underlying cloud storage media using your cloud provider's key management services.
 

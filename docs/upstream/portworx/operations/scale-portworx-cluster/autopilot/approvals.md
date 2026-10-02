@@ -1,12 +1,8 @@
 # Action approvals with AutopilotRule
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/autopilot/approvals (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/autopilot/approvals (Portworx Enterprise latest)
 
 Action approvals with AutopilotRule | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## Prerequisites​
 

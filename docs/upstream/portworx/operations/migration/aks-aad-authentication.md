@@ -1,12 +1,8 @@
 # Automate authentication for AAD enabled AKS cluster
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/migration/aks-aad-authentication (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/migration/aks-aad-authentication (Portworx Enterprise latest)
 
 Automate authentication for AAD enabled AKS cluster | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 For running disaster recovery (DR) scenarios with Stork, you need to create a unidirectional or bidirectional ClusterPair with the ability to automatically authenticate Stork. When using an Azure Active Directory (AAD) enabled Azure Kubernetes Service (AKS) cluster, the `kubelogin` tool enables automatic login using a service principal.
 

@@ -1,12 +1,8 @@
 # Troubleshooting tips for common problem areas
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/troubleshooting/get-support (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/troubleshooting/get-support (Portworx Enterprise latest)
 
 Troubleshooting tips for common problem areas | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## Troubleshoot problems​
 

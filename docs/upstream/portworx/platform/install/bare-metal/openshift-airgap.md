@@ -1,12 +1,8 @@
 # Installation on an Air-Gapped Bare Metal OpenShift Cluster
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/bare-metal/openshift-airgap (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/bare-metal/openshift-airgap (Portworx Enterprise latest)
 
 Installation on an Air-Gapped Bare Metal OpenShift Cluster | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic provides instructions for installing Portworx on a bare metal OpenShift cluster using the OpenShift Container Platform web console.
 

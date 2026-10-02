@@ -1,12 +1,8 @@
 # Place replicas within the same domain
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/px-metro/replicas-on-the-same-cluster-domain (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/px-metro/replicas-on-the-same-cluster-domain (Portworx Enterprise latest)
 
 Place replicas within the same domain | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Once your Portworx cluster is operational, the replica 2 volumes will distribute their replicas across the two cluster domains. You can control this behavior using the `Metro DR domain protection` flag, which is enabled by default.
 

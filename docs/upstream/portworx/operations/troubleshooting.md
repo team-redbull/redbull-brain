@@ -1,12 +1,8 @@
 # Troubleshoot
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/troubleshooting (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/troubleshooting (Portworx Enterprise latest)
 
 Troubleshoot | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Below topics cover troubleshooting Portworx on Kubernetes.
 

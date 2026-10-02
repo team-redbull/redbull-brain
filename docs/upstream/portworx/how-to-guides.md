@@ -1,12 +1,8 @@
 # How to Guides
 
-Source: https://docs.portworx.com/portworx-enterprise/how-to-guides (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/how-to-guides (Portworx Enterprise latest)
 
 How to Guides | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## 📄️How to enable TLS for Internal KVDB
 

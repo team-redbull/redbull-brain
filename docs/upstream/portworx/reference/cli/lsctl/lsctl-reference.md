@@ -1,12 +1,8 @@
 # Lsctl command reference
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/lsctl/lsctl-reference (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/lsctl/lsctl-reference (Portworx Enterprise latest)
 
 Lsctl command reference | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## lsctl​
 

@@ -1,12 +1,8 @@
 # Failback an application
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/px-metro/failback-app (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/px-metro/failback-app (Portworx Enterprise latest)
 
 Failback an application | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Failback is the process of moving the application and its data back to the source cluster once the source cluster is restored and operational again.
 

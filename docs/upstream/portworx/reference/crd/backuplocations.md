@@ -1,12 +1,8 @@
 # BackupLocation CRD reference
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/crd/backuplocations (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/crd/backuplocations (Portworx Enterprise latest)
 
 BackupLocation CRD reference | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 BackupLocation represents a BackupLocation object.
 

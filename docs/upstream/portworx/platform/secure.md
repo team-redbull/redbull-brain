@@ -1,12 +1,8 @@
 # Securing your Portworx Setup
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/secure (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/secure (Portworx Enterprise latest)
 
 Securing your Portworx Setup | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 To help secure your Portworx Kubernetes cluster setup, consider the following approaches:
 

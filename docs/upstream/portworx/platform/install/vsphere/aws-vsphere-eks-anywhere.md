@@ -1,12 +1,8 @@
 # Install Portworx on vSphere with Amazon EKS Anywhere
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/vsphere/aws-vsphere-eks-anywhere (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/vsphere/aws-vsphere-eks-anywhere (Portworx Enterprise latest)
 
 Install Portworx on vSphere with Amazon EKS Anywhere | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx can be installed on a Kubernetes cluster running on vSphere and managed by Amazon EKS Anywhere.
 

@@ -1,12 +1,8 @@
 # Manage your Storage Pool Capacity
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/storage-pool/manage-storagepool (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/storage-pool/manage-storagepool (Portworx Enterprise latest)
 
 Manage your Storage Pool Capacity | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 As your cluster usage increases and the data on your storage pools grows, you may start to run out of capacity. Portworx periodically measures and saves storage pool space usage statistics, which can be queried via the appropriate metrics or the CLI tool.
 

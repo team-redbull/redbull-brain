@@ -1,12 +1,8 @@
 # Install Portworx on Microsoft Azure
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/azure (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/azure (Portworx Enterprise latest)
 
 Install Portworx on Microsoft Azure | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 You can install Portworx on an Azure cluster to enable enterprise-grade cloud-native storage for your Kubernetes workloads. Portworx supports both standard Kubernetes deployments and OpenShift-based environments running on Azure. Portworx integrates natively with Azure, leveraging Azure resources for persistent storage management and advanced data services.
 

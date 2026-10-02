@@ -1,12 +1,8 @@
 # NodeDrain CRD Reference
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/crd/nodedrain (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/crd/nodedrain (Portworx Enterprise latest)
 
 NodeDrain CRD Reference | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 NodeDrain (`storagenode.io/v1`, kind NodeDrain) is a namespaced custom resource that the Portworx Operator creates and reconciles to track the drain lifecycle of a single Kubernetes node during migration of its datastore from PX-StoreV1 to PX-StoreV2. The operator creates one NodeDrain custom resource per node (or per batch of storageless nodes) being drained and updates its `status` as the node progresses through cordoning, data evacuation, and node cleanup. For the full workflow, see Migrate Portworx Datastore from PX-StoreV1 to PX-StoreV2.
 

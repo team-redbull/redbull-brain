@@ -1,12 +1,8 @@
 # IBM Cloud Drives
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/operate-ibm-cloud-drives (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/operate-ibm-cloud-drives (Portworx Enterprise latest)
 
 IBM Cloud Drives | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This page describes operations and troubleshooting for Portworx clusters on IBM VPC Gen2 Cloud with cloud drives.
 

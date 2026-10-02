@@ -1,12 +1,8 @@
 # Run Portworx on master nodes
 
-Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/run-portworx-master-node (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/run-portworx-master-node (Portworx Enterprise latest)
 
 Run Portworx on master nodes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 By default, Portworx is deployed on Kubernetes worker nodes. However, in some environments, especially those with constrained resources or unique scheduling requirements, you might need to run Portworx on master nodes. This ensures that all workloads have access to persistent storage, regardless of their scheduling location.
 

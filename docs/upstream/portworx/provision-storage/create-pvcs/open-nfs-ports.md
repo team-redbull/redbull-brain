@@ -1,12 +1,8 @@
 # Open NFS ports
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/open-nfs-ports (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/open-nfs-ports (Portworx Enterprise latest)
 
 Open NFS ports | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 SharedV4 volumes utilize NFS services, and they therefore require specific open NFS ports to allow for communication between nodes in your cluster. Depending on how your cluster nodes are configured, your firewall may block some of these ports, or your NFS ports may differ from the defaults. To solve these issues, you may need to manually assign NFS ports and ensure that your firewall or ACL allows them to communicate.
 

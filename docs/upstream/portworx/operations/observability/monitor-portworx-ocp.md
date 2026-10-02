@@ -1,12 +1,8 @@
 # Monitor Portworx Clusters on Openshift
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/observability/monitor-portworx-ocp (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/observability/monitor-portworx-ocp (Portworx Enterprise latest)
 
 Monitor Portworx Clusters on Openshift | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 You can observe and manage your Portworx cluster from the Portworx dashboard in the OpenShift web console. This dashboard provides a centralized dashboard to monitor the health, performance, and configuration of your Portworx storage cluster. After you install Portworx on an OpenShift cluster, the console automatically displays the associated pools, nodes, and volumes in the Portworx dashboard, allowing you to monitor storage performance directly within the OpenShift interface.
 

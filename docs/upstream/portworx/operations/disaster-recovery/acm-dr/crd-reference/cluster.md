@@ -1,12 +1,8 @@
 # Cluster CRD reference
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/acm-dr/crd-reference/cluster (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/acm-dr/crd-reference/cluster (Portworx Enterprise latest)
 
 Cluster CRD reference | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The `Cluster` CRD represents a workload cluster and exposes DR readiness, Portworx installation status, cluster health status, platform, and capacity information.
 

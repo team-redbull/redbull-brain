@@ -1,12 +1,8 @@
 # Configure Portworx Monitoring on Kubernetes
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/observability/set-kubernetes-prometheus (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/observability/set-kubernetes-prometheus (Portworx Enterprise latest)
 
 Configure Portworx Monitoring on Kubernetes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic provides instructions on how to configure monitoring for Portworx deployments on a Kubernetes cluster.
 

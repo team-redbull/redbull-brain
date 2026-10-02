@@ -1,12 +1,8 @@
 # Manage KubeVirt VMs with Portworx
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/kubevirt-vms (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/kubevirt-vms (Portworx Enterprise latest)
 
 Manage KubeVirt VMs with Portworx | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx by Everpure integrates with KubeVirt to provide Kubernetes native persistent storage for virtual machines (VMs), enabling shared access, high availability, and live migration on OpenShift and other supported distributions.
 

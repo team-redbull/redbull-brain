@@ -1,12 +1,8 @@
 # External KVDB for Portworx on Kubernetes
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/kvdb-for-portworx/external-kvdb (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/kvdb-for-portworx/external-kvdb (Portworx Enterprise latest)
 
 External KVDB for Portworx on Kubernetes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx can use an external key-value database (KVDB) to store cluster metadata and configuration data. Portworx supports etcd as the only external KVDB. etcd is a highly available, distributed key-value store that you deploy and manage independently of Portworx. Use an external KVDB only when required by your deployment.
 

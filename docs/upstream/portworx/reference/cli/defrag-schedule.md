@@ -1,12 +1,8 @@
 # Set de-fragmentation schedules
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/defrag-schedule (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/defrag-schedule (Portworx Enterprise latest)
 
 Set de-fragmentation schedules | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 De-fragmentation is a required process as fragmented data can lead to performance issues. Users can schedule to run this process during periods of low workloads, avoiding any interference and improving performance.
 

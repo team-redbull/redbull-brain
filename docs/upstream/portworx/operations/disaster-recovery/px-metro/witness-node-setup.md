@@ -1,12 +1,8 @@
 # Set up a witness node
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/px-metro/witness-node-setup (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/px-metro/witness-node-setup (Portworx Enterprise latest)
 
 Set up a witness node | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 In a Portworx cluster, quorum refers to the minimum number of active storage nodes necessary to maintain cluster operation. If at least half of the nodes are offline, the cluster loses quorum, causing all operations to stop, and Portworx does not process any IOs.
 

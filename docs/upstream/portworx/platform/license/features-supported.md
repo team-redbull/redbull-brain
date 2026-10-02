@@ -1,12 +1,8 @@
 # Features and configurations supported with different license types
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/license/features-supported (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/license/features-supported (Portworx Enterprise latest)
 
 Features and configurations supported with different license types | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 In the following table, you can see the overview of features that are controlled via licensing.
 

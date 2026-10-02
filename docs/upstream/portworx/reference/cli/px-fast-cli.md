@@ -1,12 +1,8 @@
 # PX-Fast volumes using pxctl
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/px-fast-cli (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/px-fast-cli (Portworx Enterprise latest)
 
 PX-Fast volumes using pxctl | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This section provides instructions for performing operations on PX-Fast volumes using `pxctl`.
 

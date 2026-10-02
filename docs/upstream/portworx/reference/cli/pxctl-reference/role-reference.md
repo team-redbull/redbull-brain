@@ -1,12 +1,8 @@
 # pxctl role
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/pxctl-reference/role-reference (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/pxctl-reference/role-reference (Portworx Enterprise latest)
 
 pxctl role | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## pxctl role
 

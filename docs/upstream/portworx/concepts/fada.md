@@ -1,12 +1,8 @@
 # FlashArray Direct Access
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/fada (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/fada (Portworx Enterprise latest)
 
 FlashArray Direct Access | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 In the Direct Access model, Portworx provisions volumes directly from FlashArray, bypassing the storage pool. When a PVC is created, Portworx provisions a FlashArray volume, mounts it directly to the pod, and writes data to the array.
 

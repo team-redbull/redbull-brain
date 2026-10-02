@@ -1,12 +1,8 @@
 # ResourceTransformation
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/crd/resource-transformation-usage (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/crd/resource-transformation-usage (Portworx Enterprise latest)
 
 ResourceTransformation | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Metro and asynchronous disaster recovery (DR) involves migrating Kubernetes resources from a source cluster to a destination cluster. To ensure applications can come up correctly on the destination clusters, you may need to modify resources such as `Service`, `ServiceAccount`, or `ConfigMap` to work as intended on your destination cluster. The ResourceTransformation feature allows you to define a set of rules that modify the Kubernetes resources before they are migrated to the destination cluster.
 

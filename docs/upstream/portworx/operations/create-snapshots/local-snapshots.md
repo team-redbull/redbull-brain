@@ -1,12 +1,8 @@
 # Local Snapshots
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/create-snapshots/local-snapshots (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/create-snapshots/local-snapshots (Portworx Enterprise latest)
 
 Local Snapshots | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 A local snapshot is a user-triggered, point-in-time copy of a volume or group of volumes, stored within the same Kubernetes cluster. Portworx stores the local snapshot on the same physical node or storage backend as the source data. You can use local snapshots to capture the current state of your data without moving it outside the cluster. They are fast to create, lightweight, and ideal for short-term protection and quick recovery from accidental changes or data corruption.
 

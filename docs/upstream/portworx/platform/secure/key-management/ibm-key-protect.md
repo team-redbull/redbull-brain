@@ -1,12 +1,8 @@
 # IBM key management services
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/secure/key-management/ibm-key-protect (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/secure/key-management/ibm-key-protect (Portworx Enterprise latest)
 
 IBM key management services | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx integrates with IBM Key Protect and Hyper Protect Crypto Services (HPCS) to store your encryption keys/secrets and credentials. This topic explains how to configure Portworx with IBM Key Protect or HPCS. IBM Key Protect and HPCS can be used to store Portworx secrets for Volume Encryption and Cloud Credentials.
 

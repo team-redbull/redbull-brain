@@ -1,12 +1,8 @@
 # Failover an application
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/async-dr/failover-app (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/async-dr/failover-app (Portworx Enterprise latest)
 
 Failover an application | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 In the event of a disaster, when one of your Kubernetes clusters becomes inaccessible, you have the option to failover the applications running on it to an operational Kubernetes cluster.
 

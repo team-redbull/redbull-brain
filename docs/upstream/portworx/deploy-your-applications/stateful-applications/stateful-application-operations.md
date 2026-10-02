@@ -1,12 +1,8 @@
 # Stateful Application Operations
 
-Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/stateful-applications/stateful-application-operations (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/stateful-applications/stateful-application-operations (Portworx Enterprise latest)
 
 Stateful Application Operations | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## Customize StorageClass for your application​
 

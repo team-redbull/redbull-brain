@@ -1,12 +1,8 @@
 # RBAC Overview
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/authorization/overview (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/authorization/overview (Portworx Enterprise latest)
 
 RBAC Overview | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx supports Role-based Access Control (RBAC) over both cluster operations and volume operations. The platform provides namespace-granular, role-based authentication, authorization, and ownership in addition to volume encryption.
 

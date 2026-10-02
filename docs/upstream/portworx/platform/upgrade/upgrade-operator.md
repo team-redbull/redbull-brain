@@ -1,12 +1,8 @@
 # Upgrade Portworx Operator
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/upgrade/upgrade-operator (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/upgrade/upgrade-operator (Portworx Enterprise latest)
 
 Upgrade Portworx Operator | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Before upgrading the `StorageCluster`, you must upgrade the Portworx Operator to the latest version. The Operator manages the lifecycle of Portworx components, so keeping it current ensures compatibility with the Portworx Enterprise version you're upgrading to.
 

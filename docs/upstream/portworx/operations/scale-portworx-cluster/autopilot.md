@@ -1,12 +1,8 @@
 # Automate storage operations with Autopilot
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/autopilot (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/autopilot (Portworx Enterprise latest)
 
 Automate storage operations with Autopilot | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Autopilot is a Portworx component that continuously monitors storage resources and performs actions based on real-time metrics. It can be configured with metrics providers such as Prometheus or Datadog to collect metrics about cluster objects (for example, volumes, pools, or PVCs). These metrics are responsible for all Autopilot decisions.
 

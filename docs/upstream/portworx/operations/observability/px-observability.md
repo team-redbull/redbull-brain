@@ -1,16 +1,12 @@
 # Monitor Portworx Clusters with Portworx Observability
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/observability/px-observability (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/observability/px-observability (Portworx Enterprise latest)
 
 Monitor Portworx Clusters with Portworx Observability | Portworx Enterprise Documentation
-
-Skip to main content
 
 EARLY ACCESS
 
 This feature is available as Early Access (EA) and should not be used in production.
-
-Version: 3.7
 
 Portworx Observability, an in-cluster user interface, enables Portworx cluster administrators to observe the health of Portworx clusters and components, analyse alerts and issues reported, and also generate diag bundles that can be shared for debugging.
 

@@ -1,12 +1,8 @@
 # Dynamic Resync Bandwidth Control
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/tune-performance/resync-bandwidth (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/tune-performance/resync-bandwidth (Portworx Enterprise latest)
 
 Dynamic Resync Bandwidth Control | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx Enterprise allows you to control the maximum bandwidth used for resync and replica-add (repl-add) operations to prevent resync traffic from affecting application I/O. Use this option when application and resync traffic share the same node and you need to limit resync bandwidth.
 

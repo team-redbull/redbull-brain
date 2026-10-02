@@ -1,12 +1,8 @@
 # Installation of Portworx with Everpure Cloud Dedicated
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/pure-storage/pure-cbs (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/pure-storage/pure-cbs (Portworx Enterprise latest)
 
 Installation of Portworx with Everpure Cloud Dedicated | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Everpure Cloud Dedicated, is a storage solution from Everpure that delivers enterprise-grade block storage capabilities within both Microsoft Azure and Amazon Web Services (AWS). It enables consistent operations and seamless workload mobility across AWS and Azure environments.
 

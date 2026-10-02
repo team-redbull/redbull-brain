@@ -1,12 +1,8 @@
 # Tune performance
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/tune-performance (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/tune-performance (Portworx Enterprise latest)
 
 Tune performance | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 In its default configuration, Portworx attempts to provide good performance across a wide range of situations. However, you can improve your storage performance in your environment by configuring a number of settings and leveraging features Portworx offers. To get the most out of Portworx, follow the guidance provided in this article.
 

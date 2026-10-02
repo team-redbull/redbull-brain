@@ -1,12 +1,8 @@
 # Create and manage volumes using pxctl
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/create-and-manage-volumes (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/create-and-manage-volumes (Portworx Enterprise latest)
 
 Create and manage volumes using pxctl | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic explains how to create and manage volumes using the `pxctl` CLI tool. To view a list of the `pxctl` commands, run one of the following from a worker node:
 

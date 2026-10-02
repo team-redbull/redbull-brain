@@ -1,12 +1,8 @@
 # storkctl delete
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/storkctl-reference/delete (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/storkctl-reference/delete (Portworx Enterprise latest)
 
 storkctl delete | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Delete stork resources
 

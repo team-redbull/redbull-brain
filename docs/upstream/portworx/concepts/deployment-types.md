@@ -1,12 +1,8 @@
 # Portworx Deployment Types
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/deployment-types (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/deployment-types (Portworx Enterprise latest)
 
 Portworx Deployment Types | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 There are two approaches you can take when you architect Portworx Enterprise deployment:
 

@@ -1,12 +1,8 @@
 # IO profiles
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/io-profiles (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/io-profiles (Portworx Enterprise latest)
 
 IO profiles | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 You can optimize the performance of your Portworx volumes by matching the type of workload you're running with a suitable IO profile. IO profiles change how a Portworx volume interacts with the underlying storage disks to improve traffic for different workloads. If you don't provide an IO profile, Portworx will use the IO profile specified by the `default-io-profile` setting in the cluster. During Portworx spec generation, the `default-io-profile` option in the StorageCluster spec is set to `auto` by default. To change the default IO profile after installing Portworx, see the Change the default IO profile using pxctl section.
 

@@ -1,12 +1,8 @@
 # Configure Portworx Pods and Containers
 
-Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/configure-resource-limits (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/configure-resource-limits (Portworx Enterprise latest)
 
 Configure Portworx Pods and Containers | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Use the `ComponentK8sConfig` custom resource (CR) to configure CPU and memory limits, tolerations, node affinity, labels, annotations, and priority class across Portworx components. This CR simplifies configuration management and improves consistency in large environments.
 

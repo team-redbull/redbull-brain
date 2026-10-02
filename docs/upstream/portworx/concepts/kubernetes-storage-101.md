@@ -1,12 +1,8 @@
 # Understand Kubernetes Storage operations
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/kubernetes-storage-101 (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/kubernetes-storage-101 (Portworx Enterprise latest)
 
 Understand Kubernetes Storage operations | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This section aims at teaching essential concepts that will be useful when working with stateful applications on Kubernetes.
 

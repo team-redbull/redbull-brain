@@ -1,12 +1,8 @@
 # Multi Data Center Deployment Architectures for HA and DR
 
-Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/deployment-arch/dr-and-multi-site (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/deployment-arch/dr-and-multi-site (Portworx Enterprise latest)
 
 Multi Data Center Deployment Architectures for HA and DR | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx offers multiple options for Disaster Recovery (DR) and multi-data center High Availability (HA) beyond what is provided with the single data center/multiple AZ deployment options. For more on why you cannot simply use your traditional DR system for Kubernetes applications, see the Limits of traditional DR for Kubernetes applications section.
 

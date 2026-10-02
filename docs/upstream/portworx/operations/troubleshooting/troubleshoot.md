@@ -1,12 +1,8 @@
 # Troubleshoot common errors on vSphere
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/troubleshooting/troubleshoot (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/troubleshooting/troubleshoot (Portworx Enterprise latest)
 
 Troubleshoot common errors on vSphere | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ### Common errors​
 

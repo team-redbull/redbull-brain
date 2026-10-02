@@ -1,12 +1,8 @@
 # Kube Datastore
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/kube-datastore (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/kube-datastore (Portworx Enterprise latest)
 
 Kube Datastore | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 important
 

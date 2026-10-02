@@ -1,12 +1,8 @@
 # Planning your Portworx Deployment
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/deployment-approach (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/deployment-approach (Portworx Enterprise latest)
 
 Planning your Portworx Deployment | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Before installing Portworx Enterprise, it’s important to evaluate your environment and make key architecture decisions based on your requirements The following aspects will influence how you deploy and manage your Portworx installation:
 

@@ -1,12 +1,8 @@
 # Provision storage for Applications
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage (Portworx Enterprise latest)
 
 Provision storage for Applications | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 You can provision persistent storage for both containerized workloads and KubeVirt virtual machines using Portworx Enterprise on Kubernetes. The following topics describe how to create and manage PersistentVolumeClaims (PVCs) for your applications, manage your CSI volume lifecycle, and configure shared RWX storage for KubeVirt VMs, including support for live migration and high availability.
 

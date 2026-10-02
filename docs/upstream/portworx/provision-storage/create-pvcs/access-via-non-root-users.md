@@ -1,12 +1,8 @@
 # Access a PVC as Non-Root User
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/access-via-non-root-users (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/access-via-non-root-users (Portworx Enterprise latest)
 
 Access a PVC as Non-Root User | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This document describes how to access a Portworx Volume (PVC/PV) as a non-root user. By default, all the Persistent Volumes are accessible only by the root user. However, you can modify the application pod spec to allow a specific set of users to access the Persistent Volume as explained below.
 

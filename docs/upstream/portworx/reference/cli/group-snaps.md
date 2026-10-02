@@ -1,12 +1,8 @@
 # Group Snaps using pxctl
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/group-snaps (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/group-snaps (Portworx Enterprise latest)
 
 Group Snaps using pxctl | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This document explains how to take group snapshots of your container data with Portworx. Run the `pxctl volume snapshot group` command with the `--help` flag to list the available subcommands and flags.
 

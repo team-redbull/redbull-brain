@@ -1,12 +1,8 @@
 # Migrate Portworx volumes with Stork on Kubernetes
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/migration (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/migration (Portworx Enterprise latest)
 
 Migrate Portworx volumes with Stork on Kubernetes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 You can migrate Portworx volumes between Kubernetes clusters using Stork. Perform the steps in the topics below to:
 

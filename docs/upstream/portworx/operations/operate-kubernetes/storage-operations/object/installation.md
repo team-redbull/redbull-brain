@@ -1,12 +1,8 @@
 # Install Portworx Object service
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/storage-operations/object/installation (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/storage-operations/object/installation (Portworx Enterprise latest)
 
 Install Portworx Object service | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This page describes how to install Portworx Object Service.
 

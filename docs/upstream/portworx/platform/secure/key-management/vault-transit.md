@@ -1,12 +1,8 @@
 # Vault Transit
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/secure/key-management/vault-transit (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/secure/key-management/vault-transit (Portworx Enterprise latest)
 
 Vault Transit | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx can be integrated with Vault Transit to encrypt volumes. This topic explains how to connect a Portworx cluster to a Vault development server and enable Vault Transit, which can be used to store secrets for encrypting volumes.
 

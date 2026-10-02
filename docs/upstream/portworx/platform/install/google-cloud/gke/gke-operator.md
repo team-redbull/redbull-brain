@@ -1,12 +1,8 @@
 # Installation on Google Kubernetes Engine Cluster using Portworx Central
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/google-cloud/gke/gke-operator (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/google-cloud/gke/gke-operator (Portworx Enterprise latest)
 
 Installation on Google Kubernetes Engine Cluster using Portworx Central | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This document provides instructions for installing Portworx with Google Kubernetes Engine (GKE) cluster using Portworx Central. Ensure that your cluster meets all the prerequisites before installing Portworx Enterprise.
 

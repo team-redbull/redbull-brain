@@ -1,12 +1,8 @@
 # How to enable TLS for Internal KVDB
 
-Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/internal-kvdb-tls (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/internal-kvdb-tls (Portworx Enterprise latest)
 
 How to enable TLS for Internal KVDB | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx supports Transport Layer Security (TLS) for internal key-value database (KVDB) communication. Enabling TLS ensures encrypted communication among KVDB nodes and between Portworx nodes and the KVDB cluster, enhancing the security posture of clusters using internal KVDB.
 

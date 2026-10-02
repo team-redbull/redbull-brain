@@ -1,12 +1,8 @@
 # Migrate Google Kubernetes Engine cluster nodes to a different machine type
 
-Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/gke-upgrade-nodes (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/gke-upgrade-nodes (Portworx Enterprise latest)
 
 Migrate Google Kubernetes Engine cluster nodes to a different machine type | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 warning
 

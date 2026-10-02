@@ -1,12 +1,8 @@
 # Configure pre-exec and post-exec rules for Stork migrations
 
-Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/migration-pre-post-exec-rule (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/migration-pre-post-exec-rule (Portworx Enterprise latest)
 
 Configure pre-exec and post-exec rules for Stork migrations | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This page explains how to use `pre-exec` and `post-exec` rules with `Stork` migrations.
 

@@ -1,12 +1,8 @@
 # Deploy ScyllaDB with Portworx
 
-Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/scylladb (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/scylladb (Portworx Enterprise latest)
 
 Deploy ScyllaDB with Portworx | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ScyllaDB is a NoSQL database that aims to provide low latency and high throughput. This article shows how you can create and run a ScyllaDB cluster on Kubernetes, which stores data on Portworx volumes.
 

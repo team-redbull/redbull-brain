@@ -1,12 +1,8 @@
 # Deploy Solr with Portworx
 
-Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/solr (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/solr (Portworx Enterprise latest)
 
 Deploy Solr with Portworx | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Solr is an open-source enterprise-search platform that can be deployed on Kubernetes cluster using Portworx volumes. Solr provides features like full-text search, hit highlighting, faceted search, real-time indexing and more. The document shows Solr deployment with Zookeeper ensemble that manages the Solr configuration and performs the leader election.
 

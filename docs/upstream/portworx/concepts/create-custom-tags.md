@@ -1,12 +1,8 @@
 # Custom Disk Tags
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/create-custom-tags (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/create-custom-tags (Portworx Enterprise latest)
 
 Custom Disk Tags | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Custom tags provide a flexible way to organize and identify your storage resources. Volume tagging allows you to quickly and easily associate volumes with a specific workload, cluster, or other user-defined identifiers.
 

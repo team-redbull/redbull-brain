@@ -1,12 +1,8 @@
 # Portworx Datastores
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/px-store-v2 (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/px-store-v2 (Portworx Enterprise latest)
 
 Portworx Datastores | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx supports two types of datastores:
 

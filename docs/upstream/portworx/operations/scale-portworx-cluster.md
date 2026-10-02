@@ -1,12 +1,8 @@
 # Scale your Portworx Cluster
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster (Portworx Enterprise latest)
 
 Scale your Portworx Cluster | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 As your cluster usage increases and the data on your storage pools grows, you may start to run out of capacity. In order to handle this, you must use one of the two method.
 

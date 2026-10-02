@@ -1,12 +1,8 @@
 # Portworx Autopilot Release Notes
 
-Source: https://docs.portworx.com/portworx-enterprise/autopilot-release-notes (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/autopilot-release-notes (Portworx Enterprise latest)
 
 Portworx Autopilot Release Notes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## 1.5.1​
 

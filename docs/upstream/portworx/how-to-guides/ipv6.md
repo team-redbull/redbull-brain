@@ -1,12 +1,8 @@
 # Enable IPv6 support in Portworx
 
-Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/ipv6 (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/ipv6 (Portworx Enterprise latest)
 
 Enable IPv6 support in Portworx | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx supports IPv6 networking for Kubernetes deployments. Portworx also supports KubeVirt VMs with IPv6 networking. This page provides guidance on supported platforms and known limitations. Use this information to ensure compatibility and optimal functionality in environments that require IPv6.
 

@@ -1,12 +1,8 @@
 # Uninstall Portworx installed using AWS Marketplace
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/uninstall/uninstall-marketplace (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/uninstall/uninstall-marketplace (Portworx Enterprise latest)
 
 Uninstall Portworx installed using AWS Marketplace | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## Uninstall Portworx​
 

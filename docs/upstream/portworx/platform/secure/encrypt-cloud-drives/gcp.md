@@ -1,12 +1,8 @@
 # GCP cloud drive encryption with customer managed encryption keys
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/secure/encrypt-cloud-drives/gcp (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/secure/encrypt-cloud-drives/gcp (Portworx Enterprise latest)
 
 GCP cloud drive encryption with customer managed encryption keys | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This page describes how to encrypt Google Cloud Platform (GCP) cloud drives with customer managed keys using Google Key Management Service (KMS).
 

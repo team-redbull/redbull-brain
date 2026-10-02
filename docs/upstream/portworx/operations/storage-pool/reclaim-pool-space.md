@@ -1,12 +1,8 @@
 # Reclaim Unused Storage with Pool Trim
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/storage-pool/reclaim-pool-space (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/storage-pool/reclaim-pool-space (Portworx Enterprise latest)
 
 Reclaim Unused Storage with Pool Trim | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Use Pool Trim to reclaim unused capacity on the thin-provisioned storage used by a PX-StoreV2 pool. Pool Trim is useful when deleted volumes or snapshots have released space within the Portworx pool, but the underlying storage continues to report that capacity as consumed. Reclaiming this space makes the unused capacity available to other consumers of the underlying storage.
 

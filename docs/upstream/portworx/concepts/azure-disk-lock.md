@@ -1,12 +1,8 @@
 # Locking Azure Cloud Drives
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/azure-disk-lock (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/azure-disk-lock (Portworx Enterprise latest)
 
 Locking Azure Cloud Drives | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 When you install Portworx Enterprise on an Azure cluster, it provisions Azure-managed cloud drives (disks) to provide persistent storage for your workloads. Because these cloud drives store application data, deleting a cloud drives can cause application downtime and potential data loss.
 

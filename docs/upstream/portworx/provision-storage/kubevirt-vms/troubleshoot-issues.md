@@ -1,12 +1,8 @@
 # Troubleshooting, Known Issues, and Limitations for KubeVirt VMs
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/kubevirt-vms/troubleshoot-issues (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/kubevirt-vms/troubleshoot-issues (Portworx Enterprise latest)
 
 Troubleshooting, Known Issues, and Limitations for KubeVirt VMs | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This page provides troubleshooting steps, known issues, and limitations for KubeVirt VMs managed with Portworx.
 

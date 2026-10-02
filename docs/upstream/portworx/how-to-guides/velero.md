@@ -1,12 +1,8 @@
 # How to use Velero with Portworx Enterprise
 
-Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/velero (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/velero (Portworx Enterprise latest)
 
 How to use Velero with Portworx Enterprise | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Velero is a utility for managing disaster recovery, specifically for your Kubernetes cluster resources and persistent volumes. To take snapshots of Portworx volumes through Velero you need to install and configure the Portworx plugin.
 

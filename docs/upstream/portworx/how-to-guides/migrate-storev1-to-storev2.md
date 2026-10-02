@@ -1,12 +1,8 @@
 # Migrate Portworx Datastore from PX-StoreV1 to PX-StoreV2
 
-Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/migrate-storev1-to-storev2 (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/migrate-storev1-to-storev2 (Portworx Enterprise latest)
 
 Migrate Portworx Datastore from PX-StoreV1 to PX-StoreV2 | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The Portworx Operator can automatically migrate your Portworx datastore from PX-StoreV1 to PX-StoreV2 using an in-place rolling conversion. The Operator manages the migration, including preflight checks, node conversion, data evacuation, and cluster health monitoring.
 

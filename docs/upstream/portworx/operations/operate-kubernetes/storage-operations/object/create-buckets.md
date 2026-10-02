@@ -1,12 +1,8 @@
 # Create buckets using the Portworx Object Service
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/storage-operations/object/create-buckets (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/storage-operations/object/create-buckets (Portworx Enterprise latest)
 
 Create buckets using the Portworx Object Service | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This page describes how to create and provide access to a Portworx Bucket Claim using either Pure FlashBlade or AWS S3.
 

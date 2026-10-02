@@ -1,12 +1,8 @@
 # Keep your Portworx Deployment Up and Running
 
-Source: https://docs.portworx.com/portworx-enterprise/operations (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations (Portworx Enterprise latest)
 
 Keep your Portworx Deployment Up and Running | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 You can maintain a reliable and high-performing Portworx environment by following operational best practices that help you monitor, scale, protect, and optimize your cluster throughout its lifecycle. The following day-2 operations helps you to maintain the performance, availability, and resilience of your cluster.
 

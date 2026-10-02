@@ -1,12 +1,8 @@
 # Disaster Recovery with Red Hat Advanced Cluster Management
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/acm-dr (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/acm-dr (Portworx Enterprise latest)
 
 Disaster Recovery with Red Hat Advanced Cluster Management | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Red Hat Advanced Cluster Management (ACM) for Kubernetes is a Red Hat operator that allows you to manage multiple OpenShift Kubernetes clusters from a single hub cluster. After you install ACM, the OpenShift console provides a single-cluster view for managing the local cluster and a multicluster management view for managing common operations across all registered clusters from a centralized interface.
 

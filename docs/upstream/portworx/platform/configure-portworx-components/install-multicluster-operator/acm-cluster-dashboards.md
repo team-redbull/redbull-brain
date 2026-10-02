@@ -1,12 +1,8 @@
 # Portworx ACM Dynamic Console Plugin Dashboards
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/configure-portworx-components/install-multicluster-operator/acm-cluster-dashboards (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/configure-portworx-components/install-multicluster-operator/acm-cluster-dashboards (Portworx Enterprise latest)
 
 Portworx ACM Dynamic Console Plugin Dashboards | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic describes the dashboards available in the Portworx ACM Dynamic Console Plugin. These dashboards provide centralized visibility into the health, performance, and disaster recovery status of Portworx clusters managed through Red Hat Advanced Cluster Management (ACM).
 

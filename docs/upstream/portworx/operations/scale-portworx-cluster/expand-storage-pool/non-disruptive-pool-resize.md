@@ -1,12 +1,8 @@
 # Non-Disruptive Pool Resize
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/expand-storage-pool/non-disruptive-pool-resize (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/expand-storage-pool/non-disruptive-pool-resize (Portworx Enterprise latest)
 
 Non-Disruptive Pool Resize | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Non-disruptive pool resize allows Portworx Enterprise to expand eligible PX-StoreV2 storage pools without entering pool maintenance mode or restarting Portworx. During the expansion, Portworx briefly pauses I/O to the affected pool, expands the pool, and then resumes I/O.
 

@@ -1,12 +1,8 @@
 # Create and Manage PVCs with Portworx
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs (Portworx Enterprise latest)
 
 Create and Manage PVCs with Portworx | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 A PersistentVolumeClaim (PVC) is used to request persistent storage for your Kubernetes workloads. When using Portworx as your storage provider, creating a PVC enables your applications to dynamically or statically consume storage backed by Portworx volumes. This section explains the different ways to create and manage PVCs with Portworx.
 

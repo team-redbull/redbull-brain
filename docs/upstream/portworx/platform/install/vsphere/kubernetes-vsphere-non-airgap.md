@@ -1,12 +1,8 @@
 # Installation on Non-Air-Gapped vSphere Kubernetes Cluster
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/vsphere/kubernetes-vsphere-non-airgap (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/vsphere/kubernetes-vsphere-non-airgap (Portworx Enterprise latest)
 
 Installation on Non-Air-Gapped vSphere Kubernetes Cluster | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic provides instructions for installing Portworx on a non-air-gapped VMware vSphere Kubernetes cluster.
 

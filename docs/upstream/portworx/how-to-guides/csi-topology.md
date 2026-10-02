@@ -1,12 +1,8 @@
 # CSI topology for FlashArray Direct Access volumes and FlashBlade Direct Access filesystems
 
-Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/csi-topology (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/csi-topology (Portworx Enterprise latest)
 
 CSI topology for FlashArray Direct Access volumes and FlashBlade Direct Access filesystems | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The CSI topology feature for FlashArray Direct Access volumes and FlashBlade Direct Access filesystems allows applications to provision storage on a FlashArray Direct Access volume or FlashBlade Direct Access filesystem that is in the same set of Kubernetes nodes where the application pod is located.
 

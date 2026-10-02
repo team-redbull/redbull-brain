@@ -1,12 +1,8 @@
 # Rejoin a decommissioned Portworx node back to the cluster in Kubernetes
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/k8s-node-rejoin (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/k8s-node-rejoin (Portworx Enterprise latest)
 
 Rejoin a decommissioned Portworx node back to the cluster in Kubernetes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This document provides instructions for rejoining a previously decommissioned node with its original Portworx cluster.
 

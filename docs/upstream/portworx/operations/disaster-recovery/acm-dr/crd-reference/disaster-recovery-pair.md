@@ -1,12 +1,8 @@
 # DisasterRecoveryPair CRD reference
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/acm-dr/crd-reference/disaster-recovery-pair (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/acm-dr/crd-reference/disaster-recovery-pair (Portworx Enterprise latest)
 
 DisasterRecoveryPair CRD reference | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The `DisasterRecoveryPair` CRD represents a DR relationship between clusters.
 

@@ -1,12 +1,8 @@
 # Manage Portworx RWX Block Volumes on SUSE Virtualization for KubeVirt VMs
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/kubevirt-vms/manage-kubevirt-vms-rwx-block/suse-virtualization (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/kubevirt-vms/manage-kubevirt-vms-rwx-block/suse-virtualization (Portworx Enterprise latest)
 
 Manage Portworx RWX Block Volumes on SUSE Virtualization for KubeVirt VMs | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx enables the seamless integration of KubeVirt virtual machines (VMs) within Kubernetes clusters, leveraging the high performance of ReadWriteMany (RWX) volumes on SUSE Virtualization. This approach supports raw block devices, which provide direct block storage access instead of a mounted filesystem. This is particularly beneficial for applications that demand low-latency and high-performance storage.
 

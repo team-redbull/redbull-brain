@@ -1,12 +1,8 @@
 # ProtectionGroup CRD reference
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/acm-dr/crd-reference/protection-group (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/acm-dr/crd-reference/protection-group (Portworx Enterprise latest)
 
 ProtectionGroup CRD reference | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The `ProtectionGroup` CRD represents a protection group consisting of a set of applications and schedules for running DR migrations between clusters.
 

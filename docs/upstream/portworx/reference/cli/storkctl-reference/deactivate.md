@@ -1,12 +1,8 @@
 # storkctl deactivate
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/storkctl-reference/deactivate (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/storkctl-reference/deactivate (Portworx Enterprise latest)
 
 storkctl deactivate | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Deactivate resources
 

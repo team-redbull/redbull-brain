@@ -1,16 +1,12 @@
 # Readahead
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/tune-performance/readahead (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/tune-performance/readahead (Portworx Enterprise latest)
 
 Readahead | Portworx Enterprise Documentation
-
-Skip to main content
 
 EARLY ACCESS
 
 This feature is available as Early Access (EA) and should not be used in production.
-
-Version: 3.7
 
 Readahead is the process of prefetching data from a disk during sequential reads before the application issues read requests. When enabled, Portworx Enterprise detects sequential read I/O patterns and prefetches data from a disk into memory before an application requests it. Serving prefetched data from memory reduces disk and network costs in the read IO path, improves read throughput and IOPS, and lowers read latency.
 

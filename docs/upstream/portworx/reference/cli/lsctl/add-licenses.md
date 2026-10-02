@@ -1,12 +1,8 @@
 # Add licenses to a license server using lsctl
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/lsctl/add-licenses (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/lsctl/add-licenses (Portworx Enterprise latest)
 
 Add licenses to a license server using lsctl | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The Portworx license server initially contains no licenses. You must add licenses to it before you can associate them with your Portworx cluster. You can activate licenses using `lsctl`; how you do that depends on whether your license server is capable of accessing the internet.
 

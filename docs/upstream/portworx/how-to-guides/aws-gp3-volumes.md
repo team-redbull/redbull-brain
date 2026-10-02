@@ -1,12 +1,8 @@
 # How to upgrade AWS gp2 to gp3 volumes
 
-Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/aws-gp3-volumes (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/aws-gp3-volumes (Portworx Enterprise latest)
 
 How to upgrade AWS gp2 to gp3 volumes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## Add a gp3 drive​
 

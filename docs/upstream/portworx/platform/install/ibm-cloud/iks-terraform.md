@@ -1,12 +1,8 @@
 # Installation on IBM Cloud Kubernetes Service (IKS) cluster using Terraform
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/ibm-cloud/iks-terraform (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/ibm-cloud/iks-terraform (Portworx Enterprise latest)
 
 Installation on IBM Cloud Kubernetes Service (IKS) cluster using Terraform | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic provides instructions for installing Portworx on a IBM Cloud Kubernetes Service (IKS) cluster using Terraform. You can use the Terraform module to upgrade an active installation and to automate Portworx deployment across multiple IKS clusters.
 

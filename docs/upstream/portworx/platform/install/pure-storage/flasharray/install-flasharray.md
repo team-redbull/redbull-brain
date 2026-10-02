@@ -1,12 +1,8 @@
 # Installation of Portworx with FlashArray using Portworx Central
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/pure-storage/flasharray/install-flasharray (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/pure-storage/flasharray/install-flasharray (Portworx Enterprise latest)
 
 Installation of Portworx with FlashArray using Portworx Central | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 After preparing your environment, deploy the Portworx Operator first, followed by the Portworx StorageCluster. The Portworx Operator automates the deployment, configuration, upgrades, and integration of Portworx with your Kubernetes cluster.
 

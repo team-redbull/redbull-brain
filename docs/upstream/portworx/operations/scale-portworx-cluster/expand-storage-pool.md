@@ -1,12 +1,8 @@
 # Expand your Storage Pool Size
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/expand-storage-pool (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/expand-storage-pool (Portworx Enterprise latest)
 
 Expand your Storage Pool Size | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 As your cluster usage increases and the data on your storage pools grows, you may start to run out of capacity. In order to correct this, you must determine the most efficient way to expand your storage pool size.
 

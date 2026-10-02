@@ -1,12 +1,8 @@
 # Deploy Kafka with ZooKeeper on Portworx
 
-Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/kafka-with-zookeeper (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/kafka-with-zookeeper (Portworx Enterprise latest)
 
 Deploy Kafka with ZooKeeper on Portworx | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Apache Kafka is a distributed event streaming platform for real-time data, using ZooKeeper for broker coordination, metadata management, and cluster state consistency. This page provides instructions for deploying Apache Kafka and ZooKeeper with Portworx Enterprise on Kubernetes.
 

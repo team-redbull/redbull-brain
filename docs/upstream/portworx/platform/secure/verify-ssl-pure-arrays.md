@@ -1,12 +1,8 @@
 # Enable SSL Certificate Verification for FlashArray and FlashBlade
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/secure/verify-ssl-pure-arrays (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/secure/verify-ssl-pure-arrays (Portworx Enterprise latest)
 
 Enable SSL Certificate Verification for FlashArray and FlashBlade | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx Enterprise communicates with FlashArray and FlashBlade management endpoints over HTTPS. By default, these connections are encrypted, but Portworx does not verify the identity of the management endpoint.
 

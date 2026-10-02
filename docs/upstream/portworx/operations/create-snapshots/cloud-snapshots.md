@@ -1,12 +1,8 @@
 # Cloud Snapshots
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/create-snapshots/cloud-snapshots (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/create-snapshots/cloud-snapshots (Portworx Enterprise latest)
 
 Cloud Snapshots | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 A cloud snapshot is a point-in-time copy of a volume or group of volumes that Portworx uploads from the source storage system to a remote cloud storage location, such as a configured S3-compliant endpoint like AWS S3. You can use cloud snapshots to protect data against cluster-level failures and enable disaster recovery across regions or clusters. Cloud snapshots support long-term retention, off-site backups, and compliance with data protection policies.
 

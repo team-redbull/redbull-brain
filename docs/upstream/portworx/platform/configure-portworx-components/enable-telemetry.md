@@ -1,12 +1,8 @@
 # Portworx Telemetry
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/configure-portworx-components/enable-telemetry (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/configure-portworx-components/enable-telemetry (Portworx Enterprise latest)
 
 Portworx Telemetry | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx telemetry provides insights into cluster health, resource utilization, and configuration patterns. Pure 1 uses this data to recommend best practices and improvements tailored to your environment, enabling better resource planning and performance tuning.
 

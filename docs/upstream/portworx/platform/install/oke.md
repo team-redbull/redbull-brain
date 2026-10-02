@@ -1,12 +1,8 @@
 # Install Portworx on Oracle Cloud Infrastructure
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/oke (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/oke (Portworx Enterprise latest)
 
 Install Portworx on Oracle Cloud Infrastructure | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 You can install Portworx on Oracle Cloud Infrastructure (OCI) to enable enterprise-grade cloud-native storage for your Kubernetes workloads. Portworx supports standard Kubernetes deployments running on OCI. Portworx integrates natively with Kubernetes Engine (OKE), ensuring persistent storage for demanding applications.
 

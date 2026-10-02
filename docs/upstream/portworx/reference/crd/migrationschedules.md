@@ -1,12 +1,8 @@
 # MigrationSchedule CRD reference
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/crd/migrationschedules (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/crd/migrationschedules (Portworx Enterprise latest)
 
 MigrationSchedule CRD reference | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 MigrationSchedule represents a scheduled migration object.
 

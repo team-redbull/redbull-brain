@@ -1,12 +1,8 @@
 # Expand your storage pool size with disks not managed by Portworx
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/expand-storage-pool/expand-storage-pool-not-managed-by-px (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/expand-storage-pool/expand-storage-pool-not-managed-by-px (Portworx Enterprise latest)
 
 Expand your storage pool size with disks not managed by Portworx | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 If you are running Portworx in an environment where you need or want to manually resize a pool using drives that are not managed by Portworx, then follow these steps:
 

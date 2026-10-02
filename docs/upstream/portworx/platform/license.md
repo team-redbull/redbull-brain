@@ -1,12 +1,8 @@
 # Set up Portworx Licenses
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/license (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/license (Portworx Enterprise latest)
 
 Set up Portworx Licenses | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The Portworx Enterprise license is a flexible license, which comes with numerous options. Contact the Everpure support team (support@purestorage.com) to determine which type of Portworx Enterprise license works best for your requirements.
 

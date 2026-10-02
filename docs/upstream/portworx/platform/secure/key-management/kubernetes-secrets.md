@@ -1,12 +1,8 @@
 # Kubernetes Secrets
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/secure/key-management/kubernetes-secrets (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/secure/key-management/kubernetes-secrets (Portworx Enterprise latest)
 
 Kubernetes Secrets | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx integrates with Kubernetes Secrets to store encryption keys and credentials. These secrets support encrypting data at rest and can also store credentials and encryption keys for cloud provider services used by Portworx.
 

@@ -1,12 +1,8 @@
 # Deploy PostgreSQL with Portworx
 
-Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/postgresql (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/postgresql (Portworx Enterprise latest)
 
 Deploy PostgreSQL with Portworx | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 PostgreSQL is an open-source relational database management system known for its robustness, SQL compliance, and extensibility. Learn how to deploy and operate PostgreSQL with Portworx Enterprise on Kubernetes. Portworx provides a resilient, high-performance persistent storage layer that ensures data durability, fault tolerance, and seamless scaling for PostgreSQL database workloads.
 

@@ -1,12 +1,8 @@
 # Expand your storage pool size with disks managed by Portworx
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/expand-storage-pool/expand-storage-pool-managed-by-px (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/expand-storage-pool/expand-storage-pool-managed-by-px (Portworx Enterprise latest)
 
 Expand your storage pool size with disks managed by Portworx | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 If you are running on the cloud, consider automation into your decision for which pool resize approach you use. The `pxctl service pool expand` command allows you to perform resize operations without manually adding new drives or increasing drive capacity on your cluster.
 

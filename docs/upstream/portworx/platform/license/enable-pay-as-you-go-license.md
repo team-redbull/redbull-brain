@@ -1,12 +1,8 @@
 # Enable pay-as-you-go billing
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/license/enable-pay-as-you-go-license (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/license/enable-pay-as-you-go-license (Portworx Enterprise latest)
 
 Enable pay-as-you-go billing | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 After you have set up your cluster using any of the paid, trial, or free Portworx licenses, you can enable pay-as-you-go billing by acquiring a pay-as-you-go SaaS key from the Everpure support team and performing the following steps based on your cluster environment.
 

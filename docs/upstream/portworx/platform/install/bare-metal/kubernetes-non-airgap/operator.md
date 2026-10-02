@@ -1,12 +1,8 @@
 # Installation on a Bare Metal Kubernetes Cluster using Portworx Central
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/bare-metal/kubernetes-non-airgap/operator (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/bare-metal/kubernetes-non-airgap/operator (Portworx Enterprise latest)
 
 Installation on a Bare Metal Kubernetes Cluster using Portworx Central | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic provides instructions for installing Portworx on a bare metal Kubernetes cluster using Portworx Central.
 

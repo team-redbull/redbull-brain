@@ -1,12 +1,8 @@
 # Use pxctl with security enabled
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/secure/px-security/use-pxctl-security-enabled (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/secure/px-security/use-pxctl-security-enabled (Portworx Enterprise latest)
 
 Use pxctl with security enabled | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Once a storage cluster with PX-Security enabled is running, a cluster admin must set up a `pxctl` context on each node in order to interact with the system.
 

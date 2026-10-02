@@ -1,12 +1,8 @@
 # Create your first PVC
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/create-first-pvc (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/create-first-pvc (Portworx Enterprise latest)
 
 Create your first PVC | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic describes how to create a PVC after you install Portworx on a cluster.
 

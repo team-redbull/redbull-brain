@@ -1,12 +1,8 @@
 # KVDB for Portworx
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/kvdb-for-portworx (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/kvdb-for-portworx (Portworx Enterprise latest)
 
 KVDB for Portworx | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx uses a key-value database (KVDB) to store the cluster state, configuration data, and metadata associated with storage volumes and snapshots.
 

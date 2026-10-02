@@ -1,12 +1,8 @@
 # Install Portworx on VMware vSphere Kubernetes Service
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/vks (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/vks (Portworx Enterprise latest)
 
 Install Portworx on VMware vSphere Kubernetes Service | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 You can install Portworx Enterprise on vSphere Kubernetes Service (VKS) to enable enterprise-grade cloud-native storage for your Kubernetes workloads. The installation process includes preparing the environment, generating manifests in Portworx Central, applying them to the cluster, and verifying the deployment.
 

@@ -1,12 +1,8 @@
 # Installation on Red Hat OpenShift Service on AWS (ROSA) Cluster
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/aws/aws-redhat-openshift-with-console-plugin (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/aws/aws-redhat-openshift-with-console-plugin (Portworx Enterprise latest)
 
 Installation on Red Hat OpenShift Service on AWS (ROSA) Cluster | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic provides instructions for installing Portworx on Red Hat OpenShift Service on AWS (ROSA) cluster with console plugin. Ensure that your cluster meets all the prerequisites before installing Portworx Enterprise.
 

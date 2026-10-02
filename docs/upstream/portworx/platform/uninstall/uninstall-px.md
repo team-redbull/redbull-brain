@@ -1,12 +1,8 @@
 # Uninstall Portworx from an IBM cluster
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/uninstall/uninstall-px (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/uninstall/uninstall-px (Portworx Enterprise latest)
 
 Uninstall Portworx from an IBM cluster | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This guide provides instructions on how to uninstall Portworx from an IBM cluster, specifically for IBM Cloud Kubernetes Service (IKS) and OpenShift IBM clusters.
 

@@ -1,12 +1,8 @@
 # Using Pre-provisioned FlashArray Direct Access Volumes
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/using-preprovisioned-fada-volumes (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/using-preprovisioned-fada-volumes (Portworx Enterprise latest)
 
 Using Pre-provisioned FlashArray Direct Access Volumes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This document describes how to import and use an existing FlashArray volume as a FlashArray Direct Access (FADA) PVC in your Kubernetes cluster. Unlike dynamic provisioning, where Portworx creates a new volume on the FlashArray, pre-provisioned FADA volumes let you consume volumes that already exist on the array.
 

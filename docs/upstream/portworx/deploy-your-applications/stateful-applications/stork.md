@@ -1,12 +1,8 @@
 # Using Stork as Scheduler for Applications
 
-Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/stateful-applications/stork (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/stateful-applications/stork (Portworx Enterprise latest)
 
 Using Stork as Scheduler for Applications | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Stork is Portworx's storage scheduler for Kubernetes that helps achieve tighter integration of Portworx with Kubernetes. It allows users to co-locate pods with their data, provides seamless migration of pods in case of storage errors, and makes it easier to create and restore snapshots of Portworx volumes. Stork consists of two components: the Stork scheduler and an extender. Both components run in HA mode with three replicas by default.
 

@@ -1,12 +1,8 @@
 # Monitor Portworx Clusters on Kubernetes
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/observability/monitor-portworx-cluster (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/observability/monitor-portworx-cluster (Portworx Enterprise latest)
 
 Monitor Portworx Clusters on Kubernetes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 To ensure your storage infrastructure's health, performance, and reliability, it is crucial to monitor your Portworx cluster. The monitoring approach varies depending on your deployment environment. For most setups, Portworx's integrated Prometheus and Grafana deployment runs by default.
 

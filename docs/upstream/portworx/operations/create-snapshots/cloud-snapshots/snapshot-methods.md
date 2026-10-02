@@ -1,12 +1,8 @@
 # Storing and Comparing Cloud Snapshots
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/create-snapshots/cloud-snapshots/snapshot-methods (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/create-snapshots/cloud-snapshots/snapshot-methods (Portworx Enterprise latest)
 
 Storing and Comparing Cloud Snapshots | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx features two methods for storing and comparing cloudsnaps before they're uploaded:
 

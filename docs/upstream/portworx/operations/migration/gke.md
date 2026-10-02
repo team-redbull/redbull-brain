@@ -1,12 +1,8 @@
 # Migration with Stork on GKE
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/migration/gke (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/migration/gke (Portworx Enterprise latest)
 
 Migration with Stork on GKE | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Pairing with a GKE cluster requires the following additional steps. You also need to pass in your Google Cloud credentials, which will be used to generate access tokens.
 

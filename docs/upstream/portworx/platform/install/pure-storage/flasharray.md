@@ -1,12 +1,8 @@
 # Installation of Portworx with FlashArray
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/pure-storage/flasharray (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/pure-storage/flasharray (Portworx Enterprise latest)
 
 Installation of Portworx with FlashArray | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx supports multiple deployment models with FlashArray. You can use FlashArray as dynamically managed cloud drives or Direct Access volumes, and optionally enable secure multi-tenancy or ActiveCluster synchronous replication.
 

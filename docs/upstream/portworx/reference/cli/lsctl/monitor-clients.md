@@ -1,12 +1,8 @@
 # Monitor clients and licenses
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/lsctl/monitor-clients (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/lsctl/monitor-clients (Portworx Enterprise latest)
 
 Monitor clients and licenses | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 You can monitor your licenses using the `lsctl` command. The following represent some of the more common monitoring operations you can perform:
 

@@ -1,12 +1,8 @@
 # Cloud Drives (ASG) using pxctl
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/cloud-drives-asg (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/cloud-drives-asg (Portworx Enterprise latest)
 
 Cloud Drives (ASG) using pxctl | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## Cloud Drive operations​
 

@@ -1,12 +1,8 @@
 # Deploy and Manage Stateful Applications with Portworx
 
-Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications (Portworx Enterprise latest)
 
 Deploy and Manage Stateful Applications with Portworx | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx provides simple, reliable and secure ways to run Kubernetes-based stateful applications. Depending on the key requirements of the application, you can either consider a single data center model, or a multi data center model for Portworx deployment. For more information, see Deployment Architecture for Applications.
 

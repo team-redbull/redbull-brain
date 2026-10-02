@@ -1,12 +1,8 @@
 # Deploy ActiveMQ with Portworx Enterprise
 
-Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/activemq (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/activemq (Portworx Enterprise latest)
 
 Deploy ActiveMQ with Portworx Enterprise | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ActiveMQ is an open-source message broker written in Java. It plays a central role in many distributed systems that heavily rely on Java technologies. You can configure ActiveMQ to safely pass messages between decoupled systems. This document shows how you can create and run ActiveMQ with Portworx on Kubernetes.
 

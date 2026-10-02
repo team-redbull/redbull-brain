@@ -1,12 +1,8 @@
 # Upgrade or uninstall witness node
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/px-metro/upgrade-uninstall-witness-node (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/px-metro/upgrade-uninstall-witness-node (Portworx Enterprise latest)
 
 Upgrade or uninstall witness node | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## Upgrade the Portworx OCI bundle​
 

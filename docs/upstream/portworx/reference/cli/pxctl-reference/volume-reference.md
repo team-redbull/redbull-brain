@@ -1,12 +1,8 @@
 # pxctl volume
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/pxctl-reference/volume-reference (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/pxctl-reference/volume-reference (Portworx Enterprise latest)
 
 pxctl volume | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## pxctl volume
 

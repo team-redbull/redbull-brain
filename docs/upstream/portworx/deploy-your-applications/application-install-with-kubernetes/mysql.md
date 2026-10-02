@@ -1,12 +1,8 @@
 # Deploy MySQL with Portworx Enterprise
 
-Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/mysql (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/mysql (Portworx Enterprise latest)
 
 Deploy MySQL with Portworx Enterprise | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 MySQL is an open-source RDBMS deployed on Kubernetes for scalable web applications. Integrating Portworx with MySQL provides dynamic storage provisioning, automated high-availability failover, and granular data security. This solution ensures reliable performance and robust disaster recovery for mission-critical data. Learn how to setup MySQL with Portworx on Kubernetes and test failover of your application.
 

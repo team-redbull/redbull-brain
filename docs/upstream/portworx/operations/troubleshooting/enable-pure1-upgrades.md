@@ -1,12 +1,8 @@
 # Enable Pure1 integration for upgrades
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/troubleshooting/enable-pure1-upgrades (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/troubleshooting/enable-pure1-upgrades (Portworx Enterprise latest)
 
 Enable Pure1 integration for upgrades | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This page covers enabling Pure1 integration for the following cases:
 

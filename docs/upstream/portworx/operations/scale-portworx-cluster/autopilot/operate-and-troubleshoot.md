@@ -1,12 +1,8 @@
 # Operating and Troubleshooting Autopilot
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/autopilot/operate-and-troubleshoot (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/autopilot/operate-and-troubleshoot (Portworx Enterprise latest)
 
 Operating and Troubleshooting Autopilot | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This section provides common operational procedures for monitoring and troubleshooting your autopilot installation.
 

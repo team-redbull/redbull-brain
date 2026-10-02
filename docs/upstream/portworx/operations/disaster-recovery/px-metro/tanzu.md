@@ -1,12 +1,8 @@
 # Installing on a vSphere Kubernetes Service Cluster
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/px-metro/tanzu (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/px-metro/tanzu (Portworx Enterprise latest)
 
 Installing on a vSphere Kubernetes Service Cluster | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 note
 

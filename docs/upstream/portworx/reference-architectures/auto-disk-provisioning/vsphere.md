@@ -1,12 +1,8 @@
 # Manage storage nodes on VMware vSphere
 
-Source: https://docs.portworx.com/portworx-enterprise/reference-architectures/auto-disk-provisioning/vsphere (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference-architectures/auto-disk-provisioning/vsphere (Portworx Enterprise latest)
 
 Manage storage nodes on VMware vSphere | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## Availability across failure domains​
 

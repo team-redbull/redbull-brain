@@ -1,12 +1,8 @@
 # Create Custom tags for FlashArray Direct Access
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/create-custom-tags/flasharray-direct-access-tags (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/create-custom-tags/flasharray-direct-access-tags (Portworx Enterprise latest)
 
 Create Custom tags for FlashArray Direct Access | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx Enterprise enables users to tag volumes, clones, and snapshots stored on FlashArray Direct Access backend storage. Custom disk tags for a FADA can be:
 

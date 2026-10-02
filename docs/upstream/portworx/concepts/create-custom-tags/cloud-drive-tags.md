@@ -1,12 +1,8 @@
 # Create Custom tags for Cloud Drives
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/create-custom-tags/cloud-drive-tags (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/create-custom-tags/cloud-drive-tags (Portworx Enterprise latest)
 
 Create Custom tags for Cloud Drives | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Custom tags to cloud drives can be added during:
 

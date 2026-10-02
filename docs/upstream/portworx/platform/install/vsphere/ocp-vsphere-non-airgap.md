@@ -1,12 +1,8 @@
 # Installation on Non-Air-Gapped vSphere OpenShift Cluster
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/vsphere/ocp-vsphere-non-airgap (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/vsphere/ocp-vsphere-non-airgap (Portworx Enterprise latest)
 
 Installation on Non-Air-Gapped vSphere OpenShift Cluster | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic provides instructions for installing Portworx on a non-air-gapped VMware vSphere OpenShift cluster using the OpenShift Container Platform web console.
 

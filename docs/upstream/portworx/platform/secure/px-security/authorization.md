@@ -1,12 +1,8 @@
 # Enable authorization in Portworx
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/secure/px-security/authorization (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/secure/px-security/authorization (Portworx Enterprise latest)
 
 Enable authorization in Portworx | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx provides Role-Based Access Control (RBAC) to secure access to storage resources in your cluster. This page guides you through enabling authorization in your Portworx deployment.
 

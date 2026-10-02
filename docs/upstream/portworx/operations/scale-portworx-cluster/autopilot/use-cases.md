@@ -1,12 +1,8 @@
 # Autopilot Use cases
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/autopilot/use-cases (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/autopilot/use-cases (Portworx Enterprise latest)
 
 Autopilot Use cases | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The following sections describe common Autopilot use cases and provide end-to-end examples with Kubernetes specs that are Prometheus compatible. Please refer to the AutoPilotRule CRD to see how to configure AutopilotRule with Datadog as a metrics provider.
 

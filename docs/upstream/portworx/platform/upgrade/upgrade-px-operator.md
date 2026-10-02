@@ -1,12 +1,8 @@
 # Upgrade Portworx Clusters using the Operator
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/upgrade/upgrade-px-operator (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/upgrade/upgrade-px-operator (Portworx Enterprise latest)
 
 Upgrade Portworx Clusters using the Operator | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 If you're using the Portworx Operator, you can upgrade or change your Portworx version at any time by modifying the `StorageCluster` spec. In addition to managing a Portworx cluster, the Operator also manages the following other components in the Portworx platform:
 

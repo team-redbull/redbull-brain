@@ -1,12 +1,8 @@
 # Provision Storage Pool
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/storage-pool/provision-storage-pool (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/storage-pool/provision-storage-pool (Portworx Enterprise latest)
 
 Provision Storage Pool | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx creates one or more storage pools by grouping together homogeneous drives that are of the same size, medium type and drive type (for cloud drives).
 

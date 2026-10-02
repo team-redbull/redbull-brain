@@ -1,12 +1,8 @@
 # Provisioning Storage Nodes in Portworx Cluster
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/storage-nodes (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/storage-nodes (Portworx Enterprise latest)
 
 Provisioning Storage Nodes in Portworx Cluster | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 To provision nodes as storage nodes in a Portworx cluster, you can either use the `initialStorageNodes` parameter during the Portworx installation or apply the `portworx.io/provision-storage-node="true"` label to request provisioning of specific nodes as storage nodes.
 

@@ -1,12 +1,8 @@
 # Installation on Anthos Cluster
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/google-cloud/anthos (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/google-cloud/anthos (Portworx Enterprise latest)
 
 Installation on Anthos Cluster | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic provides instructions for installing Portworx on an Anthos cluster. Ensure that your cluster meets all the prerequisites before installing Portworx Enterprise.
 

@@ -1,12 +1,8 @@
 # Fix volume errors using Filesystem Check
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/troubleshooting/volume-check (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/troubleshooting/volume-check (Portworx Enterprise latest)
 
 Fix volume errors using Filesystem Check | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Over the course of normal operation, the filesystems on volumes can accrue damage and errors. Filesystem Check or `fsck` is a tool that reports and fixes filesystem issues. This feature allows you to do the following:
 

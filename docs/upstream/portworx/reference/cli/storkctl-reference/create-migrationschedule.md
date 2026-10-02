@@ -1,12 +1,8 @@
 # Create MigrationSchedule with storkctl
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/storkctl-reference/create-migrationschedule (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/storkctl-reference/create-migrationschedule (Portworx Enterprise latest)
 
 Create MigrationSchedule with storkctl | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic explains how to create and delete a MigrationSchedule using the `storkctl` command-line tool.
 

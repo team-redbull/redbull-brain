@@ -1,12 +1,8 @@
 # Asynchronous Disaster Recovery
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/async-dr (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/async-dr (Portworx Enterprise latest)
 
 Asynchronous Disaster Recovery | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 In an asynchronous disaster recovery setup, you can replicate your applications and their data between two Kubernetes or OpenShift clusters. A separate Portworx Enterprise cluster runs on each Kubernetes or OpenShift cluster.
 

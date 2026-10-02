@@ -1,12 +1,8 @@
 # Encrypt PVCs using CSI and Kubernetes Secrets
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/secure/key-management/kubernetes-secrets/pvc-encryption-using-csi (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/secure/key-management/kubernetes-secrets/pvc-encryption-using-csi (Portworx Enterprise latest)
 
 Encrypt PVCs using CSI and Kubernetes Secrets | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic explains the PVC encryption methods used with the Kubernetes Container Storage Interface. For information about using Portworx with CSI, see the Portworx with CSI topic.
 

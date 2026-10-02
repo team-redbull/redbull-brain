@@ -1,12 +1,8 @@
 # Manage Protection Groups
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/acm-dr/manage-protection-groups (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/acm-dr/manage-protection-groups (Portworx Enterprise latest)
 
 Manage Protection Groups | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 A protection group defines what is protected, how often it is migrated, and the hooks that apply.
 

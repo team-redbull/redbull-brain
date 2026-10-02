@@ -1,12 +1,8 @@
 # Encrypt Kubernetes PVCs with IBM key management services
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/secure/key-management/ibm-key-protect/pvc-enc (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/secure/key-management/ibm-key-protect/pvc-enc (Portworx Enterprise latest)
 
 Encrypt Kubernetes PVCs with IBM key management services | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## Portworx Encrypted Volumes​
 

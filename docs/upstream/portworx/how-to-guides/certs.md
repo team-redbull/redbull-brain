@@ -1,12 +1,8 @@
 # Store Certificates as Kubernetes Secrets
 
-Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/certs (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/certs (Portworx Enterprise latest)
 
 Store Certificates as Kubernetes Secrets | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Sometimes you need to store an SSL certificate as a Kubernetes secret. This document walks through an example of how to secure a third-party S3-compatible objectstore for use with Portworx.
 

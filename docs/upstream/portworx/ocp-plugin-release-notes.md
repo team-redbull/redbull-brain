@@ -1,12 +1,8 @@
 # Portworx OpenShift Dynamic Plugin Release Notes
 
-Source: https://docs.portworx.com/portworx-enterprise/ocp-plugin-release-notes (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/ocp-plugin-release-notes (Portworx Enterprise latest)
 
 Portworx OpenShift Dynamic Plugin Release Notes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## 2.3.0​
 

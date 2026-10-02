@@ -1,12 +1,8 @@
 # Manage Shared File System for KubeVirt VMs
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/kubevirt-vms/manage-kubevirt-vms (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/kubevirt-vms/manage-kubevirt-vms (Portworx Enterprise latest)
 
 Manage Shared File System for KubeVirt VMs | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic explains how to configure and manage shared filesystem (RWX) storage for KubeVirt virtual machines running on Kubernetes with Portworx.
 

@@ -1,12 +1,8 @@
 # Dynamic Pools for Volumes with Replication Factor 1
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/storage-pool/kds-dynamicpools (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/storage-pool/kds-dynamicpools (Portworx Enterprise latest)
 
 Dynamic Pools for Volumes with Replication Factor 1 | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 important
 

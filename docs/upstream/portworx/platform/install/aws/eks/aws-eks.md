@@ -1,12 +1,8 @@
 # Installation on an Amazon Elastic Kubernetes Service (EKS) Cluster using Portworx Central
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/aws/eks/aws-eks (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/aws/eks/aws-eks (Portworx Enterprise latest)
 
 Installation on an Amazon Elastic Kubernetes Service (EKS) Cluster using Portworx Central | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic provides instructions for installing Portworx on an Amazon Elastic Kubernetes Service (EKS) cluster using Portworx Central. You can use the installation instructions below to deploy Portworx on AWS Outposts, a kOps-based EKS cluster, Amazon EKS with AWS Auto Scaling groups (ASGs), and EKS-D.
 

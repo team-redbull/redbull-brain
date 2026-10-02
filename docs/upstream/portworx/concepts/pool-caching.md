@@ -1,12 +1,8 @@
 # Storage Pool Caching
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/pool-caching (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/pool-caching (Portworx Enterprise latest)
 
 Storage Pool Caching | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 PX-Cache improves storage pool performance by building a small caching layer with higher-performance drives over individual Portworx storage pools. This tiered storage approach uses fast drives (SSD or NVMe) as a cache tier to accelerate I/O operations for slower storage pools, improving both latency and IOPS.
 

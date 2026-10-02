@@ -1,12 +1,8 @@
 # Create a PVC from a Snapshot
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/snaps-annotations (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/snaps-annotations (Portworx Enterprise latest)
 
 Create a PVC from a Snapshot | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This document will show you how to take a snapshot of a volume using Portworx and use that snapshot as the volume for a new pod.
 

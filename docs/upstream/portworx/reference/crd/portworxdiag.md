@@ -1,12 +1,8 @@
 # PortworxDiag CRD reference
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/crd/portworxdiag (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/crd/portworxdiag (Portworx Enterprise latest)
 
 PortworxDiag CRD reference | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 PortworxDiag is the Schema for the portworxdiags API.
 

@@ -1,12 +1,8 @@
 # storkctl global flags
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/storkctl-reference/global-flags (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/storkctl-reference/global-flags (Portworx Enterprise latest)
 
 storkctl global flags | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Global flags in `storkctl` provide configurable options that apply to all commands. These flags allow users to customize logging, output format, Kubernetes API request limits, and more.
 

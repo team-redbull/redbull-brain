@@ -1,12 +1,8 @@
 # Installation on OpenShift Two-Node with Arbiter Bare Metal Cluster
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/bare-metal/openshift-two-node-arbiter (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/bare-metal/openshift-two-node-arbiter (Portworx Enterprise latest)
 
 Installation on OpenShift Two-Node with Arbiter Bare Metal Cluster | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 A Portworx cluster on a Red Hat OpenShift two-node with arbiter (TNA) cluster is a compact, cost-effective topology designed for edge environments. The cluster consists of two control plane nodes and one arbiter node. The arbiter node stores the Portworx KVDB data, maintaining quorum and preventing split-brain. The arbiter node does not store application data or run workloads.
 

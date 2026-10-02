@@ -1,12 +1,8 @@
 # Manage storage nodes on AWS
 
-Source: https://docs.portworx.com/portworx-enterprise/reference-architectures/auto-disk-provisioning/aws (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference-architectures/auto-disk-provisioning/aws (Portworx Enterprise latest)
 
 Manage storage nodes on AWS | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 note
 

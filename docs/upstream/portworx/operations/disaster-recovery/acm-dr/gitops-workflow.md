@@ -1,12 +1,8 @@
 # Manage ACM Disaster Recovery using GitOps
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/acm-dr/gitops-workflow (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/acm-dr/gitops-workflow (Portworx Enterprise latest)
 
 Manage ACM Disaster Recovery using GitOps | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ACM-based disaster recovery (DR) supports GitOps workflows. You define the DR configuration as Kubernetes custom resources (CRs) in a Git repository, and a GitOps controller, such as OpenShift GitOps or Argo CD, synchronizes these resources with the ACM hub cluster. Runtime operations, such as failover and failback, are not declarative and remain separate operational tasks that you perform from the OpenShift console.
 

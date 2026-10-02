@@ -1,12 +1,8 @@
 # Add a dedicated journal device to a node
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/tune-performance/configure-journal-device (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/tune-performance/configure-journal-device (Portworx Enterprise latest)
 
 Add a dedicated journal device to a node | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 A journal device is a dedicated storage component used to improve the performance and reliability of write operations. It logs write operations before they are finalized in the main storage volumes. This page outlines how to configure a Portworx StorageCluster to add a journal device to a new or existing node.
 

@@ -1,12 +1,8 @@
 # Configure FlashArray as a Direct Access volume
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/pure-flasharray (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/pure-flasharray (Portworx Enterprise latest)
 
 Configure FlashArray as a Direct Access volume | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 On-premises users who want to use FlashArray with Portworx on Kubernetes can attach FlashArray as a Direct Access volume. Used in this way, Portworx directly provisions FlashArray volumes, maps them to a user PVC, and mounts them to pods. Once mounted, the application writes data directly onto FlashArray. As a result, this mounting method does not use storage pools.
 

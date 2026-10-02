@@ -1,12 +1,8 @@
 # Generate tokens
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/generate-token (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/generate-token (Portworx Enterprise latest)
 
 Generate tokens | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 With Portworx, you can use the `pxctl` command-line tool to generate a token. Run the `pxctl auth token generate` command with the `--help` flag to list the available subcommands and flags.
 

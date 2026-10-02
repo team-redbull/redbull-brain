@@ -1,12 +1,8 @@
 # Scale or Restrict Portworx on Nodes
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/troubleshooting/scale-or-restrict (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/troubleshooting/scale-or-restrict (Portworx Enterprise latest)
 
 Scale or Restrict Portworx on Nodes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx installation is controlled by Portworx Operator. It automatically scales as you grow your Kubernetes cluster. There are no additional requirements to install Portworx on the new nodes in your Kubernetes cluster.
 

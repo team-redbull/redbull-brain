@@ -1,12 +1,8 @@
 # Application setup with bucket access
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/storage-operations/object/application-setup (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/storage-operations/object/application-setup (Portworx Enterprise latest)
 
 Application setup with bucket access | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This page describes how to use a PXBucketAccess object with your application. The steps below apply to both Pure FlashBlade and AWS S3 buckets.
 

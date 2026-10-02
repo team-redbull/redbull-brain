@@ -1,12 +1,8 @@
 # Synchronous Disaster Recovery
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/px-metro (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/px-metro (Portworx Enterprise latest)
 
 Synchronous Disaster Recovery | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic explains how to install a stretched Portworx cluster and achieve synchronous disaster recovery (DR). It demonstrates how to failover and failback applications between two clusters.
 

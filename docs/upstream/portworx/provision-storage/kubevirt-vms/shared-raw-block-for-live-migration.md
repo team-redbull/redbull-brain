@@ -1,12 +1,8 @@
 # Manage FlashArray Direct Access Shared Block Device (RWX Block) for KubeVirt VMs
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/kubevirt-vms/shared-raw-block-for-live-migration (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/kubevirt-vms/shared-raw-block-for-live-migration (Portworx Enterprise latest)
 
 Manage FlashArray Direct Access Shared Block Device (RWX Block) for KubeVirt VMs | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx enables the seamless integration of KubeVirt virtual machines (VMs) within Kubernetes clusters, leveraging the high performance of ReadWriteMany (RWX) volumes backed by FlashArray Direct Access (FADA) shared raw block RWX volumes. This approach supports raw block devices, which provide direct block storage access instead of a mounted filesystem. This is particularly beneficial for applications that demand low-latency and high-performance storage.
 

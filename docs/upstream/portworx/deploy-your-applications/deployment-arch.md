@@ -1,12 +1,8 @@
 # Deployment Architectures for Kubernetes-Based Stateful Applications
 
-Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/deployment-arch (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/deployment-arch (Portworx Enterprise latest)
 
 Deployment Architectures for Kubernetes-Based Stateful Applications | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Organizations leveraging Portworx have discovered how simple, reliable and secure it is to run Kubernetes-based stateful applications in production. Underneath this simplicity, however, there is a great degree of flexibility in how Portworx can be deployed. These deployment options, or architectures, vary along two primary dimensions:
 

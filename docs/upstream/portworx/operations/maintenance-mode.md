@@ -1,12 +1,8 @@
 # Maintenance Commands
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/maintenance-mode (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/maintenance-mode (Portworx Enterprise latest)
 
 Maintenance Commands | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Service level commands are related to maintenance of drives and drive pools. The most common cases would be for Disk addition
 

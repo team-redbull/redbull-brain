@@ -1,12 +1,8 @@
 # Configure IO profiles for Portworx volumes
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/tune-performance/io-profile-in-k8s (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/tune-performance/io-profile-in-k8s (Portworx Enterprise latest)
 
 Configure IO profiles for Portworx volumes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx volumes on your cluster can use different IO profiles to optimize the Portworx volumes' performance for specific use-cases. For information about what IO profiles are, as well as the different profiles available, see the IO profiles concept section.
 

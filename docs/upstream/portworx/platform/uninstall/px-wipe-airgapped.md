@@ -1,12 +1,8 @@
 # Wipe Portworx from an air-gapped cluster
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/uninstall/px-wipe-airgapped (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/uninstall/px-wipe-airgapped (Portworx Enterprise latest)
 
 Wipe Portworx from an air-gapped cluster | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 When wiping Portworx in Kubernetes, a number of Docker images are fetched from registries on the internet. If your nodes don't have access to the public container registries, you can load these images onto your nodes manually. Perform the steps below to wipe Portworx from an air-gapped cluster.
 

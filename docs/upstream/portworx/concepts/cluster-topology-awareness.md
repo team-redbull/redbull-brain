@@ -1,12 +1,8 @@
 # Cluster Topology awareness
 
-Source: https://docs.portworx.com/portworx-enterprise/concepts/cluster-topology-awareness (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/concepts/cluster-topology-awareness (Portworx Enterprise latest)
 
 Cluster Topology awareness | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Kubernetes node labels provide cluster topology information such as rack, zone, and region to Portworx clusters. Portworx uses this information to make volume replica placement decisions. The way Portworx responds to zone, region, and rack information is as follows:
 

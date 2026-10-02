@@ -1,12 +1,8 @@
 # Portworx Operator Release Notes
 
-Source: https://docs.portworx.com/portworx-enterprise/operator-release-notes (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operator-release-notes (Portworx Enterprise latest)
 
 Portworx Operator Release Notes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 important
 

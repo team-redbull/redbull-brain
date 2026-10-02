@@ -1,12 +1,8 @@
 # Create PVCs using the ReadOnlyMany access mode
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/create-readonlymany-pvcs (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/create-readonlymany-pvcs (Portworx Enterprise latest)
 
 Create PVCs using the ReadOnlyMany access mode | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This guide provides steps for mounting a disk in the `ReadOnlyMany` (ROX) access mode. The in-tree Portworx driver for Kubernetes and OpenShift does not support creating PVCs with the `ReadOnlyMany` access mode. To achieve this functionality, follow the steps below:
 

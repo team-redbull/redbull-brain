@@ -1,12 +1,8 @@
 # Installation on Google Anthos, Rancher, or vSphere Kubernetes Service Clusters (Air-Gapped and Non-Air-Gapped)
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/bare-metal/other-distributions (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/bare-metal/other-distributions (Portworx Enterprise latest)
 
 Installation on Google Anthos, Rancher, or vSphere Kubernetes Service Clusters (Air-Gapped and Non-Air-Gapped) | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx Enterprise can be deployed on a variety of Kubernetes platforms including Google Anthos, Rancher Kubernetes Engine (RKE2), and VMware vSphere Kubernetes Service (VKS) running on bare metal clusters.
 

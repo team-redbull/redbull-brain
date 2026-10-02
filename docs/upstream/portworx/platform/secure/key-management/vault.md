@@ -1,12 +1,8 @@
 # Vault
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/secure/key-management/vault (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/secure/key-management/vault (Portworx Enterprise latest)
 
 Vault | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx integrates with HashiCorp Vault to store encryption keys, secrets, and credentials securely. This topic explains how to connect a Portworx cluster to a Vault development server endpoint and use Vault to manage secrets for volume encryption, as well as credentials such as vSphere credentials.
 

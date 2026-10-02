@@ -1,12 +1,8 @@
 # Configure Portworx Components
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/configure-portworx-components (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/configure-portworx-components (Portworx Enterprise latest)
 
 Configure Portworx Components | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This section outlines how to configure essential Portworx components that provide storage orchestration, dynamic volume management, and help with monitoring storage nodes in Kubernetes environments.
 

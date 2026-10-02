@@ -1,12 +1,8 @@
 # Remove or replace a failed drive
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/remove-failed-drive (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/remove-failed-drive (Portworx Enterprise latest)
 
 Remove or replace a failed drive | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 When a drive fails, Portworx continues to operate using available replicas on other nodes. To fully recover from a drive failure, you must replace or remove the failed drive from Portworx, and how you recover depends on the pool which contains the failed drive.
 

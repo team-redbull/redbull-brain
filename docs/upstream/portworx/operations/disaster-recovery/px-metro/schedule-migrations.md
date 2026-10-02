@@ -1,12 +1,8 @@
 # Schedule migrations
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/px-metro/schedule-migrations (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/disaster-recovery/px-metro/schedule-migrations (Portworx Enterprise latest)
 
 Schedule migrations | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Once your source and destination clusters are paired, you need to create a schedule to migrate one or more namespaces periodically. Because you have only one Portworx cluster stretched across your source and destination clusters, you will only migrate Kubernetes or OpenShift resources and not your volumes.
 

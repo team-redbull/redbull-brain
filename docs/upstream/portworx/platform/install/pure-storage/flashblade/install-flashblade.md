@@ -1,12 +1,8 @@
 # Installation of Portworx with FlashBlade using Portworx Central
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/pure-storage/flashblade/install-flashblade (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/pure-storage/flashblade/install-flashblade (Portworx Enterprise latest)
 
 Installation of Portworx with FlashBlade using Portworx Central | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx Enterprise supports using FlashBlade to provide storage for workloads. However, Portworx requires a block device backend for system volumes, such as metadata, journal, and KVDB. You must configure a separate storage backend to support these components.
 

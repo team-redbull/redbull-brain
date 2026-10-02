@@ -1,12 +1,8 @@
 # Upgrade Portworx Addon for TKGI cluster
 
-Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/upgrade-addon-for-tkgi (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/upgrade-addon-for-tkgi (Portworx Enterprise latest)
 
 Upgrade Portworx Addon for TKGI cluster | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The Bosh Director ensures that upgrades to Portworx-enabled TKGI clusters are performed with minimal disruption to availability and functionality.
 

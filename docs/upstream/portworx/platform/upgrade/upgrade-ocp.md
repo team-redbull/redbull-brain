@@ -1,12 +1,8 @@
 # Upgrade OpenShift using Smart Upgrade
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/upgrade/upgrade-ocp (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/upgrade/upgrade-ocp (Portworx Enterprise latest)
 
 Upgrade OpenShift using Smart Upgrade | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Previously, Portworx came packaged with its own Prometheus deployment. With new versions of OpenShift, Portworx uses the OpenShift Prometheus deployment instead.
 

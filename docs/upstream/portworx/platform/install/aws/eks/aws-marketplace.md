@@ -1,12 +1,8 @@
 # Installation on Amazon Elastic Kubernetes Service (EKS) using AWS Marketplace
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/aws/eks/aws-marketplace (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/aws/eks/aws-marketplace (Portworx Enterprise latest)
 
 Installation on Amazon Elastic Kubernetes Service (EKS) using AWS Marketplace | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic provides instructions for installing Portworx on an Amazon Elastic Kubernetes Service (Amazon EKS) cluster from AWS Marketplace.
 

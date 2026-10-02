@@ -1,12 +1,8 @@
 # Automatically rebalance Portworx storage pools
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/autopilot/use-cases/rebalance-pool (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/autopilot/use-cases/rebalance-pool (Portworx Enterprise latest)
 
 Automatically rebalance Portworx storage pools | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 You can use Autopilot to rebalance Portworx storage pools automatically when they begin to run out of space.
 

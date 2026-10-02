@@ -1,12 +1,8 @@
 # Installation of Portworx with FlashArray using Helm
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/install/pure-storage/flasharray/install-flasharray-helm (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/install/pure-storage/flasharray/install-flasharray-helm (Portworx Enterprise latest)
 
 Installation of Portworx with FlashArray using Helm | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This page provides step-by-step instructions for deploying Portworx Enterprise with FlashArray as the backend storage using Portworx Helm charts.
 

@@ -1,12 +1,8 @@
 # Find cluster status using the `pxctl status` command
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/status (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/status (Portworx Enterprise latest)
 
 Find cluster status using the `pxctl status` command | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 The `pxctl status` command provides an overview of your cluster, including:
 

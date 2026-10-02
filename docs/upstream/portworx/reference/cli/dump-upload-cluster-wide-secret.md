@@ -1,12 +1,8 @@
 # Dump and Upload cluster-wide secrets
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/dump-upload-cluster-wide-secret (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/dump-upload-cluster-wide-secret (Portworx Enterprise latest)
 
 Dump and Upload cluster-wide secrets | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx provides the capability to encrypt volumes using cluster-wide secrets. A cluster-wide secret is a unique secret for a cluster that can be used as a default key for encrypting your volumes. However, this poses a problem while migrating such volumes across clusters. The destination cluster needs to have the same cluster-wide secret in order to use the migrated encrypted volume.
 

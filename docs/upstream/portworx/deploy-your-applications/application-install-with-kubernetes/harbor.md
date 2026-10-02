@@ -1,12 +1,8 @@
 # Deploy Harbor with Portworx Enterprise
 
-Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/harbor (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/harbor (Portworx Enterprise latest)
 
 Deploy Harbor with Portworx Enterprise | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Harbor is an open-source container image registry. This document provides details on how Harbor and its dependencies can be deployed with Portworx Enterprise on Kubernetes. Portworx provides reliable and persistent storage to ensure Harbor runs with HA.
 

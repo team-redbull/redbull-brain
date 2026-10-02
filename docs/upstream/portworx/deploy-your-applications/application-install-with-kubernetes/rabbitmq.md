@@ -1,12 +1,8 @@
 # Deploy RabbitMQ with Portworx Enterprise
 
-Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/rabbitmq (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/rabbitmq (Portworx Enterprise latest)
 
 Deploy RabbitMQ with Portworx Enterprise | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 RabbitMQ is an open-source message broker. It plays a central role in many distributed systems. You can configure RabbitMQ to safely pass messages between decoupled systems. Learn how you can run RabbitMQ with Portworx on Kubernetes. Portworx will provide a reliable persistent storage layer which makes sure no messages are lost.
 

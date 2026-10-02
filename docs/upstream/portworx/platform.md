@@ -1,12 +1,8 @@
 # Install and Run Portworx Enterprise
 
-Source: https://docs.portworx.com/portworx-enterprise/platform (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform (Portworx Enterprise latest)
 
 Install and Run Portworx Enterprise | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx Enterprise allows you to build apps anywhere and run them at production scale with high availability, reliability, and security.
 

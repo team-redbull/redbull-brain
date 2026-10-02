@@ -1,12 +1,8 @@
 # Configure Portworx Monitoring on OpenShift
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/observability/set-ocp-prometheus (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/observability/set-ocp-prometheus (Portworx Enterprise latest)
 
 Configure Portworx Monitoring on OpenShift | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic provides instructions on how to configure monitoring for Portworx deployments on an OpenShift cluster. With OpenShift versions 4.12 or later, Portworx uses OpenShift’s Prometheus deployment for monitoring, rather than deploying its own.
 

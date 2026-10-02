@@ -122,8 +122,10 @@ Repo names, default branches and doc globs were checked against GitHub on 2026-1
 layouts drift (Gateway API moved `site-src` → `site/content`), so after a bump run `server.py --sync --check`
 and fix any `docs` glob that matches nothing.
 
-**Portworx has no public docs repo** (`portworx/px-docs` is an archived 2018 snapshot). `portworx-docs` is a
-disabled `markdown_dir` source: export the docs for the version we run and set `PORTWORX_DOCS_DIR`.
+**Portworx has no public docs repo** (`portworx/px-docs` is an archived 2018 snapshot). `portworx-docs` is a pinned
+mirror of the latest docs.portworx.com release in `docs/upstream/portworx` (3.7 at last sync), refreshed with
+`python3 scripts/sync-portworx-docs.py` on a connected host (on macOS Python: `SSL_CERT_FILE=/etc/ssl/cert.pem`).
+It is latest-only: for older installed versions verify against the support matrix / RHOKP.
 
 Pick the ref per cluster from `knowledge/meta/fleet-versions.md`; never rely on `main` for a cluster.
 

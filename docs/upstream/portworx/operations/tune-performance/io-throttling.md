@@ -1,12 +1,8 @@
 # Application I/O Control
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/tune-performance/io-throttling (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/tune-performance/io-throttling (Portworx Enterprise latest)
 
 Application I/O Control | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx volumes are created from a common storage pool and share their available IOPS (input/output operations per second) and bandwidth (measured in MBps) between all other provisioned Portworx volumes. If an application's volumes start consuming too many resources, it can become a "noisy neighbor" and reduce the I/O and network bandwidth available to other volumes in the pool.
 

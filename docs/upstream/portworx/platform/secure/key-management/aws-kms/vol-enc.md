@@ -1,12 +1,8 @@
 # Encrypt Portworx Volumes using AWS KMS
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/secure/key-management/aws-kms/vol-enc (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/secure/key-management/aws-kms/vol-enc (Portworx Enterprise latest)
 
 Encrypt Portworx Volumes using AWS KMS | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 You can use one of the following methods to encrypt Portworx volumes with AWS Key Management Service (KMS), depending on how you provide the secret password to Portworx:
 

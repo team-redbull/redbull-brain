@@ -1,12 +1,8 @@
 # Cloud migrations using pxctl
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/cloud-migration (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/cloud-migration (Portworx Enterprise latest)
 
 Cloud migrations using pxctl | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This document explains how to migrate Portworx volumes between clusters. In order to do this, we'll first have to pair up 2 clusters and then issue the migration command to Portworx.
 

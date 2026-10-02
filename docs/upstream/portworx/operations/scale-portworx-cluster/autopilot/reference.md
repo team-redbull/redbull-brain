@@ -1,12 +1,8 @@
 # AutopilotRule Reference
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/autopilot/reference (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/autopilot/reference (Portworx Enterprise latest)
 
 AutopilotRule Reference | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This topic describes the `AutopilotRule` Custom Resource Definition (CRD) specifications and actions supported by Autopilot. It provides examples of the `events` option available to view the actions that Autopilot is taking or has taken in the past.
 

@@ -1,12 +1,8 @@
 # Using Pre-provisioned Volumes
 
-Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/using-preprovisioned-volumes (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/provision-storage/create-pvcs/using-preprovisioned-volumes (Portworx Enterprise latest)
 
 Using Pre-provisioned Volumes | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 This document describes how to use a pre-provisioned volume in your cluster.
 

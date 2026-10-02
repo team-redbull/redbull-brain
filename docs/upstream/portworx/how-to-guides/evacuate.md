@@ -1,12 +1,8 @@
 # Evacuating a Portworx node
 
-Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/evacuate (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/how-to-guides/evacuate (Portworx Enterprise latest)
 
 Evacuating a Portworx node | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Sometimes it is necessary to evacuate a node of both workloads and storage. You may want to do this before an upgrade or other maintenance, or you might be trying to rebalance your workloads across the cluster. Note that if you are decommissioning a node, then the steps to do this should be followed here. Also note that upgrades can be done with minimal downtime as documented, so this process is not a prerequisite.
 

@@ -1,12 +1,8 @@
 # Enable Portworx Fusion Controller
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/configure-portworx-components/enable-fusion (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/configure-portworx-components/enable-fusion (Portworx Enterprise latest)
 
 Enable Portworx Fusion Controller | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Portworx Fusion Controller provides a unified, application-aware platform that combines Everpure Fusion’s fleet-level management with Portworx’s Kubernetes-native data services. It is supported only on clusters deployed on the Everpure FlashArray storage platform running OpenShift Container Platform (OCP).
 

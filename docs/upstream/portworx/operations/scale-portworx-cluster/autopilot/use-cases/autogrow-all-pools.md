@@ -1,12 +1,8 @@
 # Expand every Portworx storage pool in your cluster
 
-Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/autopilot/use-cases/autogrow-all-pools (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/operations/scale-portworx-cluster/autopilot/use-cases/autogrow-all-pools (Portworx Enterprise latest)
 
 Expand every Portworx storage pool in your cluster | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 You can use Autopilot to expand every storage pool in your Portworx cluster until they reach a certain capacity.
 

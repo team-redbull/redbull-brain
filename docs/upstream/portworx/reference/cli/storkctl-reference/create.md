@@ -1,12 +1,8 @@
 # storkctl create
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/storkctl-reference/create (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/storkctl-reference/create (Portworx Enterprise latest)
 
 storkctl create | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 Create stork resources
 

@@ -1,12 +1,8 @@
 # pxctl sched-policy
 
-Source: https://docs.portworx.com/portworx-enterprise/reference/cli/pxctl-reference/sched-policy-reference (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/reference/cli/pxctl-reference/sched-policy-reference (Portworx Enterprise latest)
 
 pxctl sched-policy | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## pxctl sched-policy
 

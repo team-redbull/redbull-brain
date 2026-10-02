@@ -1,12 +1,8 @@
 # Configure PX-Security on your cluster
 
-Source: https://docs.portworx.com/portworx-enterprise/platform/secure/px-security (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/platform/secure/px-security (Portworx Enterprise latest)
 
 Configure PX-Security on your cluster | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 While Kubernetes provides a great authentication model for its users, storage systems could be exposed to malicious requests. PX-Security provides a method to protect against such requests, further providing deployers with a more secured system.
 

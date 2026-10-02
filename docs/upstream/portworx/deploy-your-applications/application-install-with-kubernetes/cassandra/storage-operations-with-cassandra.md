@@ -1,12 +1,8 @@
 # Storage Operations with Cassandra
 
-Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/cassandra/storage-operations-with-cassandra (Portworx Enterprise 3.6)
+Source: https://docs.portworx.com/portworx-enterprise/deploy-your-applications/application-install-with-kubernetes/cassandra/storage-operations-with-cassandra (Portworx Enterprise latest)
 
 Storage Operations with Cassandra | Portworx Enterprise Documentation
-
-Skip to main content
-
-Version: 3.7
 
 ## Scaling your Cassandra cluster​
 
