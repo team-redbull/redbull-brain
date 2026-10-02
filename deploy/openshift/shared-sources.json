@@ -156,8 +156,8 @@
       "code_include": [
         "apis/**",
         "pkg/**",
-        "controllers/**",
-        "internal/**"
+        "internal/**",
+        "cmd/**"
       ]
     },
     {
@@ -321,14 +321,13 @@
     },
     {
       "name": "portworx-docs",
-      "kind": "git_repo",
-      "description": "Portworx documentation. Use the branch/tag matching the installed Portworx/PX-Enterprise version",
-      "path": "${TEAM_KNOWLEDGE_SOURCES}/portworx-docs.git",
-      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal}/mirrors/portworx/pxdocs.git",
-      "web_url": "https://gitlab.internal/mirrors/portworx/pxdocs",
-      "default_ref": "master",
-      "docs": [
-        "content/**/*.md"
+      "kind": "markdown_dir",
+      "enabled": false,
+      "description": "Portworx documentation. No public source repo exists (portworx/px-docs is an archived 2018 snapshot; the docs.portworx.com source is private). Enable by pointing PORTWORX_DOCS_DIR at an internal export/mirror of the docs for the version we run",
+      "root": "${PORTWORX_DOCS_DIR:-/data/portworx-docs}",
+      "include": [
+        "**/*.md",
+        "**/*.html"
       ]
     },
     {
@@ -408,7 +407,8 @@
       "web_url": "https://gitlab.internal/mirrors/kubernetes-sigs/gateway-api",
       "default_ref": "main",
       "docs": [
-        "site-src/**/*.md"
+        "site/content/**/*.md",
+        "geps/**/*.md"
       ],
       "code_include": [
         "apis/**"

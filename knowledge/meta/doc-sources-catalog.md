@@ -32,7 +32,7 @@ upstream source disagree, RHOKP/KCS wins for what we run**; upstream tells you h
 | `prometheus-docs`, `prometheus-operator` | observability | PromQL, alerting, ServiceMonitor/PrometheusRule | OCP bundles its own build; docs are general |
 | `openshift-runbooks` | observability | per-alert runbooks (check first when an alert fires) | `master` (runbooks are not versioned per minor) |
 | `grafana-docs`, `mcp-grafana` | observability | dashboards, datasources, provisioning; MCP tool names and flags | tag = Grafana / mcp-grafana version we run |
-| `portworx-docs` | storage | Portworx install, upgrades, storage classes, DR | branch/tag = installed Portworx version |
+| `portworx-docs` | storage | Portworx install, upgrades, storage classes, DR. **Disabled — no public repo**; needs an internal docs export (`PORTWORX_DOCS_DIR`) | export of the docs for the installed Portworx version |
 | `etcd-docs` | openshift | etcd defrag, backup/restore, tuning (OCP wraps etcd with its own operator) | general |
 | `kubernetes-docs` | kubernetes | Kubernetes concepts and APIs | pinned 1.35 only (see fleet-versions) |
 | `argocd-docs`, `argo-cd` | gitops | Argo CD docs / source | `stable` docs; tag of installed Argo CD for source |
@@ -43,8 +43,9 @@ upstream source disagree, RHOKP/KCS wins for what we run**; upstream tells you h
 - Upstream default branches are ahead of what we run. Say which ref your claim comes from.
 - Operators on OCP (monitoring, ingress, CNI) are managed by CVO — upstream flags often can't be set directly.
   Check RHOKP for the supported way before suggesting a change.
-- Source repo names and doc paths in `sources.json` were written without network access; if a source returns
-  nothing, check `list_sources` doc counts and fix the globs, then record the fix here.
+- Repo names, default branches and doc globs were verified against GitHub on 2026-10-03. Upstream layouts drift
+  (e.g. Gateway API docs moved to `site/content`); if a source returns nothing, check `list_sources` doc counts,
+  fix the globs, and record the fix here.
 
 ## History
 

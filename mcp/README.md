@@ -113,13 +113,17 @@ kubernetes-sigs/cluster-api  kubernetes-sigs/lws  kubernetes-sigs/kueue  kuberne
 kubernetes-sigs/node-feature-discovery  vmware/load-balancer-and-ingress-services-for-kubernetes
 envoyproxy/envoy  envoyproxy/gateway  kserve/kserve  kserve/website  vllm-project/vllm
 prometheus/docs  prometheus-operator/prometheus-operator  grafana/grafana  grafana/mcp-grafana
-portworx/pxdocs  metal3-io/metal3-docs  metal3-io/baremetal-operator  metal3-io/cluster-api-provider-metal3
+metal3-io/metal3-docs  metal3-io/baremetal-operator  metal3-io/cluster-api-provider-metal3
 openstack/ironic  NVIDIA/gpu-operator  ovn-org/ovn-kubernetes  k8snetworkplumbingwg/multus-cni  etcd-io/website
 argoproj/argo-cd (optional)
 ```
 
-Repo names and doc paths were written without network access — run `server.py --sync --check` and
-fix any `docs` globs that match nothing (`list_sources` shows doc counts).
+Repo names, default branches and doc globs were checked against GitHub on 2026-10-03 (all match files). Upstream
+layouts drift (Gateway API moved `site-src` → `site/content`), so after a bump run `server.py --sync --check`
+and fix any `docs` glob that matches nothing.
+
+**Portworx has no public docs repo** (`portworx/px-docs` is an archived 2018 snapshot). `portworx-docs` is a
+disabled `markdown_dir` source: export the docs for the version we run and set `PORTWORX_DOCS_DIR`.
 
 Pick the ref per cluster from `knowledge/meta/fleet-versions.md`; never rely on `main` for a cluster.
 
