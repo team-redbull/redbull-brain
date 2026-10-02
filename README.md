@@ -57,7 +57,9 @@ model, no database and no `pip install`.
 | `mcp/` | `sources.json` (what team-knowledge searches), docs for every MCP server, client config | Humans |
 | `plugins/team-brain/` | The Claude Code plugin: skills, hooks, `.mcp.json`, the team-knowledge server code | Humans |
 | `deploy/openshift/` | Shared deployment: RHOKP + team-knowledge over HTTP for the whole team | Humans |
-| `scripts/` | `brain.py` (validate/index/stale) and the doc sync scripts | Humans |
+| `scripts/` | `brain.py` (validate/index/stale), `ci_checks.py` (CI gate) and the doc sync scripts | Humans |
+| `tests/` | `golden-queries.json`: queries that must keep finding specific pages (CI smoke test) | Humans |
+| `.gitlab-ci.yml`, `.github/workflows/` | CI definitions (the GitLab one is the real pipeline) | Humans |
 | `INDEX.md` | Generated table of contents (never edit by hand) | `scripts/brain.py index` |
 
 Areas used by `knowledge/` and `runbooks/`: `openshift`, `kubernetes`, `hypershift`, `baremetal`, `vsphere`,
@@ -205,9 +207,32 @@ Daily commands:
 python3 scripts/brain.py validate           # frontmatter + secret scan + links
 python3 scripts/brain.py index              # regenerate INDEX.md  (index --check fails if stale)
 python3 scripts/brain.py stale --days 180   # pages whose last_verified is old
+python3 scripts/ci_checks.py                # everything CI runs (add BASE_REF=origin/main for the version-bump check)
 python3 plugins/team-brain/mcp-servers/team-knowledge/server.py --check   # which sources are reachable
 python3 plugins/team-brain/mcp-servers/team-knowledge/server.py --call search '{"query":"NodePool stuck Updating","version":"4.20"}'
 ```
+
+## CI
+
+One script, three places: `python3 scripts/ci_checks.py` locally, `.gitlab-ci.yml` (the real, air-gapped pipeline)
+and `.github/workflows/ci.yml` (the GitHub mirror). It fails the merge request if any of these fail:
+
+| Check | What it enforces |
+|---|---|
+| `validate` / `index` | frontmatter schema, secret patterns, links; **warnings count as errors**; `INDEX.md` is current |
+| `json`, `syntax` | every JSON file parses; Python/shell scripts compile |
+| `sources` | each source has its required keys; enabled sources that read this repo match real files |
+| `parity` | `mcp/sources.json` and `deploy/openshift/shared-sources.json` list the same sources with the same `enabled` flags |
+| `frontmatter` | `applies_to` tokens are well-formed, `area` is known, `last_verified` isn't in the future |
+| `leaks` | private IPs, `.internal` hostnames outside the placeholder allowlist, real-looking `ocp4-<env>-<name>` names, and (if configured) your **denylist** |
+| `upstream` | each `docs/upstream/<name>` has `.upstream` metadata and documentation files |
+| `version` | on merge requests: skills/hooks/`.mcp.json` changes must come with a `plugin.json` update (needs `BASE_REF`) |
+| `smoke` | the real team-knowledge server answers `tests/golden-queries.json` with the expected page in the top 3 |
+
+Setup in the internal GitLab: set `CI_IMAGE` to a runner image with python3 ≥ 3.9, git and bash from your internal
+registry; add a CI/CD variable **`BRAIN_DENYLIST_FILE`** (type *File*, masked/protected) holding one regex per line
+with the real region/site/MCE/cluster names — it never enters git, and matches are logged by line and entry number
+only. A weekly pipeline schedule runs `brain.py stale` as an informational report.
 
 ## Troubleshooting
 
@@ -222,8 +247,9 @@ python3 plugins/team-brain/mcp-servers/team-knowledge/server.py --call search '{
 
 ## What is and isn't verified yet
 
-- There is **no CI** and no test suite: `brain.py validate` (run by `brain-git.sh submit`) is the only gate.
-  Earlier drafts of this README claimed CI enforcement; that isn't implemented.
+- CI exists (`.gitlab-ci.yml`, `.github/workflows/ci.yml`, both running `scripts/ci_checks.py`) but has only been run
+  locally and against fault-injected copies of the repo — not yet on a real GitLab runner. The denylist check needs
+  `BRAIN_DENYLIST_FILE` configured in the internal GitLab to do anything. There is no unit-test suite beyond the checks.
 - The Grafana MCP and the shared HTTP deployment have not been exercised end to end against our environment.
 - RHOKP and the Argo CD docs mirror depend on your internal endpoints; they were not reachable from the machine
   this was built on.

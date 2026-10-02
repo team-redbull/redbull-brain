@@ -1,0 +1,45 @@
+# team-brain pipeline (internal GitLab). Everything is in scripts/ci_checks.py so it runs identically
+# locally (`python3 scripts/ci_checks.py`), here and in .github/workflows/ci.yml.
+#
+# Runner image: needs python3 >= 3.9, git and bash — point CI_IMAGE at your internal registry mirror
+# (the default is only a placeholder for a connected runner).
+#
+# Optional CI/CD variable (type: File, masked/protected): BRAIN_DENYLIST_FILE — one regex per line with the
+# REAL region/site/MCE/cluster names and anything else that must never be committed. It lives only in the
+# internal GitLab; matches are reported by line number and entry number, never echoed.
+
+variables:
+  CI_IMAGE: "python:3.12"
+  GIT_DEPTH: "0"            # full history: the version-bump check diffs against the target branch
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+stages: [check, report]
+
+brain-checks:
+  stage: check
+  image: $CI_IMAGE
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      variables:
+        BASE_REF: "origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME"
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+      when: never
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  script:
+    - git fetch origin "+refs/heads/*:refs/remotes/origin/*" --quiet || true
+    - python3 scripts/ci_checks.py
+
+# Scheduled (weekly): pages whose last_verified is old. Informational — never fails the pipeline.
+stale-report:
+  stage: report
+  image: $CI_IMAGE
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+  allow_failure: true
+  script:
+    - python3 scripts/brain.py stale --days 180

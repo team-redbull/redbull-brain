@@ -98,7 +98,13 @@ Incidents use `incident(<area>): …`.
 
 ## Gotchas
 
-- There is **no CI and no test suite**: `validate` (run inside `brain-git.sh submit`) is the only gate.
+- **CI** (`.gitlab-ci.yml`, mirrored in `.github/workflows/ci.yml`) runs `python3 scripts/ci_checks.py` — run it
+  yourself before submitting: validate (warnings are errors), `index --check`, JSON, source config + parity between
+  `mcp/sources.json` and `deploy/openshift/shared-sources.json`, frontmatter tokens, leak scan (private IPs,
+  non-placeholder `.internal` hosts, real-looking `ocp4-<env>-<name>` names, optional internal denylist), snapshot
+  metadata, script syntax, plugin version bump, and golden-query search smoke tests (`tests/golden-queries.json` —
+  add a query when a page must stay findable). Placeholder hosts are allowlisted in `HOST_ALLOW` in that script;
+  `# ci:allow-leak` on a line suppresses one hit. No unit-test suite beyond this.
 - `validate` skips `docs/upstream`, `README.md` files and `_template*`; broken links and template placeholders
   are warnings, not errors.
 - Changing hooks, skills or `.mcp.json`: bump `version` in `plugins/team-brain/.claude-plugin/plugin.json`

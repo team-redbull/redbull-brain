@@ -1,0 +1,22 @@
+# GitHub copy of the team-brain CI (the real pipeline is .gitlab-ci.yml in the air-gapped GitLab).
+# Both run scripts/ci_checks.py. The BRAIN_DENYLIST_FILE check (real site/cluster names) only exists in the
+# internal GitLab — real names must never be given to GitHub.
+name: ci
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  brain-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Checks
+        env:
+          BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || '' }}
+        run: python3 scripts/ci_checks.py

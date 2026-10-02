@@ -553,6 +553,31 @@
         "**/*.jpeg",
         "**/zz_generated*"
       ]
+    },
+    {
+      "name": "argo-cd",
+      "kind": "git_repo",
+      "enabled": false,
+      "description": "argoproj/argo-cd source — enable if the docs alone aren't enough (controller/appset behaviour)",
+      "path": "${TEAM_KNOWLEDGE_SOURCES}/argo-cd.git",
+      "remote": "${GIT_MIRROR_BASE:-https://gitlab.internal}/mirrors/argoproj/argo-cd.git",
+      "web_url": "https://gitlab.internal/mirrors/argoproj/argo-cd",
+      "default_ref": "master",
+      "docs": [
+        "docs/**/*.md"
+      ],
+      "code_include": [
+        "controller/**",
+        "applicationset/**",
+        "pkg/apis/**",
+        "reposerver/**",
+        "util/**",
+        "server/**"
+      ],
+      "code_exclude": [
+        "**/*_test.go",
+        "**/*.pb.go"
+      ]
     }
   ]
 }
