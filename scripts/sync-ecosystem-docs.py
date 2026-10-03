@@ -26,7 +26,9 @@ BASE = os.environ.get("UPSTREAM_GIT_BASE", "https://github.com")
 ROOT = Path(__file__).resolve().parent.parent
 EXT = (".md", ".markdown", ".rst", ".adoc", ".txt", ".mdx")  # .mdx is stored as .md (the indexer reads .md)
 
-# name: (repo, [paths in repo])  — default branch unless REF_<name> (dashes -> underscores) is set
+# name: (repo, [paths in repo][, extra extensions])  — default branch unless REF_<name> (dashes -> underscores) is set.
+# Extra extensions are for projects whose documentation is largely example manifests/code (KServe samples).
+CODE = (".yaml", ".yml", ".py")
 SOURCES = {
     "ako": ("vmware/load-balancer-and-ingress-services-for-kubernetes", [
         "docs", "README.md", "CHANGELOG.md", "AKO_GATEWAY_CHANGELOG.md", "ako-operator/README.md",
@@ -36,8 +38,10 @@ SOURCES = {
     "envoy-ai-gateway": ("envoyproxy/ai-gateway", ["site/docs", "release-notes", "README.md"]),
     "gateway-api-inference-extension": ("kubernetes-sigs/gateway-api-inference-extension", [
         "site-src", "docs/proposals", "README.md"]),
-    "kserve": ("kserve/kserve", ["docs", "README.md", "charts", "kernelcache/mcv/docs", "ROADMAP.md"]),
-    "kserve-website": ("kserve/website", ["docs"]),
+    "kserve": ("kserve/kserve", [
+        "docs", "README.md", "charts", "kernelcache/mcv/docs", "ROADMAP.md", "config/runtimes", "config/configmap",
+        "config/llmisvc", "config/storagecontainers"], CODE),
+    "kserve-website": ("kserve/website", ["docs"], CODE),  # docs/ = the site's /docs/next/ (latest)
     "prometheus-docs": ("prometheus/docs", ["docs"]),
     "prometheus-operator": ("prometheus-operator/prometheus-operator", ["Documentation", "README.md"]),
     "grafana-docs": ("grafana/grafana", ["docs/sources"]),
@@ -122,7 +126,8 @@ def latest_tag(repo):
 
 
 def sync(name, work, force=False):
-    repo, paths = SOURCES[name]
+    repo, paths, *extra = SOURCES[name]
+    exts = EXT + (extra[0] if extra else ())
     ref = os.environ.get("REF_" + name.replace("-", "_"))
     old = meta(name)
     if not force and old.get("commit") and old.get("paths") == ", ".join(paths) and old.get("repo") == repo \
@@ -144,7 +149,11 @@ def sync(name, work, force=False):
         src = clone / p
         files = [src] if src.is_file() else [f for f in src.rglob("*") if f.is_file()]
         for f in files:
-            if f.suffix.lower() in EXT:
+            if f.suffix.lower() in exts:
+                # examples yes, generated bulk no: Helm templates and CRD schemas are huge and say nothing a doc doesn't
+                if f.suffix.lower() not in EXT and (f.stat().st_size > 200_000 or "templates" in f.parts
+                                                      or "crd" in f.name.lower()):
+                    continue
                 out = new / f.relative_to(clone)
                 if out.suffix.lower() == ".mdx":
                     out = out.with_suffix(".md")

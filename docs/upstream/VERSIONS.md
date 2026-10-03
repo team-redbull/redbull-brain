@@ -22,8 +22,8 @@ stable upstream tag at sync time, for comparison with the version installed on a
 | `ip-address-manager` | metal3-io/ip-address-manager | main | c12636c867 | v1.14.1 | 6 | 2026-10-03 |
 | `ironic-image` | metal3-io/ironic-image | main | 5786694219 | v38.0.0 | 3 | 2026-10-03 |
 | `ironic-standalone-operator` | metal3-io/ironic-standalone-operator | main | 418195b205 | v0.11.0 | 5 | 2026-10-03 |
-| `kserve` | kserve/kserve | master | aa31c91d4d | v0.21.0 | 154 | 2026-10-03 |
-| `kserve-website` | kserve/website | main | 71c8b22a05 |  | 149 | 2026-10-03 |
+| `kserve` | kserve/kserve | master | aa31c91d4d | v0.21.0 | 512 | 2026-10-03 |
+| `kserve-website` | kserve/website | main | 71c8b22a05 |  | 163 | 2026-10-03 |
 | `kubernetes` | kubernetes/website | release-1.35 | 8817d35886 |  | 1641 | 2026-10-02 |
 | `kubernetes-mcp-server` | containers/kubernetes-mcp-server | main | 26eaf54c2a | v0.0.67 | 21 | 2026-10-03 |
 | `kueue` | kubernetes-sigs/kueue | main | 9306b3bc12 | v0.20.0 | 246 | 2026-10-03 |

@@ -24,7 +24,7 @@ STOP = frozenset(
 )
 
 CHUNK_MAX = 2500
-INDEX_FORMAT = 4  # bump when tokenization or chunking changes, to invalidate caches
+INDEX_FORMAT = 5  # bump when tokenization or chunking changes, to invalidate caches
 
 
 def tokenize(text: str) -> list[str]:

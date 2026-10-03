@@ -268,12 +268,15 @@
     {
       "name": "kserve",
       "kind": "git_repo",
-      "description": "KServe repo docs: InferenceService/ServingRuntime/LLMInferenceService concepts, samples, Helm chart values. Docs-only snapshot of the default branch in docs/upstream/kserve (refresh: scripts/sync-ecosystem-docs.py; pin with REF_kserve=<tag>); verify against the installed version",
+      "description": "KServe repo docs and samples: InferenceService/ServingRuntime/LLMInferenceService concepts, sample READMEs with their example manifests and custom-predictor code (docs/samples/**), default serving runtimes and config (config/), Helm chart READMEs and values. Docs-only snapshot of the default branch in docs/upstream/kserve (refresh: scripts/sync-ecosystem-docs.py; pin with REF_kserve=<tag>); verify against the installed version",
       "path": "${TEAM_KNOWLEDGE_SOURCES}/team-brain.git",
       "default_ref": "main",
       "docs": [
         "docs/upstream/kserve/**/*.md",
-        "docs/upstream/kserve/**/*.rst"
+        "docs/upstream/kserve/**/*.rst",
+        "docs/upstream/kserve/**/*.yaml",
+        "docs/upstream/kserve/**/*.yml",
+        "docs/upstream/kserve/**/*.py"
       ],
       "code_include": [
         "docs/upstream/kserve/**"
@@ -282,12 +285,15 @@
     {
       "name": "kserve-website",
       "kind": "git_repo",
-      "description": "KServe documentation website content. Docs-only snapshot of the default branch in docs/upstream/kserve-website (refresh: scripts/sync-ecosystem-docs.py; pin with REF_kserve_website=<tag>); verify against the installed version",
+      "description": "KServe documentation website, latest (the site's /docs/next/): install, concepts, generative inference incl. LLMInferenceService, predictive inference, storage, node scheduling, full CRD API reference (reference/crd-api.md), Python SDK reference, example manifests. Docs-only snapshot of the default branch in docs/upstream/kserve-website (refresh: scripts/sync-ecosystem-docs.py; pin with REF_kserve_website=<tag>); verify against the installed version",
       "path": "${TEAM_KNOWLEDGE_SOURCES}/team-brain.git",
       "default_ref": "main",
       "docs": [
         "docs/upstream/kserve-website/**/*.md",
-        "docs/upstream/kserve-website/**/*.rst"
+        "docs/upstream/kserve-website/**/*.rst",
+        "docs/upstream/kserve-website/**/*.yaml",
+        "docs/upstream/kserve-website/**/*.yml",
+        "docs/upstream/kserve-website/**/*.py"
       ],
       "code_include": [
         "docs/upstream/kserve-website/**"

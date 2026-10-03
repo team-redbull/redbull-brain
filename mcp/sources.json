@@ -254,23 +254,29 @@
     {
       "name": "kserve",
       "kind": "markdown_dir",
-      "description": "KServe repo docs: InferenceService/ServingRuntime/LLMInferenceService concepts, samples, Helm chart values. Docs-only snapshot of the default branch in docs/upstream/kserve (refresh: scripts/sync-ecosystem-docs.py; pin with REF_kserve=<tag>); verify against the installed version",
+      "description": "KServe repo docs and samples: InferenceService/ServingRuntime/LLMInferenceService concepts, sample READMEs with their example manifests and custom-predictor code (docs/samples/**), default serving runtimes and config (config/), Helm chart READMEs and values. Docs-only snapshot of the default branch in docs/upstream/kserve (refresh: scripts/sync-ecosystem-docs.py; pin with REF_kserve=<tag>); verify against the installed version",
       "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/kserve",
       "include": [
         "**/*.md",
         "**/*.rst",
-        "**/*.adoc"
+        "**/*.adoc",
+        "**/*.yaml",
+        "**/*.yml",
+        "**/*.py"
       ]
     },
     {
       "name": "kserve-website",
       "kind": "markdown_dir",
-      "description": "KServe documentation website content. Docs-only snapshot of the default branch in docs/upstream/kserve-website (refresh: scripts/sync-ecosystem-docs.py; pin with REF_kserve_website=<tag>); verify against the installed version",
+      "description": "KServe documentation website, latest (the site's /docs/next/): install, concepts, generative inference incl. LLMInferenceService, predictive inference, storage, node scheduling, full CRD API reference (reference/crd-api.md), Python SDK reference, example manifests. Docs-only snapshot of the default branch in docs/upstream/kserve-website (refresh: scripts/sync-ecosystem-docs.py; pin with REF_kserve_website=<tag>); verify against the installed version",
       "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/kserve-website",
       "include": [
         "**/*.md",
         "**/*.rst",
-        "**/*.adoc"
+        "**/*.adoc",
+        "**/*.yaml",
+        "**/*.yml",
+        "**/*.py"
       ]
     },
     {

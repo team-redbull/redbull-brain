@@ -18,7 +18,9 @@ from .config import matches
 from .graph import Graph
 from .textindex import BM25Index, Chunk, chunk_document, load_or_build, snippet
 
-TEXT_EXT = (".md", ".markdown", ".adoc", ".asciidoc", ".txt", ".rst")
+# .yaml/.yml/.py: example manifests and code that some snapshots keep next to their docs (KServe samples).
+# A source only sees them if its include/docs globs ask for them.
+TEXT_EXT = (".md", ".markdown", ".adoc", ".asciidoc", ".txt", ".rst", ".yaml", ".yml", ".py")
 MAX_FILE_BYTES = 2_000_000
 _REF_OK = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._/\-+]{0,200}$")
 

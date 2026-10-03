@@ -26,7 +26,7 @@ upstream source disagree, RHOKP/KCS wins for what we run**; upstream tells you h
 | `envoy`, `envoy-gateway`, `gateway-api` | networking | proxy config, Gateway API semantics, CRD fields | Envoy `release/v1.NN` as used by the product; Gateway API tag = installed CRD bundle |
 | `envoy-ai-gateway`, `gateway-api-inference-extension` | networking / ai | LLM traffic through Envoy: AIGatewayRoute, AIServiceBackend, provider/model routing, token rate limits, MCP gateway; InferencePool and the endpoint picker (shared with `llm-d`) | snapshot of `main`; compare with the installed release in `docs/upstream/VERSIONS.md` |
 | `ovn-kubernetes`, `multus-cni` | networking | default CNI behaviour, secondary networks | match OCP minor where a release branch exists |
-| `kserve`, `kserve-website` | gpu / ai | InferenceService/ServingRuntime APIs. RHOAI ships its own build — verify against RHOKP | tag of KServe in the installed RHOAI/ODH |
+| `kserve`, `kserve-website` | gpu / ai | `kserve-website` = the live site's `/docs/next/` (latest; all 147 pages checked against its sitemap on 2026-10-03, incl. LLMInferenceService and the CRD API reference). `kserve` = repo docs plus the sample manifests and code under `docs/samples`. InferenceService/ServingRuntime APIs. RHOAI ships its own build — verify against RHOKP | tag of KServe in the installed RHOAI/ODH |
 | `vllm` | gpu / ai | serving flags, quantization, parallelism, engine code | tag = vLLM version in the serving image |
 | `lws`, `kueue` | gpu / ai | multi-node inference (LeaderWorkerSet), quotas/queueing | tag = installed operator version |
 | `gpu-operator`, `node-feature-discovery` | gpu | ClusterPolicy, drivers, MIG, NFD labels | tag = installed operator version |
@@ -88,3 +88,4 @@ To re-run the audit after upstream moves: list `git ls-tree -r --name-only HEAD`
 - 2026-10-03: created with the initial source set.
 - 2026-10-03: coverage audit against upstream repos; added three Metal3 component sources and widened eight snapshots.
 - 2026-10-03: added Envoy AI Gateway and Gateway API Inference Extension; snapshots now refresh automatically.
+- 2026-10-03: KServe snapshots now include example manifests/code (`.yaml`, `.py`); website verified against the site's sitemap.
