@@ -318,6 +318,28 @@
       ]
     },
     {
+      "name": "kubernetes-mcp-server",
+      "kind": "markdown_dir",
+      "description": "kubernetes-mcp-server README and docs: flags, config file (denied_resources, toolsets, enabled/disabled tools), multi-cluster contexts. Docs-only snapshot of the default branch in docs/upstream/kubernetes-mcp-server (refresh: scripts/sync-ecosystem-docs.py; pin with REF_kubernetes_mcp_server=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/kubernetes-mcp-server",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
+      ]
+    },
+    {
+      "name": "okp-mcp",
+      "kind": "markdown_dir",
+      "description": "Red Hat okp-mcp (RHOKP MCP server) README and docs: configuration, container build, Solr schema exploration. Docs-only snapshot of the default branch in docs/upstream/okp-mcp (refresh: scripts/sync-ecosystem-docs.py; pin with REF_okp_mcp=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/okp-mcp",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
+      ]
+    },
+    {
       "name": "portworx-docs",
       "kind": "markdown_dir",
       "description": "Portworx Enterprise documentation, latest release (3.7 at last sync; mirrored by scripts/sync-portworx-docs.py from docs.portworx.com — no public source repo). For the installed older version, confirm behaviour in RHOKP/support matrix",

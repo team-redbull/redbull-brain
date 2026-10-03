@@ -36,6 +36,11 @@ maintenance guide is `README.md` (not imported here on purpose — it is long; r
 - **Metrics:** one Grafana, one Prometheus datasource per cluster named `Moby / <cluster-name>`. Resolve the
   datasource UID first (`list_datasources`) and pass it on every query; never use the default datasource
   (details: `knowledge/observability/grafana-one-datasource-per-cluster-prometheus.md`).
+- **Clusters (Kubernetes MCP):** full access with the engineer's kubeconfig (write, exec, Secrets); every call is
+  approved by a human. Pass `context` on every call (`configuration_contexts_list` first) — the current context
+  is whatever the last `oc login` left — and name the cluster and object when you propose a change. Lasting
+  changes belong in the day1/day2 repos (Argo reverts manual edits). Never copy a Secret value, token or log
+  line with credentials into a page or commit (details: `mcp/servers/kubernetes.md`).
 - **Don't edit generated files:** `docs/upstream/**` (regenerate with the sync scripts) and `INDEX.md`
   (`python3 scripts/brain.py index`; `index --check` fails if stale).
 

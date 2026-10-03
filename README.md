@@ -92,7 +92,12 @@ pages cite each other by path (`knowledge/<area>/<page>.md` in backticks, or a M
 
 The **Grafana MCP** (`mcp-grafana`) is separate and gives Claude metrics. Its binary ships **inside the plugin**
 (`plugins/team-brain/mcp-servers/vendor/`, sha256-pinned; linux-x86_64, darwin-arm64, windows-x86_64), so there is
-nothing to download in the air gap; it runs read-only with usage statistics off. Our layout is one Prometheus per
+nothing to download in the air gap; it runs read-only with usage statistics off.
+
+The **Kubernetes MCP** (`kubernetes-mcp-server`) ships the same way and lets Claude look at a cluster with your
+kubeconfig, with your rights: read, write, exec and Secrets — you approve each call in the permission prompt, so
+don't allow-list the write tools. Claude must pass the `context` (cluster) on every call — `mcp/servers/kubernetes.md`. Red Hat's own RHOKP server (`okp-mcp`) is optional and runs from a
+container image, not from the plugin: `mcp/servers/okp-mcp.md`. Our layout is one Prometheus per
 cluster and **one Grafana with one datasource per cluster named `Moby / <cluster-name>`**, so Claude must
 list datasources, pick the cluster's UID and pass it on every query:
 `knowledge/observability/grafana-one-datasource-per-cluster-prometheus.md`, `mcp/servers/grafana.md`.
@@ -275,6 +280,8 @@ above on the result and commits `docs(upstream): refresh N snapshots` to `main`.
 - CI exists (`.gitlab-ci.yml`, `.github/workflows/ci.yml`, both running `scripts/ci_checks.py`) but has only been run
   locally and against fault-injected copies of the repo — not yet on a real GitLab runner. The denylist check needs
   `BRAIN_DENYLIST_FILE` configured in the internal GitLab to do anything. There is no unit-test suite beyond the checks.
+- The Kubernetes MCP runs with full access; only its start-up and tool list were checked in that mode (the
+  restricted variant was tested against a throwaway local cluster). It has not been used on a cluster of ours; `okp-mcp` and its manifest have not been run at all.
 - The Grafana MCP binary was started from the plugin on macOS arm64 and its tools listed; the linux and windows
   archives are checksum-verified only, and nothing has been run against our real Grafana. The shared HTTP
   deployment has not been exercised end to end.

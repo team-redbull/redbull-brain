@@ -2,12 +2,15 @@
   "mcpServers": {
     "team-knowledge": {
       "command": "python3",
-      "args": ["${CLAUDE_PLUGIN_ROOT}/mcp-servers/team-knowledge/server.py"]
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/mcp-servers/team-knowledge/server.py"
+      ]
     },
     "grafana": {
       "command": "python3",
       "args": [
-        "${CLAUDE_PLUGIN_ROOT}/mcp-servers/launch.py", "grafana",
+        "${CLAUDE_PLUGIN_ROOT}/mcp-servers/launch.py",
+        "grafana",
         "--disable-write",
         "--usage-stats=disabled",
         "--enabled-tools=search,datasource,prometheus,loki,alerting,dashboard,folder,navigation"
@@ -17,6 +20,15 @@
         "GRAFANA_SERVICE_ACCOUNT_TOKEN": "${GRAFANA_SERVICE_ACCOUNT_TOKEN:-}",
         "GRAFANA_USAGE_STATS": "disabled"
       }
+    },
+    "kubernetes": {
+      "command": "python3",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/mcp-servers/launch.py",
+        "kubernetes",
+        "--config",
+        "${CLAUDE_PLUGIN_ROOT}/mcp-servers/kubernetes.toml"
+      ]
     }
   }
 }

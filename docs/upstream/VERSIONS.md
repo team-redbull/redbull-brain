@@ -25,6 +25,7 @@ stable upstream tag at sync time, for comparison with the version installed on a
 | `kserve` | kserve/kserve | master | aa31c91d4d | v0.21.0 | 154 | 2026-10-03 |
 | `kserve-website` | kserve/website | main | 71c8b22a05 |  | 149 | 2026-10-03 |
 | `kubernetes` | kubernetes/website | release-1.35 | 8817d35886 |  | 1641 | 2026-10-02 |
+| `kubernetes-mcp-server` | containers/kubernetes-mcp-server | main | 26eaf54c2a | v0.0.67 | 21 | 2026-10-03 |
 | `kueue` | kubernetes-sigs/kueue | main | 9306b3bc12 | v0.20.0 | 246 | 2026-10-03 |
 | `linux-kernel-docs` | torvalds/linux | master | e767a4ea70 | v7.2 | 116 | 2026-10-03 |
 | `llm-d` | llm-d/llm-d | main | e5bc61dda3 | v0.10.0 | 208 | 2026-10-03 |
@@ -36,6 +37,7 @@ stable upstream tag at sync time, for comparison with the version installed on a
 | `node-feature-discovery` | kubernetes-sigs/node-feature-discovery | master | c8ea0b62ae | v0.19.0 | 40 | 2026-10-03 |
 | `nvidia-cloud-native-docs` | NVIDIA/cloud-native-docs | main | de38d7746d |  | 83 | 2026-10-03 |
 | `nvidia-network-operator-docs` | Mellanox/network-operator-docs | main | 2a4a080f3a | v26.4.0 | 72 | 2026-10-03 |
+| `okp-mcp` | rhel-lightspeed/okp-mcp | main | 4505245152 |  | 6 | 2026-10-03 |
 | `openshift-runbooks` | openshift/runbooks | master | 937cdf63ce |  | 289 | 2026-10-03 |
 | `ovn-kubernetes` | ovn-org/ovn-kubernetes | master | 849e38fb51 | v1.4.0 | 140 | 2026-10-03 |
 | `portworx` | https://docs.portworx.com/portworx-enterprise/ | 3.7 |  |  | 506 | 2026-10-02 |

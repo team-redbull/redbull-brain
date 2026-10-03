@@ -46,7 +46,7 @@ def resolve(name):
                 sys.exit(f"launch.py: {archive} does not match the sha256 in manifest.json — refusing to run it")
             out.parent.mkdir(parents=True, exist_ok=True)
             tmp = out.with_name(out.name + f".{os.getpid()}.tmp")
-            if archive.name.endswith(".zip"):
+            if archive.name.endswith((".zip", ".mcpb")):  # .mcpb = MCP bundle, a zip with the binary inside
                 with zipfile.ZipFile(archive) as z, z.open(exe) as src, open(tmp, "wb") as dst:
                     shutil.copyfileobj(src, dst)
             else:

@@ -25,6 +25,10 @@ For metrics, use the Grafana MCP: our single Grafana has one Prometheus datasour
 `Moby / <cluster-name>` — `list_datasources` with `name: "<cluster-name>"` first, pass `datasourceUid` on every
 query, one query per cluster.
 
+To look at the cluster itself use the Kubernetes MCP: `configuration_contexts_list`, then pass
+`context` on every call and say which cluster each result is from. HostedCluster/NodePool objects are on the MCE
+cluster's context, workloads on the hosted cluster's.
+
 ## 2. Search — exact error first
 
 1. `search` with the **exact error substring** (no cluster names, no IDs).

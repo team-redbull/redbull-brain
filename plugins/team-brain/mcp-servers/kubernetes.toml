@@ -1,0 +1,18 @@
+# kubernetes-mcp-server config used by the team-brain plugin (.mcp.json passes --config).
+# Full access with the engineer's own kubeconfig: read, write, exec, Secrets. The platform team are cluster
+# admins and approve each call in Claude Code's permission prompt — so don't allow-list the write tools.
+toolsets = ["core", "config"]
+list_output = "table"
+
+# configuration_view prints the whole kubeconfig including user tokens into the conversation and tells Claude
+# nothing that configuration_contexts_list does not. Remove this line if you want it.
+disabled_tools = ["configuration_view"]
+
+# To restrict a machine again (e.g. a shared jump host): add `read_only = true` here, and/or
+#   [[denied_resources]]
+#   group = ""
+#   version = "v1"
+#   kind = "Secret"
+
+[telemetry]
+enabled = false

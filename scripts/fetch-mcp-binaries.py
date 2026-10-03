@@ -20,7 +20,9 @@ BASE = os.environ.get("UPSTREAM_RELEASE_BASE", "https://github.com")
 ROOT = Path(__file__).resolve().parent.parent
 VENDOR = ROOT / "plugins/team-brain/mcp-servers/vendor"
 
-# server: repo, pinned version, binary name, checksums asset, platform -> asset ({v} = version without "v")
+# server: repo, pinned version, binary name, platform -> asset ({v} = version without "v").
+# "checksums" = name of the checksums file published with the release; without it the sha256 comes from the
+# asset digest GitHub records for the release (API). .mcpb bundles are zip files with the binary inside.
 SERVERS = {
     "grafana": {
         "repo": "grafana/mcp-grafana",
@@ -34,7 +36,19 @@ SERVERS = {
             "windows-x86_64": "mcp-grafana_Windows_x86_64.zip",
         },
     },
+    "kubernetes": {
+        "repo": "containers/kubernetes-mcp-server",
+        "version": "v0.0.67",
+        "binary": "kubernetes-mcp-server",
+        "license": "Apache-2.0",
+        "assets": {
+            "linux-x86_64": "kubernetes-mcp-server-{v}-linux-x64.mcpb",
+            "darwin-arm64": "kubernetes-mcp-server-{v}-darwin-arm64.mcpb",
+            "windows-x86_64": "kubernetes-mcp-server-{v}-windows-x64.mcpb",
+        },
+    },
 }
+API = os.environ.get("UPSTREAM_API_BASE", "https://api.github.com")
 
 
 def get(url):
@@ -47,21 +61,27 @@ def fetch(name):
     spec = SERVERS[name]
     version = os.environ.get("VERSION_" + name.replace("-", "_"), spec["version"])
     rel = f"{BASE}/{spec['repo']}/releases/download/{version}"
+    v = version.lstrip("v")
     sums = {}
-    for line in get(f"{rel}/{spec['checksums'].format(v=version.lstrip('v'))}").decode().splitlines():
-        parts = line.split()
-        if len(parts) == 2:
-            sums[parts[1].lstrip("*")] = parts[0]
+    if spec.get("checksums"):
+        for line in get(f"{rel}/{spec['checksums'].format(v=v)}").decode().splitlines():
+            parts = line.split()
+            if len(parts) == 2:
+                sums[parts[1].lstrip("*")] = parts[0]
+    else:
+        release = json.loads(get(f"{API}/repos/{spec['repo']}/releases/tags/{version}"))
+        sums = {a["name"]: (a.get("digest") or "").removeprefix("sha256:") for a in release["assets"]}
     dest = VENDOR / name
     dest.mkdir(parents=True, exist_ok=True)
     for old in dest.iterdir():
         old.unlink()
     assets = {}
     for platform, asset in spec["assets"].items():
+        asset = asset.format(v=v)
         data = get(f"{rel}/{asset}")
         digest = hashlib.sha256(data).hexdigest()
         if sums.get(asset) != digest:
-            sys.exit(f"{name}: sha256 of {asset} does not match the release checksums file — not keeping it")
+            sys.exit(f"{name}: sha256 of {asset} does not match the checksum published with the release — not keeping it")
         (dest / asset).write_bytes(data)
         assets[platform] = {"file": asset, "sha256": digest, "bytes": len(data)}
         print(f"{name} {version} {platform}: {asset} {len(data) / 1e6:.1f} MB sha256 ok")

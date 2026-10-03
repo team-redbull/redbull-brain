@@ -1,0 +1,7 @@
+repo: rhel-lightspeed/okp-mcp
+ref: main
+commit: 45052451526818a8624905a856d2de99cd24ab24
+latest_tag: 
+paths: README.md, docs, quadlet/README.md
+files: 6
+synced: 2026-10-03T09:51:23Z

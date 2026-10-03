@@ -78,9 +78,10 @@ and disables the plugin's local copy with `claude mcp` / `/mcp` (or keep both: d
 `search` accepts `product`, `version` and `doc_kind` filters for RHOKP, e.g.
 `{"query": "etcd defrag", "product": "Red Hat OpenShift Container Platform", "version": "4.20", "doc_kind": "Solution"}`.
 
-Red Hat also publishes its own RHOKP MCP server (`okp-mcp`, Apache-2.0, Python 3.12 + `uv`). It does
-more RHEL-specific query shaping. If you mirror its image you can run it alongside and add it to
-`plugins/team-brain/.mcp.json`; team-knowledge stays the cross-source entry point.
+Red Hat also publishes its own RHOKP MCP server, `okp-mcp` (Apache-2.0). It is Python with third-party
+dependencies, so it cannot ship as a binary in the plugin: it runs from its container image. It is optional —
+`mcp/servers/okp-mcp.md` compares the two and `deploy/openshift/okp-mcp.yaml` deploys it next to RHOKP.
+team-knowledge stays the cross-source entry point.
 
 ## Argo CD docs mirror
 
@@ -124,6 +125,12 @@ docs.portworx.com (latest release, 3.7 at last sync) via `python3 scripts/sync-p
 Separate stdio server (`mcp-grafana`), registered in `plugins/team-brain/.mcp.json`. Setup and the
 one-datasource-per-cluster rules: `mcp/servers/grafana.md`.
 
+## Kubernetes MCP (cluster access)
+
+`kubernetes-mcp-server`, registered as `kubernetes`. It uses the kubeconfig of the shell that started Claude with
+full rights (write, exec, Secrets); each call is approved in the permission prompt. Rules (pass `context` on every
+call) and how to restrict a machine: `mcp/servers/kubernetes.md`.
+
 ## Third-party MCP servers ship inside the plugin
 
 The air gap has no GitHub, so a server we depend on is committed as its release archives:
@@ -133,6 +140,8 @@ plugins/team-brain/mcp-servers/
   launch.py                 # picks the archive for this OS/CPU, checks sha256, unpacks once, runs it
   vendor/manifest.json      # server -> version, binary name, archive + sha256 per platform
   vendor/grafana/*.tar.gz|zip
+  vendor/kubernetes/*.mcpb  # MCP bundle = zip with the binary inside
+  kubernetes.toml           # full access; kubeconfig viewer disabled; how to restrict a machine
 ```
 
 - Engineers do nothing: installing/updating the plugin brings the binary. `python3 launch.py --check` shows
@@ -140,7 +149,7 @@ plugins/team-brain/mcp-servers/
 - Add or bump a server (connected host): edit `SERVERS` in `scripts/fetch-mcp-binaries.py`, run it (archives
   are verified against the release checksums file), register it in `.mcp.json` as
   `python3 ${CLAUDE_PLUGIN_ROOT}/mcp-servers/launch.py <server> <flags>`, add `mcp/servers/<name>.md`, bump
-  the plugin version. Each platform is ~17 MB per version in git history, so bump deliberately.
+  the plugin version. Each platform is ~17–25 MB per version in git history, so bump deliberately.
 - Before vendoring anything, run it once and read its startup log: `mcp-grafana` v2 reports usage statistics
   to its vendor unless told not to.
 

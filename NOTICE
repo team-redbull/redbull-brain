@@ -15,3 +15,5 @@ project's licence before redistributing this repository outside the organisation
 
 plugins/team-brain/mcp-servers/vendor/grafana/ holds unmodified release archives of https://github.com/grafana/mcp-grafana
 (version and sha256 in vendor/manifest.json), licensed under the Apache License 2.0; each archive contains its LICENSE.
+plugins/team-brain/mcp-servers/vendor/kubernetes/ holds unmodified release bundles of
+https://github.com/containers/kubernetes-mcp-server (version and sha256 in vendor/manifest.json), Apache License 2.0.

@@ -21,5 +21,28 @@
     "license": "Apache-2.0",
     "repo": "grafana/mcp-grafana",
     "version": "v2.0.0"
+  },
+  "kubernetes": {
+    "assets": {
+      "darwin-arm64": {
+        "bytes": 25172664,
+        "file": "kubernetes-mcp-server-0.0.67-darwin-arm64.mcpb",
+        "sha256": "a0992f069ad592f506d87635b26b9d7ab8b00f0a3fba8e689a155fd4eec9a052"
+      },
+      "linux-x86_64": {
+        "bytes": 24263328,
+        "file": "kubernetes-mcp-server-0.0.67-linux-x64.mcpb",
+        "sha256": "09a791ede01af271c82d49ff35797533296f9396678dbd31b88b5928152c6fbc"
+      },
+      "windows-x86_64": {
+        "bytes": 24812392,
+        "file": "kubernetes-mcp-server-0.0.67-windows-x64.mcpb",
+        "sha256": "947fb433d7c68577aefd03298057d44c849bbdffd06281a622d0acc1d1656067"
+      }
+    },
+    "binary": "kubernetes-mcp-server",
+    "license": "Apache-2.0",
+    "repo": "containers/kubernetes-mcp-server",
+    "version": "v0.0.67"
   }
 }

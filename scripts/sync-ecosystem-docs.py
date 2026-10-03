@@ -42,6 +42,8 @@ SOURCES = {
     "prometheus-operator": ("prometheus-operator/prometheus-operator", ["Documentation", "README.md"]),
     "grafana-docs": ("grafana/grafana", ["docs/sources"]),
     "mcp-grafana": ("grafana/mcp-grafana", ["README.md", "docs"]),
+    "kubernetes-mcp-server": ("containers/kubernetes-mcp-server", ["README.md", "docs"]),
+    "okp-mcp": ("rhel-lightspeed/okp-mcp", ["README.md", "docs", "quadlet/README.md"]),
     "vllm": ("vllm-project/vllm", ["docs", "examples", "README.md"]),
     "lws": ("kubernetes-sigs/lws", ["site/content/en/docs", "docs", "keps", "README.md"]),
     "metal3-docs": ("metal3-io/metal3-docs", ["docs", "design"]),

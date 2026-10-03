@@ -1,0 +1,59 @@
+# OPTIONAL: Red Hat's own RHOKP MCP server (rhel-lightspeed/okp-mcp, Apache-2.0) next to RHOKP.
+# Not part of the default kustomization — team-knowledge already searches RHOKP. Add it when you want Red Hat's
+# query shaping (RHEL-centred intent detection, CVE/errata lookups) as a second opinion:
+#   1. Mirror quay.io/redhat-user-workloads/rhel-lightspeed-tenant/rhel-knowledge-bridge into the internal registry
+#      and set OKP_MCP_IMAGE in kustomization.yaml (images:), then add `- okp-mcp.yaml` to resources:.
+#   2. Clients: mcp/clients/okp-mcp.mcp.json.
+# okp-mcp has no authentication of its own: the Service is cluster-internal and the Route is not created here.
+# Expose it only behind something that authenticates (or use `oc port-forward svc/okp-mcp 8000`).
+# MCP_GLITCHTIP_DSN is deliberately unset: with a DSN it would send exception reports to that endpoint.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: okp-mcp
+  labels: {app: okp-mcp}
+spec:
+  replicas: 1
+  selector: {matchLabels: {app: okp-mcp}}
+  template:
+    metadata:
+      labels: {app: okp-mcp}
+    spec:
+      containers:
+        - name: okp-mcp
+          image: OKP_MCP_IMAGE
+          env:
+            - {name: MCP_TRANSPORT, value: streamable-http}
+            - {name: MCP_PORT, value: "8000"}
+            - {name: MCP_SOLR_URL, value: "http://rhokp:8983"}
+          ports:
+            - {name: mcp, containerPort: 8000}
+          readinessProbe:
+            tcpSocket: {port: mcp}
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests: {cpu: 100m, memory: 256Mi}
+            limits: {memory: 1Gi}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: okp-mcp
+spec:
+  selector: {app: okp-mcp}
+  ports:
+    - {name: mcp, port: 8000, targetPort: mcp}
+---
+# rhokp-ingress (rhokp.yaml) only admits team-knowledge; this adds okp-mcp to Solr.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: rhokp-ingress-okp-mcp
+spec:
+  podSelector: {matchLabels: {app: rhokp}}
+  policyTypes: [Ingress]
+  ingress:
+    - from:
+        - podSelector: {matchLabels: {app: okp-mcp}}
+      ports: [{port: 8983}]
