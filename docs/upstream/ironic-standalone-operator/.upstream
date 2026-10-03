@@ -1,0 +1,5 @@
+repo: metal3-io/ironic-standalone-operator
+ref: main
+commit: 418195b205af72090655decfc777212990a22601
+paths: docs, README.md
+synced: 2026-10-03T09:25:35Z

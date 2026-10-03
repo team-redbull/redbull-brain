@@ -1,0 +1,451 @@
+# Metal3 Ironic Container
+
+This repo contains the files needed to build the Ironic images used by Metal3.
+
+Supported base images are CentOS Stream 9 and CentOS Stream 10.
+
+## Build Status
+
+[![CLOMonitor](https://img.shields.io/endpoint?url=https://clomonitor.io/api/projects/cncf/metal3-io/badge)](https://clomonitor.io/projects/cncf/metal3-io)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/metal3-io/ironic-image/badge)](https://securityscorecards.dev/viewer/?uri=github.com/metal3-io/ironic-image)
+[![Ubuntu E2E Integration main build status](https://jenkins.nordix.org/buildStatus/icon?job=metal3-periodic-ubuntu-e2e-integration-test-main&subject=Ubuntu%20e2e%20integration%20main)](https://jenkins.nordix.org/view/Metal3%20Periodic/job/metal3-periodic-ubuntu-e2e-integration-test-main/)
+[![CentOS E2E Integration main build status](https://jenkins.nordix.org/buildStatus/icon?job=metal3-periodic-centos-e2e-integration-test-main&subject=Centos%20e2e%20integration%20main)](https://jenkins.nordix.org/view/Metal3%20Periodic/job/metal3-periodic-centos-e2e-integration-test-main/)
+
+## Description
+
+When updated, builds are automatically triggered on
+<https://quay.io/repository/metal3-io/ironic/>
+
+This repo supports the creation of multiple containers needed when provisioning
+baremetal nodes with Ironic. Eventually there will be separate images for each
+container, but currently separate containers can share this same image with
+specific entry points.
+
+The following entry points are provided:
+
+- `runironic` - Starts the ironic-conductor and ironic-api processes to manage
+   the provisioning of baremetal nodes.  Details on Ironic can be found at
+   <https://docs.openstack.org/ironic/latest/>.  This is the default entry point
+   used by the Dockerfile.
+- `runironic-networking` - Starts the ironic-networking service for standalone
+   network management of baremetal nodes. This service handles switch port
+   configuration for node provisioning, cleaning, and inspection operations.
+- `rundnsmasq` - Runs the dnmasq dhcp server to provide addresses and initiate
+   PXE boot of baremetal nodes.  This includes a lightweight TFTP server.
+   Details on dnsmasq can be found at
+   <http://www.thekelleys.org.uk/dnsmasq/doc.html>.
+- `runhttpd` - Starts the Apache web server to provide images via http for PXE
+   boot and for deployment of the final images.
+- `runlogwatch` - Waits for host provisioning ramdisk logs to appear, prints
+   their contents and deletes files.
+
+All of the containers must share a common mount point or data store.  Ironic
+requires files for both the TFTP server and HTTP server to be stored in the same
+partition.  This common store must include, in `<shared store>/html/images`,
+the following images:
+
+- ironic-python-agent.kernel
+- ironic-python-agent.initramfs
+- final image to be deployed onto node in qcow2 format
+
+The following environment variables can be passed in to customize run-time
+functionality:
+
+- `PROVISIONING_MACS` - a comma seperated list of mac address of the master
+   nodes (used to determine the `PROVISIONING_INTERFACE`)
+- `PROVISIONING_INTERFACE` - interface to use for ironic, dnsmasq(dhcpd) and
+   httpd (default provisioning, this is calculated if the above
+   `PROVISIONING_MACS` is provided)
+- `PROVISIONING_IP` - the specific IP to use (instead of calculating it based on
+  the `PROVISIONING_INTERFACE`)
+- `IRONIC_IP_WAIT_TIMEOUT` - maximum time in seconds to wait for the
+  provisioning IP or interface to become available before failing the entry
+  point (default `1200`). Set to `0` (or a negative value) to wait
+  indefinitely, restoring the previous behaviour.
+- `IRONIC_IP_WAIT_INTERVAL` - polling interval in seconds while waiting for the
+  provisioning IP or interface (default `1`)
+- `DNSMASQ_EXCEPT_INTERFACE` - interfaces to exclude when providing DHCP address
+  (default `lo`)
+- `HTTP_PORT` - port used by http server (default `80`)
+- `HTTPD_SERVE_NODE_IMAGES` - used by runhttpd script, controls access
+   to the `/shared/html/images` directory via the default virtual host
+   `(HTTP_PORT)`.  (default `true`)
+- `DHCP_RANGE` - dhcp range to use for provisioning (e.g.
+   `172.22.0.10,172.22.0.100`)
+- `DHCP_HOSTS` - a `;` separated list of `dhcp-host` entries, e.g. known MAC
+   addresses like `00:20:e0:3b:13:af;00:20:e0:3b:14:af` (empty by default). For
+   more details on `dhcp-host` see
+   [the man page](https://thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html).
+- `DHCP_OPTIONS` - a `;` separated list of additional `dhcp-option` directives
+   that allows passing specific network configuration parameters (like routers,
+   DNS servers, and NTP) to DHCP clients (empty by default). Only applies to
+   IPv4 provisioning (`IPV=4` or unset). For more details on `dhcp-option` see
+   [the man page](https://thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html).
+- `DHCP_IGNORE` - a set of tags on hosts that should be ignored and not allocate
+   DHCP leases for, e.g. `tag:!known` to ignore any unknown hosts (empty by
+   default)
+- `IRONIC_RAMDISK_SSH_KEY` - A single public key to allow ssh access as root to
+   nodes running IPA, takes the format "ssh-rsa AAAAB3.....". This relies on the
+   [dynamic-login](https://opendev.org/openstack/diskimage-builder/src/branch/master/diskimage_builder/elements/dynamic-login)
+   element to inject the key.
+- `IRONIC_KERNEL_PARAMS` - This parameter can be used to add additional kernel
+   parameters to nodes running IPA
+- `IRONIC_HTTPD_LOGLEVEL` - This parameter can be used to change the LogLevel
+   parameter of the api's httpd container (default `debug`)
+- `GATEWAY_IP` - gateway IP address to use for ironic dnsmasq(dhcpd)
+- `DNS_IP` - DNS IP address to use for ironic dnsmasq(dhcpd)
+- `IRONIC_IPA_COLLECTORS` - Use a custom set of collectors to be run on
+   inspection. (default `default,logs,pci-devices`)
+- `HTTPD_ENABLE_SENDFILE` - Whether to activate the EnableSendfile apache
+   directive for httpd `(default, false)`
+- `IRONIC_CONDUCTOR_HOST` - Host name of the current conductor (only makes
+   sense to change for a multinode setup). Defaults to the IP address used
+   for provisioning.
+- `IRONIC_EXTERNAL_IP` - Optional external IP if Ironic is not accessible on
+  `PROVISIONING_IP`.
+- `IRONIC_EXTERNAL_CALLBACK_URL` - Override Ironic's external callback URL.
+  Defaults to use `IRONIC_EXTERNAL_IP` if available.
+- `IRONIC_EXTERNAL_HTTP_URL` - Override Ironic's external http URL. Defaults to
+  use `IRONIC_EXTERNAL_IP` if available.
+- `IRONIC_ENABLE_VLAN_INTERFACES` - Which VLAN interfaces to enable on the
+  agent start-up. Can be a list of interfaces or a special value `all`.
+  Defaults to `all`.
+- `DEPLOY_KERNEL_URL` and `DEPLOY_RAMDISK_URL` provide the default IPA kernel
+  and initramfs images. If they're not set, the images from IPA downloader are
+  used (if present).
+- `SNP_BASENAME` - basename of the iPXE EFI binaries served over TFTP
+  (`<basename>-x86_64.efi` / `<basename>-arm64.efi`). It controls both the
+  on-disk firmware name and the bootfile name advertised by dnsmasq, so the two
+  always agree. Defaults to `snponly` (the upstream-built name). Distros that
+  package iPXE under a different name (e.g. openSUSE/SLE ship `snp-<arch>.efi`)
+  can set `SNP_BASENAME=snp`.
+- `DNSMASQ_DATA_DIR` - directory for dnsmasq runtime data such as lease files
+  (default `/data/dnsmasq`).
+  Also available as a Dockerfile build argument.
+
+### Multi-Architecture IPA Support
+
+The ironic-image container supports automatic detection and boot of
+architecture-specific IPA (Ironic Python Agent) images. This allows a single
+deployment to serve different CPU architectures (x86_64, aarch64) with
+appropriate kernel and ramdisk images.
+
+- `DEPLOY_KERNEL_BY_ARCH` - Comma-separated list of architecture-specific
+  kernel URLs in the format `arch:url[,arch:url...]`. Example:
+
+  ```bash
+  DEPLOY_KERNEL_BY_ARCH=x86_64:file:///shared/html/images/ipa_x86.kernel,aarch64:file:///shared/html/images/ipa_arm64.kernel
+  ```
+
+- `DEPLOY_RAMDISK_BY_ARCH` - Comma-separated list of architecture-specific
+  ramdisk URLs in the format `arch:url[,arch:url...]`. Example:
+
+  ```bash
+  DEPLOY_RAMDISK_BY_ARCH=x86_64:file:///shared/html/images/ipa_x86.initramfs,aarch64:file:///shared/html/images/ipa_arm64.initramfs
+  ```
+
+**Auto-detection:** If these variables are not explicitly set, the container
+will:
+
+1. Check for `DEPLOY_KERNEL_URL_<ARCH>` and `DEPLOY_RAMDISK_URL_<ARCH>`
+   environment variables (e.g., `DEPLOY_KERNEL_URL_X86_64`,
+   `DEPLOY_KERNEL_URL_AARCH64`)
+1. Look for architecture-specific files like `ironic-python-agent_aarch64.kernel`
+   in `/shared/html/images/`
+1. Fall back to generic `ironic-python-agent.kernel` and
+   `ironic-python-agent.initramfs`
+
+**Example configurations:**
+
+Single architecture (explicit):
+
+```bash
+DEPLOY_KERNEL_URL_X86_64=file:///shared/html/images/custom-ipa.kernel
+DEPLOY_RAMDISK_URL_X86_64=file:///shared/html/images/custom-ipa.initramfs
+```
+
+Multiple architectures (manual):
+
+```bash
+DEPLOY_KERNEL_BY_ARCH=x86_64:http://example.com/ipa-x86.kernel,aarch64:http://example.com/ipa-arm64.kernel
+DEPLOY_RAMDISK_BY_ARCH=x86_64:http://example.com/ipa-x86.initramfs,aarch64:http://example.com/ipa-arm64.initramfs
+```
+
+Multiple architectures (auto-detected from files):
+
+```bash
+# Place files in /shared/html/images/:
+# - ironic-python-agent_x86_64.kernel
+# - ironic-python-agent_x86_64.initramfs
+# - ironic-python-agent_aarch64.kernel
+# - ironic-python-agent_aarch64.initramfs
+# The container will auto-detect and configure them
+```
+
+**Note:** The iPXE boot script uses the machine's `${buildarch}` variable to
+select the appropriate architecture. If an architecture-specific image is not
+available, it falls back to the default IPA images.
+
+### IPA Boot Parameters
+
+The following environment variables control IPA kernel boot parameters (all
+have sensible defaults):
+
+- `IRONIC_IPA_INSECURE` - Allow insecure connections (default: `1`)
+- `IRONIC_IPA_DEBUG` - Enable debug mode (default: `1`)
+- `IRONIC_IPA_INSPECTION_DHCP_ALL_INTERFACES` - Request DHCP on all interfaces
+  during inspection (default: `1`)
+- `IRONIC_IPA_COLLECT_LLDP` - Collect LLDP information (default: `1`)
+- `IRONIC_IPA_COLLECTORS` - Inspection data collectors to enable
+- `IPA_FORWARD_CONSOLE` - Forward console logs (default: `yes`)
+- `IRONIC_ENABLE_VLAN_INTERFACES` - Enable VLAN interfaces (default: `all`)
+- `INSPECTOR_EXTRA_ARGS` - Additional kernel parameters for inspection
+- `IRONIC_KERNEL_PARAMS` - Additional kernel parameters
+- `IRONIC_RAMDISK_SSH_KEY` - SSH public key for IPA access
+
+- `IRONIC_JSON_RPC_PORT` - port used by the ironic json-rpc service (default to
+  6189).
+- `WEBSERVER_CACERT_FILE` - Specifies the CA or CA bundle that will be used
+  by Ironic to verify disk and IPA images. Will also be used by IPA to verify
+  disk images and connection to Ironic if `IRONIC_IPA_INSECURE` is set to `0`.
+
+The following mountpoints can be passed in to customize run-time
+functionality:
+
+- `/certs/ca/bmc` - The storage path of BMC CA certificates. If the path exists
+  and verify_ca field in driver_info is True or None, the certificates in this
+  path will be used.
+
+MariaDB configuration:
+
+- `IRONIC_USE_MARIADB` - Whether to use an external MariaDB database instead of
+  a local SQLite file (default `false`)
+- `MARIADB_HOST` - Host name with an optional port of the MariaDB database
+  instance (must be provided if `IRONIC_USE_MARIADB` is `true`)
+- `MARIADB_DATABASE` - Database name to use (default `ironic`)
+- `MARIADB_USER` - User name to use when connecting to the database (default
+  `ironic`). The user must have privileges to create and update tables.
+  Can be provided via a secret mounted under `/auth/mariadb`.
+- `MARIADB_PASSWORD` - The database password.
+   Deprecated. Instead, mount a secret with `password` (optionally with a
+   `username`) under `/auth/mariadb` mount point.
+- `IRONIC_DBSYNC_TIMEOUT` - maximum time in seconds to wait for `ironic-dbsync`
+  to succeed (for example while MariaDB is starting up) before failing the
+  entry point (default `600`). Only applies when `IRONIC_USE_MARIADB` is
+  `true`. Set to `0` (or a negative value) to retry indefinitely, restoring the
+  previous behaviour.
+- `IRONIC_DBSYNC_INTERVAL` - interval in seconds between `ironic-dbsync`
+  retries (default `1`)
+
+### Overriding Ironic configuration options
+
+Any Ironic configuration option can be overridden at runtime with an
+environment variable of the form `OS_<section>__<option>` (note the **two**
+underscores after the section name).
+These `OS_` variables take precedence over values rendered from templates.
+You do not need dedicated image environment variables for each option.
+
+Examples:
+
+- `OS_DEFAULT__DEBUG=true` - enable debug logging
+- `OS_OCI__PERMIT_FALLBACK_TO_HTTP_TRANSPORT=true` - allow falling back to HTTP
+  when talking to an OCI registry
+- `OS_SENSOR_DATA__SEND_SENSOR_DATA=false` - overrides `SEND_SENSOR_DATA` from
+  the template
+- `OS_SENSOR_DATA__INTERVAL=300` - sensor data collection interval (seconds)
+- `OS_CONDUCTOR__DEPLOY_CALLBACK_TIMEOUT=4800` - timeout (seconds) to wait for
+  a callback from a deploy ramdisk
+- `OS_CONDUCTOR__INSPECT_TIMEOUT=1800` - timeout (seconds) for waiting for node
+  inspection
+- `OS_CONDUCTOR__CLEAN_CALLBACK_TIMEOUT=1800` - timeout (seconds) to wait for a
+  callback from the ramdisk doing the cleaning
+- `OS_CONDUCTOR__HEARTBEAT_TIMEOUT=300` - maximum time (seconds) since the last
+  heartbeat before a node is considered offline
+- `OS_CONDUCTOR__NODE_LOCKED_RETRY_ATTEMPTS=5` - retries when a node is locked
+- `OS_DEPLOY__ERASE_DEVICES_PRIORITY=0` - disable full disk erase during cleaning
+- `OS_DEPLOY__ERASE_DEVICES_METADATA_PRIORITY=10` - enable metadata erase during
+  cleaning
+- `OS_PXE__BOOT_RETRY_TIMEOUT=1200` - timeout (seconds) to enable boot retries
+- `OS_PXE__IPXE_TIMEOUT=60` - iPXE script timeout (seconds)
+- `OS_AGENT__MAX_COMMAND_ATTEMPTS=30` - IPA command retry attempts
+- `OS_AGENT__MEMORY_BUSY_PERIOD=60` - seconds to wait when IPA reports busy
+- `OS_AGENT__DEPLOY_LOGS_COLLECT=always` - always collect IPA deploy logs
+- `OS_IPMI__COMMAND_RETRY_TIMEOUT=60` - IPMI command timeout (seconds)
+- `OS_IPMI__MIN_COMMAND_INTERVAL=5` - minimum interval between IPMI commands
+- `OS_IPMI__USE_IPMITOOL_RETRIES=true` - let ipmitool handle retries
+- `OS_REDFISH__USE_SWIFT=false` - store virtual media images locally
+- `OS_REDFISH__FIRMWARE_UPDATE_STATUS_INTERVAL=60` - poll interval (seconds)
+  for Redfish firmware updates
+- `OS_INSPECTOR__POWER_OFF=false` - leave the node powered on after inspection
+- `OS_INSPECTOR__REQUIRE_MANAGED_BOOT=true` - require managed boot for inspection
+- `OS_AUTO_DISCOVERY__ENABLED=true` - enable auto-discovery of unknown nodes
+- `OS_AUTO_DISCOVERY__DRIVER=ipmi` - default driver for auto-discovered nodes
+- `OS_JSON_RPC__PORT=8089` - JSON-RPC listen port
+- `OS_DATABASE__MYSQL_ENGINE=InnoDB` - MySQL storage engine for the database
+
+See the
+[Ironic configuration reference](https://docs.openstack.org/ironic/latest/configuration/config.html)
+for available options.
+
+## TLS configuration
+
+The following environment variables can be passed to customize the Ironic API
+TLS configuration:
+
+- `IRONIC_SSL_PROTOCOL` - Apache `SSLProtocol` directive for the Ironic API
+  and proxy vhosts (default `-ALL +TLSv1.2 +TLSv1.3`)
+- `IRONIC_TLS_12_CIPHERS` - Setting this variable will set the allowed cipher
+  suites for TLS up to version 1.2 in order, it needs to be set in the openSSL
+  format e.g. `ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-CHACHA20-POLY1305`. If
+  left unset it will use default from openSSL.
+- `IRONIC_TLS_13_CIPHERS` - Setting this variable will set the allowed cipher
+  suites for TLS version 1.3 in order, it needs to be set in the openSSL format
+  e.g. `TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256`. If let unset it will
+  use default from openSSL.
+- `IRONIC_TLS_CURVES` - Setting this variable will set the allowed set of groups
+  allowed for TLS negotiation by order of preference, it needs to be set in the
+  openSSL format like e.g. `x448:x25519:secp256r1:secp384r1`. If let unset it
+  will use default from openSSL.
+- `IRONIC_TLS_ENFORCE_SERVER_CIPHER_ORDER` - Setting this variable to
+  `true` will make the server enforce its cipher list ordering for TLS version
+  up to 1.2, defaults to `false`
+
+The following environment variables can be passed to customize the Ironic
+Prometheus Exporter TLS configuration:
+
+- `IRONIC_PROMETHEUS_EXPORTER_CERT_FILE` - TLS certificate for the exporter
+  (default `/certs/ironic-prometheus-exporter/tls.crt`)
+- `IRONIC_PROMETHEUS_EXPORTER_KEY_FILE` - TLS private key for the exporter
+  (default `/certs/ironic-prometheus-exporter/tls.key`)
+
+The following environment variables can be passed to customize the virtual
+media HTTP server configuration:
+
+- `IRONIC_VMEDIA_CURVES` - Setting this variable will set the allowed set of
+  groups allowed for TLS negotiation by order of preference, it needs to be set
+  in the openSSL format like e.g. `x448:x25519:secp256r1:secp384r1`. If let
+  unset it will use default from openSSL.
+- `IRONIC_VMEDIA_TLS_12_CIPHERS` - Setting this variable will set the allowed
+  cipher suites for TLS up to version 1.2 in order, it needs to be set in the
+  openSSL format e.g. `ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-CHACHA20-POLY1305`.
+  If let unset it will use default from openSSL.
+- `IRONIC_VMEDIA_TLS_13_CIPHERS` - Setting this variable will set the allowed
+  cipher suites for TLS up to version 1.3 in order, it needs to be set in the
+  openSSL format e.g. `TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256`. If
+  let unset it will use default from openSSL.
+- `IRONIC_VMEDIA_TLS_ENFORCE_SERVER_CIPHER_ORDER` - Setting this variable to
+  `true` will make the server enforce its cipher list ordering for TLS version
+  up to 1.2, defaults to `false`
+
+## Ironic Networking
+
+The ironic networking configuration can be overridden by various environment
+variables.  The following can serve as an example of those most common settings.
+
+- `IRONIC_NETWORKING_ENABLED` - Enable standalone networking service
+   (default `false`)
+- `IRONIC_NETWORKING_JSON_RPC_HOST` - JSON-RPC host for networking service
+   (default `localhost`)
+- `IRONIC_NETWORKING_JSON_RPC_PORT` - JSON-RPC port for networking service
+   (default `8090`)
+- `IRONIC_NETWORKING_ENABLED_SWITCH_DRIVERS` - Enabled switch drivers (default
+   `generic-switch`)
+- `IRONIC_NETWORKING_SWITCH_CONFIGS` - Path to switch configuration file.
+   Switch configurations and SSH keys should be stored in a Secret and mounted
+   to the Pod as a file and referenced by this variable.
+   (default `${IRONIC_CONF_DIR}/networking/switch-configs.conf`)
+- `IRONIC_NETWORKING_PROVISIONING_NETWORK` - Network details for the
+   provisioning network (e.g., mode=access/native_vlan=123)
+- `IRONIC_NETWORKING_INSPECTION_NETWORK` - Network details for the inspection
+   network (e.g., mode=access/native_vlan=123)
+- `IRONIC_NETWORKING_SERVICING_NETWORK` - Network details for the servicing
+   network (e.g., mode=access/native_vlan=123)
+- `IRONIC_NETWORKING_CLEANING_NETWORK` - Network details for the cleaning
+   network (e.g., mode=access/native_vlan=123)
+- `IRONIC_NETWORKING_RESCUING_NETWORK` - Network details for the rescuing
+   network (e.g., mode=access/native_vlan=123)
+- `IRONIC_NETWORKING_IDLE_NETWORK` - Network details for the idle
+   network (e.g., mode=access/native_vlan=123)
+
+**Note:**  The ironic-networking service requires the `networking-generic-switch`
+  package.
+
+## Using a read-only root filesystem
+
+The ironic-image can operate with a read-only root filesystem. However,
+it needs a few directories to be mounted as writable `emptyDir` volumes:
+
+- `/conf` - location for rendered configuration files
+- `/data` - writable runtime data such as the database
+- `/tmp` - temporary directory
+
+This is in addition to the always required `/shared` volume that is used to
+share runtime data between Ironic and HTTPD.
+
+## Custom source for ironic software
+
+When building the ironic image, it is also possible to specify a
+different source for ironic, the sushy library, or NGS using the build
+arguments **IRONIC_SOURCE**, **SUSHY_SOURCE**, and **NGS_SOURCE**.
+The **INSTALL_NGS** build argument (default `true`) controls whether the
+`networking-generic-switch` package is included in the image. Setting
+**NGS_SOURCE** specifies the version to install but is only used when
+**INSTALL_NGS** is `true`.
+The accepted formats are gerrit refs, like _refs/changes/89/860689/2_,
+commit hashes, like _a1fe6cb41e6f0a1ed0a43ba5e17745714f206f1f_,
+repo tags or branches, or a local directory that needs to be under the
+sources/ directory in the container context.
+An example of a full command installing ironic from a gerrit patch is:
+
+```bash
+podman build -t ironic-image -f Dockerfile --build-arg IRONIC_SOURCE="refs/changes/89/860689/2"
+```
+
+An example using the local directory _sources/ironic_:
+
+```bash
+podman build -t ironic-image -f Dockerfile --build-arg IRONIC_SOURCE="ironic"
+```
+
+It is also possible to specify an upper-constraints file using the
+**UPPER_CONSTRAINTS_FILE** argument. By default this is the upper-constraints.txt
+file found in the container context; the content of the file can be modified
+keeping the default name or it's possible to specify an entire different
+filename as far as it's in the container context.
+When the upper-constraints file in the container context is empty, the
+constraints are fetched from the openstack/requirements repository at the
+commit specified by the **OPENSTACK_REQUIREMENTS_SOURCE** build argument.
+
+The dnsmasq data directory can be changed at build time using
+**DNSMASQ_DATA_DIR** (default `/data/dnsmasq`).
+This is useful for non-root setups with a read-write filesystem where the
+default path may not be a mounted volume.
+
+## Apply project patches to the images during build
+
+When building the image, it is possible to specify a patch of one or more
+upstream projects to apply to the image using the **PATCH_LIST** argument in
+the cli command, for example:
+
+```bash
+podman build -t ironic-image -f Dockerfile --build-arg PATCH_LIST=my-patch-list
+```
+
+The **PATCH_LIST** argument is a path to a file under the image context.
+Its format is a simple text file that contains references to upstream patches
+for the ironic projects.
+Each line of the file is in the form:
+    **project_dir refspec (git_host)**
+where:
+
+- **project_dir** is the last part of the project url including the
+  organization, for example for ironic is _openstack/ironic_
+- **refspec** is the gerrit refspec of the patch we want to test, for example if
+  you want to apply the patch at
+  <https://review.opendev.org/c/openstack/ironic/+/800084>
+  the refspec will be _refs/changes/84/800084/22_
+  Using multiple refspecs is convenient in case we need to test patches that
+  are connected to each other, either on the same project or on different
+  projects.
+- **git_host** (optional) is the git host from which the project will be cloned.
+  If unset, `https://opendev.org` is used.

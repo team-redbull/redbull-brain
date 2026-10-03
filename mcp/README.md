@@ -124,6 +124,26 @@ docs.portworx.com (latest release, 3.7 at last sync) via `python3 scripts/sync-p
 Separate stdio server (`mcp-grafana`), registered in `plugins/team-brain/.mcp.json`. Setup and the
 one-datasource-per-cluster rules: `mcp/servers/grafana.md`.
 
+## Third-party MCP servers ship inside the plugin
+
+The air gap has no GitHub, so a server we depend on is committed as its release archives:
+
+```
+plugins/team-brain/mcp-servers/
+  launch.py                 # picks the archive for this OS/CPU, checks sha256, unpacks once, runs it
+  vendor/manifest.json      # server -> version, binary name, archive + sha256 per platform
+  vendor/grafana/*.tar.gz|zip
+```
+
+- Engineers do nothing: installing/updating the plugin brings the binary. `python3 launch.py --check` shows
+  what would run; `TEAM_BRAIN_MCP_<SERVER>_BIN` overrides it.
+- Add or bump a server (connected host): edit `SERVERS` in `scripts/fetch-mcp-binaries.py`, run it (archives
+  are verified against the release checksums file), register it in `.mcp.json` as
+  `python3 ${CLAUDE_PLUGIN_ROOT}/mcp-servers/launch.py <server> <flags>`, add `mcp/servers/<name>.md`, bump
+  the plugin version. Each platform is ~17 MB per version in git history, so bump deliberately.
+- Before vendoring anything, run it once and read its startup log: `mcp-grafana` v2 reports usage statistics
+  to its vendor unless told not to.
+
 ## Adding a source
 
 Append an object to `mcp/sources.json`:

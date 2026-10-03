@@ -1,5 +1,5 @@
 repo: kserve/kserve
 ref: master
 commit: aa31c91d4dde960f369960f7d44c24d14b20e1d2
-paths: docs, README.md
-synced: 2026-10-02T23:00:01Z
+paths: docs, README.md, charts, kernelcache/mcv/docs, ROADMAP.md
+synced: 2026-10-03T09:25:18Z

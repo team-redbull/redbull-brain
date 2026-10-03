@@ -12,3 +12,6 @@ check Portworx's terms before sharing it outside the organisation.
 Some snapshots are GPL-2.0 documentation (linux-kernel-docs, tuned) or have an undetected licence on GitHub (nccl,
 tensorrt-llm, dynamo, ucx, rdma-core): they are stored unmodified for internal offline reference — verify each
 project's licence before redistributing this repository outside the organisation.
+
+plugins/team-brain/mcp-servers/vendor/grafana/ holds unmodified release archives of https://github.com/grafana/mcp-grafana
+(version and sha256 in vendor/manifest.json), licensed under the Apache License 2.0; each archive contains its LICENSE.

@@ -21,6 +21,7 @@ owners: [platform-team]
 |---|---|
 | `search` | first stop: one query across every source; RHOKP filters `product`, `version`, `doc_kind` |
 | `read` | full text of a hit (paged with `offset`) |
+| `related` | neighbours of a page in the link graph: links to / linked from / shares tags. Follow a topic without another search; no `id` = graph stats and most-linked pages. `read` also ends with the linked pages |
 | `list_refs` | pick the HyperShift/CAPI branch or tag matching the cluster |
 | `search_code` | `git grep` at a ref — where is this error/condition produced? |
 | `find_definition` | Go type/func/field or CRD kind → definition block |

@@ -20,7 +20,7 @@ upstream source disagree, RHOKP/KCS wins for what we run**; upstream tells you h
 |---|---|---|---|
 | `rhokp` | all | OCP/ACM/MCE docs, KCS, CVEs, errata | filter `version: "4.NN"` |
 | `hypershift`, `cluster-api` | hypershift | HostedCluster/NodePool/CAPI behaviour and code | `release-4.NN` / CAPI tag from go.mod |
-| `cluster-api-provider-agent`, `cluster-api-provider-metal3`, `baremetal-operator`, `metal3-docs`, `ironic` | baremetal | Agent/Metal3 machines, BareMetalHost states, BMC drivers | tag matching OCP's baremetal components; `main` for concepts |
+| `cluster-api-provider-agent`, `cluster-api-provider-metal3`, `baremetal-operator`, `metal3-docs`, `ip-address-manager`, `ironic-standalone-operator`, `ironic-image`, `ironic` | baremetal | Agent/Metal3 machines, BareMetalHost API and states, BMC drivers, Metal3 IPAM, Ironic image settings. `metal3-docs` is the complete source of book.metal3.io (`docs/user-guide/src`, start at `SUMMARY.md`); the API references the book links to live in each component's `docs/api.md` | tag matching OCP's baremetal components; `main` for concepts |
 | `assisted-service` | baremetal | Agent-based installs, InfraEnv/Agent CRs | `release-ocm-*` / tag of the installed MCE |
 | `ako` | networking | our L4/L7 load balancing and ingress (**not MetalLB** — see `knowledge/networking/ingress-load-balancing-is-ako-not-metallb.md`) | tag = AKO version installed on the cluster |
 | `envoy`, `envoy-gateway`, `gateway-api` | networking | proxy config, Gateway API semantics, CRD fields | Envoy `release/v1.NN` as used by the product; Gateway API tag = installed CRD bundle |
@@ -48,6 +48,27 @@ upstream source disagree, RHOKP/KCS wins for what we run**; upstream tells you h
 pinned with `REF_<name>`), so the "Ref to use" column above applies only to the full mirrors; for snapshots, check the
 doc against the version actually installed (and prefer RHOKP for Red Hat's builds).
 
+## Coverage audit (2026-10-03)
+
+Every snapshot was compared with all doc files of its upstream repo. Metal3 was the test case: all 76 pages of
+the book are in `metal3-docs`; what was missing were the component repos the book links out to. Added then:
+Metal3 IPAM, IrSO and ironic-image; READMEs of BMO/CAPM3; rdma-core man pages (`infiniband-diags`, libibverbs,
+librdmacm, mlx5); NVIDIA Container Toolkit and driver containers; Kueue and LWS KEPs; vLLM example READMEs; AKO
+changelogs and operator READMEs; KServe chart READMEs.
+
+Left out on purpose — don't "fix" these without a reason:
+
+- `vendor/**`, release notes, changelog fragments, `.github`, contributor/agent files, translations, blogs.
+- Older versioned copies of a site (Envoy Gateway `v0.x`–`v1.x`, KServe website `versioned_docs`): the snapshot
+  is `latest` only. For an older install re-sync with `REF_<name>=<tag>`.
+- Generated references that exist upstream only as code: Envoy's v3 API reference (`api/envoy/**/*.proto`),
+  Gateway API and KServe Go types. If a field-level question can't be answered from the docs, that is why.
+- Images and diagrams (text only), and anything a site renders from another repo at build time.
+- Linux kernel docs: a hand-picked subset (mm, scheduler, IRQ, networking sysctl, InfiniBand), not the tree.
+
+To re-run the audit after upstream moves: list `git ls-tree -r --name-only HEAD` of a blobless clone, keep
+`.md/.rst/.adoc/.mdx`, and compare with the paths in `scripts/sync-ecosystem-docs.py`.
+
 ## Gotchas when mixing sources
 
 - Upstream default branches are ahead of what we run. Say which ref your claim comes from.
@@ -60,3 +81,4 @@ doc against the version actually installed (and prefer RHOKP for Red Hat's build
 ## History
 
 - 2026-10-03: created with the initial source set.
+- 2026-10-03: coverage audit against upstream repos; added three Metal3 component sources and widened eight snapshots.

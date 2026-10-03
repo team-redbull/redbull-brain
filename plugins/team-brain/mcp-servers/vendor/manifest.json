@@ -1,0 +1,25 @@
+{
+  "grafana": {
+    "assets": {
+      "darwin-arm64": {
+        "bytes": 16998767,
+        "file": "mcp-grafana_Darwin_arm64.tar.gz",
+        "sha256": "eb4f0dab9fee524d7bc73aaffae42efc4539aea046f2628353a9824e27167dd3"
+      },
+      "linux-x86_64": {
+        "bytes": 17827457,
+        "file": "mcp-grafana_Linux_x86_64.tar.gz",
+        "sha256": "0a0dde2c882c24fedcce79a07d97b232f71730c744b84a09b6b0735c2ca3d024"
+      },
+      "windows-x86_64": {
+        "bytes": 18297100,
+        "file": "mcp-grafana_Windows_x86_64.zip",
+        "sha256": "f95a37d9eb84c67cba659cd7f79ac76c3072fb166b6cf979eb86757bd6e0d18f"
+      }
+    },
+    "binary": "mcp-grafana",
+    "license": "Apache-2.0",
+    "repo": "grafana/mcp-grafana",
+    "version": "v2.0.0"
+  }
+}

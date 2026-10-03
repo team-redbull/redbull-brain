@@ -15,6 +15,7 @@ import urllib.request
 from pathlib import Path
 
 from .config import matches
+from .graph import Graph
 from .textindex import BM25Index, Chunk, chunk_document, load_or_build, snippet
 
 TEXT_EXT = (".md", ".markdown", ".adoc", ".asciidoc", ".txt", ".rst")
@@ -61,6 +62,18 @@ class Source:
 
     def warm(self) -> str:
         return "nothing to warm"
+
+    def texts(self, ref: str | None = None) -> tuple[str, dict[str, str]]:
+        """(signature, {doc id: text}) of every document, for the link graph. Sources without files can't."""
+        raise SourceError(f"{self.name} ({self.kind}) has no link graph")
+
+    def graph(self, ref: str | None = None) -> Graph:
+        sig, texts = self.texts(ref)
+        with self._lock:
+            cached = getattr(self, "_graph", None)
+            if not cached or cached[0] != sig:
+                cached = self._graph = (sig, Graph(texts))
+            return cached[1]
 
 
 # --------------------------------------------------------------------------------------------
@@ -113,6 +126,14 @@ class MarkdownDir(Source):
 
     def _location(self, rel: str) -> str:
         return f"{self.base_url.rstrip('/')}/{rel}" if self.base_url else str(self.root / rel)
+
+    def texts(self, ref=None):
+        files = self._files()
+        sig = hashlib.sha256("|".join(f"{r}:{s.st_mtime_ns}:{s.st_size}" for r, s in files).encode()).hexdigest()
+        cached = getattr(self, "_graph", None)
+        if cached and cached[0] == sig:
+            return sig, {}
+        return sig, {rel: (self.root / rel).read_text(encoding="utf-8", errors="replace") for rel, _ in files}
 
     def search(self, query, limit, **kw):
         return [_hit(self.name, c, s, query) for s, c in self._index().search(query, limit)]
@@ -212,6 +233,15 @@ class GitRepo(Source):
             key = hashlib.sha256(f"{self.name}:{ref}".encode()).hexdigest()[:12]
             idx = load_or_build(self.cache_dir, f"{self.name}-{key}", f"{sha}:{self.docs}", build)
             return idx, ref, sha
+
+    def texts(self, ref=None):
+        ref, sha = self.resolve(ref)
+        sig = f"{sha}:{self.docs}"
+        cached = getattr(self, "_graph", None)
+        if cached and cached[0] == sig:
+            return sig, {}
+        paths = [p for p in self._ls(sha) if p.lower().endswith(TEXT_EXT) and matches(p, self.docs)]
+        return sig, self._cat_many(sha, paths)
 
     def search(self, query, limit, ref=None, **kw):
         if not self.docs:

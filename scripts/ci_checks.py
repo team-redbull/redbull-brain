@@ -6,7 +6,7 @@
     BASE_REF=origin/main python3 scripts/ci_checks.py     # also enforce the plugin version bump
     BRAIN_DENYLIST_FILE=/path/denylist.txt python3 ...    # real site/region/cluster names (never committed)
 
-Checks: validate, index, json, sources, parity, frontmatter, leaks, upstream, syntax, version, smoke.
+Checks: validate, index, json, sources, parity, frontmatter, leaks, upstream, mcpbin, syntax, version, smoke.
 Exit code 1 if any check fails.
 """
 from __future__ import annotations
@@ -220,6 +220,30 @@ def check_upstream():
     record("upstream", errs)
 
 
+def check_mcpbin():
+    """Vendored MCP server archives: every server .mcp.json starts through launch.py is in the manifest,
+    and every archive is present with the sha256 the manifest records."""
+    import hashlib
+    errs = []
+    vendor = ROOT / "plugins/team-brain/mcp-servers/vendor"
+    manifest = json.loads((vendor / "manifest.json").read_text(encoding="utf-8"))
+    mcp = json.loads((ROOT / "plugins/team-brain/.mcp.json").read_text(encoding="utf-8"))["mcpServers"]
+    for name, spec in mcp.items():
+        args = spec.get("args", [])
+        if args and args[0].endswith("launch.py") and (len(args) < 2 or args[1] not in manifest):
+            errs.append(f".mcp.json: server {name} runs launch.py {args[1:2]} which is not in vendor/manifest.json")
+    n = 0
+    for name, spec in manifest.items():
+        for platform, asset in spec["assets"].items():
+            f = vendor / name / asset["file"]
+            n += 1
+            if not f.is_file():
+                errs.append(f"{name} {platform}: {asset['file']} missing (run scripts/fetch-mcp-binaries.py on a connected host)")
+            elif hashlib.sha256(f.read_bytes()).hexdigest() != asset["sha256"]:
+                errs.append(f"{name} {platform}: {asset['file']} does not match the sha256 in manifest.json")
+    record("mcpbin", errs, f"{n} archives")
+
+
 def check_syntax():
     errs = []
     n = 0
@@ -251,12 +275,13 @@ def check_version():
         record("version", [f"cannot diff against {base}: {p.stderr.strip()[:200]}"])
         return
     changed = p.stdout.splitlines()
-    plugin = [c for c in changed if c.startswith(("plugins/team-brain/skills/", "plugins/team-brain/hooks/"))
+    plugin = [c for c in changed if c.startswith(("plugins/team-brain/skills/", "plugins/team-brain/hooks/",
+                                                  "plugins/team-brain/mcp-servers/"))
               or c == "plugins/team-brain/.mcp.json"]
     bumped = "plugins/team-brain/.claude-plugin/plugin.json" in changed
     errs = []
     if plugin and not bumped:
-        errs.append("skills/hooks/.mcp.json changed but plugins/team-brain/.claude-plugin/plugin.json version was not bumped: "
+        errs.append("skills/hooks/mcp-servers/.mcp.json changed but plugins/team-brain/.claude-plugin/plugin.json version was not bumped: "
                     + ", ".join(plugin[:5]))
     record("version", errs)
 
@@ -272,12 +297,16 @@ def check_smoke():
             ids = re.findall(r"id: `([^`]+)`", p.stdout)
             if p.returncode or q["expect"] not in ids[: gq.get("top", 3)]:
                 errs.append(f"query {q['query']!r}: expected {q['expect']} in top {gq.get('top', 3)}, got {ids[:gq.get('top', 3)] or p.stderr.strip()[:200]}")
-    record("smoke", errs, f"{len(gq['queries'])} golden queries via the real server")
+        p = run([sys.executable, str(SERVER), "--call", "related",
+                 json.dumps({"source": "brain", "id": "knowledge/meta/fleet-versions.md"})], env)
+        if p.returncode or "## Linked from" not in p.stdout:
+            errs.append(f"related: fleet-versions page has no backlinks in the link graph: {(p.stderr or p.stdout).strip()[:200]}")
+    record("smoke", errs, f"{len(gq['queries'])} golden queries + link graph via the real server")
 
 
 CHECKS = {"validate": check_validate, "index": check_index, "json": check_json, "sources": check_sources,
           "parity": check_parity, "frontmatter": check_frontmatter, "leaks": check_leaks,
-          "upstream": check_upstream, "syntax": check_syntax, "version": check_version, "smoke": check_smoke}
+          "upstream": check_upstream, "mcpbin": check_mcpbin, "syntax": check_syntax, "version": check_version, "smoke": check_smoke}
 
 
 def main() -> int:

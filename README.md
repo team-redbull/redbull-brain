@@ -85,7 +85,14 @@ What each source is good for, and which ref/version to use: `knowledge/meta/flee
 Kubernetes/HyperShift refs) and `knowledge/meta/doc-sources-catalog.md`. Red Hat's own docs (RHOKP) win over
 upstream where they disagree about what we run.
 
-The **Grafana MCP** (`mcp-grafana`) is separate and gives Claude metrics. Our layout is one Prometheus per
+After a hit, the `related` tool follows the **link graph** — pages a document links to, pages that link to it,
+and brain pages sharing its tags — so Claude goes from a knowledge page to its runbook and incidents without
+searching again (`read` also ends with the linked pages). The graph is built from the text, so it only grows if
+pages cite each other by path (`knowledge/<area>/<page>.md` in backticks, or a Markdown link).
+
+The **Grafana MCP** (`mcp-grafana`) is separate and gives Claude metrics. Its binary ships **inside the plugin**
+(`plugins/team-brain/mcp-servers/vendor/`, sha256-pinned; linux-x86_64, darwin-arm64, windows-x86_64), so there is
+nothing to download in the air gap; it runs read-only with usage statistics off. Our layout is one Prometheus per
 cluster and **one Grafana with one datasource per cluster named `Moby / <cluster-name>`**, so Claude must
 list datasources, pick the cluster's UID and pass it on every query:
 `knowledge/observability/grafana-one-datasource-per-cluster-prometheus.md`, `mcp/servers/grafana.md`.
@@ -162,8 +169,7 @@ claude plugin list          # team-brain@team-brain  ✔ enabled
 # inside claude: /mcp  → plugin:team-brain:team-knowledge connected (and grafana, if configured)
 ```
 
-Requirements on the workstation: `git`, `jq`, `python3` ≥ 3.9 (stdlib only), the `mcp-grafana` binary on
-`PATH` if you want metrics, and optionally `glab` (without it Claude pushes the branch and prints the MR link).
+Requirements on the workstation: `git`, `jq`, `python3` ≥ 3.9 (stdlib only), and optionally `glab` (without it Claude pushes the branch and prints the MR link).
 
 **Shared alternative:** run one team-knowledge on OpenShift (`oc apply -k deploy/openshift`) so everyone uses a
 single RHOKP and one set of mirrors; see `mcp/README.md`. To roll the plugin out to the whole team without
@@ -198,7 +204,8 @@ Page lifecycle: raw capture → `inbox/` → curated into `knowledge/`/`runbooks
 | Add a source | Append to `mcp/sources.json` **and** `deploy/openshift/shared-sources.json`; add a row to `knowledge/meta/doc-sources-catalog.md`; full git mirrors also need the repo mirrored into GitLab under `$GIT_MIRROR_BASE` |
 | Enable our own repos as sources | Set `GITOPS_DAY1_REMOTE`, `GITOPS_DAY2_REMOTE`, `NAVIGATOR_REMOTE` to the real GitLab URLs and flip `enabled` |
 | Add a new area | Create the folder (with a file in it — git ignores empty dirs), add it to `AREAS` in `scripts/brain.py` and to the list in `CLAUDE.md`/this README |
-| Change skills, hooks or `.mcp.json` | Bump `version` in `plugins/team-brain/.claude-plugin/plugin.json` |
+| Bump or add a vendored MCP server | Connected host: `VERSION_grafana=<tag> python3 scripts/fetch-mcp-binaries.py grafana`, update the pin in that script and `mcp/servers/grafana.md`, bump the plugin version |
+| Change skills, hooks, `mcp-servers/` or `.mcp.json` | Bump `version` in `plugins/team-brain/.claude-plugin/plugin.json` |
 | Curate the inbox | `/team-brain:brain-curate` — one MR with every decision |
 
 Daily commands:
@@ -226,7 +233,8 @@ and `.github/workflows/ci.yml` (the GitHub mirror). It fails the merge request i
 | `frontmatter` | `applies_to` tokens are well-formed, `area` is known, `last_verified` isn't in the future |
 | `leaks` | private IPs, `.internal` hostnames outside the placeholder allowlist, real-looking `ocp4-<env>-<name>` names, and (if configured) your **denylist** |
 | `upstream` | each `docs/upstream/<name>` has `.upstream` metadata and documentation files |
-| `version` | on merge requests: skills/hooks/`.mcp.json` changes must come with a `plugin.json` update (needs `BASE_REF`) |
+| `version` | on merge requests: skills/hooks/`mcp-servers/`/`.mcp.json` changes must come with a `plugin.json` update (needs `BASE_REF`) |
+| `mcpbin` | every vendored MCP server archive is present and matches the sha256 in `vendor/manifest.json` |
 | `smoke` | the real team-knowledge server answers `tests/golden-queries.json` with the expected page in the top 3 |
 
 Setup in the internal GitLab: set `CI_IMAGE` to a runner image with python3 ≥ 3.9, git and bash from your internal
@@ -250,7 +258,9 @@ only. A weekly pipeline schedule runs `brain.py stale` as an informational repor
 - CI exists (`.gitlab-ci.yml`, `.github/workflows/ci.yml`, both running `scripts/ci_checks.py`) but has only been run
   locally and against fault-injected copies of the repo — not yet on a real GitLab runner. The denylist check needs
   `BRAIN_DENYLIST_FILE` configured in the internal GitLab to do anything. There is no unit-test suite beyond the checks.
-- The Grafana MCP and the shared HTTP deployment have not been exercised end to end against our environment.
+- The Grafana MCP binary was started from the plugin on macOS arm64 and its tools listed; the linux and windows
+  archives are checksum-verified only, and nothing has been run against our real Grafana. The shared HTTP
+  deployment has not been exercised end to end.
 - RHOKP and the Argo CD docs mirror depend on your internal endpoints; they were not reachable from the machine
   this was built on.
 - Doc snapshots track upstream default branches at the time of the last sync (dates in each `.upstream` file).

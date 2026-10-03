@@ -54,6 +54,6 @@ auto-update is on for the marketplace).
 ## Environment each engineer needs
 
 - `GRAFANA_URL`, `GRAFANA_SERVICE_ACCOUNT_TOKEN` — read-only service account for the Grafana MCP
-  (`mcp/servers/grafana.md`); `mcp-grafana` binary on `PATH`.
+  (`mcp/servers/grafana.md`). The binary ships in the plugin (`mcp/README.md`, "Third-party MCP servers").
 - Mirror creation and `GIT_MIRROR_BASE`: `mcp/README.md` ("Mirrors to create before `--sync`").
 - Bump `version` in `plugins/team-brain/.claude-plugin/plugin.json` whenever hooks, skills or `.mcp.json` change.

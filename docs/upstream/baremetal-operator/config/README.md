@@ -1,0 +1,65 @@
+# Kustomizations for Baremetal Operator
+
+This folder contains kustomizations for the Baremetal Operator. They have
+traditionally been used through the [deploy.sh](../tools/deploy.sh) script,
+which takes care of generating the necessary config for basic-auth and TLS.
+
+Experimentally, instead of `deploy.sh`, you can use the new golang-based
+[deploy-cli](../hack/tools/deploy-cli) library,
+which, at the moment, handles everything `deploy.sh` does. You can either:
+
+- Run the package with `go run`. From the root of BMO repository:
+
+```shell
+cd hack/tools/deploy-cli
+go run *.go
+```
+
+- Otherwise, build the package to a static binary:
+
+```shell
+make deploy-cli
+```
+
+And run the binary with:
+
+```shell
+./tools/bin/deploy-cli -h
+```
+
+To check which options are available, run the script/binary with `-h`.
+
+However, a more GitOps friendly way would be to create your own static overlay.
+Check the `overlays/e2e` for an example that is used in the e2e tests.
+In the CI system we generate the necessary credentials before starting the test
+in `hack/ci-e2e.sh`, and put them directly in the `e2e` overlays.
+
+**NOTE** that you will need to supply the necessary secrets and config! This can
+be done in many ways, e.g. through the
+[external secrets operator](https://external-secrets.io/latest/) or directly in
+your overlay.
+In the CI system we generate the necessary credentials before starting the test
+in `hack/ci-e2e.sh`, and put them directly in the `e2e` overlays.
+
+- **base** - This is the kustomize base that we start from.
+- **components** - In here you will find re-usable kustomize components for TLS
+  and basic-auth.
+   - **basic-auth** - Enable basic authentication. Note that the basic-auth
+      component is missing the actual credentials. This is on purpose, to make
+      sure that the user is setting the password instead of using sample
+      credentials. The required secret is called `ironic-credentials`.
+   - **tls** - Enable TLS. A CA certificate is needed here to verify the
+      connection to Ironic. If you deploy BMO together with Ironic in a
+      Kubernetes cluster, they can share the secret created for Ironic. The CA
+      should be in a secret `ironic-cacert`.
+- **default** - A minimal, fully working, BMO kustomization including configmap.
+
+   > **⚠️ WARNING: Development use only!** Default kustomization is provided
+   > solely for local development and testing convenience. It uses plain HTTP
+   > for the Ironic endpoint (no TLS), has no basic-auth, and connects to
+   > Ironic without any transport integrity protection. **Do not use in
+   > production.** For production deployments, use
+   > overlays with the `tls` and `basic-auth` components
+   > enabled.
+- **overlays** - Here you will find ready made overlays that use the above
+   mentioned components. These can be used as examples.

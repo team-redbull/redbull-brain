@@ -5,11 +5,17 @@
       "args": ["${CLAUDE_PLUGIN_ROOT}/mcp-servers/team-knowledge/server.py"]
     },
     "grafana": {
-      "command": "mcp-grafana",
-      "args": [],
+      "command": "python3",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/mcp-servers/launch.py", "grafana",
+        "--disable-write",
+        "--usage-stats=disabled",
+        "--enabled-tools=search,datasource,prometheus,loki,alerting,dashboard,folder,navigation"
+      ],
       "env": {
         "GRAFANA_URL": "${GRAFANA_URL:-}",
-        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "${GRAFANA_SERVICE_ACCOUNT_TOKEN:-}"
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "${GRAFANA_SERVICE_ACCOUNT_TOKEN:-}",
+        "GRAFANA_USAGE_STATS": "disabled"
       }
     }
   }

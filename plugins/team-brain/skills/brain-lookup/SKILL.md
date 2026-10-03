@@ -6,7 +6,7 @@ description: Search the team's offline knowledge before troubleshooting or answe
 # Look it up before you dig in
 
 The `team-knowledge` MCP server searches every offline source at once. Its tools are
-`search`, `read`, `list_refs`, `search_code`, `find_definition`, `read_code`, `list_sources`
+`search`, `read`, `related`, `list_refs`, `search_code`, `find_definition`, `read_code`, `list_sources`
 (exposed as `mcp__plugin_team-brain_team-knowledge__*`, or `mcp__team-knowledge-shared__*` if the
 team's shared server is configured).
 
@@ -22,7 +22,8 @@ Kubernetes version and the git refs to use. Pass that `ref` on every code/doc lo
 which source answers what and where its version comes from. Kubernetes docs are pinned to 1.35 only.
 
 For metrics, use the Grafana MCP: our single Grafana has one Prometheus datasource per cluster named
-`Moby / <cluster-name>` — `list_datasources` first, pass the UID on every query, one query per cluster.
+`Moby / <cluster-name>` — `list_datasources` with `name: "<cluster-name>"` first, pass `datasourceUid` on every
+query, one query per cluster.
 
 ## 2. Search — exact error first
 
@@ -31,6 +32,8 @@ For metrics, use the Grafana MCP: our single Grafana has one Prometheus datasour
 2. If that's thin, `search` again with component + symptom words
    (`"NodePool Updating drain hook"`, `"ApplicationSet cluster generator labels"`).
 3. `read` the most promising hits. Brain pages first — they describe *our* environment.
+4. Follow the topic with `related` (links to / linked from / shares tags) before searching again — it leads
+   from a knowledge page to its runbook and to incidents that cite it.
 
 ## 3. Go to the source when docs run out (HyperShift, CAPI, operators)
 

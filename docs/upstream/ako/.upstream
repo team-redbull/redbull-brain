@@ -1,5 +1,5 @@
 repo: vmware/load-balancer-and-ingress-services-for-kubernetes
 ref: master
 commit: fcae6a1cdf8d26753380c8ca84674aa127f267bf
-paths: docs, README.md
-synced: 2026-10-02T22:59:51Z
+paths: docs, README.md, CHANGELOG.md, AKO_GATEWAY_CHANGELOG.md, ako-operator/README.md, ako-crd-operator/README.md, ako-crd-operator/CHANGELOG.md
+synced: 2026-10-03T09:25:12Z

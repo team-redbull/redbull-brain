@@ -140,9 +140,51 @@
       ]
     },
     {
+      "name": "ip-address-manager",
+      "kind": "git_repo",
+      "description": "Metal3 IP Address Manager (IPAM) docs: IPPool/IPClaim/IPAddress API and deployment workflow. Docs-only snapshot of the default branch in docs/upstream/ip-address-manager (refresh: scripts/sync-ecosystem-docs.py; pin with REF_ip_address_manager=<tag>); verify against the installed version",
+      "path": "${TEAM_KNOWLEDGE_SOURCES}/team-brain.git",
+      "default_ref": "main",
+      "docs": [
+        "docs/upstream/ip-address-manager/**/*.md",
+        "docs/upstream/ip-address-manager/**/*.rst"
+      ],
+      "code_include": [
+        "docs/upstream/ip-address-manager/**"
+      ]
+    },
+    {
+      "name": "ironic-standalone-operator",
+      "kind": "git_repo",
+      "description": "Metal3 Ironic Standalone Operator (IrSO) docs: Ironic CR API, running Ironic outside OpenStack. Docs-only snapshot of the default branch in docs/upstream/ironic-standalone-operator (refresh: scripts/sync-ecosystem-docs.py; pin with REF_ironic_standalone_operator=<tag>); verify against the installed version",
+      "path": "${TEAM_KNOWLEDGE_SOURCES}/team-brain.git",
+      "default_ref": "main",
+      "docs": [
+        "docs/upstream/ironic-standalone-operator/**/*.md",
+        "docs/upstream/ironic-standalone-operator/**/*.rst"
+      ],
+      "code_include": [
+        "docs/upstream/ironic-standalone-operator/**"
+      ]
+    },
+    {
+      "name": "ironic-image",
+      "kind": "git_repo",
+      "description": "Metal3 ironic-image README/docs: the Ironic container image, its environment variables and TLS/auth settings. Docs-only snapshot of the default branch in docs/upstream/ironic-image (refresh: scripts/sync-ecosystem-docs.py; pin with REF_ironic_image=<tag>); verify against the installed version",
+      "path": "${TEAM_KNOWLEDGE_SOURCES}/team-brain.git",
+      "default_ref": "main",
+      "docs": [
+        "docs/upstream/ironic-image/**/*.md",
+        "docs/upstream/ironic-image/**/*.rst"
+      ],
+      "code_include": [
+        "docs/upstream/ironic-image/**"
+      ]
+    },
+    {
       "name": "baremetal-operator",
       "kind": "git_repo",
-      "description": "metal3-io/baremetal-operator docs (BareMetalHost states, BMC addressing). Docs-only snapshot of the default branch in docs/upstream/baremetal-operator (refresh: scripts/sync-ecosystem-docs.py; pin with REF_baremetal_operator=<tag>); verify against the installed version",
+      "description": "metal3-io/baremetal-operator docs and READMEs (BareMetalHost API and states, BMC addressing, configuration, Ironic deployment). Docs-only snapshot of the default branch in docs/upstream/baremetal-operator (refresh: scripts/sync-ecosystem-docs.py; pin with REF_baremetal_operator=<tag>); verify against the installed version",
       "path": "${TEAM_KNOWLEDGE_SOURCES}/team-brain.git",
       "default_ref": "main",
       "docs": [
@@ -156,7 +198,7 @@
     {
       "name": "ako",
       "kind": "git_repo",
-      "description": "AKO (Avi Kubernetes Operator): our load balancer/ingress — install, CRDs, ingress/service behaviour. Docs-only snapshot of the default branch in docs/upstream/ako (refresh: scripts/sync-ecosystem-docs.py; pin with REF_ako=<tag>); verify against the installed version",
+      "description": "AKO (Avi Kubernetes Operator): our load balancer/ingress — install, CRDs, ingress/service behaviour, changelogs, AKO operator. Docs-only snapshot of the default branch in docs/upstream/ako (refresh: scripts/sync-ecosystem-docs.py; pin with REF_ako=<tag>); verify against the installed version",
       "path": "${TEAM_KNOWLEDGE_SOURCES}/team-brain.git",
       "default_ref": "main",
       "docs": [
@@ -198,7 +240,7 @@
     {
       "name": "kserve",
       "kind": "git_repo",
-      "description": "KServe repo docs: InferenceService/ServingRuntime concepts and samples. Docs-only snapshot of the default branch in docs/upstream/kserve (refresh: scripts/sync-ecosystem-docs.py; pin with REF_kserve=<tag>); verify against the installed version",
+      "description": "KServe repo docs: InferenceService/ServingRuntime/LLMInferenceService concepts, samples, Helm chart values. Docs-only snapshot of the default branch in docs/upstream/kserve (refresh: scripts/sync-ecosystem-docs.py; pin with REF_kserve=<tag>); verify against the installed version",
       "path": "${TEAM_KNOWLEDGE_SOURCES}/team-brain.git",
       "default_ref": "main",
       "docs": [
@@ -295,7 +337,7 @@
     {
       "name": "vllm",
       "kind": "git_repo",
-      "description": "vLLM documentation: serving, flags, quantization, distributed inference. Docs-only snapshot of the default branch in docs/upstream/vllm (refresh: scripts/sync-ecosystem-docs.py; pin with REF_vllm=<tag>); verify against the installed version",
+      "description": "vLLM documentation and example READMEs: serving, flags, quantization, distributed/disaggregated inference, observability. Docs-only snapshot of the default branch in docs/upstream/vllm (refresh: scripts/sync-ecosystem-docs.py; pin with REF_vllm=<tag>); verify against the installed version",
       "path": "${TEAM_KNOWLEDGE_SOURCES}/team-brain.git",
       "default_ref": "main",
       "docs": [
@@ -309,7 +351,7 @@
     {
       "name": "lws",
       "kind": "git_repo",
-      "description": "LeaderWorkerSet (LWS) documentation: multi-node inference workloads. Docs-only snapshot of the default branch in docs/upstream/lws (refresh: scripts/sync-ecosystem-docs.py; pin with REF_lws=<tag>); verify against the installed version",
+      "description": "LeaderWorkerSet (LWS) documentation and KEPs: multi-node inference workloads. Docs-only snapshot of the default branch in docs/upstream/lws (refresh: scripts/sync-ecosystem-docs.py; pin with REF_lws=<tag>); verify against the installed version",
       "path": "${TEAM_KNOWLEDGE_SOURCES}/team-brain.git",
       "default_ref": "main",
       "docs": [
@@ -399,7 +441,7 @@
     {
       "name": "kueue",
       "kind": "git_repo",
-      "description": "Kueue documentation (job queueing, quotas; pairs with LWS/GPU workloads). Docs-only snapshot of the default branch in docs/upstream/kueue (refresh: scripts/sync-ecosystem-docs.py; pin with REF_kueue=<tag>); verify against the installed version",
+      "description": "Kueue documentation and KEPs (job queueing, quotas, fair sharing, topology-aware scheduling; pairs with LWS/GPU workloads). Docs-only snapshot of the default branch in docs/upstream/kueue (refresh: scripts/sync-ecosystem-docs.py; pin with REF_kueue=<tag>); verify against the installed version",
       "path": "${TEAM_KNOWLEDGE_SOURCES}/team-brain.git",
       "default_ref": "main",
       "docs": [
@@ -687,7 +729,7 @@
     {
       "name": "rdma-core",
       "kind": "git_repo",
-      "description": "rdma-core Documentation: libibverbs/rdma-core usage, tools, SR-IOV/RoCE notes (InfiniBand/RoCE userspace). Docs-only snapshot of the default branch in docs/upstream/rdma-core (refresh: scripts/sync-ecosystem-docs.py; pin with REF_rdma_core=<tag>); verify against the installed version",
+      "description": "rdma-core Documentation and man pages: libibverbs/librdmacm/libibumad APIs, infiniband-diags tools (ibstat, iblinkinfo, perfquery…), mlx5 provider (InfiniBand/RoCE userspace). Docs-only snapshot of the default branch in docs/upstream/rdma-core (refresh: scripts/sync-ecosystem-docs.py; pin with REF_rdma_core=<tag>); verify against the installed version",
       "path": "${TEAM_KNOWLEDGE_SOURCES}/team-brain.git",
       "default_ref": "main",
       "docs": [
@@ -702,7 +744,7 @@
     {
       "name": "nvidia-cloud-native-docs",
       "kind": "git_repo",
-      "description": "NVIDIA cloud-native docs: GPU Operator (incl. OpenShift), MIG, GPU telemetry/DCGM exporter. Docs-only snapshot of the default branch in docs/upstream/nvidia-cloud-native-docs (refresh: scripts/sync-ecosystem-docs.py; pin with REF_nvidia_cloud_native_docs=<tag>); verify against the installed version",
+      "description": "NVIDIA cloud-native docs: GPU Operator (incl. OpenShift), MIG, GPU telemetry/DCGM exporter, Container Toolkit, driver containers. Docs-only snapshot of the default branch in docs/upstream/nvidia-cloud-native-docs (refresh: scripts/sync-ecosystem-docs.py; pin with REF_nvidia_cloud_native_docs=<tag>); verify against the installed version",
       "path": "${TEAM_KNOWLEDGE_SOURCES}/team-brain.git",
       "default_ref": "main",
       "docs": [

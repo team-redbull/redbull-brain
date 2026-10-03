@@ -76,6 +76,25 @@ class Toolbox:
                 },
             },
             {
+                "name": "related",
+                "description": "Neighbours of a document in its source's link graph: pages it links to, pages that "
+                               "link to it, and (team brain) pages sharing its tags. Use after `search`/`read` to "
+                               "follow a topic instead of searching again — e.g. from a knowledge page to its "
+                               "runbook and the incidents that cite it. Omit `id` for graph statistics and the "
+                               "most-linked pages of the source.",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "source": {"type": "string", "enum": names},
+                        "id": {"type": "string", "description": "The `id` from a search hit."},
+                        "ref": ref_prop,
+                        "limit": {"type": "integer", "minimum": 1, "maximum": 50, "default": 15},
+                    },
+                    "required": ["source"],
+                    "additionalProperties": False,
+                },
+            },
+            {
                 "name": "search_code",
                 "description": "git grep a mirrored repository (" + (", ".join(repos) or "none") + ") at a specific "
                                "branch/tag — e.g. find where HyperShift sets a condition, which controller emits an "
@@ -216,7 +235,50 @@ class Toolbox:
         more = offset + max_chars < len(text)
         footer = (f"\n\n[… {len(text) - offset - max_chars} more chars — call read with offset={offset + max_chars}]"
                   if more else "")
+        if not more:  # last page: point at the neighbours so the next step is a read, not another search
+            footer += self._neighbours(source, id, ref)
         return f"# {doc['title']}\nsource: {source} · {doc['location']} · chars {offset}-{offset + len(part)} of {len(text)}\n\n{part}{footer}"
+
+    def _neighbours(self, source: str, doc_id: str, ref) -> str:
+        try:
+            g = self._src(source).graph(ref)
+        except Exception:  # noqa: BLE001 — the graph is a convenience, never a reason to fail a read
+            return ""
+        if doc_id not in g.title:
+            return ""
+        links = list(dict.fromkeys(g.back.get(doc_id, []) + g.out.get(doc_id, [])))[:8]
+        if not links:
+            return ""
+        return ("\n\n---\nLinked pages (read with the same source; `related` lists all): "
+                + ", ".join(f"`{x}`" for x in links))
+
+    def t_related(self, source: str, id: str = "", ref=None, limit: int = 15) -> str:  # noqa: A002
+        g = self._src(source).graph(ref)
+        limit = min(int(limit), 50)
+
+        def fmt(doc_id, note=""):
+            return f"- `{doc_id}` — {g.title.get(doc_id, doc_id)}" + (f"  ({note})" if note else "")
+
+        if not id:
+            top = sorted(g.back, key=lambda d: (-len(g.back[d]), d))[:limit]
+            return (f"{source}: {g.stats()}\n\n## Most linked pages\n"
+                    + ("\n".join(fmt(d, f"{len(g.back[d])} links in") for d in top) or "(no links)"))
+        if id not in g.title:
+            raise ToolError(f"{id!r} is not a document in {source}; use an id from `search`")
+        out = [f"# {g.title[id]}\nsource: {source} · id: `{id}`"
+               + (f" · area: {g.area[id]}" if g.area.get(id) else "")
+               + (f" · tags: {', '.join(g.tags[id])}" if g.tags.get(id) else "")]
+        for head, items in (("Links to", g.out.get(id, [])), ("Linked from", sorted(g.back.get(id, [])))):
+            if items:
+                out.append(f"\n## {head}\n" + "\n".join(fmt(d) for d in items[:limit])
+                           + (f"\n… {len(items) - limit} more" if len(items) > limit else ""))
+        linked = set(g.out.get(id, [])) | set(g.back.get(id, []))
+        sim = [(d, tags) for d, tags in g.similar(id, limit + len(linked)) if d not in linked][:limit]
+        if sim:
+            out.append("\n## Shares tags\n" + "\n".join(fmt(d, ", ".join(tags)) for d, tags in sim))
+        if len(out) == 1:
+            out.append("\nNo links or shared tags. Use `search`.")
+        return "\n".join(out)
 
     def t_search_code(self, repo: str, pattern: str, ref=None, path=None, regex=True, ignore_case=False,
                       limit: int = 60) -> str:
