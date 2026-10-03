@@ -1,0 +1,7 @@
+repo: kubernetes-sigs/gateway-api-inference-extension
+ref: main
+commit: 8ed15ee9f6ab58f01f82f96b1025f969dffb1730
+latest_tag: v1.6.2
+paths: site-src, docs/proposals, README.md
+files: 39
+synced: 2026-10-03T09:36:29Z

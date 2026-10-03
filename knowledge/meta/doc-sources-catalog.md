@@ -24,6 +24,7 @@ upstream source disagree, RHOKP/KCS wins for what we run**; upstream tells you h
 | `assisted-service` | baremetal | Agent-based installs, InfraEnv/Agent CRs | `release-ocm-*` / tag of the installed MCE |
 | `ako` | networking | our L4/L7 load balancing and ingress (**not MetalLB** — see `knowledge/networking/ingress-load-balancing-is-ako-not-metallb.md`) | tag = AKO version installed on the cluster |
 | `envoy`, `envoy-gateway`, `gateway-api` | networking | proxy config, Gateway API semantics, CRD fields | Envoy `release/v1.NN` as used by the product; Gateway API tag = installed CRD bundle |
+| `envoy-ai-gateway`, `gateway-api-inference-extension` | networking / ai | LLM traffic through Envoy: AIGatewayRoute, AIServiceBackend, provider/model routing, token rate limits, MCP gateway; InferencePool and the endpoint picker (shared with `llm-d`) | snapshot of `main`; compare with the installed release in `docs/upstream/VERSIONS.md` |
 | `ovn-kubernetes`, `multus-cni` | networking | default CNI behaviour, secondary networks | match OCP minor where a release branch exists |
 | `kserve`, `kserve-website` | gpu / ai | InferenceService/ServingRuntime APIs. RHOAI ships its own build — verify against RHOKP | tag of KServe in the installed RHOAI/ODH |
 | `vllm` | gpu / ai | serving flags, quantization, parallelism, engine code | tag = vLLM version in the serving image |
@@ -42,6 +43,9 @@ upstream source disagree, RHOKP/KCS wins for what we run**; upstream tells you h
 | `argocd-docs`, `argo-cd` | gitops | Argo CD docs / source | `stable` docs; tag of installed Argo CD for source |
 | `gitops-day1-platform-config`, `gitops-day2-prod`, `cluster-navigator` | gitops | our own repos: day1 values/versions, day2 ARCHITECTURE.md and charts, Navigator. **Disabled until the real GitLab remotes are set** (`GITOPS_DAY1_REMOTE`, `GITOPS_DAY2_REMOTE`, `NAVIGATOR_REMOTE`) | `main`; version of a cluster = day1 `mastertag` |
 | `brain` | all | **our** quirks, runbooks, incidents — read first | — |
+
+What each snapshot actually is (repo, ref, commit, newest upstream release at sync time): `docs/upstream/VERSIONS.md`
+(generated). Snapshots are refreshed automatically on GitHub — see `README.md`, "Automatic doc refresh".
 
 **Full git mirrors (code + docs at any ref):** `hypershift`, `ironic`, `cluster-api`, `cluster-api-provider-agent`,
 `argo-cd` (optional). **Every other source is a docs-only snapshot** in `docs/upstream/<name>` (default branch unless
@@ -82,3 +86,4 @@ To re-run the audit after upstream moves: list `git ls-tree -r --name-only HEAD`
 
 - 2026-10-03: created with the initial source set.
 - 2026-10-03: coverage audit against upstream repos; added three Metal3 component sources and widened eight snapshots.
+- 2026-10-03: added Envoy AI Gateway and Gateway API Inference Extension; snapshots now refresh automatically.

@@ -112,7 +112,10 @@ Incidents use `incident(<area>): …`.
   are warnings, not errors.
 - Changing hooks, skills or `.mcp.json`: bump `version` in `plugins/team-brain/.claude-plugin/plugin.json`
   (see `docs/ADMIN.md`).
-- Refreshing snapshots: `scripts/sync-upstream-docs.sh` (Kubernetes), `scripts/sync-ecosystem-docs.py [name…]`
+- Snapshots refresh themselves: `.github/workflows/docs-refresh.yml` (GitHub only; every push to `main` + daily)
+  commits `docs(upstream): …` and rewrites `docs/upstream/VERSIONS.md`. Expect those commits on `main`; pull
+  before pushing.
+- Refreshing snapshots by hand: `scripts/sync-upstream-docs.sh` (Kubernetes), `scripts/sync-ecosystem-docs.py [name…]`
   (`REF_<name>=<tag>` to pin), `scripts/sync-portworx-docs.py`. Connected host only.
 - Sources for our own repos (`gitops-day1-platform-config`, `gitops-day2-prod`, `cluster-navigator`) are
   disabled until their real GitLab remotes are set.

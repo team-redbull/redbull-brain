@@ -23,6 +23,7 @@ PerformanceProfile, GPU Operator on OCP), RHOKP wins.
 | vLLM flags, parallelism (tensor/pipeline/expert), quantization, serving config | `vllm` | `lws` (multi-node deployment), `kserve`/`kserve-website` (serving runtime) |
 | Multi-node inference on Kubernetes (LeaderWorkerSet), queueing/quotas | `lws`, `kueue` | `vllm` multi-node pages |
 | Prefill/decode disaggregation, wide expert parallelism, cache-aware routing | `llm-d` | `dynamo`, `sglang`, `tensorrt-llm` (alternative stacks), `ray-docs` (KubeRay / Ray Serve) |
+| Routing LLM traffic: model/provider routing, token rate limits, InferencePool, endpoint picker, MCP gateway | `envoy-ai-gateway`, `gateway-api-inference-extension` | `envoy-gateway`, `gateway-api`, `llm-d` (same InferencePool API) |
 | NCCL hangs, slow collectives, env vars (`NCCL_*`), topology | `nccl` | `rdma-core`, `ucx`, `nvidia-network-operator-docs` |
 | InfiniBand/RoCE/RDMA in pods: device plugin, MOFED, secondary networks | `nvidia-network-operator-docs`, `sriov-network-operator` | `multus-cni`, `rdma-core`, `linux-kernel-docs` (infiniband) |
 | GPU Operator, MIG, DCGM/telemetry on OpenShift | `nvidia-cloud-native-docs` | RHOKP (OCP-specific install), `gpu-operator` |

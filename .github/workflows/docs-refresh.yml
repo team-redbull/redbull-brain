@@ -1,0 +1,90 @@
+# Keeps docs/upstream current: on every push to main, daily, and on demand, fetch whatever moved upstream,
+# record the versions (docs/upstream/VERSIONS.md) and commit the result back to main.
+#
+# This only exists on GitHub: the internal GitLab is air-gapped and cannot reach upstream, it receives the
+# refreshed snapshots through the normal mirror of this repository.
+#
+# - A source whose upstream commit is unchanged is skipped (git ls-remote), so a no-change run is quick.
+# - The refreshed tree must pass scripts/ci_checks.py before it is committed.
+# - The commit is pushed with GITHUB_TOKEN, which does not trigger workflows, so there is no loop.
+#   If main is protected, allow github-actions[bot] to push or this job fails at the last step.
+# - Portworx is a 500-page site crawl: weekly (Monday) and on manual runs only.
+# - Vendored MCP binaries are NOT bumped here: a new release can change tools and defaults, bump by hand.
+name: docs-refresh
+on:
+  push:
+    branches: [main]
+    paths-ignore: ["docs/upstream/**"]
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Re-fetch every snapshot even if its upstream commit is unchanged"
+        type: boolean
+        default: false
+permissions:
+  contents: write
+concurrency:
+  group: docs-refresh
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Kubernetes docs (pinned release branch)
+        run: |
+          set -o pipefail
+          scripts/sync-upstream-docs.sh 2>&1 | sed 's/^==> kubernetes@/kubernetes: UPDATED /' | tee k8s.log
+      - name: Ecosystem docs
+        id: sync
+        run: |
+          set -o pipefail
+          # one broken upstream must not block the others: report it, keep its old snapshot, carry on
+          python3 scripts/sync-ecosystem-docs.py ${{ inputs.force && '--force' || '' }} 2>&1 | tee sync.log \
+            || echo "failed=1" >> "$GITHUB_OUTPUT"
+      - name: Portworx docs (weekly / manual)
+        if: github.event_name != 'push'
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$(date -u +%u)" = "1" ]; then
+            python3 scripts/sync-portworx-docs.py || echo "::warning::Portworx crawl failed, keeping the old snapshot"
+            python3 scripts/sync-ecosystem-docs.py --versions
+          fi
+      - name: Drop snapshots where only the sync timestamp changed
+        run: |
+          for d in docs/upstream/*/; do
+            if [ -n "$(git status --porcelain -- "$d")" ] && [ -z "$(git status --porcelain -- "$d" | grep -v '\.upstream$')" ]; then
+              git checkout -- "$d"
+            fi
+          done
+          python3 scripts/sync-ecosystem-docs.py --versions
+      - name: Checks on the refreshed tree
+        run: |
+          git add -A docs/upstream
+          python3 scripts/ci_checks.py --skip version
+      - name: Commit and push
+        run: |
+          if git diff --cached --quiet; then echo "Nothing moved upstream."; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          {
+            echo "docs(upstream): refresh $(cat k8s.log sync.log | grep -c UPDATED || true) snapshots"
+            echo
+            cat k8s.log sync.log | grep UPDATED || true
+          } > msg.txt
+          git commit -q -F msg.txt
+          git pull --rebase -q origin main
+          git push origin HEAD:main
+      - name: Report upstreams that failed
+        if: steps.sync.outputs.failed == '1'
+        run: |
+          grep FAILED sync.log || true
+          echo "::error::Some snapshots could not be refreshed (old content kept) — fix SOURCES in scripts/sync-ecosystem-docs.py"
+          exit 1

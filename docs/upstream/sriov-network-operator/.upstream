@@ -1,5 +1,7 @@
 repo: k8snetworkplumbingwg/sriov-network-operator
 ref: master
 commit: 38898df7b507101ce467eb3e29e316a0ea96d894
+latest_tag: v1.6.0
 paths: doc
-synced: 2026-10-02T23:36:40Z
+files: 29
+synced: 2026-10-03T09:38:54Z

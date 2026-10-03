@@ -1,5 +1,7 @@
 repo: openshift/assisted-service
 ref: master
 commit: a3ac089e4dc593f36849640b7f0266386fdc67ea
+latest_tag: v2.56.0
 paths: docs
-synced: 2026-10-02T23:00:43Z
+files: 119
+synced: 2026-10-03T09:37:54Z

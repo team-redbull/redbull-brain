@@ -6,13 +6,20 @@ see mcp/sources.json). Everything below is docs-only: sparse, shallow, blobless 
 branch (or REF override), keep only .md/.rst/.adoc files. Run on a connected host, or inside the air
 gap with UPSTREAM_GIT_BASE pointing at an internal mirror, then commit the result.
 
-    python3 scripts/sync-ecosystem-docs.py              # all
+    python3 scripts/sync-ecosystem-docs.py              # all whose upstream moved since the last sync
+    python3 scripts/sync-ecosystem-docs.py --force      # re-fetch even if the recorded commit is still current
+    python3 scripts/sync-ecosystem-docs.py --versions   # only rewrite docs/upstream/VERSIONS.md
     python3 scripts/sync-ecosystem-docs.py vllm kserve  # only these
     REF_vllm=v0.11.0 python3 scripts/sync-ecosystem-docs.py vllm   # pin one to the installed version
 
+A source is skipped when `git ls-remote` shows the commit recorded in its .upstream file is still the tip,
+so running this on every commit is cheap (.github/workflows/docs-refresh.yml does). A sync that would
+produce no files leaves the existing snapshot alone. docs/upstream/VERSIONS.md lists what every snapshot
+is: repo, ref, commit, the newest upstream release tag at sync time, file count.
+
 docs/upstream is generated: don't hand-edit it.
 """
-import os, shutil, subprocess, sys, tempfile, time
+import os, re, shutil, subprocess, sys, tempfile, time
 from pathlib import Path
 
 BASE = os.environ.get("UPSTREAM_GIT_BASE", "https://github.com")
@@ -26,6 +33,9 @@ SOURCES = {
         "ako-crd-operator/README.md", "ako-crd-operator/CHANGELOG.md"]),
     "envoy": ("envoyproxy/envoy", ["docs/root"]),
     "envoy-gateway": ("envoyproxy/gateway", ["site/content/en/latest"]),
+    "envoy-ai-gateway": ("envoyproxy/ai-gateway", ["site/docs", "release-notes", "README.md"]),
+    "gateway-api-inference-extension": ("kubernetes-sigs/gateway-api-inference-extension", [
+        "site-src", "docs/proposals", "README.md"]),
     "kserve": ("kserve/kserve", ["docs", "README.md", "charts", "kernelcache/mcv/docs", "ROADMAP.md"]),
     "kserve-website": ("kserve/website", ["docs"]),
     "prometheus-docs": ("prometheus/docs", ["docs"]),
@@ -82,9 +92,40 @@ def run(*cmd, cwd=None):
                           env={**os.environ, "GIT_TERMINAL_PROMPT": "0"}).stdout.strip()
 
 
-def sync(name, work):
+STABLE_TAG = re.compile(r"^v?\d+\.\d+(\.\d+)?$")
+
+
+def meta(name):
+    f = ROOT / "docs/upstream" / name / ".upstream"
+    if not f.is_file():
+        return {}
+    return dict(line.split(": ", 1) for line in f.read_text().splitlines() if ": " in line)
+
+
+def remote_tip(repo, ref):
+    """Commit the ref (or the default branch) points at upstream, without cloning."""
+    out = run("git", "ls-remote", f"{BASE}/{repo}.git", *( [ref, f"{ref}^{{}}"] if ref else ["HEAD"] ))
+    lines = [l.split() for l in out.splitlines() if l]
+    peeled = [sha for sha, r in lines if r.endswith("^{}")]  # annotated tag -> the commit it points at
+    return (peeled or [sha for sha, _ in lines] or [""])[0]
+
+
+def latest_tag(repo):
+    out = run("git", "ls-remote", "--tags", "--refs", "--sort=-version:refname", f"{BASE}/{repo}.git")
+    for line in out.splitlines():
+        tag = line.split("refs/tags/", 1)[-1]
+        if STABLE_TAG.match(tag):
+            return tag
+    return ""
+
+
+def sync(name, work, force=False):
     repo, paths = SOURCES[name]
     ref = os.environ.get("REF_" + name.replace("-", "_"))
+    old = meta(name)
+    if not force and old.get("commit") and old.get("paths") == ", ".join(paths) and old.get("repo") == repo \
+            and (not ref or old.get("ref") == ref) and remote_tip(repo, ref) == old["commit"]:
+        return None
     clone = Path(work) / name
     cmd = ["git", "clone", "--quiet", "--depth", "1", "--filter=blob:none", "--no-checkout"]
     if ref:
@@ -95,42 +136,74 @@ def sync(name, work):
     sha = run("git", "rev-parse", "HEAD", cwd=clone)
     branch = ref or run("git", "rev-parse", "--abbrev-ref", "HEAD", cwd=clone)
     dest = ROOT / "docs/upstream" / name
-    if dest.exists():
-        shutil.rmtree(dest)
+    new = Path(work) / (name + ".out")
     n = 0
     for p in paths:
         src = clone / p
         files = [src] if src.is_file() else [f for f in src.rglob("*") if f.is_file()]
         for f in files:
             if f.suffix.lower() in EXT:
-                out = dest / f.relative_to(clone)
+                out = new / f.relative_to(clone)
                 if out.suffix.lower() == ".mdx":
                     out = out.with_suffix(".md")
                 out.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(f, out)
                 n += 1
-    dest.mkdir(parents=True, exist_ok=True)
-    (dest / ".upstream").write_text(
-        f"repo: {repo}\nref: {branch}\ncommit: {sha}\npaths: {', '.join(paths)}\n"
-        f"synced: {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}\n")
-    return n, branch, sha[:10]
+    if not n:  # upstream moved its docs: keep what we have and fail loudly instead of committing an empty folder
+        raise RuntimeError(f"no doc files under {paths} at {sha[:10]} — upstream layout changed, fix SOURCES")
+    (new / ".upstream").write_text(
+        f"repo: {repo}\nref: {branch}\ncommit: {sha}\nlatest_tag: {latest_tag(repo)}\npaths: {', '.join(paths)}\n"
+        f"files: {n}\nsynced: {time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}\n")
+    if dest.exists():
+        shutil.rmtree(dest)
+    shutil.move(str(new), str(dest))
+    return n, branch, sha[:10], (old.get("commit") or "new")[:10]
+
+
+def write_versions():
+    """docs/upstream/VERSIONS.md: one row per snapshot, from the .upstream files (all sync scripts)."""
+    base = ROOT / "docs/upstream"
+    rows = []
+    for d in sorted(p for p in base.iterdir() if (p / ".upstream").is_file()):
+        m = dict(line.split(": ", 1) for line in (d / ".upstream").read_text().splitlines() if ": " in line)
+        src = m.get("repo") or m.get("site", "")
+        ver = m.get("ref") or m.get("version", "")
+        n = m.get("files") or m.get("pages") or str(sum(1 for f in d.rglob("*") if f.is_file()) - 1)
+        rows.append(f"| `{d.name}` | {src} | {ver} | {m.get('commit', '')[:10]} | {m.get('latest_tag', '')} "
+                    f"| {n} | {m.get('synced', '')[:10]} |")
+    (base / "VERSIONS.md").write_text(
+        "# Snapshot versions\n\nGenerated by `scripts/sync-ecosystem-docs.py` from each folder's `.upstream` file — "
+        "don't edit. **Ref** is what the\nsnapshot was taken from (usually the default branch, i.e. *newer* than any "
+        "release); **Latest release** is the newest\nstable upstream tag at sync time, for comparison with the version "
+        "installed on a cluster.\n\n| Snapshot | Source | Ref | Commit | Latest release | Files | Synced |\n"
+        "|---|---|---|---|---|---|---|\n" + "\n".join(rows) + "\n")
 
 
 def main():
-    names = sys.argv[1:] or list(SOURCES)
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    flags = {a for a in sys.argv[1:] if a.startswith("--")}
+    if flags - {"--force", "--versions"}:
+        sys.exit(__doc__)
+    names = args or list(SOURCES)
     bad = [n for n in names if n not in SOURCES]
     if bad:
         sys.exit(f"unknown: {', '.join(bad)}; known: {', '.join(SOURCES)}")
     failed = []
-    with tempfile.TemporaryDirectory() as work:
-        for n in names:
-            try:
-                files, branch, sha = sync(n, work)
-                print(f"{n}: {files} files @ {branch} {sha}")
-                shutil.rmtree(Path(work) / n, ignore_errors=True)
-            except subprocess.CalledProcessError as e:
-                failed.append(n)
-                print(f"{n}: FAILED {(e.stderr or '').strip()[:200]}", file=sys.stderr)
+    if "--versions" not in flags:
+        with tempfile.TemporaryDirectory() as work:
+            for n in names:
+                try:
+                    res = sync(n, work, force="--force" in flags)
+                    if res is None:
+                        print(f"{n}: up to date")
+                    else:
+                        files, branch, sha, old = res
+                        print(f"{n}: UPDATED {old} -> {sha} ({files} files @ {branch})")
+                    shutil.rmtree(Path(work) / n, ignore_errors=True)
+                except (subprocess.CalledProcessError, RuntimeError) as e:
+                    failed.append(n)
+                    print(f"{n}: FAILED {(getattr(e, 'stderr', '') or str(e)).strip()[:300]}", file=sys.stderr)
+    write_versions()
     if failed:
         sys.exit(f"failed: {', '.join(failed)}")
 

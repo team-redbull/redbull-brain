@@ -1,5 +1,7 @@
 repo: redhat-performance/tuned
 ref: master
 commit: 278644ed965035f5563b0ecce623df93ca93c13d
+latest_tag: v2.28.0
 paths: doc
-synced: 2026-10-02T23:36:41Z
+files: 31
+synced: 2026-10-03T09:38:56Z

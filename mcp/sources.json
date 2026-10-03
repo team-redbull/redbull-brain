@@ -230,6 +230,28 @@
       ]
     },
     {
+      "name": "envoy-ai-gateway",
+      "kind": "markdown_dir",
+      "description": "Envoy AI Gateway documentation (envoyproxy/ai-gateway): AIGatewayRoute/AIServiceBackend/BackendSecurityPolicy, provider and model routing, token rate limiting, MCP gateway, InferencePool integration, CLI, release notes. Built on Envoy Gateway. Docs-only snapshot of the default branch in docs/upstream/envoy-ai-gateway (refresh: scripts/sync-ecosystem-docs.py; pin with REF_envoy_ai_gateway=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/envoy-ai-gateway",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
+      ]
+    },
+    {
+      "name": "gateway-api-inference-extension",
+      "kind": "markdown_dir",
+      "description": "Gateway API Inference Extension docs and proposals: InferencePool, InferenceObjective, endpoint picker (model-aware routing used by Envoy AI Gateway and llm-d). Docs-only snapshot of the default branch in docs/upstream/gateway-api-inference-extension (refresh: scripts/sync-ecosystem-docs.py; pin with REF_gateway_api_inference_extension=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/gateway-api-inference-extension",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
+      ]
+    },
+    {
       "name": "kserve",
       "kind": "markdown_dir",
       "description": "KServe repo docs: InferenceService/ServingRuntime/LLMInferenceService concepts, samples, Helm chart values. Docs-only snapshot of the default branch in docs/upstream/kserve (refresh: scripts/sync-ecosystem-docs.py; pin with REF_kserve=<tag>); verify against the installed version",

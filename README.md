@@ -242,6 +242,21 @@ registry; add a CI/CD variable **`BRAIN_DENYLIST_FILE`** (type *File*, masked/pr
 with the real region/site/MCE/cluster names — it never enters git, and matches are logged by line and entry number
 only. A weekly pipeline schedule runs `brain.py stale` as an informational report.
 
+### Automatic doc refresh
+
+`.github/workflows/docs-refresh.yml` runs on every push to `main`, daily, and on demand. It asks each upstream for
+its current commit (`git ls-remote`), re-fetches only the snapshots that moved, rewrites
+`docs/upstream/VERSIONS.md` (repo, ref, commit, newest upstream release, file count per snapshot), runs the checks
+above on the result and commits `docs(upstream): refresh N snapshots` to `main`.
+
+- It runs **only on GitHub** — the air-gapped GitLab cannot reach upstream and receives the refreshed snapshots
+  through the mirror of this repository.
+- An upstream that fails or moved its docs keeps its old snapshot and turns the run red; the others still commit.
+- Portworx (a site crawl) refreshes on Mondays and on manual runs. Kubernetes stays on its pinned release branch.
+- Snapshots follow default branches, so they drift ahead of what is installed; `VERSIONS.md` shows the newest
+  release next to each snapshot. Pin one with `REF_<name>=<tag>` if it must match a cluster.
+- Vendored MCP binaries are never bumped automatically.
+
 ## Troubleshooting
 
 | Symptom | Likely cause / fix |
@@ -255,6 +270,8 @@ only. A weekly pipeline schedule runs `brain.py stale` as an informational repor
 
 ## What is and isn't verified yet
 
+- The `docs-refresh` workflow has been simulated locally step by step but has not yet run on GitHub; if `main` is
+  protected, `github-actions[bot]` needs permission to push.
 - CI exists (`.gitlab-ci.yml`, `.github/workflows/ci.yml`, both running `scripts/ci_checks.py`) but has only been run
   locally and against fault-injected copies of the repo — not yet on a real GitLab runner. The denylist check needs
   `BRAIN_DENYLIST_FILE` configured in the internal GitLab to do anything. There is no unit-test suite beyond the checks.

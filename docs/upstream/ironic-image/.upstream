@@ -1,5 +1,7 @@
 repo: metal3-io/ironic-image
 ref: main
 commit: 5786694219ac846594af038fa17ff71d891b5f22
+latest_tag: v38.0.0
 paths: docs, README.md
-synced: 2026-10-03T09:25:37Z
+files: 3
+synced: 2026-10-03T09:37:26Z

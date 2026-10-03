@@ -1,5 +1,7 @@
 repo: linux-rdma/rdma-core
 ref: master
 commit: bcd725bec72794527086f9490094ec8691f17ce8
+latest_tag: v65.0
 paths: Documentation, README.md, infiniband-diags/man, libibverbs/man, librdmacm/man, libibumad/man, providers/mlx5/man
-synced: 2026-10-03T09:25:42Z
+files: 189
+synced: 2026-10-03T09:38:45Z
