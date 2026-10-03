@@ -47,7 +47,7 @@ stable upstream tag at sync time, for comparison with the version installed on a
 | `rdma-core` | linux-rdma/rdma-core | master | bcd725bec7 | v65.0 | 189 | 2026-10-03 |
 | `sglang` | sgl-project/sglang | main | 7be5e3473c | v0.5.21 | 342 | 2026-10-03 |
 | `sriov-network-operator` | k8snetworkplumbingwg/sriov-network-operator | master | 38898df7b5 | v1.6.0 | 29 | 2026-10-03 |
-| `tensorrt-llm` | NVIDIA/TensorRT-LLM | main | 4151db3c2e | v1.2.1 | 160 | 2026-10-03 |
+| `tensorrt-llm` | NVIDIA/TensorRT-LLM | main | 78dac6256b | v1.2.1 | 160 | 2026-10-03 |
 | `tuned` | redhat-performance/tuned | master | 278644ed96 | v2.28.0 | 31 | 2026-10-03 |
 | `ucx` | openucx/ucx | master | f9426106f9 | v1.22.0 | 15 | 2026-10-03 |
-| `vllm` | vllm-project/vllm | main | 5f30fc7031 | v0.31.0 | 260 | 2026-10-03 |
+| `vllm` | vllm-project/vllm | main | bc21cba967 | v0.31.0 | 261 | 2026-10-03 |
