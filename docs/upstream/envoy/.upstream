@@ -1,7 +1,7 @@
 repo: envoyproxy/envoy
 ref: main
-commit: 9c34001062bfdf138cfc3dd811bf271e57ee1e19
+commit: 57f7346d40d5f681a2d677123508c9827d0c8e02
 latest_tag: v1.39.2
 paths: docs/root
 files: 508
-synced: 2026-10-03T09:36:20Z
+synced: 2026-10-04T09:44:02Z
