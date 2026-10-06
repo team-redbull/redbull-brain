@@ -411,6 +411,37 @@
       ]
     },
     {
+      "name": "lmcache",
+      "kind": "git_repo",
+      "description": "LMCache documentation: KV-cache layer for vLLM (CPU/disk/remote offload, cache sharing across replicas, CacheBlend, prefill/decode disaggregation), configuration reference, storage backends incl. Mooncake/Redis/Valkey, Kubernetes operator (LMCacheEngine samples), design notes, plus the example configs and scripts under examples/. Docs-only snapshot of the default branch in docs/upstream/lmcache (refresh: scripts/sync-ecosystem-docs.py; pin with REF_lmcache=<tag>); verify against the installed version",
+      "path": "${TEAM_KNOWLEDGE_SOURCES}/team-brain.git",
+      "default_ref": "main",
+      "docs": [
+        "docs/upstream/lmcache/**/*.md",
+        "docs/upstream/lmcache/**/*.rst",
+        "docs/upstream/lmcache/**/*.yaml",
+        "docs/upstream/lmcache/**/*.yml",
+        "docs/upstream/lmcache/**/*.py"
+      ],
+      "code_include": [
+        "docs/upstream/lmcache/**"
+      ]
+    },
+    {
+      "name": "mooncake",
+      "kind": "git_repo",
+      "description": "Mooncake documentation: Transfer Engine (RDMA/TCP/NVMe-oF zero-copy transfers, topology-aware path selection) and Mooncake Store (distributed KV-cache store, master service, replication), Python/C++ API reference, deployment, vLLM/SGLang/LMCache integration, performance and troubleshooting. Docs-only snapshot of the default branch in docs/upstream/mooncake (refresh: scripts/sync-ecosystem-docs.py; pin with REF_mooncake=<tag>); verify against the installed version",
+      "path": "${TEAM_KNOWLEDGE_SOURCES}/team-brain.git",
+      "default_ref": "main",
+      "docs": [
+        "docs/upstream/mooncake/**/*.md",
+        "docs/upstream/mooncake/**/*.rst"
+      ],
+      "code_include": [
+        "docs/upstream/mooncake/**"
+      ]
+    },
+    {
       "name": "lws",
       "kind": "git_repo",
       "description": "LeaderWorkerSet (LWS) documentation and KEPs: multi-node inference workloads. Docs-only snapshot of the default branch in docs/upstream/lws (refresh: scripts/sync-ecosystem-docs.py; pin with REF_lws=<tag>); verify against the installed version",

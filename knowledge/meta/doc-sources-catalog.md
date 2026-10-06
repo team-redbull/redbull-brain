@@ -5,7 +5,7 @@ area: meta
 tags: [sources, team-knowledge, refs, catalog]
 applies_to: []
 confidence: observed
-last_verified: 2026-10-03
+last_verified: 2026-10-06
 owners: [platform-team]
 source: claude-session
 ---
@@ -28,6 +28,7 @@ upstream source disagree, RHOKP/KCS wins for what we run**; upstream tells you h
 | `ovn-kubernetes`, `multus-cni` | networking | default CNI behaviour, secondary networks | match OCP minor where a release branch exists |
 | `kserve`, `kserve-website` | gpu / ai | `kserve-website` = the live site's `/docs/next/` (latest; all 147 pages checked against its sitemap on 2026-10-03, incl. LLMInferenceService and the CRD API reference). `kserve` = repo docs plus the sample manifests and code under `docs/samples`. InferenceService/ServingRuntime APIs. RHOAI ships its own build — verify against RHOKP | tag of KServe in the installed RHOAI/ODH |
 | `vllm` | gpu / ai | serving flags, quantization, parallelism, engine code | tag = vLLM version in the serving image |
+| `lmcache`, `mooncake` | gpu / ai | KV-cache reuse for vLLM: LMCache = cache layer (CPU/disk/remote offload, sharing across replicas, configuration, operator samples, example configs and scripts); Mooncake = the RDMA transfer engine and distributed store it can use as a backend | snapshot of the default branch (LMCache `dev`, Mooncake `main`); pin with `REF_<name>=<tag>` to the version in the serving image |
 | `lws`, `kueue` | gpu / ai | multi-node inference (LeaderWorkerSet), quotas/queueing | tag = installed operator version |
 | `gpu-operator`, `node-feature-discovery` | gpu | ClusterPolicy, drivers, MIG, NFD labels | tag = installed operator version |
 | `prometheus-docs`, `prometheus-operator` | observability | PromQL, alerting, ServiceMonitor/PrometheusRule | OCP bundles its own build; docs are general |

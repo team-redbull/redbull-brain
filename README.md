@@ -75,7 +75,7 @@ There are two kinds of source, and the difference matters when you trust an answ
 
 | | Full git mirror | Docs-only snapshot |
 |---|---|---|
-| Products | HyperShift, Ironic, Cluster API, cluster-api-provider-agent (Argo CD optional) | AKO, Envoy (+Gateway), KServe, vLLM, LWS, Kueue, Prometheus (+operator), Grafana (+MCP docs), Metal3 (docs, baremetal-operator, CAPM3), Gateway API, GPU operator, NFD, OVN-Kubernetes, Multus, OpenShift alert runbooks, etcd, assisted-service, Portworx, Kubernetes; **inference/HPC/fabrics/kernel:** llm-d, SGLang, TensorRT-LLM, Dynamo, Ray/KubeRay, NCCL, UCX, rdma-core, NVIDIA GPU + Network Operator docs, SR-IOV operator, tuned, Linux kernel docs (selected) |
+| Products | HyperShift, Ironic, Cluster API, cluster-api-provider-agent (Argo CD optional) | AKO, Envoy (+Gateway), KServe, vLLM, LMCache, Mooncake, LWS, Kueue, Prometheus (+operator), Grafana (+MCP docs), Metal3 (docs, baremetal-operator, CAPM3), Gateway API, GPU operator, NFD, OVN-Kubernetes, Multus, OpenShift alert runbooks, etcd, assisted-service, Portworx, Kubernetes; **inference/HPC/fabrics/kernel:** llm-d, SGLang, TensorRT-LLM, Dynamo, Ray/KubeRay, NCCL, UCX, rdma-core, NVIDIA GPU + Network Operator docs, SR-IOV operator, tuned, Linux kernel docs (selected) |
 | Content | code **and** docs, every branch/tag | documentation files only (`.md/.rst/.adoc`) |
 | Version | any `ref` (e.g. `release-4.20`) | one pinned snapshot (default branch; Kubernetes = 1.35; Portworx = latest) |
 | Lives in | `~/.cache/team-brain/sources/*.git` (fetched by `server.py --sync`) | `docs/upstream/<name>/` (committed in this repo) |

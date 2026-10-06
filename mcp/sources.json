@@ -366,6 +366,31 @@
       ]
     },
     {
+      "name": "lmcache",
+      "kind": "markdown_dir",
+      "description": "LMCache documentation: KV-cache layer for vLLM (CPU/disk/remote offload, cache sharing across replicas, CacheBlend, prefill/decode disaggregation), configuration reference, storage backends incl. Mooncake/Redis/Valkey, Kubernetes operator (LMCacheEngine samples), design notes, plus the example configs and scripts under examples/. Docs-only snapshot of the default branch in docs/upstream/lmcache (refresh: scripts/sync-ecosystem-docs.py; pin with REF_lmcache=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/lmcache",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc",
+        "**/*.yaml",
+        "**/*.yml",
+        "**/*.py"
+      ]
+    },
+    {
+      "name": "mooncake",
+      "kind": "markdown_dir",
+      "description": "Mooncake documentation: Transfer Engine (RDMA/TCP/NVMe-oF zero-copy transfers, topology-aware path selection) and Mooncake Store (distributed KV-cache store, master service, replication), Python/C++ API reference, deployment, vLLM/SGLang/LMCache integration, performance and troubleshooting. Docs-only snapshot of the default branch in docs/upstream/mooncake (refresh: scripts/sync-ecosystem-docs.py; pin with REF_mooncake=<tag>); verify against the installed version",
+      "root": "${TEAM_BRAIN_DIR:-~/team-brain}/docs/upstream/mooncake",
+      "include": [
+        "**/*.md",
+        "**/*.rst",
+        "**/*.adoc"
+      ]
+    },
+    {
       "name": "lws",
       "kind": "markdown_dir",
       "description": "LeaderWorkerSet (LWS) documentation and KEPs: multi-node inference workloads. Docs-only snapshot of the default branch in docs/upstream/lws (refresh: scripts/sync-ecosystem-docs.py; pin with REF_lws=<tag>); verify against the installed version",

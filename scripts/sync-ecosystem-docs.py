@@ -29,6 +29,7 @@ EXT = (".md", ".markdown", ".rst", ".adoc", ".txt", ".mdx")  # .mdx is stored as
 # name: (repo, [paths in repo][, extra extensions])  — default branch unless REF_<name> (dashes -> underscores) is set.
 # Extra extensions are for projects whose documentation is largely example manifests/code (KServe samples).
 CODE = (".yaml", ".yml", ".py")
+SKIP_DIRS = {"zh_archive"}  # archived translations: outdated, and they outrank the English page in search
 SOURCES = {
     "ako": ("vmware/load-balancer-and-ingress-services-for-kubernetes", [
         "docs", "README.md", "CHANGELOG.md", "AKO_GATEWAY_CHANGELOG.md", "ako-operator/README.md",
@@ -49,6 +50,11 @@ SOURCES = {
     "kubernetes-mcp-server": ("containers/kubernetes-mcp-server", ["README.md", "docs"]),
     "okp-mcp": ("rhel-lightspeed/okp-mcp", ["README.md", "docs", "quadlet/README.md"]),
     "vllm": ("vllm-project/vllm", ["docs", "examples", "README.md"]),
+    "lmcache": ("LMCache/LMCache", [
+        "docs/source", "docs/design", "examples", "operator/README.md", "operator/DESIGN.md",
+        "operator/config/samples", "README.md"], CODE),
+    "mooncake": ("kvcache-ai/Mooncake", [
+        "docs/source", "README.md", "monitoring/README.md", "mooncake-store/src/hf3fs/README.md"]),
     "lws": ("kubernetes-sigs/lws", ["site/content/en/docs", "docs", "keps", "README.md"]),
     "metal3-docs": ("metal3-io/metal3-docs", ["docs", "design"]),
     "baremetal-operator": ("metal3-io/baremetal-operator", [
@@ -149,7 +155,7 @@ def sync(name, work, force=False):
         src = clone / p
         files = [src] if src.is_file() else [f for f in src.rglob("*") if f.is_file()]
         for f in files:
-            if f.suffix.lower() in exts:
+            if f.suffix.lower() in exts and not SKIP_DIRS.intersection(f.parts):
                 # examples yes, generated bulk no: Helm templates and CRD schemas are huge and say nothing a doc doesn't
                 if f.suffix.lower() not in EXT and (f.stat().st_size > 200_000 or "templates" in f.parts
                                                       or "crd" in f.name.lower()):

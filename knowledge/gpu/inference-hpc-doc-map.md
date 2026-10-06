@@ -2,10 +2,10 @@
 title: Where to look — multi-node LLM inference, InfiniBand/RDMA, NCCL and kernel tuning questions
 type: knowledge
 area: gpu
-tags: [vllm, llm-d, lws, nccl, rdma, infiniband, roce, sriov, tuning, hugepages, numa, doc-map]
+tags: [vllm, lmcache, mooncake, llm-d, lws, nccl, rdma, infiniband, roce, sriov, tuning, hugepages, numa, doc-map]
 applies_to: [ocp-4.16, ocp-4.20, ocp-4.22]
 confidence: observed
-last_verified: 2026-10-03
+last_verified: 2026-10-06
 owners: [platform-team]
 source: claude-session
 ---
@@ -23,6 +23,7 @@ PerformanceProfile, GPU Operator on OCP), RHOKP wins.
 | vLLM flags, parallelism (tensor/pipeline/expert), quantization, serving config | `vllm` | `lws` (multi-node deployment), `kserve`/`kserve-website` (serving runtime) |
 | Multi-node inference on Kubernetes (LeaderWorkerSet), queueing/quotas | `lws`, `kueue` | `vllm` multi-node pages |
 | Prefill/decode disaggregation, wide expert parallelism, cache-aware routing | `llm-d` | `dynamo`, `sglang`, `tensorrt-llm` (alternative stacks), `ray-docs` (KubeRay / Ray Serve) |
+| KV-cache offload and sharing between vLLM replicas, cache storage backends, RDMA transfer of KV cache | `lmcache`, `mooncake` | `vllm` (KV-cache and disaggregated serving pages), `llm-d` (cache-aware routing), `rdma-core`, `nvidia-network-operator-docs` (RDMA in pods) |
 | Routing LLM traffic: model/provider routing, token rate limits, InferencePool, endpoint picker, MCP gateway | `envoy-ai-gateway`, `gateway-api-inference-extension` | `envoy-gateway`, `gateway-api`, `llm-d` (same InferencePool API) |
 | NCCL hangs, slow collectives, env vars (`NCCL_*`), topology | `nccl` | `rdma-core`, `ucx`, `nvidia-network-operator-docs` |
 | InfiniBand/RoCE/RDMA in pods: device plugin, MOFED, secondary networks | `nvidia-network-operator-docs`, `sriov-network-operator` | `multus-cni`, `rdma-core`, `linux-kernel-docs` (infiniband) |

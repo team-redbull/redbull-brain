@@ -29,9 +29,11 @@ stable upstream tag at sync time, for comparison with the version installed on a
 | `kueue` | kubernetes-sigs/kueue | main | 70e773be46 | v0.20.0 | 246 | 2026-10-06 |
 | `linux-kernel-docs` | torvalds/linux | master | e767a4ea70 | v7.2 | 116 | 2026-10-03 |
 | `llm-d` | llm-d/llm-d | main | 51f594319f | v0.10.0 | 208 | 2026-10-06 |
+| `lmcache` | LMCache/LMCache | dev | 8c77a6f77b | v0.5.5 | 427 | 2026-10-06 |
 | `lws` | kubernetes-sigs/lws | main | edd754573e | v0.11.1 | 69 | 2026-10-06 |
 | `mcp-grafana` | grafana/mcp-grafana | main | 9dbfe137a5 | v2.0.0 | 50 | 2026-10-03 |
 | `metal3-docs` | metal3-io/metal3-docs | main | 62fef539c7 |  | 145 | 2026-10-03 |
+| `mooncake` | kvcache-ai/Mooncake | main | 245e710604 | v0.3.13 | 110 | 2026-10-06 |
 | `multus-cni` | k8snetworkplumbingwg/multus-cni | master | a8cc22a005 | v4.3.1 | 7 | 2026-10-03 |
 | `nccl` | NVIDIA/nccl | master | 12df1a11af |  | 158 | 2026-10-03 |
 | `node-feature-discovery` | kubernetes-sigs/node-feature-discovery | master | c8ea0b62ae | v0.19.0 | 40 | 2026-10-03 |
