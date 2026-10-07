@@ -1,7 +1,7 @@
 repo: kubernetes-sigs/kueue
 ref: main
-commit: 70e773be4616d76ccd11bb3e8476a092e9bd4f21
+commit: 0305cb0d6b00008f505cb554cb71832b1182c7a5
 latest_tag: v0.20.0
 paths: site/content/en/docs, keps
 files: 246
-synced: 2026-10-06T10:14:17Z
+synced: 2026-10-07T10:13:40Z
