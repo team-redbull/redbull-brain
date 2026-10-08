@@ -98,11 +98,11 @@ for the transition details.
 
 Controller startup now selects the current topology unconditionally; it no
 longer defers conversion based on existing workloads or tunnel-key readiness.
-Upgrading with an unmigrated topology is unsupported: reconciliation can remove
-the old gateway router and move management-port SNAT while workloads are still
-using them, disrupting existing connections. Complete migration on an
-intermediate release rather than relying on this version to perform a safe
-transition.
+Upgrading with an unmigrated topology is unsupported. The conversion and
+mixed-topology compatibility code has been removed, including temporary upgrade
+ports and EgressIP next-hop conversion. Complete migration and cleanup of its
+temporary topology on an intermediate release; this version cannot finish that
+transition or maintain connectivity to legacy nodes.
 
 The node annotation `k8s.ovn.org/layer2-topology-version: "2.0"` is still published
 for compatibility with older peers during rolling upgrades. The annotation
@@ -720,6 +720,61 @@ on OVN-Kubernetes and can easily live migrate the VMs across nodes
 along with preserving their IPs.
 
 ![overlapping-podips](images/Layer2VMMigration.png)
+
+### MAC Security
+
+By default, secondary UDNs restrict each pod interface to its assigned MAC address.
+Disabling MAC security allows traffic with other source and destination MAC
+addresses, supporting workloads such as nested virtualization, network functions
+that forward traffic for other MAC addresses, or workloads sharing a virtual MAC
+for high availability.
+
+MAC security can only be disabled on secondary `Layer2` and `Localnet` networks
+with IPAM disabled. Set `macSecurity.mode: Disabled` and `ipam.mode: Disabled`
+under the topology's configuration when creating the network. If `macSecurity`
+is omitted, MAC security remains enabled. Changing the mode after creation is
+not supported.
+
+For example, create a Layer2 `UserDefinedNetwork`:
+
+```yaml
+apiVersion: k8s.ovn.org/v1
+kind: UserDefinedNetwork
+metadata:
+  name: virt-l2-net
+  namespace: blue
+spec:
+  topology: Layer2
+  layer2:
+    role: Secondary
+    ipam:
+      mode: Disabled
+    macSecurity:
+      mode: Disabled
+```
+
+For a Layer2 `ClusterUserDefinedNetwork`, use the same configuration under
+`spec.network.layer2`. Localnet is available through `ClusterUserDefinedNetwork`:
+
+```yaml
+apiVersion: k8s.ovn.org/v1
+kind: ClusterUserDefinedNetwork
+metadata:
+  name: virt-localnet
+spec:
+  namespaceSelector:
+    matchLabels:
+      tenant: yellow
+  network:
+    topology: Localnet
+    localnet:
+      role: Secondary
+      physicalNetworkName: localnet1
+      ipam:
+        mode: Disabled
+      macSecurity:
+        mode: Disabled
+```
 
 ### Services on UDNs
 
