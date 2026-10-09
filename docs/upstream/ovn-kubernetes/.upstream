@@ -1,7 +1,7 @@
 repo: ovn-org/ovn-kubernetes
 ref: master
-commit: 337e5877b7b678d18a89e579aa066d2c51ddaea7
+commit: bdd160d3e19f1a442a330d1cda743491151aba38
 latest_tag: v1.4.0
 paths: docs
 files: 140
-synced: 2026-10-08T10:31:51Z
+synced: 2026-10-09T10:30:14Z

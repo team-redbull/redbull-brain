@@ -1,7 +1,7 @@
 repo: k8snetworkplumbingwg/multus-cni
 ref: master
-commit: a8cc22a0050d1aa9bfc3193c12096725f9b74088
+commit: 73190fcefaf1f01f0e55a06522f459aded9550e1
 latest_tag: v4.3.1
 paths: docs, README.md
 files: 7
-synced: 2026-10-03T09:37:44Z
+synced: 2026-10-09T10:30:15Z
