@@ -7,7 +7,7 @@ kubectl get leaderworkerset -n ${NAMESPACE} -l disaggregatedset.x-k8s.io/name=pd
 ```
 
 * Scaling `slices` adds or removes complete P/D copies at the current revision, without touching existing slices.
-* Role `replicas` apply per slice, so the xPyD ratio (see [P/D Best Practices](../../../guides/pd-disaggregation/README.md#pd-best-practices)) holds in every slice.
+* Role `replicas` apply per slice, so the xPyD ratio (see [When to use P/D and how to tune it](../../architecture/advanced/disaggregation/README.md#when-to-use-pd-and-how-to-tune-it)) holds in every slice.
 * Rolling updates proceed independently per slice.
 * Changing either role's template rolls both roles; one revision covers all roles.
 
@@ -15,7 +15,7 @@ See the [LWS DisaggregatedSet docs](https://lws.sigs.k8s.io/docs/concepts/disagg
 
 ## Pinning Slices to Accelerator Domains (Placement Policy)
 
-Placement policy pins each slice to one topology domain and spreads slices across domains, keeping prefill-to-decode KV-cache transfer inside the low-latency fabric. To enable it, uncomment `placementPolicy` in the set's manifest (for P/D, [`modelserver/gpu/vllm/base/disaggregatedset.yaml`](../../../guides/pd-disaggregation/modelserver/gpu/vllm/base/disaggregatedset.yaml)):
+Placement policy pins each slice to one topology domain and spreads slices across domains, keeping prefill-to-decode KV-cache transfer inside the low-latency fabric. To enable it, uncomment `placementPolicy` in the set's manifest (for P/D, [`modelserver/gpu/vllm/base/disaggregatedset.yaml`](../../../guides/pd-disaggregation/modelserver/gpu/vllm/base/disaggregatedset.yaml)). The P/D guide ships `slices: 1` (one prefill and one decode); placement policy pays off once you raise `slices` to run several copies:
 
 ```yaml
 spec:
@@ -64,6 +64,18 @@ roles:
 ```
 
 Then point HPA, KEDA, or any `/scale`-aware autoscaler at the auto-created `DisaggregatedSetRoleScaler` named `<ds>-<role>` (for example `pd-disagg-vllm-prefill`). See the [LWS autoscaling example](https://lws.sigs.k8s.io/docs/examples/disaggregatedset/autoscaling/) and the [KEDA token-aware P/D guide](../../../guides/workload-autoscaling/keda-epp-token-aware/README.md).
+
+## Kueue-Scheduled Sets (TPU7x Dynamic Sub-slices)
+
+The P/D guide's [TPU7x dynamic sub-slice overlay](../../../guides/pd-disaggregation/README.md#2-deploy-the-model-server) runs `pd-disagg-tpu-vllm` under Kueue Topology-Aware Scheduling, with the `kueue.x-k8s.io/queue-name` label on each role's `metadata` and the default `groupIdentity: Ordinal`.
+
+<details>
+<summary><b>Why these two settings differ from the NVIDIA GPU sets</b></summary>
+
+* The controller copies role `metadata.labels` to the LeaderWorkerSets it generates, and Kueue reads the queue name from the LeaderWorkerSet metadata; labels on the set itself never reach it.
+* The Kueue LeaderWorkerSet integration creates one Workload per numeric group index and ungates pods that are not owned by a StatefulSet. `Hash` mode assigns random group keys and runs leaders through a Deployment, so its groups would be released without admission and no `Slice` would be formed.
+
+</details>
 
 ## Known Issue: Rolling Updates Can Stall on Fully Allocated Clusters
 
