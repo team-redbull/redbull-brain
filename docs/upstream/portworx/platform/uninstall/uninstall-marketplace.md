@@ -9,6 +9,19 @@ Uninstall Portworx installed using AWS Marketplace | Portworx Enterprise Documen
 Perform the following steps to uninstall Portworx:
 
 -
+Stop applications and clean up volumes before deleting the StorageCluster to prevent PVs from getting permanently stuck with CSI finalizers:
+
+- Stop all applications using Portworx volumes.
+
+- Delete the Portworx PVCs.
+
+- Wait until all `Delete`-reclaim-policy PVs and their VolumeAttachments are fully removed from the cluster.
+
+warning
+
+Do not proceed to the next step while volume cleanup is still in progress. Setting `ignoreVolumes: true` in the delete strategy bypasses this protection — use it only when you intentionally accept the risk that PV cleanup may not complete. If PVs are already stuck in `Released` state with CSI finalizers, contact Portworx Support.
+
+-
 Edit the storage cluster:
 
 ```

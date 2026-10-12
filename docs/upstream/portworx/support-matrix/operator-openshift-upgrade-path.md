@@ -22,12 +22,12 @@ Showing 5 qualified OpenShift upgrade paths for Portworx Enterprise 3.7.1
 
 OpenShift ChannelOpenShift VersionKubernetes Version
 
-stable-4.184.18.541.31.14
+stable-4.184.18.551.31.14
 
-stable-4.194.19.471.32.14
+stable-4.194.19.481.32.14
 
-stable-4.204.20.381.33.13
+stable-4.204.20.391.33.13
 
-stable-4.214.21.331.34.9
+stable-4.214.21.341.34.9
 
-stable-4.224.22.131.35.6
+stable-4.224.22.161.35.8

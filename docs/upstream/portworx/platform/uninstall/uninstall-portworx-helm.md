@@ -23,6 +23,13 @@ By default, Portworx is installed in the `kube-system` namespace. If you have in
 To uninstall Portworx with the release name `px-release`, follow the steps below:
 
 -
+Stop all applications using Portworx volumes, delete the Portworx PVCs, and wait until all `Delete`-reclaim-policy PVs and their VolumeAttachments are fully removed from the cluster before proceeding.
+
+warning
+
+Do not proceed to the next step while volume cleanup is still in progress. Setting `ignoreVolumes: true` in the delete strategy bypasses this protection — use it only when you intentionally accept the risk that PV cleanup may not complete. If PVs are already stuck in `Released` state with CSI finalizers, contact Portworx Support.
+
+-
 (Optional) If you want to uninstall Portworx and wipe data, ensure that the `deleteStrategy` parameter is set to `UninstallAndWipe`. If this parameter was not set during the initial installation, you need to add it to the `px_install_values.yaml` file.
 
 note

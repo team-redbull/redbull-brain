@@ -27,6 +27,32 @@ Using the Portworx Operator, you can efficiently uninstall Portworx from your cl
 - Openshift
 
 -
+Stop applications and clean up volumes:
+
+Before deleting the StorageCluster, complete the following steps to prevent PVs from getting permanently stuck with CSI finalizers:
+
+-
+Stop all applications using Portworx volumes.
+
+-
+Delete the Portworx PVCs.
+
+-
+Wait until all `Delete`-reclaim-policy PVs and their VolumeAttachments are fully removed from the cluster:
+
+```
+
+kubectl get pv
+
+kubectl get volumeattachment
+
+```
+
+warning
+
+Do not proceed to the next step while volume cleanup is still in progress. Setting `ignoreVolumes: true` in the delete strategy bypasses this protection — use it only when you intentionally accept the risk that PV cleanup may not complete. If PVs are already stuck in `Released` state with CSI finalizers, contact Portworx Support.
+
+-
 Display the Portworx StorageCluster:
 
 Use the `kubectl get` command to display the name of your Portworx storage cluster:
@@ -52,7 +78,7 @@ Update the `deleteStrategy` field in the `StorageCluster` object:
 
 note
 
-If PersistentVolumeClaims (PVCs) referencing a Portworx storage class are present on your cluster, the uninstall is blocked until all Portworx volumes are removed. To allow the uninstall to proceed, set `spec.deleteStrategy.ignoreVolumes` to `true` when using the `UninstallAndWipe` or `UninstallAndDelete` strategy.
+If PersistentVolumeClaims (PVCs) referencing a Portworx storage class are present on your cluster, the uninstall is blocked until all Portworx volumes are removed. To allow the uninstall to proceed, set `spec.deleteStrategy.ignoreVolumes` to `true` when using the `UninstallAndWipe` or `UninstallAndDelete` strategy. Use `ignoreVolumes: true` only when you intentionally accept the risk that PV cleanup may not complete.
 
 -
 For uninstall only:
@@ -150,6 +176,32 @@ kubectl delete deployment -n <px-namespace> portworx-operator
 ```
 
 -
+Stop applications and clean up volumes:
+
+Before deleting the StorageCluster, complete the following steps to prevent PVs from getting permanently stuck with CSI finalizers:
+
+-
+Stop all applications using Portworx volumes.
+
+-
+Delete the Portworx PVCs.
+
+-
+Wait until all `Delete`-reclaim-policy PVs and their VolumeAttachments are fully removed from the cluster:
+
+```
+
+oc get pv
+
+oc get volumeattachment
+
+```
+
+warning
+
+Do not proceed to the next step while volume cleanup is still in progress. Setting `ignoreVolumes: true` in the delete strategy bypasses this protection — use it only when you intentionally accept the risk that PV cleanup may not complete. If PVs are already stuck in `Released` state with CSI finalizers, contact Portworx Support.
+
+-
 Display the Portworx StorageCluster:
 
 Enter the `oc get` command to display the name of your Portworx storage cluster and specify your namespace:
@@ -173,7 +225,7 @@ Modify your `StorageCluster` object by adding the `deleteStrategy` field with on
 
 important
 
-If you're running KubeVirt virtual machines (VMs), and your default storage class is set to a Portworx storage class, you must set `spec.deleteStrategy.ignoreVolumes` to `true` when uninstalling Portworx using the `UninstallAndWipe` or `UninstallAndDelete` strategy. Otherwise, the uninstall process fails.
+If you're running KubeVirt virtual machines (VMs), and your default storage class is set to a Portworx storage class, you must set `spec.deleteStrategy.ignoreVolumes` to `true` when uninstalling Portworx using the `UninstallAndWipe` or `UninstallAndDelete` strategy. Otherwise, the uninstall process fails. Use `ignoreVolumes: true` only when you intentionally accept the risk that PV cleanup may not complete.
 
 This is because KubeVirt creates boot sources as PersistentVolumeClaims (PVCs) using the default storage class, which might be a Portworx storage class. In general, you can set `ignoreVolumes` to `true` if you are running KubeVirt VMs.
 

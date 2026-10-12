@@ -8,12 +8,12 @@ stable upstream tag at sync time, for comparison with the version installed on a
 |---|---|---|---|---|---|---|
 | `ako` | vmware/load-balancer-and-ingress-services-for-kubernetes | master | fcae6a1cdf |  | 54 | 2026-10-03 |
 | `assisted-service` | openshift/assisted-service | master | e8f87d7c26 | v2.56.0 | 119 | 2026-10-07 |
-| `baremetal-operator` | metal3-io/baremetal-operator | main | 96904a727d | v0.14.1 | 15 | 2026-10-07 |
-| `cluster-api-provider-metal3` | metal3-io/cluster-api-provider-metal3 | main | c942aafb9e | v1.14.1 | 16 | 2026-10-07 |
+| `baremetal-operator` | metal3-io/baremetal-operator | main | 583309db0c | v0.14.1 | 15 | 2026-10-12 |
+| `cluster-api-provider-metal3` | metal3-io/cluster-api-provider-metal3 | main | 33aa2160cf | v1.14.1 | 16 | 2026-10-12 |
 | `dynamo` | ai-dynamo/dynamo | main | 0f01da1926 | v1.5.1 | 391 | 2026-10-10 |
-| `envoy` | envoyproxy/envoy | main | 8c1381c08d | v1.39.3 | 509 | 2026-10-11 |
+| `envoy` | envoyproxy/envoy | main | 5b82e24e5d | v1.39.3 | 509 | 2026-10-12 |
 | `envoy-ai-gateway` | envoyproxy/ai-gateway | main | f4571d6bd8 | v1.2.0 | 59 | 2026-10-10 |
-| `envoy-gateway` | envoyproxy/gateway | main | d106881e92 | v1.9.2 | 135 | 2026-10-11 |
+| `envoy-gateway` | envoyproxy/gateway | main | f74a274b10 | v1.9.2 | 135 | 2026-10-12 |
 | `etcd-docs` | etcd-io/website | main | d20f8ae346 | v3.5.0 | 791 | 2026-10-03 |
 | `gateway-api` | kubernetes-sigs/gateway-api | main | b1f28dc540 | v1.6.3 | 143 | 2026-10-09 |
 | `gateway-api-inference-extension` | kubernetes-sigs/gateway-api-inference-extension | main | 8ed15ee9f6 | v1.6.2 | 39 | 2026-10-03 |
@@ -29,11 +29,11 @@ stable upstream tag at sync time, for comparison with the version installed on a
 | `kueue` | kubernetes-sigs/kueue | main | b91d0e96a1 | v0.20.1 | 246 | 2026-10-10 |
 | `linux-kernel-docs` | torvalds/linux | master | e767a4ea70 | v7.2 | 116 | 2026-10-03 |
 | `llm-d` | llm-d/llm-d | main | a9cf07a77a | v0.10.0 | 180 | 2026-10-11 |
-| `lmcache` | LMCache/LMCache | dev | 40ec5d1a45 | v0.5.5 | 433 | 2026-10-11 |
-| `lws` | kubernetes-sigs/lws | main | 5e6bbf69e2 | v0.11.1 | 69 | 2026-10-11 |
-| `mcp-grafana` | grafana/mcp-grafana | main | 4cd6590f2b | v2.0.2 | 50 | 2026-10-09 |
+| `lmcache` | LMCache/LMCache | dev | 762df68ad7 | v0.5.5 | 433 | 2026-10-12 |
+| `lws` | kubernetes-sigs/lws | main | d8917821d3 | v0.11.1 | 70 | 2026-10-12 |
+| `mcp-grafana` | grafana/mcp-grafana | main | ded5d2527c | v2.0.2 | 50 | 2026-10-12 |
 | `metal3-docs` | metal3-io/metal3-docs | main | 9d606f9d40 |  | 145 | 2026-10-08 |
-| `mooncake` | kvcache-ai/Mooncake | main | 559f83cb73 | v0.3.13 | 110 | 2026-10-11 |
+| `mooncake` | kvcache-ai/Mooncake | main | b198a1915b | v0.3.13 | 110 | 2026-10-12 |
 | `multus-cni` | k8snetworkplumbingwg/multus-cni | master | 73190fcefa | v4.3.1 | 7 | 2026-10-09 |
 | `nccl` | NVIDIA/nccl | master | 3e46c089f4 |  | 159 | 2026-10-09 |
 | `node-feature-discovery` | kubernetes-sigs/node-feature-discovery | master | c8ea0b62ae | v0.19.0 | 40 | 2026-10-03 |
@@ -42,14 +42,14 @@ stable upstream tag at sync time, for comparison with the version installed on a
 | `okp-mcp` | rhel-lightspeed/okp-mcp | main | 4505245152 |  | 6 | 2026-10-03 |
 | `openshift-runbooks` | openshift/runbooks | master | 937cdf63ce |  | 289 | 2026-10-03 |
 | `ovn-kubernetes` | ovn-org/ovn-kubernetes | master | f35bcb60d1 | v1.4.0 | 136 | 2026-10-10 |
-| `portworx` | https://docs.portworx.com/portworx-enterprise/ | 3.7 |  |  | 506 | 2026-10-05 |
+| `portworx` | https://docs.portworx.com/portworx-enterprise/ | 3.7 |  |  | 506 | 2026-10-12 |
 | `prometheus-docs` | prometheus/docs | main | 605cf81fef |  | 71 | 2026-10-03 |
-| `prometheus-operator` | prometheus-operator/prometheus-operator | main | 0428fa4a63 | v0.94.1 | 43 | 2026-10-08 |
+| `prometheus-operator` | prometheus-operator/prometheus-operator | main | c822e715db | v0.94.1 | 43 | 2026-10-12 |
 | `ray-docs` | ray-project/ray | master | ba6966ba73 | 1.13.1 | 96 | 2026-10-10 |
 | `rdma-core` | linux-rdma/rdma-core | master | bcd725bec7 | v65.0 | 189 | 2026-10-03 |
-| `sglang` | sgl-project/sglang | main | 53295c6972 | v0.5.21 | 350 | 2026-10-11 |
+| `sglang` | sgl-project/sglang | main | 8afe107c24 | v0.5.21 | 350 | 2026-10-12 |
 | `sriov-network-operator` | k8snetworkplumbingwg/sriov-network-operator | master | 5ee626deb8 | v1.6.0 | 30 | 2026-10-06 |
-| `tensorrt-llm` | NVIDIA/TensorRT-LLM | main | 4393129960 | v1.2.1 | 160 | 2026-10-11 |
+| `tensorrt-llm` | NVIDIA/TensorRT-LLM | main | a8d7911bed | v1.2.1 | 160 | 2026-10-12 |
 | `tuned` | redhat-performance/tuned | master | 278644ed96 | v2.28.0 | 31 | 2026-10-03 |
 | `ucx` | openucx/ucx | master | f9426106f9 | v1.22.0 | 15 | 2026-10-03 |
-| `vllm` | vllm-project/vllm | main | 2339bd39d6 | v0.31.0 | 263 | 2026-10-11 |
+| `vllm` | vllm-project/vllm | main | f7a3a7265f | v0.31.0 | 263 | 2026-10-12 |

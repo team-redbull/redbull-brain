@@ -123,20 +123,20 @@ SUSE Virtualization (Harvester)
 
 Red Hat OpenShift
 
-- OpenShift version: 4.18 (verified up to 4.18.54)
+- OpenShift version: 4.18 (verified up to 4.18.55)
  Kubernetes version: 1.31
 
-- OpenShift version: 4.19 (verified up to 4.19.47)
+- OpenShift version: 4.19 (verified up to 4.19.48)
  Kubernetes version: 1.32.14
 
-- OpenShift version: 4.20 (verified up to 4.20.38)
+- OpenShift version: 4.20 (verified up to 4.20.39)
  Kubernetes version: 1.33.13
 
-- OpenShift version: 4.21 (verified up to 4.21.33)
+- OpenShift version: 4.21 (verified up to 4.21.34)
  Kubernetes version: 1.34.9
 
-- OpenShift version: 4.22 (verified up to 4.22.13)
- Kubernetes version: 1.35.6
+- OpenShift version: 4.22 (verified up to 4.22.16)
+ Kubernetes version: 1.35.8
 
 Note: Supports both bare metal and VM
 

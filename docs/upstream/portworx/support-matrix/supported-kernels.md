@@ -82,21 +82,21 @@ Photon 5.0Up to 6.12.103-9.ph5
 
 Photon 4.0Up to 5.10.260-2.ph4
 
-RHEL 9.8Up to 5.14.0-687.53.1.el9_8
+RHEL 9.8Up to 5.14.0-687.54.1.el9_8
 
 RHEL 9.7Up to 5.14.0-611.55.1.el9_7
 
-RHEL 9.6Up to 5.14.0-570.144.1.el9_6
+RHEL 9.6Up to 5.14.0-570.147.1.el9_6
 
 RHEL 9.5Up to 5.14.0-503.40.1.el9_5
 
-RHEL 9.4Up to 5.14.0-427.152.1.el9_4
+RHEL 9.4Up to 5.14.0-427.155.1.el9_4
 
 RHEL 9.3Up to 5.14.0-362.24.1.el9_3
 
-RHEL 9.2Up to 5.14.0-284.194.1.el9_2
+RHEL 9.2Up to 5.14.0-284.195.1.el9_2
 
-RHEL 8.10Up to 4.18.0-553.169.1.el8_10
+RHEL 8.10Up to 4.18.0-553.172.1.el8_10
 
 RHEL 8.9Up to 4.18.0-513.24.1.el8_9
 
@@ -126,7 +126,7 @@ SUSE Linux Micro 6.1Up to 6.4.0-50.1
 
 SUSE Linux Micro 6.0Up to 6.4.0-50.1
 
-Ubuntu 24.04Up to 6.14.0-37-generic, Up to 6.17.0-42-generic, Up to 7.0.0-34-generic
+Ubuntu 24.04Up to 6.8.0-146-generic, Up to 6.14.0-37-generic, Up to 6.17.0-42-generic, Up to 7.0.0-34-generic
 
 Ubuntu 22.04Up to 5.15.0-194-generic, Up to 6.8.0-138-generic
 
@@ -152,27 +152,31 @@ Debian 12Up to 6.12.101+deb12-amd64
 
 Debian 11Up to 6.1.0-0.deb11.52-amd64
 
-RHEL 10.2Up to 6.12.0-211.61.1.el10_2
+RHEL 10.2Up to 6.12.0-211.64.1.el10_2
 
 RHEL 10.1Up to 6.12.0-124.56.1.el10_1
 
-RHEL 10.0Up to 6.12.0-55.107.1.el10_0
+RHEL 10.0Up to 6.12.0-55.109.1.el10_0
+
+RHEL 9.8Up to 5.14.0-687.54.1.el9_8
+
+RHEL 10.0Up to 6.12.0-55.109.1.el10_0
 
 RHEL 9.8Up to 5.14.0-687.53.1.el9_8
 
 RHEL 9.7Up to 5.14.0-611.55.1.el9_7
 
-RHEL 9.6Up to 5.14.0-570.144.1.el9_6
+RHEL 9.6Up to 5.14.0-570.147.1.el9_6
 
 RHEL 9.5Up to 5.14.0-503.40.1.el9_5
 
-RHEL 9.4Up to 5.14.0-427.152.1.el9_4
+RHEL 9.4Up to 5.14.0-427.155.1.el9_4
 
 RHEL 9.3Up to 5.14.0-362.24.1.el9_3
 
-RHEL 9.2Up to 5.14.0-284.194.1.el9_2
+RHEL 9.2Up to 5.14.0-284.195.1.el9_2
 
-RHEL 8.10Up to 4.18.0-553.169.1.el8_10
+RHEL 8.10Up to 4.18.0-553.172.1.el8_10
 
 Rocky 9.5Up to 5.14.0-503.14.1.el9_5
 
@@ -186,13 +190,15 @@ SLES (SUSE Enterprise Linux) SLES15 SP5Up to 5.14.21-150500.55.182.1
 
 SLES (SUSE Enterprise Linux) SLES15 SP4Up to 5.14.21-150400.24.235.1
 
+SLES (SUSE Enterprise Linux) SLES16 SP0Up to 6.12.0-160000.38.1
+
 SUSE Linux Micro 6.2Up to 6.12.0-160000.37.1
 
 SUSE Linux Micro 6.1Up to 6.4.0-50.1
 
 SUSE Linux Micro 6.0Up to 6.4.0-50.1
 
-Ubuntu 24.04Up to 6.14.0-37-generic, Up to 6.17.0-42-generic, Up to 7.0.0-34-generic
+Ubuntu 24.04Up to 6.8.0-146-generic, Up to 6.14.0-37-generic, Up to 6.17.0-42-generic, Up to 7.0.0-34-generic
 
 Ubuntu 22.04Up to 5.15.0-194-generic, Up to 6.8.0-138-generic
 
@@ -318,11 +324,11 @@ Photon 5.0Up to 6.12.103-9.ph5
 
 Photon 4.0Up to 5.10.260-2.ph4
 
-RHEL 9.8Up to 5.14.0-687.53.1.el9_8
+RHEL 9.8Up to 5.14.0-687.54.1.el9_8
 
 RHEL 9.7Up to 5.14.0-611.55.1.el9_7
 
-RHEL 9.6Up to 5.14.0-570.144.1.el9_6
+RHEL 9.6Up to 5.14.0-570.146.1.el9_6
 
 RHEL 9.5Up to 5.14.0-503.40.1.el9_5
 
@@ -332,7 +338,7 @@ RHEL 9.3Up to 5.14.0-362.24.1.el9_3
 
 RHEL 9.2Up to 5.14.0-284.194.1.el9_2
 
-RHEL 8.10Up to 4.18.0-553.169.1.el8_10
+RHEL 8.10Up to 4.18.0-553.170.1.el8_10
 
 RHEL 8.9Up to 4.18.0-513.24.1.el8_9
 
@@ -362,9 +368,9 @@ SUSE Linux Micro 6.1Up to 6.4.0-50.1
 
 SUSE Linux Micro 6.0Up to 6.4.0-50.1
 
-Ubuntu 24.04Up to Up to 6.8.0-142-generic, Up to 6.11.0-29-generic, Up to 6.14.0-37-generic, Up to 6.17.0-42-generic, Up to 7.0.0-34-generic
+Ubuntu 24.04Up to 6.8.0-142-generic, Up to 6.11.0-29-generic, Up to 6.14.0-37-generic, Up to 6.17.0-42-generic, Up to 7.0.0-34-generic
 
-Ubuntu 22.04Up to Up to 5.15.0-194-generic, Up to 6.8.0-138-generic
+Ubuntu 22.04Up to 5.15.0-198-generic, Up to 6.8.0-138-generic
 
 Ubuntu 20.04Up to 5.4.0-216-generic, Up to 5.15.0-139-generic
 
@@ -388,17 +394,17 @@ Debian 12Up to 6.12.101+deb12-amd64
 
 Debian 11Up to 6.1.0-0.deb11.52-amd64
 
-RHEL 10.2Up to 6.12.0-211.61.1.el10_2
+RHEL 10.2Up to 6.12.0-211.62.1.el10_2
 
 RHEL 10.1Up to 6.12.0-124.56.1.el10_1
 
-RHEL 10.0Up to 6.12.0-55.107.1.el10_0
+RHEL 10.0Up to 6.12.0-55.108.1.el10_0
 
-RHEL 9.8Up to 5.14.0-687.53.1.el9_8
+RHEL 9.8Up to 5.14.0-687.54.1.el9_8
 
 RHEL 9.7Up to 5.14.0-611.55.1.el9_7
 
-RHEL 9.6Up to 5.14.0-570.144.1.el9_6
+RHEL 9.6Up to 5.14.0-570.146.1.el9_6
 
 RHEL 9.5Up to 5.14.0-503.40.1.el9_5
 
@@ -408,7 +414,7 @@ RHEL 9.3Up to 5.14.0-362.24.1.el9_3
 
 RHEL 9.2Up to 5.14.0-284.194.1.el9_2
 
-RHEL 8.10Up to 4.18.0-553.169.1.el8_10
+RHEL 8.10Up to 4.18.0-553.170.1.el8_10
 
 Rocky 9.5Up to 5.14.0-503.14.1.el9_5
 
@@ -422,15 +428,17 @@ SLES (SUSE Enterprise Linux) SLES15 SP5Up to 5.14.21-150500.55.182.1
 
 SLES (SUSE Enterprise Linux) SLES15 SP4Up to 5.14.21-150400.24.235.1
 
+SLES (SUSE Enterprise Linux) SLES16 SP0Up to 6.12.0-160000.38.1
+
 SUSE Linux Micro 6.2Up to 6.12.0-160000.37.1
 
 SUSE Linux Micro 6.1Up to 6.4.0-50.1
 
 SUSE Linux Micro 6.0Up to 6.4.0-50.1
 
-Ubuntu 24.04Up to Up to 6.8.0-142-generic, Up to 6.11.0-29-generic, Up to 6.14.0-37-generic, Up to 6.17.0-42-generic, Up to 7.0.0-34-generic
+Ubuntu 24.04Up to 6.8.0-142-generic, Up to 6.11.0-29-generic, Up to 6.14.0-37-generic, Up to 6.17.0-42-generic, Up to 7.0.0-34-generic
 
-Ubuntu 22.04Up to Up to 5.15.0-194-generic, Up to 6.8.0-138-generic
+Ubuntu 22.04Up to 5.15.0-198-generic, Up to 6.8.0-138-generic
 
 Ubuntu 20.04Up to 5.4.0-216-generic, Up to 5.15.0-139-generic
 
@@ -550,21 +558,21 @@ Photon 5.0Up to 6.1.159-9.ph5
 
 Photon 4.0Up to 5.10.255-1.ph4
 
-RHEL 9.8Up to 5.14.0-687.53.1.el9_8
+RHEL 9.8Up to 5.14.0-687.56.1.el9_8
 
 RHEL 9.7Up to 5.14.0-611.55.1.el9_7
 
-RHEL 9.6Up to 5.14.0-570.144.1.el9_6
+RHEL 9.6Up to 5.14.0-570.147.1.el9_6
 
 RHEL 9.5Up to 5.14.0-503.40.1.el9_5
 
-RHEL 9.4Up to 5.14.0-427.153.1.el9_4
+RHEL 9.4Up to 5.14.0-427.154.1.el9_4
 
 RHEL 9.3Up to 5.14.0-362.24.1.el9_3
 
-RHEL 9.2Up to 5.14.0-284.194.1.el9_2
+RHEL 9.2Up to 5.14.0-284.195.1.el9_2
 
-RHEL 8.10Up to 4.18.0-553.170.1.el8_10
+RHEL 8.10Up to 4.18.0-553.172.1.el8_10
 
 RHEL 8.9Up to 4.18.0-513.24.1.el8_9
 
@@ -594,9 +602,9 @@ SUSE Linux Micro 6.1Up to 6.4.0-48.1
 
 SUSE Linux Micro 6.0Up to 6.4.0-48.1
 
-Ubuntu 24.04Up to Up to 6.8.0-142-generic, Up to 6.11.0-29-generic, Up to 6.14.0-37-generic, Up to 6.17.0-42-generic, Up to 7.0.0-34-generic
+Ubuntu 24.04Up to Up to 6.8.0-146-generic, Up to 6.11.0-29-generic, Up to 6.14.0-37-generic, Up to 6.17.0-42-generic, Up to 7.0.0-38-generic
 
-Ubuntu 22.04Up to Up to 5.15.0-194-generic, Up to 6.8.0-138-generic
+Ubuntu 22.04Up to Up to 5.15.0-198-generic, Up to 6.8.0-138-generic
 
 Ubuntu 20.04Up to 5.4.0-216-generic, Up to 5.15.0-139-generic
 
@@ -624,27 +632,27 @@ Debian 12Up to 6.1.0-49-amd64
 
 Debian 11Up to 6.1.0-0.deb11.49-amd64
 
-RHEL 10.2Up to 6.12.0-211.61.1.el10_2
+RHEL 10.2Up to 6.12.0-211.64.1.el10_2
 
 RHEL 10.1Up to 6.12.0-124.56.1.el10_1
 
-RHEL 10.0Up to 6.12.0-55.107.1.el10_0
+RHEL 10.0Up to 6.12.0-55.109.1.el10_0
 
-RHEL 9.8Up to 5.14.0-687.53.1.el9_8
+RHEL 9.8Up to 5.14.0-687.56.1.el9_8
 
 RHEL 9.7Up to 5.14.0-611.55.1.el9_7
 
-RHEL 9.6Up to 5.14.0-570.144.1.el9_6
+RHEL 9.6Up to 5.14.0-570.147.1.el9_6
 
 RHEL 9.5Up to 5.14.0-503.40.1.el9_5
 
-RHEL 9.4Up to 5.14.0-427.153.1.el9_4
+RHEL 9.4Up to 5.14.0-427.154.1.el9_4
 
 RHEL 9.3Up to 5.14.0-362.24.1.el9_3
 
-RHEL 9.2Up to 5.14.0-284.194.1.el9_2
+RHEL 9.2Up to 5.14.0-284.195.1.el9_2
 
-RHEL 8.10Up to 4.18.0-553.170.1.el8_10
+RHEL 8.10Up to 4.18.0-553.172.1.el8_10
 
 Rocky 9.5Up to 5.14.0-503.14.1.el9_5
 
@@ -664,9 +672,9 @@ SUSE Linux Micro 6.1Up to 6.4.0-48.1
 
 SUSE Linux Micro 6.0Up to 6.4.0-48.1
 
-Ubuntu 24.04Up to Up to 6.8.0-142-generic, Up to 6.11.0-29-generic, Up to 6.14.0-37-generic, Up to 6.17.0-42-generic, Up to 7.0.0-34-generic
+Ubuntu 24.04Up to 6.8.0-146-generic, Up to 6.11.0-29-generic, Up to 6.14.0-37-generic, Up to 6.17.0-42-generic, Up to 7.0.0-38-generic
 
-Ubuntu 22.04Up to Up to 5.15.0-194-generic, Up to 6.8.0-138-generic, Up to 6.8.0-124-generic
+Ubuntu 22.04Up to 5.15.0-198-generic, Up to 6.8.0-138-generic, Up to 6.8.0-124-generic
 
 Ubuntu 20.04Up to 5.4.0-216-generic, Up to 5.15.0-139-generic
 
@@ -1228,21 +1236,21 @@ Photon 4.0Up to 5.10.246-6.ph4
 
 Photon 3.0Up to 4.19.325-1.ph3
 
-RHEL 9.8Up to 5.14.0-687.49.1.el9_8
+RHEL 9.8Up to 5.14.0-687.54.1.el9_8
 
 RHEL 9.7Up to 5.14.0-611.55.1.el9_7
 
-RHEL 9.6Up to 5.14.0-570.141.1.el9_6
+RHEL 9.6Up to 5.14.0-570.146.1.el9_6
 
 RHEL 9.5Up to 5.14.0-503.40.1.el9_5
 
-RHEL 9.4Up to 5.14.0-427.150.1.el9_4
+RHEL 9.4Up to 5.14.0-427.154.1.el9_4
 
 RHEL 9.3Up to 5.14.0-362.24.1.el9_3
 
-RHEL 9.2Up to 5.14.0-284.193.1.el9_2
+RHEL 9.2Up to 5.14.0-284.195.1.el9_2
 
-RHEL 8.10Up to 4.18.0-553.166.1.el8_10
+RHEL 8.10Up to 4.18.0-553.172.1.el8_10
 
 RHEL 8.9Up to 4.18.0-513.24.1.el8_9
 
@@ -1268,9 +1276,9 @@ SUSE Linux Micro 6.1Up to 6.4.0-36-default
 
 SUSE Linux Micro 6Up to 6.4.0-36-default
 
-Ubuntu 24.04Up to 6.8.0-117-generic, Up to 6.11.0-29-generic, Up to 6.14.0-33-generic
+Ubuntu 24.04Up to 6.8.0-146-generic, Up to 6.11.0-29-generic, Up to 6.14.0-33-generic
 
-Ubuntu 22.04Up to 5.15.0-194-generic, Up to 6.8.0-138-generic
+Ubuntu 22.04Up to 5.15.0-198-generic, Up to 6.8.0-138-generic
 
 Ubuntu 20.04Up to 5.15.0-139-generic
 
@@ -1288,27 +1296,27 @@ Debian 12Up to 6.1.0-41-amd64
 
 Debian 11Up to 5.10.0-37-amd64
 
-RHEL 10.2Up to 6.12.0-211.60.1.el10_2
+RHEL 10.2Up to 6.12.0-211.62.1.el10_2
 
 RHEL 10.1Up to 6.12.0-124.56.1.el10_1
 
-RHEL 10.0Up to 6.12.0-55.107.1.el10_0
+RHEL 10.0Up to 6.12.0-55.109.1.el10_0
 
-RHEL 9.8Up to 5.14.0-687.49.1.el9_8
+RHEL 9.8Up to 5.14.0-687.54.1.el9_8
 
 RHEL 9.7Up to 5.14.0-611.55.1.el9_7
 
-RHEL 9.6Up to 5.14.0-570.141.1.el9_6
+RHEL 9.6Up to 5.14.0-570.146.1.el9_6
 
 RHEL 9.5Up to 5.14.0-503.40.1.el9_5
 
-RHEL 9.4Up to 5.14.0-427.150.1.el9_4
+RHEL 9.4Up to 5.14.0-427.154.1.el9_4
 
 RHEL 9.3Up to 5.14.0-362.24.1.el9_3
 
-RHEL 9.2Up to 5.14.0-284.193.1.el9_2
+RHEL 9.2Up to 5.14.0-284.195.1.el9_2
 
-RHEL 8.10Up to 4.18.0-553.166.1.el8_10
+RHEL 8.10Up to 4.18.0-553.172.1.el8_10
 
 Rocky 9.5Up to 5.14.0-503.14.1.el9_5
 
@@ -1324,9 +1332,9 @@ SUSE Linux Micro 6.1Up to 6.4.0-36-default
 
 SUSE Linux Micro 6Up to 6.4.0-36-default
 
-Ubuntu 24.04Up to 6.8.0-117-generic, Up to 6.11.0-29-generic, Up to 6.14.0-33-generic
+Ubuntu 24.04Up to 6.8.0-146-generic, Up to 6.11.0-29-generic, Up to 6.14.0-33-generic
 
-Ubuntu 22.04Up to 5.15.0-194-generic, Up to 6.8.0-138-generic
+Ubuntu 22.04Up to 5.15.0-198-generic, Up to 6.8.0-138-generic
 
 Ubuntu 20.04Up to 5.15.0-139-generic
 
