@@ -28,7 +28,7 @@ For integration into the well-lit paths our standard for contribution is higher,
 
 > [!NOTE]
 > We aim to increase our requirements to have active CI coverage for all hardware guide variants in a future release.
->
+
 > [!NOTE]
 > The community can assist but is not responsible for keeping hardware guide variants updated. We reserve the right to remove stale examples and documentation with regard to hardware support.
 
@@ -135,7 +135,7 @@ file go away once the runtime supports prefix caching here.
 `openai/gpt-oss-120b`, while the guide defaults `MODEL` to `Qwen/Qwen3-32B`. Export
 `MODEL=openai/gpt-oss-120b` so the validation and benchmark steps address the served model.
 
-**Out of scope for this release:** [fast model actuation](../../guides/fast-model-actuation-base/README.md),
+**Out of scope for this release:** [fast model actuation](../../guides/fast-model-actuation/README.md),
 because the runtime does not support sleep and wake; LoRA adapters; and multimodal models,
 which on this runtime need a code path that cannot run alongside a KV connector.
 

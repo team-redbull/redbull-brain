@@ -34,11 +34,17 @@ Only the failed pod is restarted or rescheduled. Other pods in the group continu
 
 ### RecreateGroupAfterStart
 
-When any pod in a group fails, the entire group is recreated **if and only if there are no pods currently pending** in the group. If any pod in the replica is still in the `Pending` phase (e.g., during image pulls or initial scheduling), the controller skips the failure event without triggering a group-wide recreation.
+When any pod in a group fails, the entire group is recreated **if and only if there are no pods currently pending** in the group. If any pod in the replica is still in the `Pending` phase (e.g., during image pulls or initial scheduling), the controller skips the failure event without triggering a group-wide recreation. If the pod is `Pending` because the scheduler could not place it, the controller also records a `GroupUnschedulable` warning event and reports it on the `Progressing` condition, as described below.
 
 - **Pod Failures:** Recreates the entire group if a pod fails after all pods in the replica have started (no pods are `Pending`). If any pod in the replica is `Pending`, the failure event is skipped, allowing Kubernetes to handle pod restarts individually and preventing restart cascades during rollout.
 - **Node Failures:** If a node fails after all pods in the replica have started, the entire replica group is deleted and recreated on healthy nodes. If the failure occurs while any pod in the replica is `Pending`, group recreation is not triggered.
 - **Primary Use Case:** Workloads with large container images or long startup times where you want strict collective restart semantics in production once running, but want to prevent recreation loops during the initial rollout.
+
+A `Pending` pod can be in one of three states, and LWS does not recreate the group in any of them. A pod that has no `PodScheduled` condition yet, because the scheduler has not reported a result for it, is treated as starting.
+
+- **Held by a scheduling gate** (`PodScheduled=False` with reason `SchedulingGated`): the scheduler has not tried to place the pod yet. Every leader starts gated until LWS admits it, so a gated leader may not have worker pods yet.
+- **Placed and starting** (`PodScheduled=True`): the pod is on a node and is pulling images or starting containers.
+- **Unschedulable** (`PodScheduled=False` with any other reason, such as `Unschedulable`): the scheduler tried and failed to place the pod, for example while a gang-scheduled group waits for capacity. LWS keeps waiting rather than recreate a group that cannot be placed, and records a `GroupUnschedulable` warning event when it skips a recreation. While a leader is unschedulable, the LWS `Progressing` condition also has reason `GroupUnschedulable` and reports how many replicas cannot be scheduled.
 
 {{% alert title="Note" color="info" %}}
 The `RecreateGroupAfterStart` restart policy is supported in LWS version 0.9.0+.
@@ -126,4 +132,8 @@ spec:
 - **Clock Semantics:** The delay enforces that a group must have existed for at least `min(baseSeconds * 2^count, capSeconds)` before it can be recreated. The delay is measured from **leader Pod creation time**, not from the failure time. A group that has run stably for longer than the computed delay recovers immediately on failure, providing a reset mechanism analogous to CrashLoopBackOff.
 - **Shared Restart Counter:** `restartBackoff` reads and increments the same per-group restart counter as `maxGroupRestarts`. Both features can be used together: `restartBackoff` spaces out recreations while `maxGroupRestarts` places an upper bound on total automatic recreation attempts.
 - **Worker Failure During Backoff:** When a recreation is triggered by a deleted worker and deferred by backoff, the leader pod remains until the backoff delay elapses before deleting the group. While deferred, LWS emits a `GroupRestartBackoff` event on the LeaderWorkerSet with the remaining delay and restart count.
+
+## Accelerate Group Rebuild and Teardown
+
+To reduce teardown and recreation latency when groups are deleted or rebuilt, you can configure `.spec.podTerminationPolicy: Parallel`. This enables concurrent termination of leader and worker pods instead of waiting for sequential cascading deletion. See [Pod Termination Policy](../pod-termination-policy/) for details.
 

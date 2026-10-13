@@ -91,7 +91,7 @@ When a profile runs, it first filters the candidate endpoints. If any remain, it
 * **[`latency-scorer`](https://github.com/llm-d/llm-d-router/tree/main/pkg/epp/framework/plugins/scheduling/scorer/latency)**: Scores endpoints based on predicted latency headroom, defined as the gap between the predicted request latency and the user's SLO if set.
 * **[`lora-affinity-scorer`](https://github.com/llm-d/llm-d-router/tree/main/pkg/epp/framework/plugins/scheduling/scorer/loraaffinity)**: Prefers endpoints that already have the requested LoRA adapter active or have capacity to load it.
 * **[`prefix-cache-scorer`](https://github.com/llm-d/llm-d-router/tree/main/pkg/epp/framework/plugins/scheduling/scorer/prefix)**: Scores based on the length of the prefix cache match.
-* **[`queue-depth-scorer`](https://github.com/llm-d/llm-d-router/tree/main/pkg/epp/framework/plugins/scheduling/scorer/queuedepth)**: Prefers endpoints with shorter request queues.
+* **[`queue-scorer`](https://github.com/llm-d/llm-d-router/tree/main/pkg/epp/framework/plugins/scheduling/scorer/queuedepth)**: Prefers endpoints with shorter request queues.
 * **[`running-requests-size-scorer`](https://github.com/llm-d/llm-d-router/tree/main/pkg/epp/framework/plugins/scheduling/scorer/runningrequests)**: Scores based on the number of currently active requests.
 * **[`token-load-scorer`](https://github.com/llm-d/llm-d-router/tree/main/pkg/epp/framework/plugins/scheduling/scorer/tokenload)**: Scores based on the total token load (input + output) handled by the endpoint.
 * **[`precise-prefix-cache-producer`](https://github.com/llm-d/llm-d-router/tree/main/pkg/epp/framework/plugins/requestcontrol/dataproducer/preciseprefixcache)** (DataProducer, paired with `prefix-cache-scorer`): Publishes `PrefixCacheMatchInfo` from its event-driven KV-cache index. Set `prefixMatchInfoProducerName: precise-prefix-cache-producer` on the scorer to use this precise cache state.
@@ -199,8 +199,7 @@ The following metrics provide visibility into the InferencePool health and sched
 | Metric | Type | Labels | Description |
 |--------|------|--------|-------------|
 | `llm_d_epp_disagg_decision_total` | Counter | `plugin_name`, `plugin_type`, `model_name`, `decision_type` | Disaggregation routing decisions (`decode-only`, `prefill-decode`, `encode-decode`, `encode-prefill-decode`) |
-| `llm_d_epp_pd_decision_total` | Counter | `plugin_name`, `plugin_type`, `model_name`, `decision_type` | Prefill/Decode decisions (deprecated handler) |
-| `llm_d_epp_disaggregatedset_strict_header_no_match_total` | Counter | `plugin_type`, `plugin_name`, `selector` | Strict header selections that matched no endpoint |
+| `llm_d_epp_disaggregatedset_strict_revision_no_match_total` | Counter | `plugin_type`, `plugin_name` | Strict revision selections that matched no endpoint and failed closed |
 | `llm_d_epp_disaggregatedset_revision_gating_share` | Gauge | `plugin_type`, `plugin_name`, `mode`, `revision` | Current weighted revision gating share |
 
 #### Prefix Cache Metrics (Approximate)
