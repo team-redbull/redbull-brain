@@ -1,7 +1,7 @@
 repo: prometheus-operator/prometheus-operator
 ref: main
-commit: c822e715db33bc6c0183fe6bb33c9536d3cffe9c
+commit: b8b4b78476c060fe7cc42e099491336b578ab21e
 latest_tag: v0.94.1
 paths: Documentation, README.md
 files: 43
-synced: 2026-10-12T10:44:08Z
+synced: 2026-10-14T08:39:47Z

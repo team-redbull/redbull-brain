@@ -1,7 +1,7 @@
 repo: etcd-io/website
 ref: main
-commit: d20f8ae346da60ab6eb6f24f200753b328aa9fcc
+commit: d8c30b769bc6dc107250492483278ea70af6390e
 latest_tag: v3.5.0
 paths: content/en/docs
 files: 791
-synced: 2026-10-03T09:37:57Z
+synced: 2026-10-14T08:40:25Z

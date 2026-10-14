@@ -1,7 +1,7 @@
 repo: kubernetes-sigs/lws
 ref: main
-commit: 31b62b394f9b6b98b1f0d1d8cc46edfa0e705e65
+commit: cf574ff9677620caf370180e8fb5ec175f9310bb
 latest_tag: v0.11.1
 paths: site/content/en/docs, docs, keps, README.md
 files: 72
-synced: 2026-10-13T10:31:43Z
+synced: 2026-10-14T08:40:03Z
