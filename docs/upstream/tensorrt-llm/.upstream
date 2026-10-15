@@ -1,7 +1,7 @@
 repo: NVIDIA/TensorRT-LLM
 ref: main
-commit: 91c9b6d1cc6093f4cbd96d721f75f14b2c9fcc20
+commit: a6142c92098feb8dbf5b1bc39204a47608616f8b
 latest_tag: v1.2.1
 paths: docs/source
-files: 161
-synced: 2026-10-14T08:40:37Z
+files: 162
+synced: 2026-10-15T08:15:28Z
