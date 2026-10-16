@@ -276,7 +276,7 @@ helm install ${GUIDE_NAME} \
 
 For model sources, caching, and startup optimization, see the [Model Loading and Startup Acceleration operations guide](../../docs/operations/startup/model-loading-and-startup.md).
 
-The NVIDIA GPU, AMD, CPU, Intel XPU and TPU v6/v7 vLLM overlays drain in-flight requests during rollouts and scale-down: `--shutdown-timeout=45`, plus a 15s `preStop` sleep and a 75s termination grace period from the [`graceful-shutdown` component](../recipes/modelserver/components/graceful-shutdown/kustomization.yaml). The Iluvatar, MetaX, Biren, Moore Threads, Rebellions NPU and TPU v7 dynamic-slice overlays do not drain yet. To tune these, see [Graceful Shutdown & Request Draining](../../docs/operations/lifecycle/graceful-shutdown.md).
+The NVIDIA GPU, AMD, CPU, Intel XPU, and TPU v6/v7 (including dynamic-slice) vLLM overlays drain in-flight requests during rollouts and scale-down: `--shutdown-timeout=45`, plus a 15s `preStop` sleep and a 75s termination grace period from the [`graceful-shutdown` component](../recipes/modelserver/components/graceful-shutdown/kustomization.yaml). The Iluvatar, MetaX, Biren, Moore Threads, and Rebellions NPU overlays do not drain yet. To tune these, see [Graceful Shutdown & Request Draining](../../docs/operations/lifecycle/graceful-shutdown.md).
 
 **Apply the Kustomize overlays** for your specific backend (`INFRA_PROVIDER=gke` applies only to accelerators available on GKE: NVIDIA GPU, TPU, and CPU; use `base` elsewhere):
 
@@ -480,7 +480,7 @@ View the imported [Grafana dashboards](../../docs/operations/observability/dashb
 <details>
 <summary><b>GKE (Managed Prometheus)</b></summary>
 
-View the out-of-the-box Cloud Monitoring dashboards for vLLM/SGLang and, when deployed in Gateway Mode with [GKE Gateway](../../docs/infrastructure/gateway/gke.md) (`GW_PROVIDER_NAME=gke`), the [GKE Inference Gateway dashboard](https://cloud.google.com/kubernetes-engine/docs/how-to/customize-gke-inference-gateway-configurations#inference-gateway-dashboard) (**Monitoring → Dashboards → Integrations → GMP → Gateway**), or query metrics in [Cloud Monitoring Metrics Explorer](https://console.cloud.google.com/monitoring/metrics-explorer).
+View the out-of-the-box Cloud Monitoring dashboards described in [GKE Monitoring & Telemetry](../../docs/infrastructure/providers/gke/README.md#monitoring--telemetry) or query metrics in [Cloud Monitoring Metrics Explorer](https://console.cloud.google.com/monitoring/metrics-explorer).
 
 </details>
 <!-- tabs:end -->

@@ -53,7 +53,7 @@ Fleet operations that layer onto any deployment above. See [Operations](../docs/
 
 * [Fast Model Actuation](./fast-model-actuation/README.md) - rapidly load, switch, and wake models on shared GPUs using vLLM sleep/wake and a "dual pod" technique that decouples GPU reservation from the vLLM process, avoiding cold starts.
 * [Fast Model Actuation + KEDA Autoscaling](./fast-model-actuation/fast-model-actuation-keda/README.md) - saturation-based KEDA autoscaling on top of Fast Model Actuation: scale the GPU-reserving requester Deployment on EPP flow-control metrics, bringing vLLM instances online via hot start (wake a sleeping instance) or warm start (new instance on an existing launcher).
-* [Pod Snapshots](./pod-snapshot/README.md) - checkpoint and restore single-GPU vLLM model servers to eliminate cold-start model download and initialization latencies, currently implemented on GKE with GKE Sandbox (gVisor) and GCS snapshots.
+* [Pod Snapshots](./pod-snapshot/README.md) - checkpoint and restore single-GPU vLLM and SGLang model servers to eliminate cold-start model download and initialization latencies, currently implemented on GKE with GKE Sandbox (gVisor) and GCS snapshots.
 * [ModelExpress P2P Weight Transfer](./modelexpress-p2p/README.md) - load one model replica from storage and transfer weights to peer replicas over GPU-to-GPU RDMA for faster cold scale-outs.
 
 ### Roll Out Updates Safely
@@ -79,6 +79,7 @@ Fleet operations that layer onto any deployment above. See [Operations](../docs/
 
 * [Encode Disaggregation](./multimodal-serving/e-disaggregation/README.md) - Offload multimodal encoding (images, video, audio) to dedicated workers via E/PD or E/P/D topologies, freeing prefill/decode resources for text computation.
 * [Coordinator Disaggregation](./coord-disaggregation/README.md) - Drive an Encode/Prefill/Decode pipeline through a standalone Coordinator service instead of a per-pod routing sidecar, so the pipeline (which phases run, and in what order) is a configurable list of steps rather than fixed logic, and each phase's pod is picked only when that phase is about to run.
+* [Turn-Priority Fairness](./turn-priority-fairness/README.md) - Order flow-control queues by conversation depth so the deepest multi-turn sessions dispatch first and keep their prefixes resident in the KV cache, holding latency and throughput flat as concurrency rises.
 
 ## Centralized Configuration
 
