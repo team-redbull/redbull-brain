@@ -1308,6 +1308,21 @@ ScrapeProtocol
 </tr>
 <tr>
 <td>
+<code>extraScrapeMetrics</code><br/>
+<em>
+bool
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>extraScrapeMetrics defines whether to store additional time series for each scrape:
+<code>scrape_timeout_seconds</code>, <code>scrape_sample_limit</code> and <code>scrape_body_size_bytes</code>.
+These metrics help monitor how close targets are to their configured limits.</p>
+<p>It requires Prometheus &gt;= v3.10.0.</p>
+</td>
+</tr>
+<tr>
+<td>
 <code>labelLimit</code><br/>
 <em>
 int64
@@ -1728,6 +1743,21 @@ ScrapeProtocol
 <em>(Optional)</em>
 <p>fallbackScrapeProtocol defines the protocol to use if a scrape returns blank, unparseable, or otherwise invalid Content-Type.</p>
 <p>It requires Prometheus &gt;= v3.0.0.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>extraScrapeMetrics</code><br/>
+<em>
+bool
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>extraScrapeMetrics defines whether to store additional time series for each scrape:
+<code>scrape_timeout_seconds</code>, <code>scrape_sample_limit</code> and <code>scrape_body_size_bytes</code>.
+These metrics help monitor how close targets are to their configured limits.</p>
+<p>It requires Prometheus &gt;= v3.10.0.</p>
 </td>
 </tr>
 <tr>
@@ -4313,6 +4343,12 @@ Among other things, it allows to specify:
 * Authentication credentials to use.
 * Target and metric relabeling.</p>
 <p><code>Prometheus</code> and <code>PrometheusAgent</code> objects select <code>ServiceMonitor</code> objects using label and namespace selectors.</p>
+<p>Service targets that aren&rsquo;t backed by Pods (for instance manually managed
+Endpoints or EndpointSlices) can only be scraped when the endpoint selects
+the service port with <code>port</code> instead of <code>targetPort</code> and <code>filterRunning</code> is
+set to <code>false</code>. Manually created Pods have no such restriction.</p>
+<p>For targets that aren&rsquo;t backed by Pods, you can also consider using the
+<code>ScrapeConfig</code> CRD.</p>
 </div>
 <table>
 <thead>
@@ -4519,6 +4555,21 @@ ScrapeProtocol
 <em>(Optional)</em>
 <p>fallbackScrapeProtocol defines the protocol to use if a scrape returns blank, unparseable, or otherwise invalid Content-Type.</p>
 <p>It requires Prometheus &gt;= v3.0.0.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>extraScrapeMetrics</code><br/>
+<em>
+bool
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>extraScrapeMetrics defines whether to store additional time series for each scrape:
+<code>scrape_timeout_seconds</code>, <code>scrape_sample_limit</code> and <code>scrape_body_size_bytes</code>.
+These metrics help monitor how close targets are to their configured limits.</p>
+<p>It requires Prometheus &gt;= v3.10.0.</p>
 </td>
 </tr>
 <tr>
@@ -11150,6 +11201,8 @@ k8s.io/apimachinery/pkg/util/intstr.IntOrString
 by the Service.
 If a name, it matches against <code>.spec.containers[].ports[].name</code> of the Pods.
 If a number, it matches against <code>.spec.containers[].ports[].containerPort</code> of the Pods.</p>
+<p>Because it relies on Pod metadata, endpoints which aren&rsquo;t backed by Pods
+are never scraped when <code>targetPort</code> is used.</p>
 </td>
 </tr>
 <tr>
@@ -14371,6 +14424,21 @@ ScrapeProtocol
 </tr>
 <tr>
 <td>
+<code>extraScrapeMetrics</code><br/>
+<em>
+bool
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>extraScrapeMetrics defines whether to store additional time series for each scrape:
+<code>scrape_timeout_seconds</code>, <code>scrape_sample_limit</code> and <code>scrape_body_size_bytes</code>.
+These metrics help monitor how close targets are to their configured limits.</p>
+<p>It requires Prometheus &gt;= v3.10.0.</p>
+</td>
+</tr>
+<tr>
+<td>
 <code>labelLimit</code><br/>
 <em>
 int64
@@ -14763,6 +14831,21 @@ ScrapeProtocol
 <em>(Optional)</em>
 <p>fallbackScrapeProtocol defines the protocol to use if a scrape returns blank, unparseable, or otherwise invalid Content-Type.</p>
 <p>It requires Prometheus &gt;= v3.0.0.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>extraScrapeMetrics</code><br/>
+<em>
+bool
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>extraScrapeMetrics defines whether to store additional time series for each scrape:
+<code>scrape_timeout_seconds</code>, <code>scrape_sample_limit</code> and <code>scrape_body_size_bytes</code>.
+These metrics help monitor how close targets are to their configured limits.</p>
+<p>It requires Prometheus &gt;= v3.10.0.</p>
 </td>
 </tr>
 <tr>
@@ -19875,6 +19958,21 @@ ScrapeProtocol
 <em>(Optional)</em>
 <p>fallbackScrapeProtocol defines the protocol to use if a scrape returns blank, unparseable, or otherwise invalid Content-Type.</p>
 <p>It requires Prometheus &gt;= v3.0.0.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>extraScrapeMetrics</code><br/>
+<em>
+bool
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>extraScrapeMetrics defines whether to store additional time series for each scrape:
+<code>scrape_timeout_seconds</code>, <code>scrape_sample_limit</code> and <code>scrape_body_size_bytes</code>.
+These metrics help monitor how close targets are to their configured limits.</p>
+<p>It requires Prometheus &gt;= v3.10.0.</p>
 </td>
 </tr>
 <tr>
@@ -25733,6 +25831,21 @@ ScrapeProtocol
 <em>(Optional)</em>
 <p>fallbackScrapeProtocol defines the protocol to use if a scrape returns blank, unparseable, or otherwise invalid Content-Type.</p>
 <p>It requires Prometheus &gt;= v3.0.0.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>extraScrapeMetrics</code><br/>
+<em>
+bool
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>extraScrapeMetrics defines whether to store additional time series for each scrape:
+<code>scrape_timeout_seconds</code>, <code>scrape_sample_limit</code> and <code>scrape_body_size_bytes</code>.
+These metrics help monitor how close targets are to their configured limits.</p>
+<p>It requires Prometheus &gt;= v3.10.0.</p>
 </td>
 </tr>
 <tr>
@@ -36309,6 +36422,21 @@ ScrapeProtocol
 <em>(Optional)</em>
 <p>fallbackScrapeProtocol defines the protocol to use if a scrape returns blank, unparseable, or otherwise invalid Content-Type.</p>
 <p>It requires Prometheus &gt;= v3.0.0.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>extraScrapeMetrics</code><br/>
+<em>
+bool
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>extraScrapeMetrics defines whether to store additional time series for each scrape:
+<code>scrape_timeout_seconds</code>, <code>scrape_sample_limit</code> and <code>scrape_body_size_bytes</code>.
+These metrics help monitor how close targets are to their configured limits.</p>
+<p>It requires Prometheus &gt;= v3.10.0.</p>
 </td>
 </tr>
 <tr>

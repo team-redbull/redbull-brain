@@ -1,7 +1,7 @@
 repo: containers/kubernetes-mcp-server
 ref: main
-commit: de8d44063095bda7f927a0d6b7cb1522baf09f1a
+commit: bd9a5b222ec4bddfb157a95f3b2ad2febd43bb6a
 latest_tag: v0.0.67
 paths: README.md, docs
 files: 21
-synced: 2026-10-16T08:07:47Z
+synced: 2026-10-17T07:44:55Z
