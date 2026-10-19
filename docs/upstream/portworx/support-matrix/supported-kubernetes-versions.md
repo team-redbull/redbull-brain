@@ -121,21 +121,23 @@ SUSE Virtualization (Harvester)
 
 - 1.7.1
 
+- 1.8.1
+
 Red Hat OpenShift
 
-- OpenShift version: 4.18 (verified up to 4.18.55)
+- OpenShift version: 4.18 (verified up to 4.18.56)
  Kubernetes version: 1.31
 
-- OpenShift version: 4.19 (verified up to 4.19.48)
+- OpenShift version: 4.19 (verified up to 4.19.49)
  Kubernetes version: 1.32.14
 
-- OpenShift version: 4.20 (verified up to 4.20.39)
+- OpenShift version: 4.20 (verified up to 4.20.40)
  Kubernetes version: 1.33.13
 
-- OpenShift version: 4.21 (verified up to 4.21.34)
+- OpenShift version: 4.21 (verified up to 4.21.35)
  Kubernetes version: 1.34.9
 
-- OpenShift version: 4.22 (verified up to 4.22.16)
+- OpenShift version: 4.22 (verified up to 4.22.18)
  Kubernetes version: 1.35.8
 
 Note: Supports both bare metal and VM
@@ -153,6 +155,9 @@ Red Hat OpenShift on IBM Cloud
 
 - ROKS version: 4.21 (verified up to 4.21.31)
  Kubernetes version: 1.34
+
+- ROKS version: 4.22 (verified up to 4.22.13)
+ Kubernetes version: 1.35
 
 Red Hat OpenShift Service on AWS
 
