@@ -1,7 +1,7 @@
 repo: grafana/mcp-grafana
 ref: main
-commit: 5ea0cc34678cdd6fcd2f5c731b6619a8433bcb20
+commit: bc72b8a13d04a458c448c323fb9d3fc0e4d53ce9
 latest_tag: v2.0.2
 paths: README.md, docs
 files: 50
-synced: 2026-10-15T08:15:02Z
+synced: 2026-10-20T08:29:07Z
