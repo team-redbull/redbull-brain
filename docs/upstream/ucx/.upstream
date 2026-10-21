@@ -1,7 +1,7 @@
 repo: openucx/ucx
 ref: master
-commit: f9426106f96a0e913c73d95c2b68d4e61aea15f4
+commit: 6aa2cf12e8c85813eff94e031ce0c7866133d525
 latest_tag: v1.22.0
 paths: docs
 files: 15
-synced: 2026-10-03T09:38:42Z
+synced: 2026-10-21T08:32:37Z
