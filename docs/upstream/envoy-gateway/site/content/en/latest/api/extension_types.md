@@ -134,6 +134,7 @@ _Appears in:_
 | `initialJitter` | _[Duration](https://gateway-api.sigs.k8s.io/reference/api-spec/1.5/spec/#duration)_ |  false  |  | InitialJitter defines the maximum time Envoy will wait before the first health check.<br />Envoy will randomly select a value between 0 and the initial jitter value. |
 | `unhealthyThreshold` | _integer_ |  false  | 3 | UnhealthyThreshold defines the number of unhealthy health checks required before a backend host is marked unhealthy.<br />Without RetriableStatuses configured, any health check failure results in the host being immediately<br />considered unhealthy. When RetriableStatuses is set, health checks returning those statuses are retried<br />up to this threshold before the host is marked unhealthy. |
 | `healthyThreshold` | _integer_ |  false  | 1 | HealthyThreshold defines the number of healthy health checks required before a backend host is marked healthy. |
+| `disableConnectionReuse` | _boolean_ |  false  |  | DisableConnectionReuse determines whether the active health check connection to a<br />backend host is closed after each health check probe. When set to true, Envoy opens a<br />new connection for each health check, which is useful for backends (such as<br />haproxy-style agent checks) that do not expect a reused connection.<br />Defaults to false, which reuses the connection across probes. |
 | `type` | _[ActiveHealthCheckerType](#activehealthcheckertype)_ |  true  |  | Type defines the type of health checker. |
 | `http` | _[HTTPActiveHealthChecker](#httpactivehealthchecker)_ |  false  |  | HTTP defines the configuration of http health checker.<br />It's required while the health checker type is HTTP. |
 | `tcp` | _[TCPActiveHealthChecker](#tcpactivehealthchecker)_ |  false  |  | TCP defines the configuration of tcp health checker.<br />It's required while the health checker type is TCP. |
@@ -3489,6 +3490,20 @@ _Appears in:_
 | `ReplaceRegexMatch` | RegexHTTPPathModifier This type of modifier indicates that the portions of the path that match the specified<br /> regex would be substituted with the specified substitution value<br />https://www.envoyproxy.io/docs/envoy/latest/api-v3/type/matcher/v3/regex.proto#type-matcher-v3-regexmatchandsubstitute<br /> | 
 
 
+#### HTTPRequestMirrorFilter
+
+
+
+HTTPRequestMirrorFilter defines configuration for request mirroring modifiers.
+
+_Appears in:_
+- [HTTPRouteFilterSpec](#httproutefilterspec)
+
+| Field | Type | Required | Default | Description |
+| ---   | ---  | ---      | ---     | ---         |
+| `hostname` | _[RequestMirrorHostnameModifier](#requestmirrorhostnamemodifier)_ |  false  |  | Hostname defines the configuration to rewrite the Host header for mirrored requests. |
+
+
 #### HTTPRouteFilter
 
 
@@ -3520,6 +3535,7 @@ _Appears in:_
 | `urlRewrite` | _[HTTPURLRewriteFilter](#httpurlrewritefilter)_ |  false  |  |  |
 | `directResponse` | _[HTTPDirectResponseFilter](#httpdirectresponsefilter)_ |  false  |  | DirectResponse returns a fixed response for matching requests.<br />When this filter is referenced from a GRPCRoute, only a non-2xx status code<br />is supported. gRPC signals success with a grpc-status trailer and a response<br />message, which a direct response cannot produce, so a 2xx status code (which<br />maps to the gRPC OK status) yields an invalid response for gRPC clients. Use a<br />non-2xx status code to deny or block gRPC requests (e.g. 403 maps to<br />PERMISSION_DENIED, 404 to UNIMPLEMENTED, 429/503 to UNAVAILABLE). |
 | `credentialInjection` | _[HTTPCredentialInjectionFilter](#httpcredentialinjectionfilter)_ |  false  |  |  |
+| `requestMirror` | _[HTTPRequestMirrorFilter](#httprequestmirrorfilter)_ |  false  |  | RequestMirror defines configuration for request mirroring modifiers.<br />This configuration works together with the Gateway API RequestMirror filter<br />on the attached HTTPRoute rule. |
 | `matches` | _[HTTPRouteMatchFilter](#httproutematchfilter) array_ |  false  |  | Matches defines additional matching criteria for the HTTPRoute rule.<br />As with HTTPRouteRule.Matches, the rule is matched if any one match applies.<br />When both HTTPRouteRule.Matches and HTTPRouteFilter.Matches are set, the<br />effective matching is the logical AND of the two sets. |
 
 
@@ -6194,6 +6210,36 @@ _Appears in:_
 | Field | Type | Required | Default | Description |
 | ---   | ---  | ---      | ---     | ---         |
 | `tracing` | _[RequestIDExtensionAction](#requestidextensionaction)_ |  false  |  | Tracing configures Envoy's behavior for the UUID request ID extension,<br />including whether the trace sampling decision is packed into the UUID and<br />whether `X-Request-ID` is used for trace sampling decisions.<br />When omitted, the default behavior is `PackAndSample`, which alters the UUID<br />to contain the trace sampling decision and uses `X-Request-ID` for stable<br />trace sampling. |
+
+
+#### RequestMirrorHostnameModifier
+
+
+
+
+
+_Appears in:_
+- [HTTPRequestMirrorFilter](#httprequestmirrorfilter)
+
+| Field | Type | Required | Default | Description |
+| ---   | ---  | ---      | ---     | ---         |
+| `type` | _[RequestMirrorHostnameModifierType](#requestmirrorhostnamemodifiertype)_ |  true  |  | Type defines the type of hostname rewrite. |
+| `literal` | _[PreciseHostname](#precisehostname)_ |  false  |  | Literal specifies a fixed hostname to rewrite the Host header to.<br />Required when Type is "Literal". Must be empty when Type is "Backend".<br />Note: gwapiv1.PreciseHostname already carries MinLength=1, MaxLength=253,<br />and RFC 1123 pattern validation, which automatically flow into the generated CRD. |
+
+
+#### RequestMirrorHostnameModifierType
+
+_Underlying type:_ _string_
+
+RequestMirrorHostnameModifierType defines the type of hostname rewrite for mirrored requests.
+
+_Appears in:_
+- [RequestMirrorHostnameModifier](#requestmirrorhostnamemodifier)
+
+| Value | Description |
+| ----- | ----------- |
+| `Backend` | RequestMirrorHostnameModifierBackend indicates that the Host header value<br />will be replaced by the FQDN of the mirror backend.<br /> | 
+| `Literal` | RequestMirrorHostnameModifierLiteral indicates that the Host header value<br />will be replaced by a fixed literal string.<br /> | 
 
 
 #### ResourceProviderType

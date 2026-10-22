@@ -1,7 +1,7 @@
 repo: kvcache-ai/Mooncake
 ref: main
-commit: e2d6e8e0f2df113d84f9e39379f98c4b67b199ab
+commit: fff8e90952d48885ee1f301527c0f96bd08aeb27
 latest_tag: v0.3.13
 paths: docs/source, README.md, monitoring/README.md, mooncake-store/src/hf3fs/README.md
-files: 137
-synced: 2026-10-21T08:31:54Z
+files: 138
+synced: 2026-10-22T08:33:53Z

@@ -1,7 +1,7 @@
 repo: ray-project/ray
 ref: master
-commit: 938ab39460b257374624479c6739fa80315939ea
+commit: e91b1de0e096df2a27567594b31827fe12b593b2
 latest_tag: 1.13.1
 paths: doc/source/serve, doc/source/cluster/kubernetes
 files: 96
-synced: 2026-10-21T08:32:35Z
+synced: 2026-10-22T08:34:27Z
