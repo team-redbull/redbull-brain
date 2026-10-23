@@ -1,7 +1,7 @@
 repo: metal3-io/cluster-api-provider-metal3
 ref: main
-commit: 33aa2160cf2f56641093795a3dfbb4d4ecb797d7
-latest_tag: v1.14.1
+commit: c12eab277d65753136c178b68cf6903577c1f9fe
+latest_tag: v1.14.2
 paths: docs, README.md
 files: 16
-synced: 2026-10-12T10:44:26Z
+synced: 2026-10-23T08:30:06Z

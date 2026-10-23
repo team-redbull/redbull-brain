@@ -1,7 +1,7 @@
 repo: metal3-io/ip-address-manager
 ref: main
-commit: c12636c8676320b05a7e41222c3b950e70b25b69
-latest_tag: v1.14.1
+commit: 0f8965b4114fb28ce932fedf1519e09babaa85b4
+latest_tag: v1.14.2
 paths: docs, README.md
 files: 6
-synced: 2026-10-03T09:37:22Z
+synced: 2026-10-23T08:30:07Z
