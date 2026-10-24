@@ -1,7 +1,7 @@
 repo: metal3-io/baremetal-operator
 ref: main
-commit: 81afb352446a3d48950cc1c817fcd4996dc1346d
+commit: 48b07047db11f88653188614b8daf2aa54a83bcc
 latest_tag: v0.14.2
 paths: docs, README.md, config/README.md, ironic-deployment/README.md
 files: 15
-synced: 2026-10-23T08:30:05Z
+synced: 2026-10-24T08:04:46Z
