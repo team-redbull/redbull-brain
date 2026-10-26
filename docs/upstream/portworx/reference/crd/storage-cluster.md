@@ -6,7 +6,7 @@ StorageCluster | Portworx Enterprise Documentation
 
 The Portworx cluster configuration is specified by a Kubernetes CRD (CustomResourceDefinition) called StorageCluster. The StorageCluster object acts as the definition of the Portworx Cluster.
 
-The `StorageCluster` object provides a Kubernetes native experience. You can manage your Portworx cluster just like any other application running on Kubernetes. That is, if you create or edit the `StorageCluster` object, the operator creates or edits the Portworx cluster in the background.
+The `StorageCluster` object provides a Kubernetes-native experience. You can manage your Portworx cluster just like any other application running on Kubernetes. That is, if you create or edit the `StorageCluster` object, the operator creates or edits the Portworx cluster in the background.
 
 To generate a `StorageCluster` spec customized for your environment, point your browser to Portworx Central and click "Install and Run" to start the Portworx spec generator. The wizard walks you through all the necessary steps to create a `StorageCluster` spec customized for your environment.
 
@@ -455,7 +455,7 @@ Portworx with HTTP/HTTPS proxy configuration for external communications
 
 Portworx supports HTTP and HTTPS proxy configuration for outbound connections. Use the `PX_HTTP_PROXY` and `PX_HTTPS_PROXY` environment variables to specify the proxy server for external communications such as license activation and renewal, cloud object store operations (CloudSnaps to S3, Azure Blob Storage, and Google Cloud Storage), and telemetry data uploads to Pure1.
 
-When the proxy environment variables are configured, all HTTP and HTTPS requests go through the proxy by default. Use the `NO_PROXY` environment variable to specify a comma-separated list of addresses or domains that bypass the proxy and communicate directly. This is essential for internal cluster communication, such as Kubernetes services (`.svc`, `.cluster.local`), loopback addresses (`localhost`, `127.0.0.1`), and pod and service CIDR ranges (for example, `10.0.0.0/8`). When the proxy environment variables are configured, all HTTP and HTTPS requests go through the proxy by default. Use the `NO_PROXY` environment variable to specify a comma-separated list of addresses or domains that bypass the proxy and communicate directly. This is essential for internal cluster communication, such as Kubernetes services (`.svc`, `.cluster.local`), loopback addresses (`localhost`, `127.0.0.1`), and pod and service CIDR ranges (for example, `10.0.0.0/8`).
+When the proxy environment variables are configured, all HTTP and HTTPS requests go through the proxy by default. Use the `NO_PROXY` environment variable to specify a comma-separated list of addresses or domains that bypass the proxy and communicate directly. This is essential for internal cluster communication, such as Kubernetes services (`.svc`, `.cluster.local`), loopback addresses (`localhost`, `127.0.0.1`), and pod and service CIDR ranges (for example, `10.0.0.0/8`).
 
 You can include authentication credentials in the proxy URL using the format `http://user:password@<IP:port>`.
 
@@ -673,7 +673,7 @@ FieldDescriptionTypeDefault
 
 spec.
 clusterDiags.
-enabledSpecifies whether clusterDiags is enabled or disabled. When enabled, the Portworx Operator creates a `PortworxDiag` CR every 4 hours to collect pod-level diagnostics.`boolean`false
+enabledSpecifies whether clusterDiags is enabled or disabled. When enabled, the Portworx Operator creates a `PortworxDiag` CR every 4 hours to collect pod-level diagnostics. Starting with Operator 26.3.0, `clusterDiags` is enabled by default on new and upgraded clusters. Setting this field to `false` disables clusterDiags and persists across upgrades.`boolean`true
 
 spec.
 clusterDiags.

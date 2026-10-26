@@ -1,7 +1,7 @@
 repo: torvalds/linux
 ref: master
-commit: 5b0764a53235d3c77e1ed674e836e1b3fe1a4b1f
+commit: 6b4b543fa18757297ac756a6fe6e64f506b7844a
 latest_tag: v7.3
 paths: Documentation/admin-guide/mm, Documentation/admin-guide/kernel-parameters.txt, Documentation/admin-guide/cputopology.rst, Documentation/admin-guide/numastat.rst, Documentation/admin-guide/pm, Documentation/scheduler, Documentation/infiniband, Documentation/core-api/irq, Documentation/networking/ip-sysctl.rst, Documentation/networking/scaling.rst, Documentation/networking/rds.rst, Documentation/networking/tcp-thin.rst, Documentation/admin-guide/perf, Documentation/admin-guide/sysctl
 files: 118
-synced: 2026-10-24T08:05:39Z
+synced: 2026-10-26T08:51:07Z
