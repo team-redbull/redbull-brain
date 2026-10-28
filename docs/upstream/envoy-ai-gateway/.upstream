@@ -1,7 +1,7 @@
 repo: envoyproxy/ai-gateway
 ref: main
-commit: 6d63a4f71f56e9cc370ced2da862787d8d04f06c
+commit: 3b8f8393107eeab706d907b155dbfcbc70b7f596
 latest_tag: v1.2.0
 paths: site/docs, release-notes, README.md
 files: 60
-synced: 2026-10-23T08:29:43Z
+synced: 2026-10-28T09:36:24Z

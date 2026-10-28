@@ -1,7 +1,7 @@
 repo: kserve/kserve
 ref: master
-commit: 3209ef238cf3baea6c39177e07d2903a4e239b8f
+commit: abc6c47ab4af588e40c67372b4835122234f6f74
 latest_tag: v0.21.0
 paths: docs, README.md, charts, kernelcache/mcv/docs, ROADMAP.md, config/runtimes, config/configmap, config/llmisvc, config/storagecontainers
 files: 521
-synced: 2026-10-27T08:56:16Z
+synced: 2026-10-28T09:36:29Z
