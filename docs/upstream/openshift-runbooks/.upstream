@@ -1,7 +1,7 @@
 repo: openshift/runbooks
 ref: master
-commit: 937cdf63cee71cacd43984f81260904cdfc998cc
+commit: 41d1188533d638941d57996d2651030f51e26c0c
 latest_tag: 
 paths: alerts
 files: 289
-synced: 2026-10-03T09:37:47Z
+synced: 2026-11-03T10:48:02Z

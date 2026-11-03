@@ -1,7 +1,7 @@
 repo: grafana/grafana
 ref: main
-commit: 5886f48069135da88b5731fd35e61fcba8b6a264
+commit: 5107789568ae7b9e90e8c50d0317a353e4d681a1
 latest_tag: v13.3.0
 paths: docs/sources
 files: 771
-synced: 2026-11-02T10:57:55Z
+synced: 2026-11-03T10:47:33Z
