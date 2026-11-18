@@ -10,46 +10,46 @@ stable upstream tag at sync time, for comparison with the version installed on a
 | `assisted-service` | openshift/assisted-service | master | e4db938d35 | v2.56.3 | 119 | 2026-11-14 |
 | `baremetal-operator` | metal3-io/baremetal-operator | main | b7f42da2f4 | v0.14.2 | 15 | 2026-11-14 |
 | `cluster-api-provider-metal3` | metal3-io/cluster-api-provider-metal3 | main | abcb79e486 | v1.14.2 | 16 | 2026-11-05 |
-| `dynamo` | ai-dynamo/dynamo | main | 4573c9b6e4 | v1.6.2 | 424 | 2026-11-17 |
-| `envoy` | envoyproxy/envoy | main | 0d7446a18f | v1.40.2 | 514 | 2026-11-17 |
-| `envoy-ai-gateway` | envoyproxy/ai-gateway | main | f68ad16c73 | v1.2.1 | 63 | 2026-11-17 |
+| `dynamo` | ai-dynamo/dynamo | main | 099f12765b | v1.6.2 | 424 | 2026-11-18 |
+| `envoy` | envoyproxy/envoy | main | a1fedd3683 | v1.40.2 | 514 | 2026-11-18 |
+| `envoy-ai-gateway` | envoyproxy/ai-gateway | main | f99b015ff8 | v1.2.1 | 63 | 2026-11-18 |
 | `envoy-gateway` | envoyproxy/gateway | main | b5602013e8 | v1.10.0 | 141 | 2026-11-17 |
 | `etcd-docs` | etcd-io/website | main | 0c82d27416 | v3.5.0 | 791 | 2026-10-30 |
-| `gateway-api` | kubernetes-sigs/gateway-api | main | d40d75f185 | v1.7.0 | 147 | 2026-11-12 |
+| `gateway-api` | kubernetes-sigs/gateway-api | main | ed1b2062a3 | v1.7.0 | 147 | 2026-11-18 |
 | `gateway-api-inference-extension` | kubernetes-sigs/gateway-api-inference-extension | main | 7edc1bff42 | v1.6.2 | 39 | 2026-11-07 |
 | `gpu-operator` | NVIDIA/gpu-operator | main | 774a9571d8 | v26.7.2 | 2 | 2026-11-04 |
-| `grafana-docs` | grafana/grafana | main | 01c6016780 | v13.3.1 | 782 | 2026-11-17 |
+| `grafana-docs` | grafana/grafana | main | 5dd667892a | v13.3.1 | 783 | 2026-11-18 |
 | `ip-address-manager` | metal3-io/ip-address-manager | main | 0f8965b411 | v1.14.2 | 6 | 2026-10-23 |
 | `ironic-image` | metal3-io/ironic-image | main | 5786694219 | v38.0.0 | 3 | 2026-10-03 |
 | `ironic-standalone-operator` | metal3-io/ironic-standalone-operator | main | e627d6b983 | v0.12.0 | 5 | 2026-10-28 |
-| `kserve` | kserve/kserve | master | 41defa23f4 | v0.21.0 | 521 | 2026-10-31 |
-| `kserve-website` | kserve/website | main | 42550629de |  | 175 | 2026-11-11 |
+| `kserve` | kserve/kserve | master | 14879cafce | v0.21.0 | 521 | 2026-11-18 |
+| `kserve-website` | kserve/website | main | 578fa48db9 |  | 175 | 2026-11-18 |
 | `kubernetes` | kubernetes/website | release-1.35 | 8817d35886 |  | 1641 | 2026-10-02 |
 | `kubernetes-mcp-server` | containers/kubernetes-mcp-server | main | 8df1dfa61a | v0.1.3 | 26 | 2026-11-17 |
-| `kueue` | kubernetes-sigs/kueue | main | 13eb842741 | v0.20.6 | 266 | 2026-11-17 |
+| `kueue` | kubernetes-sigs/kueue | main | 727092b3b9 | v0.20.6 | 266 | 2026-11-18 |
 | `linux-kernel-docs` | torvalds/linux | master | 666539eecd | v7.3 | 118 | 2026-11-17 |
-| `llm-d` | llm-d/llm-d | main | 565373b741 | v1.0.0 | 192 | 2026-11-13 |
-| `lmcache` | LMCache/LMCache | dev | 97e71cbb05 | v0.5.7 | 321 | 2026-11-17 |
-| `lws` | kubernetes-sigs/lws | main | 234a75f4f9 | v1.0.0 | 80 | 2026-11-16 |
-| `mcp-grafana` | grafana/mcp-grafana | main | adbf1201c0 | v2.3.0 | 50 | 2026-11-17 |
+| `llm-d` | llm-d/llm-d | main | fbc9d5c78b | v1.0.0 | 192 | 2026-11-18 |
+| `lmcache` | LMCache/LMCache | dev | c3f743db89 | v0.5.7 | 322 | 2026-11-18 |
+| `lws` | kubernetes-sigs/lws | main | b869a69580 | v1.0.0 | 80 | 2026-11-18 |
+| `mcp-grafana` | grafana/mcp-grafana | main | bd9570fb95 | v2.3.0 | 50 | 2026-11-18 |
 | `metal3-docs` | metal3-io/metal3-docs | main | 3312d0fd1c |  | 145 | 2026-10-28 |
-| `mooncake` | kvcache-ai/Mooncake | main | 5c464422fa | v0.3.14 | 146 | 2026-11-17 |
+| `mooncake` | kvcache-ai/Mooncake | main | 4d7382be21 | v0.3.14 | 147 | 2026-11-18 |
 | `multus-cni` | k8snetworkplumbingwg/multus-cni | master | 73190fcefa | v4.3.1 | 7 | 2026-10-09 |
 | `nccl` | NVIDIA/nccl | master | ad2d192c1f |  | 160 | 2026-11-10 |
 | `node-feature-discovery` | kubernetes-sigs/node-feature-discovery | master | ffb1ec020f | v0.20.1 | 40 | 2026-11-17 |
-| `nvidia-cloud-native-docs` | NVIDIA/cloud-native-docs | main | d856ea69d8 |  | 86 | 2026-11-10 |
+| `nvidia-cloud-native-docs` | NVIDIA/cloud-native-docs | main | 179b231d69 |  | 86 | 2026-11-18 |
 | `nvidia-network-operator-docs` | Mellanox/network-operator-docs | main | f2725f0e45 | v26.4.0 | 75 | 2026-11-17 |
 | `okp-mcp` | rhel-lightspeed/okp-mcp | main | 4505245152 |  | 6 | 2026-10-03 |
-| `openshift-runbooks` | openshift/runbooks | master | 2e69fb6f5c |  | 298 | 2026-11-17 |
+| `openshift-runbooks` | openshift/runbooks | master | bc71a1798c |  | 308 | 2026-11-18 |
 | `ovn-kubernetes` | ovn-org/ovn-kubernetes | master | fd5bf6ca61 | v1.4.0 | 139 | 2026-11-17 |
 | `portworx` | https://docs.portworx.com/portworx-enterprise/ | 3.7 |  |  | 518 | 2026-11-16 |
 | `prometheus-docs` | prometheus/docs | main | 9bc542d9e2 |  | 70 | 2026-11-12 |
-| `prometheus-operator` | prometheus-operator/prometheus-operator | main | 879a98205c | v0.95.2 | 43 | 2026-11-16 |
-| `ray-docs` | ray-project/ray | master | 6873af31ef | 1.13.1 | 96 | 2026-11-11 |
+| `prometheus-operator` | prometheus-operator/prometheus-operator | main | 177906b32c | v0.95.2 | 43 | 2026-11-18 |
+| `ray-docs` | ray-project/ray | master | eb50407602 | 1.13.1 | 96 | 2026-11-18 |
 | `rdma-core` | linux-rdma/rdma-core | master | 04da5a0496 | v66.0 | 190 | 2026-11-10 |
-| `sglang` | sgl-project/sglang | main | 703e763d5f | v0.5.23 | 384 | 2026-11-17 |
+| `sglang` | sgl-project/sglang | main | e0decbc338 | v0.5.23 | 385 | 2026-11-18 |
 | `sriov-network-operator` | k8snetworkplumbingwg/sriov-network-operator | master | bdfb5a6109 | v1.6.0 | 30 | 2026-11-04 |
-| `tensorrt-llm` | NVIDIA/TensorRT-LLM | main | 7632c5fa2f | v1.2.1 | 171 | 2026-11-17 |
+| `tensorrt-llm` | NVIDIA/TensorRT-LLM | main | 1c8c1a2399 | v1.2.1 | 176 | 2026-11-18 |
 | `tuned` | redhat-performance/tuned | master | 278644ed96 | v2.28.0 | 31 | 2026-10-03 |
 | `ucx` | openucx/ucx | master | dfd545aba2 | v1.23.2 | 15 | 2026-11-17 |
-| `vllm` | vllm-project/vllm | main | c84273be38 | v0.34.0 | 268 | 2026-11-17 |
+| `vllm` | vllm-project/vllm | main | 4dbd382be7 | v0.34.0 | 270 | 2026-11-18 |
