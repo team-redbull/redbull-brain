@@ -1,7 +1,7 @@
 repo: sgl-project/sglang
 ref: main
-commit: 0a8693fbe3a2e46ccc06470a461a2b85865672fd
+commit: 88c10654aedd7d3cc8ae7f16699020aff53efee0
 latest_tag: v0.5.23
 paths: docs/docs, docs/cookbook
-files: 390
-synced: 2026-11-23T12:28:30Z
+files: 391
+synced: 2026-11-24T13:38:51Z
